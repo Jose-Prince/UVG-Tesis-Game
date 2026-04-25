@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://c7veufbusq3vm"]
 
+[ext_resource type="Script" uid="uid://bpit0g74t3khe" path="res://Scripts/Chair.gd" id="1_5rhpu"]
 [ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Sprites/TopDownHouse_FurnitureState1.png" id="1_od6l5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rhpu"]
 size = Vector2(18, 25)
 
 [node name="Chair" type="Node2D" unique_id=1763360672]
+script = ExtResource("1_5rhpu")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=227082844]
 

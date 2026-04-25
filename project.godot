@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Cozy Cafe"
+run/main_scene="uid://bci2hoxx3ohmy"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[global_group]
+
+Chairs="Defines a chair object. NPCs can use them to sit."
 
 [input]
 
