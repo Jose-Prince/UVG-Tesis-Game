@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ditawnwc3p0p2"]
+
+[ext_resource type="Script" uid="uid://r14gbqvkuyim" path="res://Scripts/time_system.gd" id="1_exwnq"]
+[ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://date_time.gd" id="2_eqbnc"]
+
+[sub_resource type="Resource" id="Resource_a4k3g"]
+script = ExtResource("2_eqbnc")
+metadata/_custom_type_script = "uid://cc3yiapgcu05y"
+
+[node name="Playground" type="Node2D" unique_id=154525860]
+
+[node name="TimeSystem" type="Node" parent="." unique_id=419212550]
+script = ExtResource("1_exwnq")
+date_time = SubResource("Resource_a4k3g")
+metadata/_custom_type_script = "uid://r14gbqvkuyim"
