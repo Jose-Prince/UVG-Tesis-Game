@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://r14gbqvkuyim" path="res://Scripts/time_system.gd" id="1_exwnq"]
 [ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://date_time.gd" id="2_eqbnc"]
+[ext_resource type="PackedScene" uid="uid://b24hlpwkaryju" path="res://Prefabs/time_ui.tscn" id="3_eqbnc"]
+[ext_resource type="Script" uid="uid://brsgf6flsog4g" path="res://Scripts/time_ui.gd" id="4_a4k3g"]
 
 [sub_resource type="Resource" id="Resource_a4k3g"]
 script = ExtResource("2_eqbnc")
@@ -12,4 +14,12 @@ metadata/_custom_type_script = "uid://cc3yiapgcu05y"
 [node name="TimeSystem" type="Node" parent="." unique_id=419212550]
 script = ExtResource("1_exwnq")
 date_time = SubResource("Resource_a4k3g")
+ticks_pr_second = 60
 metadata/_custom_type_script = "uid://r14gbqvkuyim"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=465547366]
+
+[node name="TimeGui" parent="CanvasLayer" unique_id=2113710388 instance=ExtResource("3_eqbnc")]
+script = ExtResource("4_a4k3g")
+
+[connection signal="updated" from="TimeSystem" to="CanvasLayer/TimeGui" method="_on_time_system_updated"]
