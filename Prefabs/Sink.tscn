@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b0301dxp1imrf"]
+
+[ext_resource type="Script" uid="uid://n5vu4ib708g8" path="res://Scripts/kitchen_furniture.gd" id="1_tqjcn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4mow3"]
+radius = 29.017237
+
+[node name="Sink" type="Area2D" unique_id=707847146]
+script = ExtResource("1_tqjcn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=168568239]
+position = Vector2(21, 20)
+shape = SubResource("CircleShape2D_4mow3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=973080252]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1721181626]
+offset_right = 40.0
+offset_bottom = 40.0
