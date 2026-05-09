@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c6v4cscudxqsh"]
+
+[ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Sprites/TopDownHouse_FurnitureState1.png" id="1_o8chr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rhpu"]
+size = Vector2(33, 22)
+
+[node name="Chair" type="Node2D" unique_id=1763360672]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=227082844]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Area2D" unique_id=774143767]
+offset_left = -16.0
+offset_top = -11.0
+offset_right = 17.0
+offset_bottom = 11.0
+texture = ExtResource("1_o8chr")
+region_rect = Rect2(0.34935403, 31.453857, 46.06412, 30.877224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1955943769]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_5rhpu")
