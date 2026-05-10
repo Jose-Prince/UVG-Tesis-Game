@@ -1,7 +1,7 @@
 extends Control
 
 func _on_new_game_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Scenes/café_place.tscn")
 	
 func _on_settings_pressed() -> void:
 	pass # Replace with function body.
