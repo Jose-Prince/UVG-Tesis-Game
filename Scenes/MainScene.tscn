@@ -1,11 +1,10 @@
 [gd_scene format=4 uid="uid://bci2hoxx3ohmy"]
 
 [ext_resource type="Texture2D" uid="uid://crttdqpbnjv3e" path="res://Sprites/TopDownHouse_FloorsAndWalls.png" id="1_hpc76"]
-[ext_resource type="Script" uid="uid://d315dg6v264o8" path="res://Scripts/MainSceneScript.gd" id="1_y4jh7"]
+[ext_resource type="Script" path="res://Scripts/MainSceneScript.gd" id="1_y4jh7"]
 [ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Sprites/TopDownHouse_FurnitureState1.png" id="2_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://ivufxjdlav1s" path="res://Sprites/TopDownHouse_SmallItems.png" id="3_nhkr4"]
 [ext_resource type="PackedScene" uid="uid://c7veufbusq3vm" path="res://Prefabs/Chair.tscn" id="4_7rqgy"]
-[ext_resource type="PackedScene" uid="uid://c6v4cscudxqsh" path="res://Prefabs/Table.tscn" id="5_qxria"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tr2i4"]
 texture = ExtResource("1_hpc76")
@@ -808,12 +807,6 @@ tile_set = SubResource("TileSet_y4jh7")
 [node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=256393563]
 tile_map_data = PackedByteArray("AAASAP7/AAAHAAcAAAAUAP7/AAAFAAYAAAA=")
 tile_set = SubResource("TileSet_q68mp")
-
-[node name="Table" parent="." unique_id=1134153762 instance=ExtResource("5_qxria")]
-position = Vector2(61, 159)
-
-[node name="Table2" parent="." unique_id=1351688658 instance=ExtResource("5_qxria")]
-position = Vector2(66, 62)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1213933671]
 navigation_polygon = SubResource("NavigationPolygon_qxria")

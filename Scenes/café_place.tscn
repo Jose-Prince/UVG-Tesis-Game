@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" path="res://Prefabs/time_ui.tscn" id="3_eqbnc"]
 [ext_resource type="Script" path="res://Scripts/time_ui.gd" id="4_a4k3g"]
 [ext_resource type="PackedScene" uid="uid://h6uqvesj3b8s" path="res://Prefabs/Player.tscn" id="5_npy7o"]
+[ext_resource type="PackedScene" uid="uid://c6v4cscudxqsh" path="res://Prefabs/Table.tscn" id="8_52c50"]
+[ext_resource type="PackedScene" uid="uid://d3hb3h1ih8e8w" path="res://Prefabs/table.tscn" id="9_4hpb6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52c50"]
 texture = ExtResource("1_7ewdn")
@@ -730,5 +732,11 @@ script = ExtResource("4_a4k3g")
 
 [node name="Player" parent="." unique_id=1461023337 instance=ExtResource("5_npy7o")]
 position = Vector2(293, 198)
+
+[node name="Table" parent="." unique_id=1763360672 instance=ExtResource("8_52c50")]
+position = Vector2(241, 224)
+
+[node name="Table2" parent="." unique_id=639487740 instance=ExtResource("9_4hpb6")]
+position = Vector2(290, 227)
 
 [connection signal="updated" from="TimeSystem" to="CanvasLayer/TimeGui" method="_on_time_system_updated"]

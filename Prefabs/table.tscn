@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d3hb3h1ih8e8w"]
+
+[ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Sprites/TopDownHouse_FurnitureState1.png" id="1_sawk4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbrsc"]
+size = Vector2(46, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo8q5"]
+atlas = ExtResource("1_sawk4")
+region = Rect2(0, 31.597538, 48.727726, 31.21207)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sawk4"]
+size = Vector2(64, 45)
+
+[node name="Table" type="StaticBody2D" unique_id=639487740]
+
+[node name="collider" type="CollisionShape2D" parent="." unique_id=141406604]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_rbrsc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1872101582]
+texture = SubResource("AtlasTexture_uo8q5")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1021018811]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1347747545]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_sawk4")
+debug_color = Color(0.94935995, 5.390644e-06, 0.57624334, 0.41960785)
