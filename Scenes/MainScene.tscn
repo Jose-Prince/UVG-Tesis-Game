@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bci2hoxx3ohmy"]
 
 [ext_resource type="Texture2D" uid="uid://crttdqpbnjv3e" path="res://Sprites/TopDownHouse_FloorsAndWalls.png" id="1_hpc76"]
-[ext_resource type="Script" path="res://Scripts/MainSceneScript.gd" id="1_y4jh7"]
+[ext_resource type="Script" uid="uid://d315dg6v264o8" path="res://Scripts/cafe_logic.gd" id="1_y4jh7"]
 [ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Sprites/TopDownHouse_FurnitureState1.png" id="2_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://ivufxjdlav1s" path="res://Sprites/TopDownHouse_SmallItems.png" id="3_nhkr4"]
 

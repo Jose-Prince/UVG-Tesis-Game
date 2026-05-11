@@ -13,7 +13,7 @@ region = Rect2(0, 31.597538, 48.727726, 31.21207)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sawk4"]
 size = Vector2(64, 45)
 
-[node name="Table" type="StaticBody2D" unique_id=639487740]
+[node name="Table" type="StaticBody2D" unique_id=639487740 groups=["table"]]
 script = ExtResource("1_rbrsc")
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=141406604]
