@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [global_group]
 
-Chairs="Defines a chair object. NPCs can use them to sit."
 player=""
+chair="Defines a chair object. NPCs can use them to sit."
 
 [input]
 

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d3hb3h1ih8e8w"]
 
+[ext_resource type="Script" uid="uid://ds7fyi5wyq772" path="res://Scripts/table.gd" id="1_rbrsc"]
 [ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Sprites/TopDownHouse_FurnitureState1.png" id="1_sawk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rbrsc"]
@@ -13,6 +14,7 @@ region = Rect2(0, 31.597538, 48.727726, 31.21207)
 size = Vector2(64, 45)
 
 [node name="Table" type="StaticBody2D" unique_id=639487740]
+script = ExtResource("1_rbrsc")
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=141406604]
 position = Vector2(0, 4.5)
@@ -27,3 +29,5 @@ texture = SubResource("AtlasTexture_uo8q5")
 position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_sawk4")
 debug_color = Color(0.94935995, 5.390644e-06, 0.57624334, 0.41960785)
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

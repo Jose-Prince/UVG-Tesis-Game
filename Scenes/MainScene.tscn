@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://Scripts/MainSceneScript.gd" id="1_y4jh7"]
 [ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Sprites/TopDownHouse_FurnitureState1.png" id="2_tr2i4"]
 [ext_resource type="Texture2D" uid="uid://ivufxjdlav1s" path="res://Sprites/TopDownHouse_SmallItems.png" id="3_nhkr4"]
-[ext_resource type="PackedScene" uid="uid://c7veufbusq3vm" path="res://Prefabs/Chair.tscn" id="4_7rqgy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tr2i4"]
 texture = ExtResource("1_hpc76")
@@ -814,22 +813,6 @@ navigation_polygon = SubResource("NavigationPolygon_qxria")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1974252498]
 position = Vector2(138, 78)
 zoom = Vector2(2.43, 2.43)
-
-[node name="Chair" parent="." unique_id=1763360672 groups=["Chairs"] instance=ExtResource("4_7rqgy")]
-position = Vector2(33, 160)
-
-[node name="Chair2" parent="." unique_id=2134254006 groups=["Chairs"] instance=ExtResource("4_7rqgy")]
-position = Vector2(92, 159)
-rotation = -3.1415925
-scale = Vector2(1.0399988, -1)
-
-[node name="Chair3" parent="." unique_id=1518310664 groups=["Chairs"] instance=ExtResource("4_7rqgy")]
-position = Vector2(39, 62)
-
-[node name="Chair4" parent="." unique_id=863812161 groups=["Chairs"] instance=ExtResource("4_7rqgy")]
-position = Vector2(96, 64)
-rotation = 3.1415925
-scale = Vector2(0.96000123, -1)
 
 [node name="CustomerSpawn" type="Marker2D" parent="." unique_id=1898669307]
 position = Vector2(-77, 105)
