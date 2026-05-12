@@ -36,3 +36,10 @@ func customer_spawn():
 				return
 				
 		print("No hay sillas disponibles. Agente esperando...")
+
+
+func _on_leaving_zone_body_entered(body: Node2D) -> void:
+	if body.is_in_group("customer"):
+		if body.currentState == body.States.Leave:
+			print("Customer despawned")
+			body.queue_free()

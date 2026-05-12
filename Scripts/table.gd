@@ -2,6 +2,7 @@ extends StaticBody2D
 
 var chairs: Array[Node2D]
 var customers: Array[Node2D]
+var order: Array[String]
 var isAvailable: bool = true
 
 func get_free_chair():
@@ -13,9 +14,30 @@ func get_free_chair():
 func update_availability():
 	isAvailable = get_free_chair() != null
 	
-func interact():
+func interact(player):
+	print(order)
+	for child in player.get_children():
+		var item = child.name.to_lower()
+		
+		if order.has(child.name.to_lower()):
+			print("Served order")
+			order.erase(item)
+			child.queue_free()
+
+			if order.is_empty():
+				send_customers_home()
+				
+			break
+
+func send_customers_home():
 	for customer in customers:
-		print(customer.foodWanted)
+		if is_instance_valid(customer):
+			customer.currentState = customer.States.Leave
+			
+	isAvailable = true
+	
+	for chair in chairs:
+		chair.isFree = true
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("chair"):
@@ -25,3 +47,4 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("customer"):
 		print("En la mesa")
 		customers.append(body)
+		order.append(body.foodWanted)

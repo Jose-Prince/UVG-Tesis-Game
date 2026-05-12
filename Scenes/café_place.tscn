@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://h6uqvesj3b8s" path="res://Prefabs/Player.tscn" id="5_npy7o"]
 [ext_resource type="PackedScene" uid="uid://d3hb3h1ih8e8w" path="res://Prefabs/table.tscn" id="9_4hpb6"]
 [ext_resource type="PackedScene" uid="uid://05y0ghmm4qsq" path="res://Prefabs/chair.tscn" id="9_r1i3y"]
+[ext_resource type="PackedScene" uid="uid://cn1a17pxcn375" path="res://Prefabs/coffee_maker.tscn" id="11_p7xg1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52c50"]
 texture = ExtResource("1_7ewdn")
@@ -707,6 +708,9 @@ sources/0 = SubResource("TileSetAtlasSource_4hpb6")
 [sub_resource type="Resource" id="Resource_a4k3g"]
 script = ExtResource("2_eqbnc")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_p7xg1"]
+radius = 17.0
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_r1i3y"]
 vertices = PackedVector2Array(374.09375, 184, 374.89844, 269, 341, 269, 341, 238, 242, 269, 174.10156, 269, 174.90625, 184, 242, 238, 325, 238, 325, 220, 259, 220, 259, 238)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(3, 8, 9, 0), PackedInt32Array(6, 0, 9, 10), PackedInt32Array(7, 6, 10, 11)])
@@ -743,6 +747,11 @@ position = Vector2(293, 198)
 [node name="CustomerSpawn" type="Marker2D" parent="." unique_id=1412440611]
 position = Vector2(181, 217)
 
+[node name="LeavingZone" type="Area2D" parent="CustomerSpawn" unique_id=1885816167]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerSpawn/LeavingZone" unique_id=1605275001]
+shape = SubResource("CircleShape2D_p7xg1")
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=715499096]
 navigation_polygon = SubResource("NavigationPolygon_r1i3y")
 
@@ -759,5 +768,9 @@ isRotated = true
 [node name="Timer" type="Timer" parent="." unique_id=1533332950]
 autostart = true
 
+[node name="CoffeeMaker" parent="." unique_id=1701230900 instance=ExtResource("11_p7xg1")]
+position = Vector2(484, 256)
+
 [connection signal="updated" from="TimeSystem" to="CanvasLayer/TimeGui" method="_on_time_system_updated"]
+[connection signal="body_entered" from="CustomerSpawn/LeavingZone" to="." method="_on_leaving_zone_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

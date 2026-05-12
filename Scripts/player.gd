@@ -15,7 +15,7 @@ func get_input():
 
 func make_action():
 	if Input.is_action_just_pressed("Action") and current_object:
-		current_object.interact()
+		current_object.interact(self)
 		
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("clickable"):
