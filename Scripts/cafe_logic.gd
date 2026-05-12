@@ -25,7 +25,7 @@ func customer_spawn():
 			var chair = table.get_free_chair()
 			
 			if chair:
-				new_customer.movement_target_position = chair.global_position
+				new_customer.movement_target_position = chair.go_to_pos.global_position
 				
 				chair.isFree = false
 				table.update_availability()

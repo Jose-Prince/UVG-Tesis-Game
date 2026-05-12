@@ -12,9 +12,10 @@ var currentState: States = States.Navigate
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	await  get_tree().physics_frame
+	await get_tree().physics_frame
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
+	navigation_agent.target_position = movement_target_position
 	
 func _physics_process(delta: float) -> void:
 	if navigation_agent.is_navigation_finished():
@@ -36,21 +37,22 @@ func _process(delta: float) -> void:
 	elif currentState == States.Navigate:
 		navigation_agent.process_mode = Node.PROCESS_MODE_ALWAYS
 		movement_speed = 100.0
-		navigation_agent.target_position = movement_target_position
 		
-		if navigation_agent.target_reached:
+		if navigation_agent.is_target_reached():
 			currentState = States.Sit
+			print("Is Sitting")
 		
 	elif currentState == States.Sit:
 		currentState = States.Order
 		
 	elif currentState == States.Order:
 		sitting_timer.start()
+		currentState = States.Wait
 		
 	elif currentState == States.Leave:
 		navigation_agent.target_position = leaving_target_position
 		
-		if navigation_agent.navigation_finished:
+		if navigation_agent.is_navigation_finished():
 			queue_free()
 
 func _on_sitting_timer_timeout() -> void:

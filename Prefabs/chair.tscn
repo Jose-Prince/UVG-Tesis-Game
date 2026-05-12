@@ -23,3 +23,6 @@ shape = SubResource("RectangleShape2D_avq0k")
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=1736409720]
 position = Vector2(0, 2)
 vertices = PackedVector2Array(8, 12, 8, -16, -8, -16, -8, 12)
+
+[node name="GoToPos" type="Marker2D" parent="." unique_id=1450133005]
+position = Vector2(-15, 0)
