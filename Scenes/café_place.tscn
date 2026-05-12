@@ -1,12 +1,12 @@
 [gd_scene format=4 uid="uid://ditawnwc3p0p2"]
 
 [ext_resource type="Texture2D" uid="uid://crttdqpbnjv3e" path="res://Sprites/TopDownHouse_FloorsAndWalls.png" id="1_7ewdn"]
-[ext_resource type="Script" uid="uid://r14gbqvkuyim" path="res://Scripts/time_system.gd" id="1_exwnq"]
+[ext_resource type="Script" path="res://Scripts/time_system.gd" id="1_exwnq"]
 [ext_resource type="Script" uid="uid://d315dg6v264o8" path="res://Scripts/cafe_logic.gd" id="1_r1i3y"]
 [ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Sprites/TopDownHouse_FurnitureState1.png" id="2_7ewdn"]
-[ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://date_time.gd" id="2_eqbnc"]
-[ext_resource type="PackedScene" uid="uid://b24hlpwkaryju" path="res://Prefabs/time_ui.tscn" id="3_eqbnc"]
-[ext_resource type="Script" uid="uid://brsgf6flsog4g" path="res://Scripts/time_ui.gd" id="4_a4k3g"]
+[ext_resource type="Script" path="res://date_time.gd" id="2_eqbnc"]
+[ext_resource type="PackedScene" path="res://Prefabs/time_ui.tscn" id="3_eqbnc"]
+[ext_resource type="Script" path="res://Scripts/time_ui.gd" id="4_a4k3g"]
 [ext_resource type="PackedScene" uid="uid://h6uqvesj3b8s" path="res://Prefabs/Player.tscn" id="5_npy7o"]
 [ext_resource type="PackedScene" uid="uid://d3hb3h1ih8e8w" path="res://Prefabs/table.tscn" id="9_4hpb6"]
 [ext_resource type="PackedScene" uid="uid://05y0ghmm4qsq" path="res://Prefabs/chair.tscn" id="9_r1i3y"]
@@ -708,8 +708,8 @@ sources/0 = SubResource("TileSetAtlasSource_4hpb6")
 script = ExtResource("2_eqbnc")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_r1i3y"]
-vertices = PackedVector2Array(323, 252, 374.89844, 269, 174.10156, 269, 257, 252, 374.09375, 184, 323, 202, 174.90625, 184, 257, 202)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 1, 0, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(3, 2, 6, 7)])
+vertices = PackedVector2Array(374.09375, 184, 374.89844, 269, 341, 269, 341, 238, 242, 269, 174.10156, 269, 174.90625, 184, 242, 238, 325, 238, 325, 220, 259, 220, 259, 238)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(3, 8, 9, 0), PackedInt32Array(6, 0, 9, 10), PackedInt32Array(7, 6, 10, 11)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(165, 174, 384, 174, 385, 279, 164, 279)])
 
 [node name="Playground" type="Node2D" unique_id=154525860]
@@ -740,13 +740,6 @@ script = ExtResource("4_a4k3g")
 [node name="Player" parent="." unique_id=1461023337 instance=ExtResource("5_npy7o")]
 position = Vector2(293, 198)
 
-[node name="Chair" parent="." unique_id=1594550986 instance=ExtResource("9_r1i3y")]
-position = Vector2(258, 222)
-
-[node name="Chair2" parent="." unique_id=1484332892 instance=ExtResource("9_r1i3y")]
-position = Vector2(324, 224)
-isRotated = true
-
 [node name="CustomerSpawn" type="Marker2D" parent="." unique_id=1412440611]
 position = Vector2(181, 217)
 
@@ -754,7 +747,14 @@ position = Vector2(181, 217)
 navigation_polygon = SubResource("NavigationPolygon_r1i3y")
 
 [node name="Table" parent="NavigationRegion2D" unique_id=639487740 instance=ExtResource("9_4hpb6")]
-position = Vector2(290, 227)
+position = Vector2(292, 245)
+
+[node name="Chair" parent="NavigationRegion2D" unique_id=1594550986 instance=ExtResource("9_r1i3y")]
+position = Vector2(258, 253)
+
+[node name="Chair2" parent="NavigationRegion2D" unique_id=1484332892 instance=ExtResource("9_r1i3y")]
+position = Vector2(324, 253)
+isRotated = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1533332950]
 autostart = true
