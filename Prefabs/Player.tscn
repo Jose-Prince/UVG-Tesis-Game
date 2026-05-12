@@ -42,6 +42,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_javds"]
 size = Vector2(12, 5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_x3d5u"]
+radius = 12.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1461023337 groups=["player"]]
 script = ExtResource("1_x3d5u")
 speed = 200.0
@@ -59,3 +62,12 @@ shape = SubResource("RectangleShape2D_javds")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1178547395]
 scale = Vector2(0.947, 1)
 zoom = Vector2(5, 5)
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=167484192]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=144964780]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_x3d5u")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

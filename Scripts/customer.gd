@@ -4,11 +4,15 @@ var movement_speed: float = 100.0
 var movement_target_position: Vector2 = Vector2.ZERO
 var leaving_target_position: Vector2 = Vector2.ZERO
 
-enum States { Navigate, Sit, Wait, Order, Leave }
+enum States { Navigate, Sit, Wait, Order, Eat, Leave }
 var currentState: States = States.Navigate
+var isEating: bool = false
+
+var food: Array[String] = ["coffee", "tea"]
+var foodWanted: String = food.pick_random()
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var sitting_timer: Timer = $SittingTimer
+@onready var eating_timer: Timer = $EatingTimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,13 +44,11 @@ func _process(delta: float) -> void:
 		
 		if navigation_agent.is_target_reached():
 			currentState = States.Sit
-			print("Is Sitting")
 		
 	elif currentState == States.Sit:
 		currentState = States.Order
 		
 	elif currentState == States.Order:
-		sitting_timer.start()
 		currentState = States.Wait
 		
 	elif currentState == States.Leave:

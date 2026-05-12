@@ -1,7 +1,8 @@
 extends StaticBody2D
 
-var chairs : Array[Node2D]
-var isAvailable : bool = true
+var chairs: Array[Node2D]
+var customers: Array[Node2D]
+var isAvailable: bool = true
 
 func get_free_chair():
 	for chair in chairs:
@@ -11,8 +12,16 @@ func get_free_chair():
 
 func update_availability():
 	isAvailable = get_free_chair() != null
+	
+func interact():
+	for customer in customers:
+		print(customer.foodWanted)
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("chair"):
+		print("Silla asignada")
 		chairs.append(body)
-		print("Añadiendo silla")
+	
+	if body.is_in_group("customer"):
+		print("En la mesa")
+		customers.append(body)
