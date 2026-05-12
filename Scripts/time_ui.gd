@@ -1,8 +1,15 @@
 extends Control
 
+var money: int = 0
+
 @onready var days: Label = $DayControl/days
 @onready var hours: Label = $ClockControl/hours
 @onready var minutes: Label = $ClockControl/minutes
+@onready var money_count: Label = $MoneyControl/MoneyCount
+
+func add_point():
+	money += 1
+	money_count.text = str(money)
 
 func _on_time_system_updated(date_time: DateTime) -> void:
 	update_label(days, date_time.days)

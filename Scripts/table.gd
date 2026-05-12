@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+signal order_completed
+
 var chairs: Array[Node2D]
 var customers: Array[Node2D]
 var order: Array[String]
@@ -26,6 +28,7 @@ func interact(player):
 
 			if order.is_empty():
 				send_customers_home()
+				order_completed.emit()
 				
 			break
 
