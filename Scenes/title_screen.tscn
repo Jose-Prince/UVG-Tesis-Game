@@ -42,7 +42,7 @@ alignment = 1
 [node name="Label" type="Label" parent="HBoxContainer" unique_id=1624773213]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "That time I became the owner of a café"
+text = "Dream café"
 horizontal_alignment = 1
 vertical_alignment = 1
 
