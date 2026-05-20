@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cn1a17pxcn375"]
+
+[ext_resource type="Script" uid="uid://5qbl1i2iod2k" path="res://Scripts/clickable_object.gd" id="1_7mtde"]
+[ext_resource type="Texture2D" uid="uid://cb8adcjn4dat0" path="res://Sprites/cafe_items/Coffe Pot Machine 1.png" id="1_8dl7a"]
+[ext_resource type="PackedScene" uid="uid://btnjeyby10uxk" path="res://Prefabs/coffee.tscn" id="2_frtu7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dl7a"]
+atlas = ExtResource("1_8dl7a")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mtde"]
+size = Vector2(20, 7)
+
+[node name="CoffeeMaker" type="StaticBody2D" unique_id=1701230900 groups=["clickable"]]
+script = ExtResource("1_7mtde")
+new_object = ExtResource("2_frtu7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=713566839]
+texture = SubResource("AtlasTexture_8dl7a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=396745773]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_7mtde")

@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://crnpw414hlu34"]
+
+[ext_resource type="Script" uid="uid://dkeudwm12bgvk" path="res://Scripts/menu.gd" id="1_klylv"]
+
+[node name="TitleScreen" type="Control" unique_id=1439522845]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_klylv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1441525278]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2509804, 0.101960786, 0.13725491, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=619703966]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=745264715]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -470.0
+offset_right = 470.0
+offset_bottom = 69.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1624773213]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Dream café"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1276538440]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -277.0
+offset_right = 283.0
+grow_vertical = 0
+theme_override_constants/separation = 23
+
+[node name="NewGame" type="Button" parent="VBoxContainer" unique_id=935340656]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "New Game"
+
+[node name="Settings" type="Button" parent="VBoxContainer" unique_id=755254686]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=1908246047]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Exit Game
+"
+
+[connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
