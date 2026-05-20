@@ -23,8 +23,8 @@ func _ready() -> void:
 	start_day = date["day"]
 	start_weekday = date["weekday"]
 
-func add_point():
-	money += 1
+func add_point(moneyRecived: int):
+	money += moneyRecived
 	money_count.text = str(money)
 
 func _on_time_system_updated(date_time: DateTime) -> void:
