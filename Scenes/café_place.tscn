@@ -734,7 +734,7 @@ tile_set = SubResource("TileSet_r1i3y")
 [node name="TimeSystem" type="Node" parent="." unique_id=419212550]
 script = ExtResource("1_exwnq")
 date_time = SubResource("Resource_a4k3g")
-ticks_pr_second = 60
+ticks_pr_second = 100
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=465547366]
 
