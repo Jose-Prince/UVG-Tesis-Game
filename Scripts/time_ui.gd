@@ -17,7 +17,8 @@ func add_point():
 	money_count.text = str(money)
 
 func _on_time_system_updated(date_time: DateTime) -> void:
-	update_label(days, date_time.days)
+	var current_day := ((date_time.days - 1) % 30) + 1
+	update_label(day, current_day)
 	
 	var display_hour := date_time.hours
 	var period := "AM"
@@ -32,6 +33,12 @@ func _on_time_system_updated(date_time: DateTime) -> void:
 	update_label(minutes, date_time.minutes)
 	
 	periodLabel.text = period
+	
+	var day_index := (date_time.days - 1) % days.size()
+	day_name.text = days[day_index]
+	
+	var month_index := int((date_time.days - 1) / 30) % months.size()
+	month.text = months[month_index]
 
 func add_leading_zero(label: Label, value: int) -> void:
 	if value < 10:

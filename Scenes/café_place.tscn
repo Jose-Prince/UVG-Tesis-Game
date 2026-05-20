@@ -734,15 +734,15 @@ tile_set = SubResource("TileSet_r1i3y")
 [node name="TimeSystem" type="Node" parent="." unique_id=419212550]
 script = ExtResource("1_exwnq")
 date_time = SubResource("Resource_a4k3g")
-ticks_pr_second = 600
+ticks_pr_second = 10000
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=465547366]
 
 [node name="TimeGui" parent="CanvasLayer" unique_id=2113710388 instance=ExtResource("3_eqbnc")]
-offset_left = 995.0
-offset_top = 1.0
-offset_right = 995.0
-offset_bottom = 1.0
+offset_left = 947.0
+offset_top = 4.0
+offset_right = 947.0
+offset_bottom = 4.0
 script = ExtResource("4_a4k3g")
 
 [node name="Player" parent="." unique_id=1461023337 instance=ExtResource("5_npy7o")]
