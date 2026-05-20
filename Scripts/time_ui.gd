@@ -43,7 +43,9 @@ func _on_time_system_updated(date_time: DateTime) -> void:
 		display_hour -= 12
 	
 	update_label(hours, display_hour)
-	update_label(minutes, date_time.minutes)
+	
+	var display_minutes := int(date_time.minutes / 5) * 5
+	update_label(minutes, display_minutes)
 	
 	periodLabel.text = period
 	
