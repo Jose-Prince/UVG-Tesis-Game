@@ -1,12 +1,16 @@
 extends Control
 
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Decemmber"]
+var days = ["Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun."]
 var money: int = 0
 
-@onready var days: Label = $DayControl/days
+@onready var day: Label = $DayControl/days
 @onready var hours: Label = $ClockControl/hours
 @onready var minutes: Label = $ClockControl/minutes
 @onready var money_count: Label = $MoneyControl/MoneyCount
 @onready var periodLabel: Label = $ClockControl/period
+@onready var day_name: Label = $DayControl/dayName
+@onready var month: Label = $MonthControl/Month
 
 func add_point():
 	money += 1
