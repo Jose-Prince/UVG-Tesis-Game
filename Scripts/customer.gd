@@ -13,8 +13,11 @@ var leave_started: bool = false
 var food: Array[String] = ["coffee", "coffee"]
 var foodWanted: String = food.pick_random()
 
+# var waitingTime: int = 5
+var eatingTime: int = 5
+
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var eating_timer: Timer = $EatingTimer
+@onready var customer_timer: Timer = $CustomerTimer
 
 
 func _ready() -> void:
@@ -24,6 +27,8 @@ func _ready() -> void:
 	navigation_agent.target_desired_distance = 4.0
 	navigation_agent.target_position = movement_target_position
 
+	customer_timer.wait_time = eatingTime
+	customer_timer.one_shot = true
 
 func _physics_process(delta: float) -> void:
 	if currentState == States.Wait:
@@ -64,11 +69,13 @@ func _process(delta: float) -> void:
 		navigation_agent.process_mode = Node.PROCESS_MODE_DISABLED
 		movement_speed = 0.0
 
-
 	elif currentState == States.Eat:
-		eating_timer.start()
-		currentState = States.Wait
-
+		navigation_agent.process_mode = Node.PROCESS_MODE_DISABLED
+		movement_speed = 0.0
+		
+		if !isEating:
+			isEating = true
+			customer_timer.start()
 
 	elif currentState == States.Leave:
 		navigation_agent.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -79,8 +86,7 @@ func _process(delta: float) -> void:
 			leave_started = true
 			print("Cliente saliendo")
 
-
-func _on_sitting_timer_timeout() -> void:
-	print("Agente se va")
+func _on_customer_timer_timeout() -> void:
+	isEating = false
 	leave_started = false
 	currentState = States.Leave

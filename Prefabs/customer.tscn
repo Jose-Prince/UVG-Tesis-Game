@@ -36,10 +36,10 @@ debug_enabled = true
 debug_path_custom_point_size = 0.0
 debug_path_custom_line_width = 0.0
 
-[node name="EatingTimer" type="Timer" parent="." unique_id=1966011886]
+[node name="CustomerTimer" type="Timer" parent="." unique_id=1966011886]
 wait_time = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1647952521]
 sprite_frames = SubResource("SpriteFrames_4eorp")
 
-[connection signal="timeout" from="EatingTimer" to="." method="_on_sitting_timer_timeout"]
+[connection signal="timeout" from="CustomerTimer" to="." method="_on_customer_timer_timeout"]

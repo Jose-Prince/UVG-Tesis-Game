@@ -39,7 +39,7 @@ func interact(player):
 func send_customers_home():
 	for customer in customers:
 		if is_instance_valid(customer):
-			customer.currentState = customer.States.Leave
+			customer.currentState = customer.States.Eat
 			
 	isAvailable = true
 	
