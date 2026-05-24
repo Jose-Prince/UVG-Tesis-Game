@@ -4,15 +4,73 @@
 
 [node name="InputSystem" type="Control" unique_id=42196537]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_3q7ch")
 
-[node name="NameLabel" type="Label" parent="." unique_id=442853375]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=358549706]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="LetterGrid" type="GridContainer" parent="." unique_id=399165529]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=633365435]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1599420325]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "What's your name?"
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=442853375]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LetterGrid" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=399165529]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+columns = 7
+
+[node name="BottomButtons" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=894474764]
+layout_mode = 2
+
+[node name="LetterSizeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BottomButtons" unique_id=1424022138]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CapitalButton" type="Button" parent="MarginContainer/VBoxContainer/BottomButtons/LetterSizeContainer" unique_id=1163967194]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "CAPITAL"
+
+[node name="SmallButton" type="Button" parent="MarginContainer/VBoxContainer/BottomButtons/LetterSizeContainer" unique_id=1606731495]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "small"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/BottomButtons" unique_id=1767275173]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="DelButton" type="Button" parent="MarginContainer/VBoxContainer/BottomButtons/HBoxContainer" unique_id=805069516]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Del"
+
+[node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/BottomButtons/HBoxContainer" unique_id=388306053]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Confirm"

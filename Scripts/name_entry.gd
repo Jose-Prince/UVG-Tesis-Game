@@ -4,18 +4,21 @@ var keys = [
 	"A","B","C","D","E","F","G","H","I",
 	"J","K","L","M","N","O","P","Q","R",
 	"S","T","U","V","W","X","Y","Z",
-	"SPACE","DEL","OK"
 ]
 
 var written_name := ""
 
-@onready var name_label: Label = $NameLabel
-@onready var letter_grid: GridContainer = $LetterGrid
+@onready var name_label: Label = $MarginContainer/VBoxContainer/NameLabel
+@onready var letter_grid: GridContainer = $MarginContainer/VBoxContainer/LetterGrid
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for key in keys:
 		var btn = Button.new()
+		
+		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		btn.size_flags_vertical = Control.SIZE_EXPAND_FILL
+
 		btn.text = key
 		btn.pressed.connect(_on_key_selected.bind(key))
 		letter_grid.add_child(btn)
