@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://by63rb41qrhjp"]
+
+[ext_resource type="Script" uid="uid://bx5hhn80ewyna" path="res://Scripts/name_entry.gd" id="1_3q7ch"]
+
+[node name="InputSystem" type="Control" unique_id=42196537]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3q7ch")
+
+[node name="NameLabel" type="Label" parent="." unique_id=442853375]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="LetterGrid" type="GridContainer" parent="." unique_id=399165529]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
