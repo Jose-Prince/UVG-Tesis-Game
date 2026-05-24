@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://crnpw414hlu34"]
 
 [ext_resource type="Script" uid="uid://dkeudwm12bgvk" path="res://Scripts/menu.gd" id="1_klylv"]
+[ext_resource type="Texture2D" uid="uid://ce0le33u7hsnb" path="res://Sprites/Chalkboard.png" id="2_p3fck"]
 
 [node name="TitleScreen" type="Control" unique_id=1439522845]
 layout_mode = 3
@@ -28,50 +29,71 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=745264715]
+[node name="Control" type="Control" parent="." unique_id=1506689805]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control" unique_id=1701874499]
+layout_mode = 0
+offset_left = 347.0
+offset_top = 73.0
+offset_right = 811.0
+offset_bottom = 584.0
+texture = ExtResource("2_p3fck")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/NinePatchRect" unique_id=437061542]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -470.0
-offset_right = 470.0
-offset_bottom = 69.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/NinePatchRect/MarginContainer" unique_id=1276538440]
+layout_mode = 2
+theme_override_constants/separation = 23
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=745264715]
+layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="HBoxContainer" unique_id=1624773213]
+[node name="Label" type="Label" parent="Control/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1624773213]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Dream café"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1276538440]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -277.0
-offset_right = 283.0
-grow_vertical = 0
-theme_override_constants/separation = 23
+[node name="Label" type="Label" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=894536310]
+layout_mode = 2
+text = "— menú del día —"
+horizontal_alignment = 1
 
-[node name="NewGame" type="Button" parent="VBoxContainer" unique_id=935340656]
+[node name="NewGame" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=935340656]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "New Game"
 
-[node name="Settings" type="Button" parent="VBoxContainer" unique_id=755254686]
+[node name="Settings" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=755254686]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Settings"
 
-[node name="Quit" type="Button" parent="VBoxContainer" unique_id=1908246047]
+[node name="Quit" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1908246047]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Exit Game
 "
 
-[connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
