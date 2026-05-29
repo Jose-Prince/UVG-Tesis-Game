@@ -10,7 +10,7 @@ var written_name := ""
 var is_uppercase := true
 var letter_buttons: Array[Button] = []
 
-@onready var name_label: Label = $MarginContainer/VBoxContainer/NameLabel
+@onready var name_edit: LineEdit = $MarginContainer/VBoxContainer/NameEdit
 @onready var letter_grid: GridContainer = $MarginContainer/VBoxContainer/LetterGrid
 
 @onready var capital_button: Button = $MarginContainer/VBoxContainer/BottomButtons/LetterSizeContainer/CapitalButton
@@ -46,6 +46,10 @@ func _ready() -> void:
 	
 	update_name_label()
 
+func _input(event: InputEvent) -> void:
+	if event.is_pressed() && not event.is_echo():
+		name_edit.grab_focus()
+
 func _on_letter_pressed(btn: Button):
 	if written_name.length() >= 10:
 		return
@@ -79,7 +83,7 @@ func _on_confirm_pressed():
 	# TODO guardar nombre jugador / café
 	
 func update_name_label():
-	name_label.text = written_name + "_"
+	name_edit.text = written_name + "_"
 
 func setup_focus_navigation():
 	var cols = letter_grid.columns
