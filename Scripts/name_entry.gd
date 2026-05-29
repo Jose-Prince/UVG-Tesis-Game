@@ -6,6 +6,8 @@ var keys = [
 	"S","T","U","V","W","X","Y","Z",
 ]
 
+var key_to_button := {}
+
 var written_name := ""
 var is_uppercase := true
 var letter_buttons: Array[Button] = []
@@ -19,8 +21,11 @@ var letter_buttons: Array[Button] = []
 @onready var del_button: Button = $MarginContainer/VBoxContainer/BottomButtons/HBoxContainer/DelButton
 @onready var confirm_button: Button = $MarginContainer/VBoxContainer/BottomButtons/HBoxContainer/ConfirmButton
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	name_edit.text_changed.connect(_on_name_edit_changed)
+	
 	for key in keys:
 		var btn = Button.new()
 		
@@ -32,6 +37,7 @@ func _ready() -> void:
 		btn.pressed.connect(_on_letter_pressed.bind(btn))
 		
 		letter_buttons.append(btn)
+		key_to_button[key] = btn
 		letter_grid.add_child(btn)
 		
 	capital_button.pressed.connect(_on_capital_pressed)
@@ -47,15 +53,28 @@ func _ready() -> void:
 	update_name_label()
 
 func _input(event: InputEvent) -> void:
-	if event.is_pressed() && not event.is_echo():
+	if event is InputEventKey && event.is_pressed() && not event.is_echo():
 		name_edit.grab_focus()
+		
+		var key_name = OS.get_keycode_string(event.keycode)
+		print("You pressed: ", key_name)
+		
+		if key_name in key_to_button:
+		
+			var selected_btn = key_to_button[key_name]
+			selected_btn.grab_focus()
+		
+			written_name += key_name
+		
+		update_name_label()
 
 func _on_letter_pressed(btn: Button):
 	if written_name.length() >= 10:
 		return
 		
-	written_name+= btn.text
+	written_name += btn.text
 	update_name_label()
+	name_edit.grab_focus()
 	
 func _on_capital_pressed():
 	is_uppercase = true
@@ -83,7 +102,8 @@ func _on_confirm_pressed():
 	# TODO guardar nombre jugador / café
 	
 func update_name_label():
-	name_edit.text = written_name + "_"
+	name_edit.text = written_name
+	name_edit.caret_column = written_name.length()
 
 func setup_focus_navigation():
 	var cols = letter_grid.columns
@@ -117,3 +137,12 @@ func setup_bottom_navigation():
 	del_button.focus_neighbor_right = del_button.get_path_to(confirm_button)
 	
 	confirm_button.focus_neighbor_left = confirm_button.get_path_to(del_button)
+
+func _on_name_edit_changed(new_text: String):
+
+	written_name = new_text.replace("_", "")
+
+	if written_name.length() > 10:
+		written_name = written_name.substr(0, 10)
+
+	update_name_label()
