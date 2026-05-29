@@ -40,6 +40,8 @@ func _ready() -> void:
 		key_to_button[key] = btn
 		letter_grid.add_child(btn)
 		
+	key_to_button["Backspace"] = del_button
+	
 	capital_button.pressed.connect(_on_capital_pressed)
 	small_button.pressed.connect(_on_small_pressed)
 	del_button.pressed.connect(_on_del_pressed)
@@ -59,13 +61,13 @@ func _input(event: InputEvent) -> void:
 		var key_name = OS.get_keycode_string(event.keycode)
 		print("You pressed: ", key_name)
 		
-		if key_name in key_to_button:
-		
+		if key_name in key_to_button && key_name != "Backspace":
 			var selected_btn = key_to_button[key_name]
-			selected_btn.grab_focus()
+			selected_btn.pressed
 		
-			written_name += key_name
-		
+		elif key_name == "Backspace":
+			del_button.pressed
+
 		update_name_label()
 
 func _on_letter_pressed(btn: Button):
