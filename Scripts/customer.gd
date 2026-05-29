@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var target_chair = null
 var movement_speed: float = 100.0
 var movement_target_position: Vector2 = Vector2.ZERO
 var leaving_target_position: Vector2 = Vector2.ZERO
@@ -22,7 +23,8 @@ func _ready() -> void:
 
 	navigation_agent.path_desired_distance = 4.0
 	navigation_agent.target_desired_distance = 4.0
-	navigation_agent.target_position = movement_target_position
+	if movement_target_position != Vector2.ZERO:
+		navigation_agent.target_position = movement_target_position
 
 
 func _physics_process(delta: float) -> void:
@@ -53,6 +55,7 @@ func _process(delta: float) -> void:
 
 
 	elif currentState == States.Sit:
+		velocity = Vector2.ZERO
 		currentState = States.Order
 
 
@@ -82,5 +85,15 @@ func _process(delta: float) -> void:
 
 func _on_sitting_timer_timeout() -> void:
 	print("Agente se va")
+	
+	if target_chair:
+		target_chair.isFree = true
+	
 	leave_started = false
 	currentState = States.Leave
+	
+func assign_chair(chair):
+	target_chair = chair
+	target_chair.isFree = false
+	
+	movement_target_position = target_chair.go_to_pos.global_position

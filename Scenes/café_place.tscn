@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://ditawnwc3p0p2"]
 
 [ext_resource type="Texture2D" uid="uid://crttdqpbnjv3e" path="res://Sprites/TopDownHouse_FloorsAndWalls.png" id="1_7ewdn"]
-[ext_resource type="Script" path="res://Scripts/time_system.gd" id="1_exwnq"]
-[ext_resource type="Script" path="res://Scripts/cafe_logic.gd" id="1_r1i3y"]
+[ext_resource type="Script" uid="uid://r14gbqvkuyim" path="res://Scripts/time_system.gd" id="1_exwnq"]
+[ext_resource type="Script" uid="uid://d315dg6v264o8" path="res://Scripts/cafe_logic.gd" id="1_r1i3y"]
 [ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Sprites/TopDownHouse_FurnitureState1.png" id="2_7ewdn"]
-[ext_resource type="Script" path="res://Scripts/date_time.gd" id="2_eqbnc"]
+[ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/date_time.gd" id="2_eqbnc"]
 [ext_resource type="PackedScene" uid="uid://cpoodtd07o4h" path="res://Prefabs/time_ui.tscn" id="3_eqbnc"]
 [ext_resource type="Script" uid="uid://brsgf6flsog4g" path="res://Scripts/time_ui.gd" id="4_a4k3g"]
 [ext_resource type="PackedScene" uid="uid://h6uqvesj3b8s" path="res://Prefabs/Player.tscn" id="5_npy7o"]
@@ -765,9 +765,18 @@ position = Vector2(292, 245)
 [node name="Chair" parent="NavigationRegion2D" unique_id=1594550986 instance=ExtResource("9_r1i3y")]
 position = Vector2(258, 253)
 
+[node name="CollisionShape2D" parent="NavigationRegion2D/Chair" index="1" unique_id=1641243643]
+position = Vector2(-6.5, 2)
+
+[node name="GoToPos" parent="NavigationRegion2D/Chair" index="3" unique_id=1450133005]
+position = Vector2(4, -22)
+
 [node name="Chair2" parent="NavigationRegion2D" unique_id=1484332892 instance=ExtResource("9_r1i3y")]
 position = Vector2(324, 253)
 isRotated = true
+
+[node name="CollisionShape2D" parent="NavigationRegion2D/Chair2" index="1" unique_id=1641243643]
+position = Vector2(4, 11)
 
 [node name="Timer" type="Timer" parent="." unique_id=1533332950]
 autostart = true
@@ -778,3 +787,6 @@ position = Vector2(484, 256)
 [connection signal="updated" from="TimeSystem" to="CanvasLayer/TimeGui" method="_on_time_system_updated"]
 [connection signal="body_entered" from="CustomerSpawn/LeavingZone" to="." method="_on_leaving_zone_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="NavigationRegion2D/Chair"]
+[editable path="NavigationRegion2D/Chair2"]
