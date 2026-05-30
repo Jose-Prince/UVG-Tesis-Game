@@ -86,7 +86,7 @@ theme_override_constants/separation = 100
 layout_mode = 2
 text = "Name:"
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/PlayerHDisplay" unique_id=718567752]
+[node name="PlayerEdit" type="LineEdit" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/PlayerHDisplay" unique_id=718567752]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -99,7 +99,7 @@ theme_override_constants/separation = 53
 layout_mode = 2
 text = "Coffee Shop:"
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/CoffeeShopHDisplay" unique_id=682741901]
+[node name="ShopEdit" type="LineEdit" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/CoffeeShopHDisplay" unique_id=682741901]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -107,6 +107,8 @@ size_flags_horizontal = 3
 layout_mode = 2
 alignment = 2
 
-[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonDisplay" unique_id=1740878238]
+[node name="ConfirmButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonDisplay" unique_id=1740878238]
 layout_mode = 2
 text = "Confirm"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonDisplay/ConfirmButton" to="." method="_on_confirm_button_pressed"]
