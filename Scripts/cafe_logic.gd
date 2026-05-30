@@ -3,6 +3,7 @@ extends Node2D
 const CUSTOMER_SCENE = preload("res://Prefabs/customer.tscn")
 
 var tables: Array[Node]
+var coffee_name := ""
 
 @onready var customer_timer: Timer = $Timer
 @onready var spawn_point: Marker2D = $CustomerSpawn
