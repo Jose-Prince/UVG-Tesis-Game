@@ -3,18 +3,20 @@
 [ext_resource type="Script" uid="uid://dkeudwm12bgvk" path="res://Scripts/menu.gd" id="1_klylv"]
 [ext_resource type="Texture2D" uid="uid://cx1nyacr2yebd" path="res://Sprites/gingham.PNG" id="2_twnyg"]
 [ext_resource type="Texture2D" uid="uid://r45ksajhucw5" path="res://Sprites/menu.PNG" id="3_55kwv"]
+[ext_resource type="Texture2D" uid="uid://cgeaitckg5fnk" path="res://Sprites/Coffee_noB.PNG" id="4_6vd4x"]
 [ext_resource type="FontFile" uid="uid://c0rmb6tjydgnl" path="res://Fonts/FascinateInline-Regular.ttf" id="4_12m1t"]
 [ext_resource type="Script" uid="uid://drc0u7k73tl0l" path="res://Scripts/curved_text.gd" id="4_twnyg"]
 
 [sub_resource type="Curve2D" id="Curve2D_55kwv"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 78, 414, 0, 0, 0, 0, 106, 297, 0, 0, 0, 0, 174, 205, 0, 0, 0, 0, 259, 146, 0, 0, 0, 0, 375, 131, 0, 0, 0, 0, 388.29657, 125.029106, 0, 0, 0, 0, 484, 154)
+"points": PackedVector2Array(0, 0, 0, 0, 78, 414, 0, 0, 0, 0, 106, 297, 0, 0, 0, 0, 174, 205, 0, 0, 0, 0, 259, 146, 0, 0, 0, 0, 345, 126, 0, 0, 0, 0, 411, 127, 0, 0, 0, 0, 484, 154)
 }
 point_count = 7
 
 [sub_resource type="LabelSettings" id="LabelSettings_12m1t"]
 font = ExtResource("4_12m1t")
 font_size = 100
+font_color = Color(0.9607843, 0.92941177, 0.8862745, 1)
 
 [node name="TitleScreen" type="Control" unique_id=1439522845]
 layout_mode = 3
@@ -115,8 +117,12 @@ text = "Exit Game
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=626094069]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 37.0
+offset_top = 130.0
+offset_right = 616.0
+offset_bottom = 685.0
+texture = ExtResource("4_6vd4x")
+expand_mode = 1
 
 [node name="CurvedTitle" type="Path2D" parent="." unique_id=1533437760]
 curve = SubResource("Curve2D_55kwv")
