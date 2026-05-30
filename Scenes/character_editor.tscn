@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://by63rb41qrhjp"]
+
+[ext_resource type="Script" uid="uid://bx5hhn80ewyna" path="res://Scripts/name_entry.gd" id="1_3sdjg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3q7ch"]
+bg_color = Color(0.627451, 0.627451, 0.627451, 1)
+
+[node name="InputSystem" type="Control" unique_id=42196537]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3sdjg")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=358549706]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=633365435]
+layout_mode = 2
+alignment = 1
+
+[node name="RestaurantLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1372238464]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Coffee Shop name:"
+
+[node name="CoffeeshopEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=878892597]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=269742076]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 150
+
+[node name="NameTag" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=1579444436]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3q7ch")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/NameTag" unique_id=2050480690]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/NameTag/MarginContainer" unique_id=109697897]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/NameTag/MarginContainer/VBoxContainer" unique_id=1599420325]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Hi, my name is:"
+
+[node name="NameEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/MarginContainer/NameTag/MarginContainer/VBoxContainer" unique_id=1902116683]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=113858115]
+layout_mode = 2
+alignment = 2
+
+[node name="ConfirmButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=14992569]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Confirm
+"
