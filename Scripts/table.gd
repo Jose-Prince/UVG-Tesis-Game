@@ -8,6 +8,16 @@ var order: Array[String]
 var isAvailable: bool = true
 var check: int = 0
 
+@onready var timer: Timer = $Timer
+@onready var progress_bar: ProgressBar = $ProgressBar
+
+func _ready():
+	progress_bar.max_value = timer.wait_time
+
+func _process(delta: float) -> void:
+	if timer.time_left > 0:
+		progress_bar.value = timer.wait_time - timer.time_left
+
 func get_free_chair():
 	for chair in chairs:
 		if chair.isFree:
@@ -28,13 +38,23 @@ func interact(player):
 			check += child.get_price()
 			child.queue_free()
 			
-
 			if order.is_empty():
-				send_customers_home()
+				start_eating()
+				
+				progress_bar.visible = true
+				progress_bar.value = 0
+				
+				timer.start()
+				
 				order_completed.emit(check)
 				check = 0
 				
 			break
+
+func start_eating():
+	for customer in customers:
+		if is_instance_valid(customer):
+			customer.currentState = customer.States.Eat
 
 func send_customers_home():
 	for customer in customers:
@@ -55,3 +75,7 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 		print("En la mesa")
 		customers.append(body)
 		order.append(body.foodWanted)
+
+func _on_timer_timeout() -> void:
+	progress_bar.visible = false
+	send_customers_home()
