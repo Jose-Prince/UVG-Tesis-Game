@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://j2pwgg4qqx3g"]
 
-[ext_resource type="Script" uid="uid://bx5hhn80ewyna" path="res://Scripts/name_entry.gd" id="1_3sdjg"]
+[ext_resource type="Script" path="res://Scripts/name_entry.gd" id="1_3sdjg"]
 [ext_resource type="FontFile" uid="uid://bm4e365ecirdj" path="res://Fonts/Chalk.otf" id="2_7wrfq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vb4o"]
