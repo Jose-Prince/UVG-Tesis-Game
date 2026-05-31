@@ -2,6 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://dn88nk867g5ks" path="res://Sprites/16x16 Idle-Sheet.png" id="1_um8lo"]
 [ext_resource type="Script" uid="uid://fdhq57w88syi" path="res://Scripts/player.gd" id="1_x3d5u"]
+[ext_resource type="PackedScene" uid="uid://cpoodtd07o4h" path="res://Prefabs/time_ui.tscn" id="3_shmu5"]
+[ext_resource type="Script" uid="uid://r14gbqvkuyim" path="res://Scripts/time_system.gd" id="3_vxq8l"]
+[ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/date_time.gd" id="4_gg3t4"]
+[ext_resource type="Script" uid="uid://brsgf6flsog4g" path="res://Scripts/time_ui.gd" id="4_vxq8l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3d5u"]
 atlas = ExtResource("1_um8lo")
@@ -45,6 +49,10 @@ size = Vector2(16, 4)
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3d5u"]
 radius = 12.0
 
+[sub_resource type="Resource" id="Resource_javds"]
+script = ExtResource("4_gg3t4")
+metadata/_custom_type_script = "uid://cc3yiapgcu05y"
+
 [node name="Player" type="CharacterBody2D" unique_id=1461023337 groups=["player"]]
 script = ExtResource("1_x3d5u")
 speed = 200.0
@@ -69,5 +77,16 @@ zoom = Vector2(5, 5)
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_x3d5u")
 
+[node name="TimeSystem" type="Node" parent="." unique_id=98841440]
+script = ExtResource("3_vxq8l")
+date_time = SubResource("Resource_javds")
+ticks_pr_second = 80
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1624174308]
+
+[node name="Control" parent="CanvasLayer" unique_id=2113710388 instance=ExtResource("3_shmu5")]
+script = ExtResource("4_vxq8l")
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="updated" from="TimeSystem" to="CanvasLayer/Control" method="_on_time_system_updated"]
