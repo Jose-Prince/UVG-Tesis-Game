@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d3hb3h1ih8e8w" path="res://Prefabs/table.tscn" id="9_4hpb6"]
 [ext_resource type="PackedScene" uid="uid://05y0ghmm4qsq" path="res://Prefabs/chair.tscn" id="9_r1i3y"]
 [ext_resource type="PackedScene" uid="uid://cn1a17pxcn375" path="res://Prefabs/coffee_maker.tscn" id="11_p7xg1"]
+[ext_resource type="PackedScene" uid="uid://ce5bfs85ds2ea" path="res://Scenes/PauseMenu.tscn" id="12_qsw3y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52c50"]
 texture = ExtResource("1_7ewdn")
@@ -776,6 +777,12 @@ autostart = true
 
 [node name="CoffeeMaker" parent="." unique_id=1701230900 instance=ExtResource("11_p7xg1")]
 position = Vector2(484, 256)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1519454720]
+process_mode = 2
+
+[node name="PauseMenu" parent="UI" unique_id=1486490026 instance=ExtResource("12_qsw3y")]
+visible = false
 
 [connection signal="updated" from="TimeSystem" to="CanvasLayer/TimeGui" method="_on_time_system_updated"]
 [connection signal="body_entered" from="CustomerSpawn/LeavingZone" to="." method="_on_leaving_zone_body_entered"]
