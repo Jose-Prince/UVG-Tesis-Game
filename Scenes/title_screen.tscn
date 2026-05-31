@@ -6,6 +6,25 @@
 [ext_resource type="Texture2D" uid="uid://cgeaitckg5fnk" path="res://Sprites/Coffee_noB.PNG" id="4_6vd4x"]
 [ext_resource type="FontFile" uid="uid://c0rmb6tjydgnl" path="res://Fonts/FascinateInline-Regular.ttf" id="4_12m1t"]
 [ext_resource type="Script" uid="uid://drc0u7k73tl0l" path="res://Scripts/curved_text.gd" id="4_twnyg"]
+[ext_resource type="FontFile" uid="uid://dliqq4g4bg0qy" path="res://Fonts/RobotoSlab-Regular.ttf" id="5_6vd4x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n82rj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0061g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mikk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sqelc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w5sh6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1e67"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ycay6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bsy20"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07cxn"]
 
 [sub_resource type="Curve2D" id="Curve2D_55kwv"]
 _data = {
@@ -83,35 +102,58 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 theme_override_constants/separation = 23
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=745264715]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1611489862]
 layout_mode = 2
-alignment = 1
+theme_override_constants/separation = -11
 
-[node name="Label" type="Label" parent="Control/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1624773213]
+[node name="Label" type="Label" parent="Control/NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1624773213]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Dream café"
+size_flags_stretch_ratio = 1.1
+theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+theme_override_constants/line_spacing = 3
+theme_override_fonts/font = ExtResource("4_12m1t")
+theme_override_font_sizes/font_size = 65
+text = "Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=894536310]
+[node name="Label2" type="Label" parent="Control/NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=894536310]
 layout_mode = 2
-text = "— menú del día —"
+theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+text = "——————————"
 horizontal_alignment = 1
 
 [node name="NewGame" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=935340656]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+theme_override_fonts/font = ExtResource("5_6vd4x")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n82rj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0061g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8mikk")
 text = "New Game"
 
 [node name="Settings" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=755254686]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+theme_override_fonts/font = ExtResource("5_6vd4x")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sqelc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w5sh6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o1e67")
 text = "Settings"
 
 [node name="Quit" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1908246047]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+theme_override_fonts/font = ExtResource("5_6vd4x")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ycay6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bsy20")
+theme_override_styles/hover = SubResource("StyleBoxFlat_07cxn")
 text = "Exit Game
 "
 
