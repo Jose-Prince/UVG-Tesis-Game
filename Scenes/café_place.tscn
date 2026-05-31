@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://d315dg6v264o8" path="res://Scripts/cafe_logic.gd" id="1_r1i3y"]
 [ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Sprites/TopDownHouse_FurnitureState1.png" id="2_7ewdn"]
 [ext_resource type="PackedScene" uid="uid://h6uqvesj3b8s" path="res://Prefabs/Player.tscn" id="5_npy7o"]
+[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/CozyCaffe-Bossa-consolidated-consolidated.ogg" id="8_52c50"]
 [ext_resource type="PackedScene" uid="uid://d3hb3h1ih8e8w" path="res://Prefabs/table.tscn" id="9_4hpb6"]
 [ext_resource type="PackedScene" uid="uid://05y0ghmm4qsq" path="res://Prefabs/chair.tscn" id="9_r1i3y"]
 [ext_resource type="PackedScene" uid="uid://cn1a17pxcn375" path="res://Prefabs/coffee_maker.tscn" id="11_p7xg1"]
@@ -755,6 +756,11 @@ autostart = true
 
 [node name="CoffeeMaker" parent="." unique_id=1701230900 instance=ExtResource("11_p7xg1")]
 position = Vector2(484, 256)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=357906737]
+stream = ExtResource("8_52c50")
+autoplay = true
+parameters/looping = true
 
 [connection signal="body_entered" from="CustomerSpawn/LeavingZone" to="." method="_on_leaving_zone_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

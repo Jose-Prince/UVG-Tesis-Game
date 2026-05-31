@@ -8,7 +8,7 @@ class_name DateTime extends Resource
 var delta_time: float = 0
 
 func increase_by_sec(delta_seconds: float) -> void:
-	delta_time += delta_seconds
+	delta_time += 100
 	if delta_time < 1: return
 	
 	var delta_int_secs: int = delta_time
@@ -23,5 +23,6 @@ func increase_by_sec(delta_seconds: float) -> void:
 	
 	if hours >= 22:
 		days += 1
-		
 		hours = 6 + (hours - 22)
+		
+		SaveManager.day_ended.emit()

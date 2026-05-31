@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://crnpw414hlu34"]
 
 [ext_resource type="Script" uid="uid://dkeudwm12bgvk" path="res://Scripts/menu.gd" id="1_klylv"]
+[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/CozyCaffe-Bossa-consolidated-consolidated.ogg" id="2_p3fck"]
 
 [node name="TitleScreen" type="Control" unique_id=1439522845]
 layout_mode = 3
@@ -71,6 +72,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Exit Game
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1789502888]
+stream = ExtResource("2_p3fck")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
