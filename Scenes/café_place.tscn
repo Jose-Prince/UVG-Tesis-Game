@@ -764,7 +764,6 @@ process_mode = 2
 [node name="PauseMenu" parent="UI" unique_id=1486490026 instance=ExtResource("12_qsw3y")]
 visible = false
 
-[connection signal="updated" from="TimeSystem" to="CanvasLayer/TimeGui" method="_on_time_system_updated"]
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=357906737]
 stream = ExtResource("8_52c50")
 autoplay = true
