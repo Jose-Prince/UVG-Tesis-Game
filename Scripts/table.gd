@@ -14,14 +14,7 @@ var check: int = 0
 
 func _ready():
 	await get_tree().physics_frame
-	print("Table registrando obstáculo...")
-	
-	var cell = grid_manager.world_to_cell(global_position)
-	print("Mesa en celda: ", cell)
-	print("¿Dentro del grid?: ", grid_manager.astar.is_in_boundsv(cell))
-	
-	grid_manager.set_obstacle(global_position, true)
-	print("¿Quedó sólida?: ", grid_manager.astar.is_point_solid(cell))
+
 	progress_bar.max_value = timer.wait_time
 	
 	var shape = $collider.shape

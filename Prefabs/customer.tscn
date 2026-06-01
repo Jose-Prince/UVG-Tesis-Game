@@ -36,4 +36,4 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1647952521]
 sprite_frames = SubResource("SpriteFrames_4eorp")
 
-[connection signal="timeout" from="WaitingTimer" to="." method="_on_customer_timer_timeout"]
+[connection signal="timeout" from="WaitingTimer" to="." method="_on_waiting_timer_timeout"]

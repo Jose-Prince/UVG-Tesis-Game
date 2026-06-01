@@ -7,7 +7,6 @@ var astar := AStarGrid2D.new()
 func _ready() -> void:
 	setup_grid()
 	setup_solids()
-	debug_draw_solids()
 
 func setup_grid():
 	var used_rect = wall_layer.get_used_rect()
@@ -57,11 +56,3 @@ func get_astar_path(start_world: Vector2, end_world: Vector2):
 		world_path.append(cell_to_world(cell))
 
 	return world_path
-
-func debug_draw_solids():
-	for x in range(astar.region.position.x, astar.region.end.x):
-		for y in range(astar.region.position.y, astar.region.end.y):
-			var cell = Vector2i(x, y)
-			if astar.is_point_solid(cell):
-				var world_pos = cell_to_world(cell)
-				print("Sólido en celda: ", cell, " → mundo: ", world_pos)
