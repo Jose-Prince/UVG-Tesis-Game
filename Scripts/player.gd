@@ -6,6 +6,9 @@ extends CharacterBody2D
 var player_name := ""
 var current_object = null
 
+func _process(delta: float):
+	z_index = int(global_position.y)
+
 func _physics_process(delta: float) -> void:
 	get_input()
 	make_action()

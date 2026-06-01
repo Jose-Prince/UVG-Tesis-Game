@@ -12,7 +12,7 @@ atlas = ExtResource("1_sawk4")
 region = Rect2(0, 31.597538, 48.727726, 31.21207)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sawk4"]
-size = Vector2(115, 45)
+size = Vector2(78, 45)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_faolu"]
 texture = ExtResource("3_uo8q5")
@@ -32,7 +32,7 @@ texture = SubResource("AtlasTexture_uo8q5")
 [node name="DetectionArea" type="Area2D" parent="." unique_id=1021018811]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1347747545]
-position = Vector2(1.5, 0.5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_sawk4")
 debug_color = Color(0.94935995, 5.390644e-06, 0.57624334, 0.41960785)
 
@@ -49,6 +49,12 @@ show_percentage = false
 [node name="Timer" type="Timer" parent="." unique_id=719170423]
 wait_time = 5.0
 one_shot = true
+
+[node name="FoodPlace1" type="Marker2D" parent="." unique_id=1840278373]
+position = Vector2(-14, -6)
+
+[node name="FoodPlace2" type="Marker2D" parent="." unique_id=311461999]
+position = Vector2(14, -6)
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
