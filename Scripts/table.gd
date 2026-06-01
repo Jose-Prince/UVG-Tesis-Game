@@ -10,10 +10,24 @@ var check: int = 0
 
 @onready var timer: Timer = $Timer
 @onready var progress_bar: ProgressBar = $ProgressBar
+@onready var grid_manager: Node = $"../GridManager"
 
 func _ready():
+	await get_tree().physics_frame
+	print("Table registrando obstáculo...")
+	
+	var cell = grid_manager.world_to_cell(global_position)
+	print("Mesa en celda: ", cell)
+	print("¿Dentro del grid?: ", grid_manager.astar.is_in_boundsv(cell))
+	
+	grid_manager.set_obstacle(global_position, true)
+	print("¿Quedó sólida?: ", grid_manager.astar.is_point_solid(cell))
 	progress_bar.max_value = timer.wait_time
-
+	
+	var shape = $collider.shape
+	var rect = Rect2(global_position - shape.size/2, shape.size)
+	grid_manager.set_obstacle_rect(rect, true)
+	
 func _process(delta: float) -> void:
 	if timer.time_left > 0:
 		progress_bar.value = timer.wait_time - timer.time_left

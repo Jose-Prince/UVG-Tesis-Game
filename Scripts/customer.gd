@@ -22,10 +22,10 @@ var waitingTime: int = 5
 @onready var grid_manager: Node = $"../GridManager"
 
 func _ready() -> void:
-	self.set_target(
-		Vector2(272,160)
-	)
 	await get_tree().physics_frame
+	await get_tree().physics_frame  # ← dos frames
+	print("Customer calculando path...")
+	set_target(Vector2(272, 160))
 
 	waiting_timer.wait_time = waitingTime
 	waiting_timer.one_shot = true
@@ -35,17 +35,16 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		return
 
-	var current_agent_position: Vector2 = global_position
+	#var current_agent_position: Vector2 = global_position
 	#var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 
 	#velocity = current_agent_position.direction_to(next_path_position) * movement_speed
-
+	follow_path()
 	move_and_slide()
 
 
 func _process(delta: float) -> void:
-	follow_path()
-	move_and_slide()
+	pass
 	#if currentState == States.Navigate:
 		#movement_speed = 100.0
 #
@@ -79,18 +78,18 @@ func _process(delta: float) -> void:
 			#print("Cliente saliendo")
 
 func follow_path():
-	if path_index >= path.size():
+	if path.is_empty() or path_index >= path.size():
 		velocity = Vector2.ZERO
 		return
-
+	
 	var target = path[path_index]
-
-	var dir = global_position.direction_to(target)
-
-	velocity = dir * movement_speed
-
-	if global_position.distance_to(target) < 4:
+	var distance = global_position.distance_to(target)
+	
+	if distance < 4.0:
 		path_index += 1
+		return
+	
+	velocity = global_position.direction_to(target) * movement_speed
 
 func set_target(target_world: Vector2):
 	path = grid_manager.get_astar_path(
