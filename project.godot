@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SaveManager="*uid://cbrudqcd80int"
 GameData="*uid://biap878s0ke15"
+SaveManager="*uid://qhvdr38fdkpr"
 
 [global_group]
 
