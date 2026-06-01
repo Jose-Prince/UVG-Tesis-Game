@@ -29,13 +29,6 @@ position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_5rhpu")
 debug_color = Color(0.91343504, 0.14206949, 0.6324621, 0.41960785)
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=564239538]
-avoidance_enabled = true
-radius = 60.0
-debug_enabled = true
-debug_path_custom_point_size = 0.0
-debug_path_custom_line_width = 0.0
-
 [node name="WaitingTimer" type="Timer" parent="." unique_id=1966011886]
 wait_time = 5.0
 one_shot = true
@@ -43,4 +36,4 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1647952521]
 sprite_frames = SubResource("SpriteFrames_4eorp")
 
-[connection signal="timeout" from="WaitingTimer" to="." method="_on_customer_timer_timeout"]
+[connection signal="timeout" from="WaitingTimer" to="." method="_on_waiting_timer_timeout"]

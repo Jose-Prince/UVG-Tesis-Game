@@ -18,6 +18,7 @@ size = Vector2(115, 45)
 texture = ExtResource("3_uo8q5")
 
 [node name="Table" type="StaticBody2D" unique_id=639487740 groups=["clickable", "table"]]
+collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_rbrsc")
 
@@ -34,10 +35,6 @@ texture = SubResource("AtlasTexture_uo8q5")
 position = Vector2(1.5, 0.5)
 shape = SubResource("RectangleShape2D_sawk4")
 debug_color = Color(0.94935995, 5.390644e-06, 0.57624334, 0.41960785)
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=1020624744]
-vertices = PackedVector2Array(-23, -15, -23, 15, 23, 15, 23, -15)
-affect_navigation_mesh = true
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=687169642]
 visible = false

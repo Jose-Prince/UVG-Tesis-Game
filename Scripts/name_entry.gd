@@ -8,4 +8,4 @@ func _on_confirm_button_pressed() -> void:
 	GameData.player_name = player_edit.text
 	GameData.shop_name = shop_edit.text
 	
-	get_tree().change_scene_to_file("res://Scenes/café_place.tscn")
+	get_tree().change_scene_to_file("res://Scenes/coffee_shop.tscn")

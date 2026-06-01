@@ -35,13 +35,16 @@ func customer_spawn():
 			var chair = table.get_free_chair()
 			
 			if chair:
-				new_customer.movement_target_position = chair.go_to_pos.global_position
-				
 				chair.isFree = false
 				table.update_availability()
-				
-				print("Customer assigned to table")
+
 				get_tree().current_scene.add_child(new_customer)
+
+				await get_tree().physics_frame
+
+				new_customer.set_target(chair.go_to_pos.global_position)
+				print("Customer assigned to table")
+
 				customer_timer.start()
 				return
 				
