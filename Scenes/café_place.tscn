@@ -1,13 +1,10 @@
 [gd_scene format=4 uid="uid://ditawnwc3p0p2"]
 
 [ext_resource type="Texture2D" uid="uid://crttdqpbnjv3e" path="res://Sprites/TopDownHouse_FloorsAndWalls.png" id="1_7ewdn"]
-[ext_resource type="Script" uid="uid://r14gbqvkuyim" path="res://Scripts/time_system.gd" id="1_exwnq"]
 [ext_resource type="Script" uid="uid://d315dg6v264o8" path="res://Scripts/cafe_logic.gd" id="1_r1i3y"]
 [ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Sprites/TopDownHouse_FurnitureState1.png" id="2_7ewdn"]
-[ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/date_time.gd" id="2_eqbnc"]
-[ext_resource type="PackedScene" uid="uid://cpoodtd07o4h" path="res://Prefabs/time_ui.tscn" id="3_eqbnc"]
-[ext_resource type="Script" uid="uid://brsgf6flsog4g" path="res://Scripts/time_ui.gd" id="4_a4k3g"]
 [ext_resource type="PackedScene" uid="uid://h6uqvesj3b8s" path="res://Prefabs/Player.tscn" id="5_npy7o"]
+[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/CozyCaffe-Bossa-consolidated-consolidated.ogg" id="8_52c50"]
 [ext_resource type="PackedScene" uid="uid://d3hb3h1ih8e8w" path="res://Prefabs/table.tscn" id="9_4hpb6"]
 [ext_resource type="PackedScene" uid="uid://05y0ghmm4qsq" path="res://Prefabs/chair.tscn" id="9_r1i3y"]
 [ext_resource type="PackedScene" uid="uid://cn1a17pxcn375" path="res://Prefabs/coffee_maker.tscn" id="11_p7xg1"]
@@ -706,9 +703,6 @@ texture = ExtResource("2_7ewdn")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_4hpb6")
 
-[sub_resource type="Resource" id="Resource_a4k3g"]
-script = ExtResource("2_eqbnc")
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7xg1"]
 radius = 17.0
 
@@ -731,20 +725,6 @@ tile_set = SubResource("TileSet_52c50")
 [node name="kitchen" type="TileMapLayer" parent="." unique_id=1056390943]
 tile_map_data = PackedByteArray("AAAYAAsAAAAGAA4AAAAZAAsAAAAHAA4AAAAaAAsAAAAIAA4AAAAbAAsAAAAJAA4AAAAcAAsAAAAKAA4AAAAdAAsAAAALAA4AAAAdAAwAAAALAA8AAAAeAAwAAAAMAA8AAAAeAAkAAAAMAAwAAAAeAAoAAAAMAA0AAAAeAAsAAAAMAA4AAAAYAAoAAAAGAA0AAAAZAAoAAAAHAA0AAAAaAAoAAAAIAA0AAAAbAAoAAAAJAA0AAAAcAAoAAAAKAA0AAAAdAAoAAAALAA0AAAAYAAkAAAAGAAwAAAAZAAkAAAAHAAwAAAAaAAkAAAAIAAwAAAAbAAkAAAAJAAwAAAAcAAkAAAAKAAwAAAAdAAkAAAALAAwAAAA=")
 tile_set = SubResource("TileSet_r1i3y")
-
-[node name="TimeSystem" type="Node" parent="." unique_id=419212550]
-script = ExtResource("1_exwnq")
-date_time = SubResource("Resource_a4k3g")
-ticks_pr_second = 80
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=465547366]
-
-[node name="TimeGui" parent="CanvasLayer" unique_id=2113710388 instance=ExtResource("3_eqbnc")]
-offset_left = 947.0
-offset_top = 4.0
-offset_right = 947.0
-offset_bottom = 4.0
-script = ExtResource("4_a4k3g")
 
 [node name="Player" parent="." unique_id=1461023337 instance=ExtResource("5_npy7o")]
 position = Vector2(293, 198)
@@ -785,5 +765,10 @@ process_mode = 2
 visible = false
 
 [connection signal="updated" from="TimeSystem" to="CanvasLayer/TimeGui" method="_on_time_system_updated"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=357906737]
+stream = ExtResource("8_52c50")
+autoplay = true
+parameters/looping = true
+
 [connection signal="body_entered" from="CustomerSpawn/LeavingZone" to="." method="_on_leaving_zone_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

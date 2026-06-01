@@ -5,6 +5,8 @@ const CUSTOMER_SCENE = preload("res://Prefabs/customer.tscn")
 var tables: Array[Node]
 var coffee_name := ""
 
+var time_gui : Control
+
 @onready var customer_timer: Timer = $Timer
 @onready var spawn_point: Marker2D = $CustomerSpawn
 @onready var time_gui: Control = $CanvasLayer/TimeGui
@@ -12,12 +14,12 @@ var coffee_name := ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("CAFE LOGIC READY")
+	var time_gui = find_child("TimeGui", true, false)
 	tables = get_tree().get_nodes_in_group("table")
 	
 	for table in tables:
 		table.order_completed.connect(time_gui.add_point)
-		
+		pass
 	customer_timer.wait_time = 5.0
 
 func _on_timer_timeout() -> void:
