@@ -44,10 +44,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_javds"]
-size = Vector2(16, 4)
+size = Vector2(10, 3)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3d5u"]
-radius = 20.0
+radius = 11.045361
 
 [sub_resource type="Resource" id="Resource_javds"]
 script = ExtResource("4_gg3t4")
@@ -58,13 +58,13 @@ script = ExtResource("1_x3d5u")
 speed = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=916734474]
-scale = Vector2(2, 2.112)
+scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_gg3t4")
 animation = &"idle"
 frame_progress = 0.13602109
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=41540243]
-position = Vector2(0, 19)
+position = Vector2(0, 9.5)
 shape = SubResource("RectangleShape2D_javds")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1178547395]
@@ -74,7 +74,7 @@ zoom = Vector2(5, 5)
 [node name="DetectionArea" type="Area2D" parent="." unique_id=167484192]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=144964780]
-position = Vector2(0, 4)
+position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_x3d5u")
 
 [node name="TimeSystem" type="Node" parent="." unique_id=98841440]
