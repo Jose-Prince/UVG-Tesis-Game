@@ -9,7 +9,6 @@ var time_gui : Control
 
 @onready var customer_timer: Timer = $Timer
 @onready var spawn_point: Marker2D = $CustomerSpawn
-@onready var time_gui: Control = $CanvasLayer/TimeGui
 @onready var pause_menu = $UI/PauseMenu
 
 # Called when the node enters the scene tree for the first time.
