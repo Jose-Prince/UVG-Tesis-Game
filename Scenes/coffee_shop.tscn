@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://h6uqvesj3b8s" path="res://Prefabs/Player.tscn" id="6_df3mn"]
 [ext_resource type="PackedScene" uid="uid://ce5bfs85ds2ea" path="res://Scenes/PauseMenu.tscn" id="6_wpc15"]
 [ext_resource type="PackedScene" uid="uid://05y0ghmm4qsq" path="res://Prefabs/chair.tscn" id="7_wpc15"]
+[ext_resource type="PackedScene" uid="uid://cn1a17pxcn375" path="res://Prefabs/coffee_maker.tscn" id="8_wvnb4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kswvu"]
 texture = ExtResource("1_kswvu")
@@ -481,10 +482,10 @@ script = ExtResource("2_bxugb")
 wall_layer = NodePath("../WallLayer")
 
 [node name="Table" parent="." unique_id=639487740 instance=ExtResource("4_0k3ma")]
-position = Vector2(112, 192)
+position = Vector2(112, 208)
 
 [node name="Table2" parent="." unique_id=185124453 instance=ExtResource("4_0k3ma")]
-position = Vector2(240, 192)
+position = Vector2(240, 208)
 
 [node name="Table3" parent="." unique_id=1389871353 instance=ExtResource("4_0k3ma")]
 position = Vector2(240, 144)
@@ -515,17 +516,17 @@ position = Vector2(144, 96)
 isRotated = true
 
 [node name="Chair3" parent="." unique_id=411604972 instance=ExtResource("7_wpc15")]
-position = Vector2(80, 192)
+position = Vector2(80, 208)
 
 [node name="Chair4" parent="." unique_id=377134920 instance=ExtResource("7_wpc15")]
-position = Vector2(144, 192)
+position = Vector2(144, 208)
 isRotated = true
 
 [node name="Chair5" parent="." unique_id=1094988505 instance=ExtResource("7_wpc15")]
-position = Vector2(208, 192)
+position = Vector2(208, 208)
 
 [node name="Chair6" parent="." unique_id=718268003 instance=ExtResource("7_wpc15")]
-position = Vector2(272, 192)
+position = Vector2(272, 208)
 isRotated = true
 
 [node name="Chair7" parent="." unique_id=578940718 instance=ExtResource("7_wpc15")]
@@ -539,6 +540,9 @@ isRotated = true
 
 [node name="PauseMenu" parent="UI" unique_id=1486490026 instance=ExtResource("6_wpc15")]
 visible = false
+
+[node name="CoffeeMaker" parent="." unique_id=1701230900 instance=ExtResource("8_wvnb4")]
+position = Vector2(208, 48)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="CustomerSpawn/LeavingZone" to="." method="_on_leaving_zone_body_entered"]
