@@ -6,12 +6,15 @@ extends CharacterBody2D
 var player_name := ""
 var current_object = null
 
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 func _process(delta: float):
 	z_index = int(global_position.y)
 
 func _physics_process(delta: float) -> void:
 	get_input()
 	make_action()
+	update_animation()
 	move_and_slide()
 	
 func get_input():
@@ -28,6 +31,30 @@ func make_action():
 	if Input.is_action_just_pressed("Action") and current_object:
 		current_object.interact(self)
 		
+func update_animation():
+	# Idle
+	if velocity == Vector2.ZERO:
+		if animated_sprite.animation == "walk_up":
+			animated_sprite.play("idle_up")
+		elif animated_sprite.animation == "walk_right":
+			animated_sprite.play("idle_right")
+		else:
+			animated_sprite.play("idle")
+		return
+
+	# Walking
+	if abs(velocity.x) > abs(velocity.y):
+		# Movimiento horizontal
+		animated_sprite.play("walk_right")
+		animated_sprite.flip_h = velocity.x < 0
+	else:
+		# Movimiento vertical
+		if velocity.y < 0:
+			animated_sprite.play("walk_up")
+		else:
+			animated_sprite.play("walk_down")
+		animated_sprite.flip_h = false
+	
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("clickable"):
 		current_object = body
