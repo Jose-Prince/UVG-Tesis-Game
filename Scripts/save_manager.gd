@@ -1,6 +1,6 @@
 extends Node
 
-const save_file_name: String = "res://saves/save.json"
+const SAVE_FOLDER: String = "user://saves/"
 const default_dictionary: Dictionary = {
 	"Day": "Mon.",
 	"Month": "January",
@@ -9,8 +9,10 @@ const default_dictionary: Dictionary = {
 
 signal day_ended
 
-func save_game(data: Dictionary) -> void:
-	var save_file: FileAccess = FileAccess.open(save_file_name, FileAccess.WRITE)
+func save_game(slot: int, data: Dictionary) -> void:
+	ensure_save_folder()
+	var save_path: String = SAVE_FOLDER + "save_%d.json" % slot
+	var save_file: FileAccess = FileAccess.open(save_path, FileAccess.WRITE)
 	
 	if save_file == null:
 		push_error("Error al abrir el archivo")
@@ -22,3 +24,7 @@ func save_game(data: Dictionary) -> void:
 	save_file.close()
 	
 	print("Juego guardado con datos: ", string_data)
+
+func ensure_save_folder() -> void:
+	if not DirAccess.dir_exists_absolute(SAVE_FOLDER):
+		DirAccess.make_dir_absolute(SAVE_FOLDER)

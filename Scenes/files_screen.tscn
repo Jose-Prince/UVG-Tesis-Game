@@ -12,15 +12,12 @@ size_flags_vertical = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=52834068]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -209.5
-offset_top = -120.0
-offset_right = 209.5
-offset_bottom = 120.0
+anchor_bottom = 1.0
+offset_left = -237.5
+offset_right = 237.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -36,7 +33,6 @@ theme_override_constants/margin_bottom = 50
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1317851028]
 layout_mode = 2
 theme_override_constants/separation = 40
-alignment = 1
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1913841823]
 layout_mode = 2
@@ -44,6 +40,10 @@ theme_override_font_sizes/font_size = 40
 text = "Menu of the Day"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=967108865]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1677770677]
 layout_mode = 2
 
 [node name="Save File 1" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=859917362]
