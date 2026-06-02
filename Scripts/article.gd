@@ -4,6 +4,10 @@ extends StaticBody2D
 @export var hold_offset := Vector2.ZERO
 
 var holder: Node2D = null
+var kitchen_layer: TileMapLayer
+
+func _ready() -> void:
+	kitchen_layer = get_tree().get_first_node_in_group("clickable_tile")
 
 func _process(delta: float) -> void:
 	z_index = int(global_position.y + 2)
@@ -18,3 +22,6 @@ func pickup(new_holder: Node2D):
 
 func drop():
 	holder = null
+	
+	if kitchen_layer:
+		kitchen_layer.set_tile_occupied(global_position, true)
