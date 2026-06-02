@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dclatuh7yvi5x"]
+
+[node name="FilesScreen" type="Control" unique_id=1530240423]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=52834068]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.5
+offset_top = -120.0
+offset_right = 209.5
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=540422301]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1317851028]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1913841823]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Menu of the Day"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=967108865]
+layout_mode = 2
+
+[node name="Save File 1" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=859917362]
+layout_mode = 2
+text = "Player name's Coffee Shop: Coffee Shop's name
+Money:                                Day Num, Month, Year"
+alignment = 0
