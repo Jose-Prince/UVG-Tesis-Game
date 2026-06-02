@@ -35,6 +35,9 @@ func customer_spawn():
 			var chair = table.get_free_chair()
 			
 			if chair:
+				new_customer.assign_chair(chair)
+				table.update_availability()
+				
 				chair.isFree = false
 				table.update_availability()
 

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var target_chair = null
 var movement_speed: float = 100.0
 var leaving_target_position: Vector2 = Vector2.ZERO
 
@@ -77,6 +78,18 @@ func set_target(target_world: Vector2):
 func path_finished() -> bool:
 	return path_index >= path.size()
 
+func _on_sitting_timer_timeout() -> void:
+	print("Agente se va")
+	
+	if target_chair:
+		target_chair.isFree = true
+	
 func _on_customer_timer_timeout() -> void:
 	leave_started = false
 	currentState = States.Leave
+	
+func assign_chair(chair):
+	target_chair = chair
+	target_chair.isFree = false
+	
+	movement_target_position = target_chair.go_to_pos.global_position
