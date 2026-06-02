@@ -22,8 +22,28 @@ func save_game(slot: int, data: Dictionary) -> void:
 	
 	save_file.store_line(string_data)
 	save_file.close()
+
+func load_game(slot: int):
+	var save_path := SAVE_FOLDER + "save_%d.json" % slot
 	
-	print("Juego guardado con datos: ", string_data)
+	if not FileAccess.file_exists(save_path):
+		return default_dictionary.duplicate()
+	
+	var save_file := FileAccess.open(save_path, FileAccess.READ)
+	
+	if save_file == null:
+		return default_dictionary.duplicate()
+	
+	var json_string := save_file.get_as_text()
+	save_file.close()
+	
+	var data = JSON.parse_string(json_string)
+	
+	if data == null:
+		return default_dictionary.duplicate()
+	
+	print(data)
+	return data
 
 func ensure_save_folder() -> void:
 	if not DirAccess.dir_exists_absolute(SAVE_FOLDER):
