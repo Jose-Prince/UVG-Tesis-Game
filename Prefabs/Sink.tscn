@@ -1,24 +1,19 @@
 [gd_scene format=3 uid="uid://b0301dxp1imrf"]
 
-[ext_resource type="Script" uid="uid://n5vu4ib708g8" path="res://Scripts/kitchen_furniture.gd" id="1_tqjcn"]
-[ext_resource type="Texture2D" uid="uid://bj1uha56tsqxm" path="res://Sprites/kitchen16_blue.png" id="2_4mow3"]
+[ext_resource type="Script" uid="uid://n5vu4ib708g8" path="res://Scripts/exchanger.gd" id="1_4a48a"]
+[ext_resource type="Texture2D" uid="uid://bj1uha56tsqxm" path="res://Sprites/kitchen16_blue.png" id="1_tvt42"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d064e"]
-size = Vector2(20, 11)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4a48a"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n5jga"]
-atlas = ExtResource("2_4mow3")
-region = Rect2(111.41075, 0.090293884, 17.410324, 17.192696)
+[sub_resource type="AtlasTexture" id="AtlasTexture_04s46"]
+atlas = ExtResource("1_tvt42")
+region = Rect2(112.06183, 1.9198978, 16.70578, 14.740571)
 
-[node name="Sink" type="Area2D" unique_id=707847146]
-script = ExtResource("1_tqjcn")
+[node name="Sink" type="StaticBody2D" unique_id=2077379661]
+script = ExtResource("1_4a48a")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=168568239]
-position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_d064e")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=961101458]
+shape = SubResource("RectangleShape2D_4a48a")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=973080252]
-texture = SubResource("AtlasTexture_n5jga")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1034516179]
+texture = SubResource("AtlasTexture_04s46")
