@@ -22,6 +22,8 @@ func _ready() -> void:
 	start_month = date["month"] - 1
 	start_day = date["day"]
 	start_weekday = date["weekday"]
+	
+	SaveManager.day_ended.connect(_on_day_ended)
 
 func add_point(moneyRecived: int):
 	money += moneyRecived
@@ -66,3 +68,6 @@ func update_label(label: Label, value: int, should_have_zero: bool = true) -> vo
 		add_leading_zero(label, value)
 			
 	label.text += str(value)
+
+func _on_day_ended():
+	SaveManager.save_game({"Day": day.text, "Month": month.text, "Money": money_count.text})

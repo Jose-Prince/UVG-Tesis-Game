@@ -2,86 +2,81 @@ extends CharacterBody2D
 
 var target_chair = null
 var movement_speed: float = 100.0
-var movement_target_position: Vector2 = Vector2.ZERO
 var leaving_target_position: Vector2 = Vector2.ZERO
+
+var path: Array = []
+var path_index := 0
 
 enum States { Navigate, Sit, Wait, Order, Eat, Leave }
 var currentState: States = States.Navigate
 
-var isEating: bool = false
-var leave_started: bool = false
+var leave_started := false
+var chair_reached := false
 
 var food: Array[String] = ["coffee", "coffee"]
 var foodWanted: String = food.pick_random()
 
-@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var eating_timer: Timer = $EatingTimer
+var waitingTime: int = 5
 
+@onready var waiting_timer: Timer = $WaitingTimer
+@onready var grid_manager: Node = $"../GridManager"
 
 func _ready() -> void:
 	await get_tree().physics_frame
+	await get_tree().physics_frame 
 
-	navigation_agent.path_desired_distance = 4.0
-	navigation_agent.target_desired_distance = 4.0
-	if movement_target_position != Vector2.ZERO:
-		navigation_agent.target_position = movement_target_position
-
-
+	waiting_timer.wait_time = waitingTime
+	waiting_timer.one_shot = true
+	
 func _physics_process(delta: float) -> void:
-	if currentState == States.Wait:
-		velocity = Vector2.ZERO
-		return
-
-	if navigation_agent.is_navigation_finished():
-		velocity = Vector2.ZERO
-		return
-
-	var current_agent_position: Vector2 = global_position
-	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
-
-	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
-
+	match currentState:
+		States.Navigate:
+			follow_path()
+			
+			if path_finished() && !chair_reached:
+				chair_reached = true
+				currentState = States.Sit
+				
+		States.Sit:
+			velocity = Vector2.ZERO
+			currentState = States.Wait
+			
+		States.Wait:
+			velocity = Vector2.ZERO
+			
+		States.Eat:
+			velocity = Vector2.ZERO
+			
+		States.Leave:
+			if !leave_started:
+				set_target(leaving_target_position)
+				leave_started = true
+				print("leaving")
+			
+			follow_path()
+			
 	move_and_slide()
 
-
-func _process(delta: float) -> void:
-
-	if currentState == States.Navigate:
-		navigation_agent.process_mode = Node.PROCESS_MODE_ALWAYS
-		movement_speed = 100.0
-
-		if navigation_agent.is_target_reached():
-			currentState = States.Sit
-
-
-	elif currentState == States.Sit:
+func follow_path():
+	if path.is_empty() or path_index >= path.size():
 		velocity = Vector2.ZERO
-		currentState = States.Order
+		return
+	
+	var target = path[path_index]
+	var distance = global_position.distance_to(target)
+	
+	if distance < 4.0:
+		path_index += 1
+		return
+	
+	velocity = global_position.direction_to(target) * movement_speed
 
+func set_target(target_world: Vector2):
+	path = grid_manager.get_astar_path(global_position, target_world)
+	path_index = 0
 
-	elif currentState == States.Order:
-		currentState = States.Wait
-
-
-	elif currentState == States.Wait:
-		navigation_agent.process_mode = Node.PROCESS_MODE_DISABLED
-		movement_speed = 0.0
-
-
-	elif currentState == States.Eat:
-		eating_timer.start()
-		currentState = States.Wait
-
-
-	elif currentState == States.Leave:
-		navigation_agent.process_mode = Node.PROCESS_MODE_ALWAYS
-		movement_speed = 100.0
-
-		if !leave_started:
-			navigation_agent.target_position = leaving_target_position
-			leave_started = true
-			print("Cliente saliendo")
-
+func path_finished() -> bool:
+	return path_index >= path.size()
 
 func _on_sitting_timer_timeout() -> void:
 	print("Agente se va")
@@ -89,6 +84,7 @@ func _on_sitting_timer_timeout() -> void:
 	if target_chair:
 		target_chair.isFree = true
 	
+func _on_customer_timer_timeout() -> void:
 	leave_started = false
 	currentState = States.Leave
 	

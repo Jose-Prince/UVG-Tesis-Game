@@ -23,5 +23,6 @@ func increase_by_sec(delta_seconds: float) -> void:
 	
 	if hours >= 22:
 		days += 1
-		
 		hours = 6 + (hours - 22)
+		
+		SaveManager.day_ended.emit()

@@ -1,0 +1,220 @@
+[gd_scene format=3 uid="uid://j2pwgg4qqx3g"]
+
+[ext_resource type="Script" uid="uid://bx5hhn80ewyna" path="res://Scripts/name_entry.gd" id="1_3sdjg"]
+[ext_resource type="FontFile" uid="uid://bm4e365ecirdj" path="res://Fonts/Chalk.otf" id="2_7wrfq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vb4o"]
+bg_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="FontVariation" id="FontVariation_uvaie"]
+base_font = ExtResource("2_7wrfq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wrfq"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 2
+
+[sub_resource type="FontVariation" id="FontVariation_7wrfq"]
+base_font = ExtResource("2_7wrfq")
+
+[sub_resource type="FontVariation" id="FontVariation_1vb4o"]
+base_font = ExtResource("2_7wrfq")
+
+[sub_resource type="FontVariation" id="FontVariation_c1sof"]
+base_font = ExtResource("2_7wrfq")
+
+[node name="InputSystem" type="Control" unique_id=42196537]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3sdjg")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=190599061]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 50
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=923155811]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vb4o")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=1254084186]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=299134883]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TitleDisplay" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1518961979]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/TitleDisplay" unique_id=402418289]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_uvaie")
+theme_override_font_sizes/font_size = 50
+text = "Character 
+Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=32842330]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxFlat_7wrfq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1352691724]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="PlayerHDisplay" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=612975715]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 130
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/PlayerHDisplay" unique_id=821634944]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_7wrfq")
+theme_override_font_sizes/font_size = 23
+text = "Name:"
+
+[node name="PlayerEdit" type="LineEdit" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/PlayerHDisplay" unique_id=718567752]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CoffeeShopHDisplay" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=653472185]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 53
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/CoffeeShopHDisplay" unique_id=1768391473]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_1vb4o")
+theme_override_font_sizes/font_size = 23
+text = "Coffee Shop:"
+
+[node name="ShopEdit" type="LineEdit" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/CoffeeShopHDisplay" unique_id=682741901]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonDisplay" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=510557697]
+layout_mode = 2
+alignment = 2
+
+[node name="ConfirmButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonDisplay" unique_id=1740878238]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_c1sof")
+theme_override_font_sizes/font_size = 30
+text = "Confirm"
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1680226696]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 50
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2" unique_id=2063266553]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vb4o")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/PanelContainer" unique_id=1886073946]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer" unique_id=2095522070]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TitleDisplay" type="HBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=195253469]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/TitleDisplay" unique_id=268725355]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_uvaie")
+theme_override_font_sizes/font_size = 50
+text = "Character 
+Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=346989472]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxFlat_7wrfq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=1712697797]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="PlayerHDisplay" type="HBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1727828910]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 130
+
+[node name="Label" type="Label" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/PlayerHDisplay" unique_id=1278472142]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_7wrfq")
+theme_override_font_sizes/font_size = 23
+text = "Name:"
+
+[node name="PlayerEdit" type="LineEdit" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/PlayerHDisplay" unique_id=1035753575]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CoffeeShopHDisplay" type="HBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1986021599]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 53
+
+[node name="Label" type="Label" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/CoffeeShopHDisplay" unique_id=1167735148]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_1vb4o")
+theme_override_font_sizes/font_size = 23
+text = "Coffee Shop:"
+
+[node name="ShopEdit" type="LineEdit" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/CoffeeShopHDisplay" unique_id=1181991661]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonDisplay" type="HBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=1283732535]
+layout_mode = 2
+alignment = 2
+
+[node name="ConfirmButton" type="Button" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ButtonDisplay" unique_id=1134744547]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_c1sof")
+theme_override_font_sizes/font_size = 30
+text = "Confirm"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonDisplay/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ButtonDisplay/ConfirmButton" to="." method="_on_confirm_button_pressed"]

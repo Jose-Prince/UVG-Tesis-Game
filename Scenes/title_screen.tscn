@@ -36,6 +36,7 @@ point_count = 7
 font = ExtResource("4_12m1t")
 font_size = 100
 font_color = Color(0.9607843, 0.92941177, 0.8862745, 1)
+[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/CozyCaffe-Bossa-consolidated-consolidated.ogg" id="2_p3fck"]
 
 [node name="TitleScreen" type="Control" unique_id=1439522845]
 layout_mode = 3
@@ -175,3 +176,10 @@ label_settings = SubResource("LabelSettings_12m1t")
 [connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1789502888]
+stream = ExtResource("2_p3fck")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
