@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkeudwm12bgvk" path="res://Scripts/menu.gd" id="1_klylv"]
 [ext_resource type="Texture2D" uid="uid://cx1nyacr2yebd" path="res://Sprites/gingham.PNG" id="2_twnyg"]
+[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/CozyCaffe-Bossa-consolidated-consolidated.ogg" id="2_p3fck"]
 [ext_resource type="Texture2D" uid="uid://r45ksajhucw5" path="res://Sprites/menu.PNG" id="3_55kwv"]
 [ext_resource type="Texture2D" uid="uid://cgeaitckg5fnk" path="res://Sprites/Coffee_noB.PNG" id="4_6vd4x"]
 [ext_resource type="FontFile" uid="uid://c0rmb6tjydgnl" path="res://Fonts/FascinateInline-Regular.ttf" id="4_12m1t"]
@@ -36,7 +37,6 @@ point_count = 7
 font = ExtResource("4_12m1t")
 font_size = 100
 font_color = Color(0.9607843, 0.92941177, 0.8862745, 1)
-[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/CozyCaffe-Bossa-consolidated-consolidated.ogg" id="2_p3fck"]
 
 [node name="TitleScreen" type="Control" unique_id=1439522845]
 layout_mode = 3
@@ -155,8 +155,7 @@ theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ycay6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bsy20")
 theme_override_styles/hover = SubResource("StyleBoxFlat_07cxn")
-text = "Exit Game
-"
+text = "Exit Game"
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=626094069]
 layout_mode = 0
@@ -173,13 +172,10 @@ script = ExtResource("4_twnyg")
 text = "DREAM CAFE"
 label_settings = SubResource("LabelSettings_12m1t")
 
-[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1789502888]
 stream = ExtResource("2_p3fck")
 autoplay = true
 
-[connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
