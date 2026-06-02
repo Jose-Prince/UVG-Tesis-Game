@@ -22,6 +22,7 @@ func _ready():
 	grid_manager.set_obstacle_rect(rect, true)
 	
 func _process(delta: float) -> void:
+	z_index = int(global_position.y)
 	if timer.time_left > 0:
 		progress_bar.value = timer.wait_time - timer.time_left
 

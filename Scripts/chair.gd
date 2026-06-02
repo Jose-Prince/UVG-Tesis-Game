@@ -15,3 +15,6 @@ func _ready() -> void:
 		go_to_pos.position = rightOffsetPos
 	else:
 		go_to_pos.position = leftOffsetPos
+
+func _process(delta: float) -> void:
+	z_index = int(global_position.y)
