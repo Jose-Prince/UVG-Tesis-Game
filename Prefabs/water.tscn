@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cyeftfpjy6lld"]
+
+[ext_resource type="Script" uid="uid://dgq50m38rejiv" path="res://Scripts/article.gd" id="1_pwbcw"]
+[ext_resource type="Texture2D" uid="uid://ivufxjdlav1s" path="res://Sprites/TopDownHouse_SmallItems.png" id="1_ypf2s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxs27"]
+size = Vector2(6, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w0hm"]
+atlas = ExtResource("1_ypf2s")
+region = Rect2(21.054367, 84.19086, 7.311779, 11.012474)
+
+[node name="Water" type="StaticBody2D" unique_id=1158235660]
+script = ExtResource("1_pwbcw")
+price = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1335671834]
+shape = SubResource("RectangleShape2D_bxs27")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=429738743]
+texture = SubResource("AtlasTexture_1w0hm")

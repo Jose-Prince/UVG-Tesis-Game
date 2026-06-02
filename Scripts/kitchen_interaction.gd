@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 			var mouse_world = get_global_mouse_position()
 			var cell = local_to_map(to_local(mouse_world))
 			

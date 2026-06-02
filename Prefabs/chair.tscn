@@ -23,3 +23,4 @@ position = Vector2(0.5, 4)
 shape = SubResource("RectangleShape2D_avq0k")
 
 [node name="GoToPos" type="Marker2D" parent="." unique_id=1450133005]
+position = Vector2(-15, 0)
