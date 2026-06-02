@@ -13,7 +13,7 @@ var currentState: States = States.Navigate
 var leave_started := false
 var chair_reached := false
 
-var food: Array[String] = ["coffee", "coffee"]
+var food: Array[String] = ["coffee", "water"]
 var foodWanted: String = food.pick_random()
 
 var waitingTime: int = 5
