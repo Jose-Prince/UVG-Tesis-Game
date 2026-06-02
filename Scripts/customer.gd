@@ -92,4 +92,4 @@ func assign_chair(chair):
 	target_chair = chair
 	target_chair.isFree = false
 	
-	movement_target_position = target_chair.go_to_pos.global_position
+	#movement_target_position = target_chair.go_to_pos.global_position

@@ -5,12 +5,14 @@
 [ext_resource type="Script" uid="uid://cgpmptmi7io6m" path="res://Scripts/grid_manager.gd" id="2_bxugb"]
 [ext_resource type="Texture2D" uid="uid://bj1uha56tsqxm" path="res://Sprites/kitchen16_blue.png" id="3_k3to3"]
 [ext_resource type="PackedScene" uid="uid://d3hb3h1ih8e8w" path="res://Prefabs/table.tscn" id="4_0k3ma"]
-[ext_resource type="Script" uid="uid://bl0lr7p5pqe12" path="res://Scripts/kitchen_interaction.gd" id="4_ug16k"]
+[ext_resource type="Script" path="res://Scripts/kitchen_interaction.gd" id="4_ug16k"]
 [ext_resource type="PackedScene" uid="uid://h6uqvesj3b8s" path="res://Prefabs/Player.tscn" id="6_df3mn"]
 [ext_resource type="PackedScene" uid="uid://ce5bfs85ds2ea" path="res://Scenes/PauseMenu.tscn" id="6_wpc15"]
 [ext_resource type="PackedScene" uid="uid://05y0ghmm4qsq" path="res://Prefabs/chair.tscn" id="7_wpc15"]
 [ext_resource type="PackedScene" uid="uid://cn1a17pxcn375" path="res://Prefabs/coffee_maker.tscn" id="8_wvnb4"]
 [ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/CozyCaffe-Bossa-consolidated-consolidated.ogg" id="9_j1s20"]
+[ext_resource type="PackedScene" uid="uid://dy7unp36ghucf" path="res://Prefabs/glass_giver.tscn" id="12_4hl37"]
+[ext_resource type="PackedScene" uid="uid://b0301dxp1imrf" path="res://Prefabs/Sink.tscn" id="13_sk1vp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kswvu"]
 texture = ExtResource("1_kswvu")
@@ -1146,7 +1148,7 @@ tile_map_data = PackedByteArray("AAADAP7/AAABAAAAAAADAP//AAABAAEAAAADAAAAAAABAAI
 tile_set = SubResource("TileSet_kswvu")
 
 [node name="KitchenLayer" type="TileMapLayer" parent="." unique_id=1452451453 groups=["clcikable_tile"]]
-tile_map_data = PackedByteArray("AAAQAAMAAAAKAAQAAAAPAAMAAAAKAAQAAAAOAAMAAAAKAAQAAAARAAMAAAAOAAQAAAARAAQAAAAOAAcAAAASAAQAAAAPAAcAAAASAAUAAAAPAAwAAAARAAUAAAAOAAgAAAASAAMAAAAPAAYAAAASAAIAAAAPAAMAAAARAAIAAAAKAAMAAAAOAAIAAAAKAAMAAAAPAAIAAAAKAAMAAAAQAAIAAAAKAAMAAAA=")
+tile_map_data = PackedByteArray("AAAQAAMAAAAKAAQAAAAPAAMAAAAKAAQAAAAOAAMAAAAKAAQAAAARAAMAAAAOAAQAAAARAAQAAAAOAAcAAAASAAQAAAAPAAcAAAASAAUAAAAPAAwAAAARAAUAAAAOAAgAAAASAAMAAAAPAAYAAAASAAIAAAAPAAMAAAARAAIAAAAKAAMAAAAOAAIAAAAKAAMAAAAPAAIAAAAKAAMAAAAQAAIAAAAKAAMAAAANAAIAAAAHAAMAAAANAAMAAAAHAAQAAAAMAAIAAAAEAAMAAAAMAAMAAAAEAAQAAAA=")
 tile_set = SubResource("TileSet_4hl37")
 script = ExtResource("4_ug16k")
 
@@ -1223,6 +1225,19 @@ autoplay = true
 parameters/looping = true
 
 [node name="OrderObject" type="Node2D" parent="." unique_id=1752300990]
+
+[node name="GlassGiver" parent="." unique_id=1691044326 groups=["clickable"] instance=ExtResource("12_4hl37")]
+z_index = 1
+position = Vector2(298, 74)
+
+[node name="GlassGiver2" parent="." unique_id=139754391 groups=["clickable"] instance=ExtResource("12_4hl37")]
+position = Vector2(293, 71)
+
+[node name="GlassGiver3" parent="." unique_id=37778272 groups=["clickable"] instance=ExtResource("12_4hl37")]
+position = Vector2(299, 71)
+
+[node name="Sink" parent="." unique_id=707847146 instance=ExtResource("13_sk1vp")]
+position = Vector2(264, 40)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="CustomerSpawn/LeavingZone" to="." method="_on_leaving_zone_body_entered"]
