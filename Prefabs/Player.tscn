@@ -56,7 +56,7 @@ metadata/_custom_type_script = "uid://cc3yiapgcu05y"
 [node name="Player" type="CharacterBody2D" unique_id=1461023337 groups=["player"]]
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_x3d5u")
 speed = 200.0
 
