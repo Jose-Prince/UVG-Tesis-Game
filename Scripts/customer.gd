@@ -18,6 +18,7 @@ var foodWanted: String = food.pick_random()
 
 var waitingTime: int = 5
 
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var waiting_timer: Timer = $WaitingTimer
 @onready var grid_manager: Node = $"../GridManager"
 
@@ -55,6 +56,7 @@ func _physics_process(delta: float) -> void:
 			
 			follow_path()
 			
+	update_animation()
 	move_and_slide()
 
 func follow_path():
@@ -70,6 +72,29 @@ func follow_path():
 		return
 	
 	velocity = global_position.direction_to(target) * movement_speed
+
+func update_animation():
+	# Idle
+	if velocity == Vector2.ZERO:
+		if animated_sprite.animation == "walk_up":
+			animated_sprite.play("idle_up")
+		elif animated_sprite.animation == "walk_right":
+			animated_sprite.play("idle_right")
+		else:
+			animated_sprite.play("idle")
+		return
+
+	# Walking
+	if abs(velocity.x) > abs(velocity.y):
+		animated_sprite.play("walk_right")
+		animated_sprite.flip_h = velocity.x < 0
+	else:
+		if velocity.y < 0:
+			animated_sprite.play("walk_up")
+		else:
+			animated_sprite.play("walk_down")
+
+		animated_sprite.flip_h = false
 
 func set_target(target_world: Vector2):
 	path = grid_manager.get_astar_path(global_position, target_world)
