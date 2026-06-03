@@ -6,9 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://r45ksajhucw5" path="res://Sprites/menu.PNG" id="3_55kwv"]
 [ext_resource type="Texture2D" uid="uid://cgeaitckg5fnk" path="res://Sprites/Coffee_noB.PNG" id="4_6vd4x"]
 [ext_resource type="FontFile" uid="uid://c0rmb6tjydgnl" path="res://Fonts/FascinateInline-Regular.ttf" id="4_12m1t"]
-[ext_resource type="Script" uid="uid://drc0u7k73tl0l" path="res://Scripts/curved_text.gd" id="4_twnyg"]
 [ext_resource type="FontFile" uid="uid://dliqq4g4bg0qy" path="res://Fonts/RobotoSlab-Regular.ttf" id="5_6vd4x"]
 [ext_resource type="Script" uid="uid://csttlrovvx2gi" path="res://Scripts/curve_label.gd" id="9_0061g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n82rj"]
+bg_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n82rj"]
 
@@ -27,18 +34,6 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bsy20"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07cxn"]
-
-[sub_resource type="Curve2D" id="Curve2D_55kwv"]
-bake_interval = 5.35
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 78, 414, 0, 0, 0, 0, 106, 297, 0, 0, 0, 0, 174, 205, 0, 0, 0, 0, 259, 146, 0, 0, 0, 0, 345, 126, 0, 0, 0, 0, 411, 127, 0, 0, 0, 0, 484, 154)
-}
-point_count = 7
-
-[sub_resource type="LabelSettings" id="LabelSettings_12m1t"]
-font = ExtResource("4_12m1t")
-font_size = 100
-font_color = Color(0.9607843, 0.92941177, 0.8862745, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0061g"]
 font = ExtResource("4_12m1t")
@@ -129,10 +124,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Panel/Control/NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=894536310]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 text = "——————————"
 horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/Control/NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1531549857]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxFlat_n82rj")
 
 [node name="NewGame" type="Button" parent="Panel/Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=935340656]
 layout_mode = 2
@@ -195,19 +196,12 @@ offset_bottom = 0.063964844
 texture = ExtResource("4_6vd4x")
 expand_mode = 1
 
-[node name="CurvedTitle" type="Path2D" parent="." unique_id=1533437760]
-curve = SubResource("Curve2D_55kwv")
-script = ExtResource("4_twnyg")
-text = "DREAM CAFE"
-label_settings = SubResource("LabelSettings_12m1t")
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1789502888]
 stream = ExtResource("2_p3fck")
 autoplay = true
 parameters/looping = true
 
 [node name="CurvedLabel" type="Control" parent="." unique_id=2031254110]
-visible = false
 anchors_preset = 0
 offset_left = 254.0
 offset_top = 296.0
