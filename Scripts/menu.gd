@@ -1,5 +1,10 @@
 extends Control
-	
+
+@onready var load_game: Button = $Control/NinePatchRect/MarginContainer/VBoxContainer/LoadGame
+
+func _ready() -> void:
+	load_game.visible = SaveManager.save_exists(1)
+
 func _on_new_game_pressed() -> void:
 	SaveManager.load_game(1)
 	get_tree().change_scene_to_file("res://Scenes/character_editor.tscn")

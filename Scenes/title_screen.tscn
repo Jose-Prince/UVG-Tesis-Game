@@ -135,6 +135,10 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_0061g")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8mikk")
 text = "New Game"
 
+[node name="LoadGame" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=141415103]
+layout_mode = 2
+text = "Load Game"
+
 [node name="Settings" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=755254686]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)

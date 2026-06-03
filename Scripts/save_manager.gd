@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_FOLDER: String = "user://saves/"
+const SAVE_FOLDER: String = "res://saves/"
 const default_dictionary: Dictionary = {
 	"Day": "Mon.",
 	"Month": "January",
@@ -42,9 +42,12 @@ func load_game(slot: int):
 	if data == null:
 		return default_dictionary.duplicate()
 	
-	print(data)
 	return data
 
 func ensure_save_folder() -> void:
 	if not DirAccess.dir_exists_absolute(SAVE_FOLDER):
 		DirAccess.make_dir_absolute(SAVE_FOLDER)
+
+func save_exists(slot: int) -> bool:
+	var save_path := SAVE_FOLDER + "save_%d.json" % slot
+	return FileAccess.file_exists(save_path)
