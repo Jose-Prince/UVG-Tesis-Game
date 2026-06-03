@@ -3,8 +3,8 @@ extends Node2D
 @export var isFree = true
 @export var isRotated = false
 
-var leftOffsetPos: Vector2 = Vector2(-15, 0)
-var rightOffsetPos: Vector2 = Vector2(15, 0)
+var leftOffsetPos: Vector2 = Vector2(-20, 0)
+var rightOffsetPos: Vector2 = Vector2(20, 0)
 
 @onready var go_to_pos: Marker2D = $GoToPos
 @onready var sprite_2d: Sprite2D = $Sprite2D

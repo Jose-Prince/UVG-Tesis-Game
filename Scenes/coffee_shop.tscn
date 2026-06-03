@@ -1159,10 +1159,7 @@ script = ExtResource("2_bxugb")
 wall_layer = NodePath("../WallLayer")
 
 [node name="Table" parent="." unique_id=639487740 instance=ExtResource("4_0k3ma")]
-position = Vector2(112, 208)
-
-[node name="Table2" parent="." unique_id=185124453 instance=ExtResource("4_0k3ma")]
-position = Vector2(240, 208)
+position = Vector2(136, 208)
 
 [node name="Table3" parent="." unique_id=1389871353 instance=ExtResource("4_0k3ma")]
 position = Vector2(240, 144)
@@ -1193,18 +1190,7 @@ position = Vector2(144, 96)
 isRotated = true
 
 [node name="Chair3" parent="." unique_id=411604972 instance=ExtResource("7_wpc15")]
-position = Vector2(80, 208)
-
-[node name="Chair4" parent="." unique_id=377134920 instance=ExtResource("7_wpc15")]
-position = Vector2(144, 208)
-isRotated = true
-
-[node name="Chair5" parent="." unique_id=1094988505 instance=ExtResource("7_wpc15")]
-position = Vector2(208, 208)
-
-[node name="Chair6" parent="." unique_id=718268003 instance=ExtResource("7_wpc15")]
-position = Vector2(272, 208)
-isRotated = true
+position = Vector2(104, 208)
 
 [node name="Chair7" parent="." unique_id=578940718 instance=ExtResource("7_wpc15")]
 position = Vector2(208, 144)
