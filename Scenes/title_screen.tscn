@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://c0rmb6tjydgnl" path="res://Fonts/FascinateInline-Regular.ttf" id="4_12m1t"]
 [ext_resource type="Script" uid="uid://drc0u7k73tl0l" path="res://Scripts/curved_text.gd" id="4_twnyg"]
 [ext_resource type="FontFile" uid="uid://dliqq4g4bg0qy" path="res://Fonts/RobotoSlab-Regular.ttf" id="5_6vd4x"]
+[ext_resource type="Script" uid="uid://csttlrovvx2gi" path="res://Scripts/curve_label.gd" id="9_0061g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n82rj"]
 
@@ -28,6 +29,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07cxn"]
 
 [sub_resource type="Curve2D" id="Curve2D_55kwv"]
+bake_interval = 5.35
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 78, 414, 0, 0, 0, 0, 106, 297, 0, 0, 0, 0, 174, 205, 0, 0, 0, 0, 259, 146, 0, 0, 0, 0, 345, 126, 0, 0, 0, 0, 411, 127, 0, 0, 0, 0, 484, 154)
 }
@@ -38,6 +40,10 @@ font = ExtResource("4_12m1t")
 font_size = 100
 font_color = Color(0.9607843, 0.92941177, 0.8862745, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_0061g"]
+font = ExtResource("4_12m1t")
+font_size = 100
+
 [node name="TitleScreen" type="Control" unique_id=1439522845]
 layout_mode = 3
 anchors_preset = 15
@@ -47,47 +53,51 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_klylv")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1441525278]
-visible = false
+[node name="Panel" type="Panel" parent="." unique_id=304959585]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.2509804, 0.101960786, 0.13725491, 1)
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=619703966]
+[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=619703966]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = 17.0
-offset_right = 17.0
-offset_bottom = 25.0
+offset_right = 8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_twnyg")
 
-[node name="Control" type="Control" parent="." unique_id=1506689805]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Control" type="Control" parent="Panel" unique_id=1506689805]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Control" unique_id=1701874499]
-layout_mode = 0
-offset_left = 630.0
-offset_top = 110.0
-offset_right = 1043.0
-offset_bottom = 584.0
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel/Control" unique_id=1701874499]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.54700005
+anchor_top = 0.17
+anchor_right = 0.90500003
+anchor_bottom = 0.901
+offset_left = -0.14404297
+offset_top = -0.16000366
+offset_right = 0.4399414
+offset_bottom = 0.15197754
 texture = ExtResource("3_55kwv")
 patch_margin_left = 9
 patch_margin_top = 9
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/NinePatchRect" unique_id=437061542]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Control/NinePatchRect" unique_id=437061542]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,15 +109,15 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/NinePatchRect/MarginContainer" unique_id=1276538440]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Control/NinePatchRect/MarginContainer" unique_id=1276538440]
 layout_mode = 2
 theme_override_constants/separation = 23
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1611489862]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1611489862]
 layout_mode = 2
 theme_override_constants/separation = -11
 
-[node name="Label" type="Label" parent="Control/NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1624773213]
+[node name="Label" type="Label" parent="Panel/Control/NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1624773213]
 layout_mode = 2
 size_flags_stretch_ratio = 1.1
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
@@ -118,13 +128,13 @@ text = "Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="Control/NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=894536310]
+[node name="Label2" type="Label" parent="Panel/Control/NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=894536310]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 text = "——————————"
 horizontal_alignment = 1
 
-[node name="NewGame" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=935340656]
+[node name="NewGame" type="Button" parent="Panel/Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=935340656]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
@@ -135,11 +145,11 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_0061g")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8mikk")
 text = "New Game"
 
-[node name="LoadGame" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=141415103]
+[node name="LoadGame" type="Button" parent="Panel/Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=141415103]
 layout_mode = 2
 text = "Load Game"
 
-[node name="Settings" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=755254686]
+[node name="Settings" type="Button" parent="Panel/Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=755254686]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
@@ -150,7 +160,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_w5sh6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o1e67")
 text = "Settings"
 
-[node name="Quit" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1908246047]
+[node name="Quit" type="Button" parent="Panel/Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1908246047]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
@@ -161,12 +171,27 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_bsy20")
 theme_override_styles/hover = SubResource("StyleBoxFlat_07cxn")
 text = "Exit Game"
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1441525278]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2509804, 0.101960786, 0.13725491, 1)
+
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=626094069]
-layout_mode = 0
-offset_left = 37.0
-offset_top = 130.0
-offset_right = 616.0
-offset_bottom = 685.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.201
+anchor_right = 0.535
+anchor_bottom = 1.057
+offset_left = 0.13599777
+offset_top = -0.2480011
+offset_right = -0.32000732
+offset_bottom = 0.063964844
 texture = ExtResource("4_6vd4x")
 expand_mode = 1
 
@@ -181,6 +206,22 @@ stream = ExtResource("2_p3fck")
 autoplay = true
 parameters/looping = true
 
-[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="CurvedLabel" type="Control" parent="." unique_id=2031254110]
+visible = false
+anchors_preset = 0
+offset_left = 254.0
+offset_top = 296.0
+offset_right = 387.0
+offset_bottom = 433.0
+script = ExtResource("9_0061g")
+text = "DREAM CAFE"
+radius = 250.0
+arc_degrees = 129.6
+start_angle_degrees = -180.0
+char_spacing = 1.0
+font = ExtResource("4_12m1t")
+label_settings = SubResource("LabelSettings_0061g")
+
+[connection signal="pressed" from="Panel/Control/NinePatchRect/MarginContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Panel/Control/NinePatchRect/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Panel/Control/NinePatchRect/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

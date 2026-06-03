@@ -1,6 +1,6 @@
 extends Control
 
-@onready var load_game: Button = $Control/NinePatchRect/MarginContainer/VBoxContainer/LoadGame
+@onready var load_game: Button = $Panel/Control/NinePatchRect/MarginContainer/VBoxContainer/LoadGame
 
 func _ready() -> void:
 	load_game.visible = SaveManager.save_exists(1)
