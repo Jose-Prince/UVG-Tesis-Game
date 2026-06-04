@@ -2,7 +2,6 @@ extends VBoxContainer
 
 const LOAD_BUTTON_PREFAB := preload("res://Prefabs/load_button.tscn")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var max_slot = SaveManager.get_save_count()
 	
@@ -32,7 +31,10 @@ func _ready() -> void:
 				month,
 				year
 			)
+			
+			button.pressed.connect(
+				_on_save_button_pressed.bind(slot)
+			)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_save_button_pressed(slot: int) -> void:
+	get_tree().change_scene_to_file("res://Scenes/coffee_shop.tscn")
