@@ -65,3 +65,26 @@ func ensure_save_folder() -> void:
 func save_exists(slot: int) -> bool:
 	var save_path := SAVE_FOLDER + "save_%d.json" % slot
 	return FileAccess.file_exists(save_path)
+
+func get_save_count() -> int:
+	var count := 0
+	
+	var dir := DirAccess.open(SAVE_FOLDER)
+	
+	if dir == null:
+		return 0
+	
+	dir.list_dir_begin()
+	
+	var file_name := dir.get_next()
+	
+	while file_name != "":
+		if not dir.current_is_dir():
+			if file_name.begins_with("save_") and file_name.ends_with(".json"):
+				count += 1
+		
+		file_name = dir.get_next()
+	
+	dir.list_dir_end()
+	
+	return count
