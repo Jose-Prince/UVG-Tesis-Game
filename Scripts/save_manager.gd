@@ -34,7 +34,7 @@ func save_game(slot: int, data: Dictionary) -> void:
 
 func save_especific_data(slot: int, data_slot: String, specific_data: Dictionary):
 	var data = load_game(slot)
-	specific_data[data_slot] = specific_data
+	data[data_slot] = specific_data
 	save_game(slot, data)
 
 func load_game(slot: int):

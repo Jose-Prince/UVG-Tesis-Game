@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://fdhq57w88syi" path="res://Scripts/player.gd" id="1_x3d5u"]
 [ext_resource type="Texture2D" uid="uid://dtle8u24eu8cw" path="res://Sprites/Characters_V3_Colour.png" id="2_gg3t4"]
 [ext_resource type="PackedScene" uid="uid://cpoodtd07o4h" path="res://Prefabs/time_ui.tscn" id="3_shmu5"]
-[ext_resource type="Script" path="res://Scripts/time_system.gd" id="3_vxq8l"]
+[ext_resource type="Script" uid="uid://r14gbqvkuyim" path="res://Scripts/time_system.gd" id="3_vxq8l"]
 [ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/date_time.gd" id="4_gg3t4"]
 [ext_resource type="Script" uid="uid://brsgf6flsog4g" path="res://Scripts/time_ui.gd" id="4_vxq8l"]
 
@@ -163,7 +163,7 @@ shape = SubResource("CircleShape2D_x3d5u")
 [node name="TimeSystem" type="Node" parent="." unique_id=98841440]
 script = ExtResource("3_vxq8l")
 date_time = SubResource("Resource_javds")
-ticks_pr_second = 500
+ticks_pr_second = 800
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1624174308]
 
