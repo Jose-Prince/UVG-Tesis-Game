@@ -2,9 +2,18 @@ extends Node
 
 const SAVE_FOLDER: String = "res://saves/"
 const default_dictionary: Dictionary = {
-	"Day": "Mon.",
-	"Month": "January",
-	"Money": 0
+	"player": {
+		"name": "Akice",
+		"money": 0,
+	},
+	"world": {
+		"day": "Mon.",
+		"month": "January",
+		"year": 0,
+	},
+	"coffee_shop": {
+		"name": "Place",
+	},
 }
 
 signal day_ended
@@ -22,6 +31,11 @@ func save_game(slot: int, data: Dictionary) -> void:
 	
 	save_file.store_line(string_data)
 	save_file.close()
+
+func save_especific_data(slot: int, data_slot: String, specific_data: Dictionary):
+	var data = load_game(slot)
+	specific_data[data_slot] = specific_data
+	save_game(slot, data)
 
 func load_game(slot: int):
 	var save_path := SAVE_FOLDER + "save_%d.json" % slot

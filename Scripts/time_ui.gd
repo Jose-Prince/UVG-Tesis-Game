@@ -70,4 +70,4 @@ func update_label(label: Label, value: int, should_have_zero: bool = true) -> vo
 	label.text += str(value)
 
 func _on_day_ended():
-	SaveManager.save_game(1, {"Day": day.text, "Month": month.text, "Money": money_count.text})
+	SaveManager.save_especific_data(1, "world", {"day": day.text, "month": month.text, "year": 0})
