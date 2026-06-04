@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dppufbgfp1bej"]
+
+[ext_resource type="Script" uid="uid://dmk14hw4mroav" path="res://Scripts/load_button.gd" id="1_rs1dc"]
+
+[node name="LoadButton" type="Button" unique_id=1461185614]
+custom_minimum_size = Vector2(0, 150)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_rs1dc")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1195779977]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer" unique_id=2006558251]
+layout_mode = 2
+columns = 2
+
+[node name="PlayerLabel" type="Label" parent="MarginContainer/GridContainer" unique_id=1760122965]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Player's name"
+vertical_alignment = 1
+
+[node name="ShopLabel" type="Label" parent="MarginContainer/GridContainer" unique_id=1061753359]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Shop's name"
+vertical_alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="MarginContainer/GridContainer" unique_id=932900997]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Money"
+vertical_alignment = 1
+
+[node name="DateLabel" type="Label" parent="MarginContainer/GridContainer" unique_id=697298503]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Date"
+vertical_alignment = 1

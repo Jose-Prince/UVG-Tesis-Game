@@ -8,6 +8,7 @@ const default_dictionary: Dictionary = {
 	},
 	"world": {
 		"day": "Mon.",
+		"num_day": 0,
 		"month": "January",
 		"year": 0,
 	},
