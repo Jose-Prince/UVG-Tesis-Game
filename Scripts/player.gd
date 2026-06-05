@@ -6,8 +6,23 @@ extends CharacterBody2D
 var player_name := ""
 var current_object = null
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var skin: AnimatedSprite2D = $skin
+@onready var clothes: AnimatedSprite2D = $clothes
+@onready var lineart: AnimatedSprite2D = $lineart
+@onready var hair: AnimatedSprite2D = $hair
 
+func play_layers(anim_name: String):
+	skin.play(anim_name)
+	clothes.play(anim_name)
+	lineart.play(anim_name)
+	hair.play(anim_name)
+
+func flip_layers(value: bool):
+	skin.flip_h = value
+	clothes.flip_h = value
+	lineart.flip_h = value
+	hair.flip_h = value
+	
 func _process(delta: float):
 	z_index = int(global_position.y)
 
@@ -34,26 +49,26 @@ func make_action():
 func update_animation():
 	# Idle
 	if velocity == Vector2.ZERO:
-		if animated_sprite.animation == "walk_up":
-			animated_sprite.play("idle_up")
-		elif animated_sprite.animation == "walk_right":
-			animated_sprite.play("idle_right")
+		if skin.animation == "walk_up":
+			play_layers("idle_up")
+		elif skin.animation == "walk_right":
+			play_layers("idle_right")
 		else:
-			animated_sprite.play("idle")
+			play_layers("idle")
 		return
 
 	# Walking
 	if abs(velocity.x) > abs(velocity.y):
 		# Movimiento horizontal
-		animated_sprite.play("walk_right")
-		animated_sprite.flip_h = velocity.x < 0
+		play_layers("walk_right")
+		flip_layers(velocity.x < 0)
 	else:
 		# Movimiento vertical
 		if velocity.y < 0:
-			animated_sprite.play("walk_up")
+			play_layers("walk_up")
 		else:
-			animated_sprite.play("walk_down")
-		animated_sprite.flip_h = false
+			play_layers("walk_down")
+		flip_layers(false)
 	
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("clickable"):
