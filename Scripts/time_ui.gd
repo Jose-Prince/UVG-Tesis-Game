@@ -1,12 +1,25 @@
 extends Control
 
-var start_month := 0
-var start_day := 1
-var start_weekday := 0
+var start_month: int
+var start_day: int
+var day_index: int
 
-var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Decemmber"]
-var days = ["Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun."]
+var current_day_number: int
+var current_day_index: int
+
+var months = [
+	"January", "February", "March", "April",
+	"May", "June", "July", "August",
+	"September", "October", "November", "Decemmber"
+]
+
+var days = [
+	"Mon.", "Tue.", "Wed.", "Thu.",
+	"Fri.", "Sat.", "Sun."
+]
+
 var money: int = 0
+var actual_month: int
 
 @onready var day: Label = $DayControl/days
 @onready var hours: Label = $ClockControl/hours
@@ -17,57 +30,72 @@ var money: int = 0
 @onready var month: Label = $MonthControl/Month
 
 func _ready() -> void:
-	var date = Time.get_datetime_dict_from_system()
-	
-	start_month = date["month"] - 1
-	start_day = date["day"]
-	start_weekday = date["weekday"]
-	
+	start_month = GameData.month
+	start_day = GameData.num_day
+	day_index = GameData.day_index
+
+	current_day_index = day_index
+	current_day_number = start_day
+
 	SaveManager.day_ended.connect(_on_day_ended)
 
-func add_point(moneyRecived: int):
-	money += moneyRecived
+func add_point(money_received: int) -> void:
+	money += money_received
 	money_count.text = str(money)
 
 func _on_time_system_updated(date_time: DateTime) -> void:
-	var total_days := (start_day - 1) + (date_time.days - 1)
-	
-	var current_day := ((total_days - 1) % 30) + 1
-	update_label(day, current_day)
-	
+	var total_days := start_day + (date_time.days - 1)
+
+	current_day_number = ((total_days - 1) % 30) + 1
+	update_label(day, current_day_number)
+
 	var display_hour := date_time.hours
 	var period := "AM"
-	
+
 	if display_hour >= 12:
 		period = "PM"
-		
+
 	if display_hour > 12:
 		display_hour -= 12
-	
+
 	update_label(hours, display_hour)
-	
+
 	var display_minutes := int(date_time.minutes / 5) * 5
 	update_label(minutes, display_minutes)
-	
+
 	periodLabel.text = period
-	
-	var day_index := (start_weekday + date_time.days - 1) & days.size()
-	day_name.text = days[day_index]
-	
-	var month_index := (start_month + int(total_days / 30)) % months.size()
-	month.text = months[month_index]
+
+	current_day_index = (day_index + date_time.days - 1) % days.size()
+	day_name.text = days[current_day_index]
+
+	actual_month = (start_month + int(total_days / 30)) % months.size()
+	month.text = months[actual_month]
 
 func add_leading_zero(label: Label, value: int) -> void:
 	if value < 10:
-		label.text += '0'
-		
+		label.text += "0"
+
 func update_label(label: Label, value: int, should_have_zero: bool = true) -> void:
 	label.text = ""
-		
+
 	if should_have_zero:
 		add_leading_zero(label, value)
-			
+
 	label.text += str(value)
 
-func _on_day_ended():
-	SaveManager.save_game({"Day": day.text, "Month": month.text, "Money": money_count.text})
+func _on_day_ended() -> void:
+	print("Save")
+	print("Slot:", GameData.game_slot)
+	print("Day Index:", current_day_index)
+	print("Day Number:", current_day_number)
+
+	SaveManager.save_especific_data(
+		GameData.game_slot,
+		"world",
+		{
+			"day_index": (current_day_index + 1) % days.size(),
+			"num_day": current_day_number + 1,
+			"month": actual_month,
+			"year": GameData.year
+		}
+	)
