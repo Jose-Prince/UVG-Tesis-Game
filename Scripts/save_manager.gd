@@ -89,3 +89,9 @@ func get_save_count() -> int:
 	dir.list_dir_end()
 	
 	return count
+
+func delete_save(slot: int) -> void:
+	var save_path := SAVE_FOLDER + "save_%d.json" % slot
+
+	if FileAccess.file_exists(save_path):
+		DirAccess.remove_absolute(save_path)

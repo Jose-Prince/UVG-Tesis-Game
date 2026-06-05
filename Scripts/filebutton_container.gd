@@ -5,6 +5,9 @@ const LOAD_BUTTON_PREFAB := preload("res://Prefabs/load_button.tscn")
 func _ready() -> void:
 	var max_slot = SaveManager.get_save_count()
 	
+	if max_slot <= 0:
+		get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
+	
 	for slot in range(0, max_slot + 1):
 		if SaveManager.save_exists(slot):
 			var save_data = SaveManager.load_game(slot)
@@ -23,6 +26,7 @@ func _ready() -> void:
 			add_child(button)
 
 			button.setup(
+				slot,
 				player_name,
 				shop_name,
 				money,
