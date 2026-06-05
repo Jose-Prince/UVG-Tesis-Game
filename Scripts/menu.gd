@@ -4,8 +4,8 @@ extends Control
 @onready var load_game: Button = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/LoadGame
 
 func _ready() -> void:
-	load_game.visible = SaveManager.save_exists(1)
-	control_2.visible = SaveManager.save_exists(1)
+	load_game.visible = SaveManager.directory_has_content("res://saves/")
+	control_2.visible = SaveManager.directory_has_content("res://saves/")
 
 func _on_new_game_pressed() -> void:
 	GameData.game_slot = SaveManager.get_save_count()

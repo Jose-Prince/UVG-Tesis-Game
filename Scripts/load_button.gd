@@ -1,5 +1,6 @@
 extends Button
 
+var days = ["Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.", "Sun."]
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Decemmber"]
 var slot: int
 
@@ -15,13 +16,14 @@ func setup(
 	player_name: String,
 	shop_name: String,
 	money: int,
-	day: String,
+	day_index: int,
 	num_day: int,
 	month: int,
 	year: int
 ) -> void:
 	slot = save_slot
 	var month_name: String = months[month]
+	var day = days[day_index]
 	
 	player_label.text = "%s" % player_name
 	shop_label.text = "Coffee Shop: %s" % shop_name

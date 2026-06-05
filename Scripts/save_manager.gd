@@ -7,9 +7,9 @@ const default_dictionary: Dictionary = {
 		"money": 0,
 	},
 	"world": {
-		"day": "Mon.",
+		"day_index": 0,
 		"num_day": 0,
-		"month": "January",
+		"month": 0,
 		"year": 0,
 	},
 	"coffee_shop": {
@@ -95,3 +95,23 @@ func delete_save(slot: int) -> void:
 
 	if FileAccess.file_exists(save_path):
 		DirAccess.remove_absolute(save_path)
+
+func directory_has_content(path: String) -> bool:
+	var dir := DirAccess.open(path)
+
+	if dir == null:
+		return false
+
+	dir.list_dir_begin()
+
+	var file_name := dir.get_next()
+
+	while file_name != "":
+		if file_name != "." and file_name != "..":
+			dir.list_dir_end()
+			return true
+
+		file_name = dir.get_next()
+
+	dir.list_dir_end()
+	return false

@@ -17,23 +17,23 @@ func _ready() -> void:
 
 			var shop_name = save_data["coffee_shop"]["name"]
 
-			var day = save_data["world"]["day"]
+			var day_index = save_data["world"]["day_index"]
 			var num_day = save_data["world"]["num_day"]
 			var month = save_data["world"]["month"]
 			var year = save_data["world"]["year"]
 
 			var button := LOAD_BUTTON_PREFAB.instantiate()
 			add_child(button)
-
+			print(num_day)
 			button.setup(
 				slot,
-				player_name,
-				shop_name,
-				money,
-				day,
-				num_day,
-				month,
-				year
+				str(player_name),
+				str(shop_name),
+				int(money),
+				int(day_index),
+				int(num_day),
+				int(month),
+				int(year)
 			)
 			
 			button.pressed.connect(
