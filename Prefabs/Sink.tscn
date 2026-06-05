@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b0301dxp1imrf"]
+[gd_scene format=3 uid="uid://5pgj7btnpwub"]
 
 [ext_resource type="Script" uid="uid://n5vu4ib708g8" path="res://Scripts/exchanger.gd" id="1_4a48a"]
 [ext_resource type="Texture2D" uid="uid://bj1uha56tsqxm" path="res://Sprites/kitchen16_blue.png" id="1_tvt42"]
@@ -10,6 +10,7 @@ atlas = ExtResource("1_tvt42")
 region = Rect2(112.06183, 1.9198978, 16.70578, 14.740571)
 
 [node name="Sink" type="StaticBody2D" unique_id=2077379661]
+input_pickable = true
 script = ExtResource("1_4a48a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=961101458]
@@ -17,3 +18,6 @@ shape = SubResource("RectangleShape2D_4a48a")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1034516179]
 texture = SubResource("AtlasTexture_04s46")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

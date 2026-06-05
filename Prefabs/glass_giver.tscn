@@ -12,6 +12,7 @@ region = Rect2(4.860305, 84.092094, 7.1062565, 11.605087)
 size = Vector2(6, 10)
 
 [node name="GlassGiver" type="StaticBody2D" unique_id=1691044326]
+input_pickable = true
 script = ExtResource("1_ko86c")
 new_object = ExtResource("2_0vp62")
 
@@ -20,3 +21,6 @@ texture = SubResource("AtlasTexture_k554i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1829573626 groups=["clickable"]]
 shape = SubResource("RectangleShape2D_ko86c")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -120,3 +120,9 @@ func _on_timer_timeout() -> void:
 	progress_bar.visible = false
 	clear_food()
 	send_customers_home()
+	
+func _on_mouse_entered():
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+func _on_mouse_exited():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)

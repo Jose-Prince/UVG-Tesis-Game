@@ -1227,6 +1227,7 @@ position = Vector2(299, 71)
 
 [node name="Sink" parent="." unique_id=2077379661 groups=["clickable"] instance=ExtResource("13_sk1vp")]
 position = Vector2(264, 40)
+input_pickable = false
 object_to_give = ExtResource("14_xjtdl")
 object_to_get = ExtResource("15_2i3s5")
 
