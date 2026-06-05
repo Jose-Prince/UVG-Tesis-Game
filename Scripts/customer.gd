@@ -21,6 +21,7 @@ var waitingTime: int = 5
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var waiting_timer: Timer = $WaitingTimer
 @onready var grid_manager: Node = $"../GridManager"
+@onready var label: Label = $CanvasLayer/Label
 
 func _ready() -> void:
 	await get_tree().physics_frame
