@@ -6,7 +6,7 @@ var money := 0
 
 var shop_name := ""
 
-var month := ""
+var month := 0
 var day := ""
 var num_day := 0
 var year := 0

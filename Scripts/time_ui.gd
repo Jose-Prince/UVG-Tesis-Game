@@ -19,9 +19,9 @@ var money: int = 0
 func _ready() -> void:
 	var date = Time.get_datetime_dict_from_system()
 	
-	start_month = date["month"] - 1
-	start_day = date["day"]
-	start_weekday = date["weekday"]
+	start_month = GameData.month
+	start_day = GameData.num_day
+	start_weekday = days.find(GameData.day)
 	
 	SaveManager.day_ended.connect(_on_day_ended)
 
@@ -52,7 +52,7 @@ func _on_time_system_updated(date_time: DateTime) -> void:
 	periodLabel.text = period
 	
 	var day_index := (start_weekday + date_time.days - 1) & days.size()
-	day_name.text = days[day_index]
+	day_name.text = days[day_index-1]
 	
 	var month_index := (start_month + int(total_days / 30)) % months.size()
 	month.text = months[month_index]
@@ -70,4 +70,4 @@ func update_label(label: Label, value: int, should_have_zero: bool = true) -> vo
 	label.text += str(value)
 
 func _on_day_ended():
-	SaveManager.save_especific_data(1, "world", {"day": day.text, "month": month.text, "year": 0})
+	SaveManager.save_especific_data(1, "world", {"day": day_name.text, "num_day": day.text, "month": month.text, "year": 0})

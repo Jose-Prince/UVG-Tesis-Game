@@ -17,6 +17,8 @@ func _on_confirm_button_pressed() -> void:
 	SaveManager.save_especific_data(GameData.game_slot, "player", {"name": GameData.player_name, "money": 0})
 	SaveManager.save_especific_data(GameData.game_slot, "coffee_shop", {"name": GameData.shop_name})
 	
+	GameData.load_to_data(SaveManager.load_game(GameData.game_slot))
+	
 	get_tree().change_scene_to_file("res://Scenes/coffee_shop.tscn")
 
 
