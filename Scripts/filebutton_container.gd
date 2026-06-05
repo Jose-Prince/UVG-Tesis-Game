@@ -41,4 +41,9 @@ func _ready() -> void:
 			)
 
 func _on_save_button_pressed(slot: int) -> void:
+	var save_data = SaveManager.load_game(slot)
+
+	GameData.game_slot = slot
+	GameData.load_to_data(save_data)
+
 	get_tree().change_scene_to_file("res://Scenes/coffee_shop.tscn")
