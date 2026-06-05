@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://r14gbqvkuyim" path="res://Scripts/time_system.gd" id="3_vxq8l"]
 [ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/date_time.gd" id="4_gg3t4"]
 [ext_resource type="Script" uid="uid://brsgf6flsog4g" path="res://Scripts/time_ui.gd" id="4_vxq8l"]
+[ext_resource type="PackedScene" uid="uid://ce5bfs85ds2ea" path="res://Scenes/PauseMenu.tscn" id="7_javds"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_javds"]
 atlas = ExtResource("2_gg3t4")
@@ -163,12 +164,15 @@ shape = SubResource("CircleShape2D_x3d5u")
 [node name="TimeSystem" type="Node" parent="." unique_id=98841440]
 script = ExtResource("3_vxq8l")
 date_time = SubResource("Resource_javds")
-ticks_pr_second = 5000
+ticks_pr_second = 80
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1624174308]
 
 [node name="TimeGui" parent="CanvasLayer" unique_id=2113710388 instance=ExtResource("3_shmu5")]
 script = ExtResource("4_vxq8l")
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1486490026 instance=ExtResource("7_javds")]
+visible = false
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

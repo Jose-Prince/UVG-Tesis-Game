@@ -6,6 +6,7 @@ extends CharacterBody2D
 var player_name := ""
 var current_object = null
 
+@onready var pause_menu: Control = $CanvasLayer/PauseMenu
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _process(delta: float):
@@ -54,7 +55,7 @@ func update_animation():
 		else:
 			animated_sprite.play("walk_down")
 		animated_sprite.flip_h = false
-	
+
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("clickable"):
 		current_object = body
