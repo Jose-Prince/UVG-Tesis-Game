@@ -120,7 +120,7 @@ alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_12m1t")
-theme_override_font_sizes/font_size = 73
+theme_override_font_sizes/font_size = 8
 text = "DREAM CAFE"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -206,6 +206,10 @@ theme_override_constants/margin_bottom = 50
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer" unique_id=816277972]
 layout_mode = 2
 
+[node name="Control5" type="Control" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=1350071519]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="NewGame" type="Button" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=935340656]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
@@ -261,6 +265,10 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_ycay6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bsy20")
 theme_override_styles/hover = SubResource("StyleBoxFlat_07cxn")
 text = "Exit Game"
+
+[node name="Control4" type="Control" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=603793771]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1789502888]
 stream = ExtResource("2_p3fck")
