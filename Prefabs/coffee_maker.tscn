@@ -11,6 +11,7 @@ atlas = ExtResource("1_8dl7a")
 size = Vector2(20, 7)
 
 [node name="CoffeeMaker" type="StaticBody2D" unique_id=1701230900 groups=["clickable"]]
+input_pickable = true
 script = ExtResource("1_7mtde")
 new_object = ExtResource("2_frtu7")
 
@@ -20,3 +21,6 @@ texture = SubResource("AtlasTexture_8dl7a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=396745773]
 position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_7mtde")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

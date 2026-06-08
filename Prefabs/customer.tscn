@@ -140,4 +140,13 @@ one_shot = true
 sprite_frames = SubResource("SpriteFrames_4eorp")
 animation = &"idle"
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=799048393]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=2078621784]
+visible = false
+offset_left = -20.0
+offset_top = -36.0
+offset_right = 20.0
+offset_bottom = -13.0
+
 [connection signal="timeout" from="WaitingTimer" to="." method="_on_waiting_timer_timeout"]

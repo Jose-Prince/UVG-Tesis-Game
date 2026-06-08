@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://j2pwgg4qqx3g"]
 
 [ext_resource type="Script" uid="uid://bx5hhn80ewyna" path="res://Scripts/name_entry.gd" id="1_3sdjg"]
+[ext_resource type="Texture2D" uid="uid://cx1nyacr2yebd" path="res://Sprites/gingham.PNG" id="2_1vb4o"]
 [ext_resource type="FontFile" uid="uid://bm4e365ecirdj" path="res://Fonts/Chalk.otf" id="2_7wrfq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vb4o"]
@@ -35,6 +36,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3sdjg")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=951331320]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1vb4o")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=190599061]
 layout_mode = 1
