@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://r45ksajhucw5" path="res://Sprites/menu.PNG" id="3_55kwv"]
 [ext_resource type="Texture2D" uid="uid://cgeaitckg5fnk" path="res://Sprites/Coffee_noB.PNG" id="4_6vd4x"]
 [ext_resource type="FontFile" uid="uid://c0rmb6tjydgnl" path="res://Fonts/FascinateInline-Regular.ttf" id="4_12m1t"]
-[ext_resource type="FontFile" uid="uid://dliqq4g4bg0qy" path="res://Fonts/RobotoSlab-Regular.ttf" id="5_6vd4x"]
-[ext_resource type="Script" uid="uid://dyjktga4k8yto" path="res://Scripts/responsive_label.gd" id="5_0061g"]
-[ext_resource type="Script" uid="uid://csttlrovvx2gi" path="res://Scripts/curve_label.gd" id="9_0061g"]
+[ext_resource type="Script" path="res://Scripts/responsive_label.gd" id="5_0061g"]
+[ext_resource type="FontFile" uid="uid://c6m8rdtvxahbg" path="res://Fonts/static/PixelifySans-Regular.ttf" id="8_0061g"]
+[ext_resource type="Script" path="res://Scripts/curve_label.gd" id="9_0061g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0061g"]
 font = ExtResource("4_12m1t")
@@ -120,7 +120,7 @@ alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_12m1t")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 100
 text = "DREAM CAFE"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -214,7 +214,7 @@ size_flags_vertical = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
-theme_override_fonts/font = ExtResource("5_6vd4x")
+theme_override_fonts/font = ExtResource("8_0061g")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n82rj")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0061g")
@@ -229,7 +229,7 @@ size_flags_vertical = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
-theme_override_fonts/font = ExtResource("5_6vd4x")
+theme_override_fonts/font = ExtResource("8_0061g")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8mikk")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_o1e67")
@@ -244,7 +244,7 @@ size_flags_vertical = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
-theme_override_fonts/font = ExtResource("5_6vd4x")
+theme_override_fonts/font = ExtResource("8_0061g")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sqelc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_w5sh6")
@@ -259,7 +259,7 @@ size_flags_vertical = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
-theme_override_fonts/font = ExtResource("5_6vd4x")
+theme_override_fonts/font = ExtResource("8_0061g")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ycay6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bsy20")
