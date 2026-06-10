@@ -11,7 +11,7 @@ enum DayStates {
 	NIGHT
 }
 
-var current_state: DayStates
+var current_state: DayStates = DayStates.DAY
 var in_transition: bool = false
 var time_system: TimeSystem
 
@@ -36,6 +36,12 @@ func _ready() -> void:
 
 	if time_system:
 		time_system.updated.connect(update)
+		var diff_day_start = time_system.date_time.diff_without_days(day_start)
+		var diff_night_start = time_system.date_time.diff_without_days(night_start)
+		
+		if diff_day_start < 0 || diff_night_start > 0:
+			current_state = DayStates.NIGHT
+		
 
 func update(game_time: DateTime) -> void:
 	var next_state: DayStates = transition_map[current_state]

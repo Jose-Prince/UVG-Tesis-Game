@@ -1141,6 +1141,7 @@ radius = 17.0
 
 [sub_resource type="Resource" id="Resource_2o2p7"]
 script = ExtResource("17_vffnu")
+hours = 7
 metadata/_custom_type_script = "uid://cc3yiapgcu05y"
 
 [sub_resource type="Resource" id="Resource_eatfk"]
