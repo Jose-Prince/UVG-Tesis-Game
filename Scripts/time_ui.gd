@@ -3,6 +3,7 @@ extends Control
 var start_month: int
 var start_day: int
 var day_index: int
+var year: int
 
 var current_day_number: int
 var current_day_index: int
@@ -35,6 +36,7 @@ func _ready() -> void:
 	start_month = GameData.month
 	start_day = GameData.num_day
 	day_index = GameData.day_index
+	year = GameData.year
 
 	current_day_index = day_index
 	current_day_number = start_day
@@ -98,6 +100,11 @@ func _on_day_ended() -> void:
 			"year": GameData.year
 		}
 	)
+	
+	GameData.day_index = (current_day_index + 1) % days.size()
+	GameData.num_day = current_day_number + 1
+	GameData.month = actual_month
+	GameData.year = year
 	
 	await scene_transition.fade(1.0, 1.5).finished
 	get_tree().change_scene_to_file("res://Scenes/new_day.tscn")
