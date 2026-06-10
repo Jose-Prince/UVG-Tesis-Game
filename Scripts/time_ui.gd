@@ -21,6 +21,8 @@ var days = [
 var money: int = 0
 var actual_month: int
 
+var scene_transition: Node
+
 @onready var day: Label = $DayControl/days
 @onready var hours: Label = $ClockControl/hours
 @onready var minutes: Label = $ClockControl/minutes
@@ -38,6 +40,8 @@ func _ready() -> void:
 	current_day_number = start_day
 
 	SaveManager.day_ended.connect(_on_day_ended)
+	
+	scene_transition = get_tree().root.find_child("SceneTransition", true, false)
 
 func add_point(money_received: int) -> void:
 	money += money_received
@@ -94,3 +98,6 @@ func _on_day_ended() -> void:
 			"year": GameData.year
 		}
 	)
+	
+	await scene_transition.fade(1.0, 1.5).finished
+	get_tree().change_scene_to_file("res://Scenes/new_day.tscn")

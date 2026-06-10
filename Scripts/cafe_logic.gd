@@ -11,7 +11,7 @@ var time_gui : Control
 @onready var spawn_point: Marker2D = $CustomerSpawn
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready() -> void:	
 	var time_gui = find_child("TimeGui", true, false)
 	tables = get_tree().get_nodes_in_group("table")
 	
