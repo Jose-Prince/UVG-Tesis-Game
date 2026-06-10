@@ -4,7 +4,7 @@ extends DirectionalLight2D
 @export var night_color: Color
 @export var day_start: DateTime
 @export var night_start: DateTime
-@export var transition_time: int = 30 # minutos
+@export var transition_time: int = 60 # minutos
 
 enum DayStates {
 	DAY,
@@ -30,7 +30,6 @@ var time_system: TimeSystem
 	DayStates.NIGHT: night_color
 }
 
-
 func _ready() -> void:
 	time_system = get_tree().root.find_child("TimeSystem", true, false)
 
@@ -48,7 +47,13 @@ func update(game_time: DateTime) -> void:
 	var change_time: DateTime = time_map[next_state]
 
 	var time_diff: int = change_time.diff_without_days(game_time)
-
+	
+	if game_time == day_start && current_state == DayStates.NIGHT:
+		current_state = next_state
+		in_transition = false
+		color = color_map[current_state]
+		return
+	
 	if in_transition:
 		update_transition(time_diff, next_state)
 	elif time_diff > 0 and time_diff < (transition_time * 60):
