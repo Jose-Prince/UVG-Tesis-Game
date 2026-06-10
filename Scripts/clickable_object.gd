@@ -5,7 +5,7 @@ extends StaticBody2D
 @onready var order_object: Node2D = $"../OrderObject"
 
 func interact(player):
-	if new_object:
+	if new_object && !order_object.get_child(0):
 		var obj = new_object.instantiate()
 		order_object.add_child(obj)
 		obj.global_position = player.global_position
