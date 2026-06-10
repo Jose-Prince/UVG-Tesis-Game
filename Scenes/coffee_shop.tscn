@@ -1213,6 +1213,7 @@ isRotated = true
 [node name="SceneTransition" type="CanvasLayer" parent="." unique_id=574669051]
 
 [node name="ColorRect" type="ColorRect" parent="SceneTransition" unique_id=114563360]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
