@@ -9,7 +9,6 @@ var time_gui : Control
 
 @onready var customer_timer: Timer = $Timer
 @onready var spawn_point: Marker2D = $CustomerSpawn
-@onready var pause_menu = $UI/PauseMenu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -59,16 +58,3 @@ func _on_leaving_zone_body_entered(body: Node2D) -> void:
 		if body.currentState == body.States.Leave:
 			print("Customer despawned")
 			body.queue_free()
-
-func _process(delta):
-	if Input.is_action_just_pressed("Pause"):
-		print("PAUSE PRESSED")
-		toggle_pause()
-		
-func toggle_pause():
-	if get_tree().paused:
-		get_tree().paused = false
-		pause_menu.hide()
-	else:
-		get_tree().paused = true
-		pause_menu.show()
