@@ -84,11 +84,6 @@ func update_label(label: Label, value: int, should_have_zero: bool = true) -> vo
 	label.text += str(value)
 
 func _on_day_ended() -> void:
-	print("Save")
-	print("Slot:", GameData.game_slot)
-	print("Day Index:", current_day_index)
-	print("Day Number:", current_day_number)
-
 	SaveManager.save_especific_data(
 		GameData.game_slot,
 		"world",

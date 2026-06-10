@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://r45ksajhucw5" path="res://Sprites/menu.PNG" id="3_55kwv"]
 [ext_resource type="Texture2D" uid="uid://cgeaitckg5fnk" path="res://Sprites/Coffee_noB.PNG" id="4_6vd4x"]
 [ext_resource type="FontFile" uid="uid://c0rmb6tjydgnl" path="res://Fonts/FascinateInline-Regular.ttf" id="4_12m1t"]
-[ext_resource type="Script" path="res://Scripts/responsive_label.gd" id="5_0061g"]
+[ext_resource type="Script" uid="uid://dyjktga4k8yto" path="res://Scripts/responsive_label.gd" id="5_0061g"]
 [ext_resource type="FontFile" uid="uid://c6m8rdtvxahbg" path="res://Fonts/static/PixelifySans-Regular.ttf" id="8_0061g"]
-[ext_resource type="Script" path="res://Scripts/curve_label.gd" id="9_0061g"]
+[ext_resource type="Script" uid="uid://csttlrovvx2gi" path="res://Scripts/curve_label.gd" id="9_0061g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0061g"]
 font = ExtResource("4_12m1t")
@@ -84,9 +84,9 @@ offset_bottom = 123.0
 size_flags_vertical = 3
 script = ExtResource("9_0061g")
 text = "DREAM CAFE"
-curve_mode = 3
-radius_fraction = 0.7
-arc_degrees = 143.6
+curve_mode = 2
+radius_fraction = 1.0
+arc_degrees = 298.1
 start_angle_degrees = -180.0
 text_width = 600.0
 char_spacing = 1.0
@@ -120,7 +120,7 @@ alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_12m1t")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 8
 text = "DREAM CAFE"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -191,6 +191,7 @@ theme_override_font_sizes/font_size = 65
 text = "Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("5_0061g")
 
 [node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1531549857]
 layout_mode = 2
