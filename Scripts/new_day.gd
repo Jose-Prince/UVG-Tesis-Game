@@ -27,6 +27,7 @@ func _ready() -> void:
 	clic_sound.play()
 	await clic_sound.finished
 	save_label.set_base_text("File saved")
+	await get_tree().create_timer(0.5).timeout
 	await scene_transition.pixelate_in(0.6).finished
 	get_tree().change_scene_to_file("res://Scenes/coffee_shop.tscn")
 

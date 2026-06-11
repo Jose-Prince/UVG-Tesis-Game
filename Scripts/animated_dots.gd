@@ -16,6 +16,5 @@ func set_base_text(new_text: String):
 	text = new_text
 
 func _on_timer_timeout():
-	if self.text != base_text:
-		dots = (dots + 1) % 4
-		text = base_text + ".".repeat(dots)
+	dots = (dots + 1) % 4
+	text = base_text + ".".repeat(dots)
