@@ -11,13 +11,29 @@ var days = [
 	"Fri.", "Sat.", "Sun."
 ]
 
+var dots := 0
+var full_text := "%s %d, %s, Year %d" % [days[GameData.day_index], GameData.num_day, months[GameData.month], GameData.year] 
+
+@onready var save_label: Label = $VBoxContainer/HBoxContainer2/SaveLabel
 @onready var date_label: Label = $VBoxContainer/HBoxContainer/DateLabel
+@onready var write_sound: AudioStreamPlayer = $WriteSound
+@onready var clic_sound: AudioStreamPlayer = $ClicSound
+@onready var scene_transition: CanvasLayer = $SceneTransition
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	date_label.text = "%s %d, %s, Year %d" % [days[GameData.day_index], GameData.num_day, months[GameData.month], GameData.year] 
+	await write_text()
+	clic_sound.play()
+	await clic_sound.finished
+	save_label.set_base_text("File saved")
+	await scene_transition.fade(1.0, 1.5).finished
+	get_tree().change_scene_to_file("res://Scenes/coffee_shop.tscn")
 
+func write_text():
+	write_sound.pitch_scale = randf_range(2.0, 3.0)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	for i in full_text:
+		date_label.text += i
+		if i != " ":
+			write_sound.play()
+			await write_sound.finished

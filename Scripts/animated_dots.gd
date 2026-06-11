@@ -11,6 +11,11 @@ func _ready():
 	timer.autostart = true
 	add_child(timer)
 
+func set_base_text(new_text: String):
+	base_text = new_text
+	text = new_text
+
 func _on_timer_timeout():
-	dots = (dots + 1) % 4
-	text = base_text + ".".repeat(dots)
+	if self.text != base_text:
+		dots = (dots + 1) % 4
+		text = base_text + ".".repeat(dots)

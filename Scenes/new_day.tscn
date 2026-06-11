@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://3f8155uphsfu" path="res://Scripts/new_day.gd" id="1_640v5"]
 [ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Fonts/static/PixelifySans-Bold.ttf" id="2_rmkb3"]
 [ext_resource type="Script" uid="uid://cxfpqyib17r24" path="res://Scripts/animated_dots.gd" id="3_rmkb3"]
-[ext_resource type="AudioStream" uid="uid://bsxtqbslaytt3" path="res://Audios/rooster_crow.wav" id="4_1fu1n"]
+[ext_resource type="AudioStream" uid="uid://bq6qcyxxs2w16" path="res://Audios/typewriter_sound.wav" id="4_1fu1n"]
+[ext_resource type="AudioStream" uid="uid://ebctnjjdpchb" path="res://Audios/clip_sound.wav" id="5_mm26e"]
+[ext_resource type="PackedScene" uid="uid://chcl2gv8i2851" path="res://Scenes/scene_transition.tscn" id="6_3smw6"]
 
 [node name="NewDay" type="Control" unique_id=1569627897]
 layout_mode = 3
@@ -31,7 +33,6 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rmkb3")
 theme_override_font_sizes/font_size = 30
-text = "Day #, Month, Year #"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=427349068]
 layout_mode = 2
@@ -40,9 +41,12 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rmkb3")
 theme_override_font_sizes/font_size = 30
-text = "Guardando partida..."
 script = ExtResource("3_rmkb3")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=709540455]
+[node name="WriteSound" type="AudioStreamPlayer" parent="." unique_id=805475709]
 stream = ExtResource("4_1fu1n")
-autoplay = true
+
+[node name="ClicSound" type="AudioStreamPlayer" parent="." unique_id=75399278]
+stream = ExtResource("5_mm26e")
+
+[node name="SceneTransition" parent="." unique_id=441785496 instance=ExtResource("6_3smw6")]
