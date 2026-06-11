@@ -9,9 +9,12 @@ var time_gui : Control
 
 @onready var customer_timer: Timer = $Timer
 @onready var spawn_point: Marker2D = $CustomerSpawn
+@onready var scene_transition: CanvasLayer = $SceneTransition
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:	
+func _ready() -> void:
+	await scene_transition.pixelate_out(0.6).finished
+	
 	var time_gui = find_child("TimeGui", true, false)
 	tables = get_tree().get_nodes_in_group("table")
 	

@@ -106,5 +106,5 @@ func _on_day_ended() -> void:
 	GameData.month = actual_month
 	GameData.year = year
 	
-	await scene_transition.fade(1.0, 1.5).finished
+	await scene_transition.pixelate_in(0.6).finished
 	get_tree().change_scene_to_file("res://Scenes/new_day.tscn")
