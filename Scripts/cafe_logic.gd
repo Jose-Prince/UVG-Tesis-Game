@@ -31,30 +31,30 @@ func customer_spawn():
 	
 	new_customer.global_position = spawn_point.global_position
 	new_customer.leaving_target_position = spawn_point.global_position
-
+	
+	var available_tables := []
+	
 	for table in tables:
-		if table.isAvailable:
-			var chair = table.get_free_chair()
-			
-			if chair:
-				new_customer.assign_chair(chair)
-				table.update_availability()
-				
-				chair.isFree = false
-				table.update_availability()
-
-				get_tree().current_scene.add_child(new_customer)
-
-				await get_tree().physics_frame
-
-				new_customer.set_target(chair.go_to_pos.global_position)
-				print("Customer assigned to table")
-
-				customer_timer.start()
-				return
-				
-		print("No hay sillas disponibles. Agente esperando...")
-
+		if table.isAvailable && table.get_free_chair():
+			available_tables.append(table)
+	
+	if available_tables.is_empty():
+		return
+	
+	var selected_table = available_tables.pick_random()
+	var chair = selected_table.get_free_chair()
+	
+	new_customer.assign_chair(chair)
+	
+	chair.isFree = false
+	selected_table.update_availability()
+	
+	get_tree().current_scene.add_child(new_customer)
+	
+	await get_tree().physics_frame
+	
+	new_customer.set_target(chair.go_to_pos.global_position)
+	customer_timer.start()
 
 func _on_leaving_zone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("customer"):
