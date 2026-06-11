@@ -31,10 +31,16 @@ func _process(delta: float) -> void:
 		progress_bar.value = timer.wait_time - timer.time_left
 
 func get_free_chair():
+	var free_chairs := []
+
 	for chair in chairs:
 		if chair.isFree:
-			return chair
-	return null
+			free_chairs.append(chair)
+
+	if free_chairs.is_empty():
+		return null
+
+	return free_chairs.pick_random()
 
 func update_availability():
 	isAvailable = get_free_chair() != null
