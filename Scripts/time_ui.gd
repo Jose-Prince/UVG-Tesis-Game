@@ -3,6 +3,7 @@ extends Control
 var start_month: int
 var start_day: int
 var day_index: int
+var year: int
 
 var current_day_number: int
 var current_day_index: int
@@ -21,6 +22,8 @@ var days = [
 var money: int = 0
 var actual_month: int
 
+var scene_transition: Node
+
 @onready var day: Label = $DayControl/days
 @onready var hours: Label = $ClockControl/hours
 @onready var minutes: Label = $ClockControl/minutes
@@ -33,11 +36,14 @@ func _ready() -> void:
 	start_month = GameData.month
 	start_day = GameData.num_day
 	day_index = GameData.day_index
+	year = GameData.year
 
 	current_day_index = day_index
 	current_day_number = start_day
 
 	SaveManager.day_ended.connect(_on_day_ended)
+	
+	scene_transition = get_tree().root.find_child("SceneTransition", true, false)
 
 func add_point(money_received: int) -> void:
 	money += money_received
@@ -84,11 +90,6 @@ func update_label(label: Label, value: int, should_have_zero: bool = true) -> vo
 	label.text += str(value)
 
 func _on_day_ended() -> void:
-	print("Save")
-	print("Slot:", GameData.game_slot)
-	print("Day Index:", current_day_index)
-	print("Day Number:", current_day_number)
-
 	SaveManager.save_especific_data(
 		GameData.game_slot,
 		"world",
@@ -99,3 +100,11 @@ func _on_day_ended() -> void:
 			"year": GameData.year
 		}
 	)
+	
+	GameData.day_index = (current_day_index + 1) % days.size()
+	GameData.num_day = current_day_number + 1
+	GameData.month = actual_month
+	GameData.year = year
+	
+	await scene_transition.pixelate_in(0.6).finished
+	get_tree().change_scene_to_file("res://Scenes/new_day.tscn")

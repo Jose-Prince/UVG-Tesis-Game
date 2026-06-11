@@ -21,7 +21,7 @@ var waitingTime: int = 5
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var waiting_timer: Timer = $WaitingTimer
 @onready var grid_manager: Node = $"../GridManager"
-@onready var label: Label = $CanvasLayer/Label
+@onready var label: Label = $Label
 
 func _ready() -> void:
 	await get_tree().physics_frame
@@ -29,6 +29,8 @@ func _ready() -> void:
 
 	waiting_timer.wait_time = waitingTime
 	waiting_timer.one_shot = true
+	
+	label.text = foodWanted
 	
 func _physics_process(delta: float) -> void:
 	match currentState:
@@ -119,3 +121,6 @@ func assign_chair(chair):
 	target_chair.isFree = false
 	
 	#movement_target_position = target_chair.go_to_pos.global_position
+
+func set_label():
+	label.visible = !label.visible

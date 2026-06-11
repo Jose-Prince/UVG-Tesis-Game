@@ -9,10 +9,12 @@ var time_gui : Control
 
 @onready var customer_timer: Timer = $Timer
 @onready var spawn_point: Marker2D = $CustomerSpawn
-@onready var pause_menu = $UI/PauseMenu
+@onready var scene_transition: CanvasLayer = $SceneTransition
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await scene_transition.pixelate_out(0.6).finished
+	
 	var time_gui = find_child("TimeGui", true, false)
 	tables = get_tree().get_nodes_in_group("table")
 	
@@ -59,16 +61,3 @@ func _on_leaving_zone_body_entered(body: Node2D) -> void:
 		if body.currentState == body.States.Leave:
 			print("Customer despawned")
 			body.queue_free()
-
-func _process(delta):
-	if Input.is_action_just_pressed("Pause"):
-		print("PAUSE PRESSED")
-		toggle_pause()
-		
-func toggle_pause():
-	if get_tree().paused:
-		get_tree().paused = false
-		pause_menu.hide()
-	else:
-		get_tree().paused = true
-		pause_menu.show()

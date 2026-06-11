@@ -58,6 +58,9 @@ func interact(player):
 				
 				timer.start()
 				
+				for customer in customers:
+					customer.set_label()
+				
 				order_completed.emit(check)
 				check = 0
 				
@@ -105,6 +108,8 @@ func send_customers_home():
 	
 	for chair in chairs:
 		chair.isFree = true
+		
+	customers.clear()
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("chair"):
@@ -113,6 +118,7 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 	
 	if body.is_in_group("customer"):
 		print("En la mesa")
+		body.set_label()
 		customers.append(body)
 		order.append(body.foodWanted)
 
