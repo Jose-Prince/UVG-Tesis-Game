@@ -22,9 +22,6 @@ func increase_by_sec(delta_seconds: float) -> void:
 	minutes = minutes % 60
 	
 	if hours >= 22:
-		days += 1
-		hours = 6 + (hours - 22)
-		
 		SaveManager.day_ended.emit()
 
 func diff_without_days(other_time: DateTime) -> int:
