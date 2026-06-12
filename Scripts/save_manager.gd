@@ -5,6 +5,7 @@ const default_dictionary: Dictionary = {
 	"player": {
 		"name": "Akice",
 		"money": 0,
+		"popularity": 0
 	},
 	"world": {
 		"day_index": 0,

@@ -101,6 +101,16 @@ func _on_day_ended() -> void:
 		}
 	)
 	
+	SaveManager.save_especific_data(
+		GameData.game_slot,
+		"player",
+		{
+			"name": GameData.player_name,
+			"money": money,
+			"popularity": GameData.popularity
+		}
+	)
+	
 	GameData.day_index = (current_day_index + 1) % days.size()
 	GameData.num_day = current_day_number + 1
 	GameData.month = actual_month
