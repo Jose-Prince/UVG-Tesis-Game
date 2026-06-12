@@ -48,6 +48,8 @@ func customer_spawn():
 	
 	var new_customer: CharacterBody2D = CUSTOMER_SCENE.instantiate()
 	
+	selected_table.assign_customer(new_customer)
+	
 	new_customer.global_position = spawn_point.global_position
 	new_customer.leaving_target_position = spawn_point.global_position
 	

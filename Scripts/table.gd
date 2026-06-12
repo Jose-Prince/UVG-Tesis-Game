@@ -65,7 +65,8 @@ func interact(player):
 				timer.start()
 				
 				for customer in customers:
-					customer.set_label()
+					if is_instance_valid(customer):
+						customer.set_label()
 				
 				order_completed.emit(check)
 				check = 0
@@ -117,16 +118,16 @@ func send_customers_home():
 		
 	customers.clear()
 
+func assign_customer(customer):
+	if customer not in customers:
+		customers.append(customer)
+		order.append(customer.foodWanted)
+
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("chair"):
 		print("Silla asignada")
 		chairs.append(body)
-	
-	if body.is_in_group("customer"):
-		print("En la mesa")
-		body.set_label()
-		customers.append(body)
-		order.append(body.foodWanted)
+		body.assign_table(self)
 
 func _on_timer_timeout() -> void:
 	progress_bar.visible = false
