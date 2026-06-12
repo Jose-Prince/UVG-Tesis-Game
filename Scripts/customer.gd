@@ -30,8 +30,6 @@ func _ready() -> void:
 	waiting_timer.wait_time = waitingTime
 	waiting_timer.one_shot = true
 	
-	label.text = foodWanted
-	
 func _physics_process(delta: float) -> void:
 	match currentState:
 		States.Navigate:
@@ -47,9 +45,11 @@ func _physics_process(delta: float) -> void:
 			
 		States.Wait:
 			velocity = Vector2.ZERO
+			label.text = foodWanted
 			
 		States.Eat:
 			velocity = Vector2.ZERO
+			label.text = ""
 			
 		States.Leave:
 			if !leave_started:
@@ -121,6 +121,3 @@ func assign_chair(chair):
 	target_chair.isFree = false
 	
 	#movement_target_position = target_chair.go_to_pos.global_position
-
-func set_label():
-	label.visible = !label.visible
