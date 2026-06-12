@@ -64,10 +64,6 @@ func interact(player):
 				
 				timer.start()
 				
-				for customer in customers:
-					if is_instance_valid(customer):
-						customer.set_label()
-				
 				order_completed.emit(check)
 				check = 0
 				
