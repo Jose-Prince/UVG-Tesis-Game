@@ -32,8 +32,14 @@ var scene_transition: Node
 @onready var space: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/space
 @onready var minutes: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/minutes
 @onready var period_label: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/period
-@onready var money_count: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MoneyCount
 
+@onready var tens_of_thousand: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/TensOfThousand
+@onready var thousand_unit: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/ThousandUnit
+@onready var hundred: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Hundred
+@onready var ten: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Ten
+@onready var unit: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Unit
+@onready var decimal_1: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Decimal1
+@onready var decimal_2: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Decimal2
 
 func _ready() -> void:
 	start_month = GameData.month
@@ -44,7 +50,7 @@ func _ready() -> void:
 	current_day_index = day_index
 	current_day_number = start_day
 	
-	money_count.text = str(GameData.money)
+	update_money_display()
 	
 	SaveManager.day_ended.connect(_on_day_ended)
 	
@@ -52,7 +58,7 @@ func _ready() -> void:
 
 func add_point(money_received: int) -> void:
 	GameData.money += money_received
-	money_count.text = str(GameData.money)
+	update_money_display()
 
 func _on_time_system_updated(date_time: DateTime) -> void:
 	var total_days := start_day + (date_time.days - 1)
@@ -94,6 +100,21 @@ func update_label(label: Label, value: int, should_have_zero: bool = true) -> vo
 		add_leading_zero(label, value)
 
 	label.text += str(value)
+
+func update_money_display():
+	var money_string := "%.2f" % GameData.money
+
+	money_string = money_string.replace(".", "")
+
+	money_string = money_string.pad_zeros(7)
+
+	tens_of_thousand.text = money_string[0]
+	thousand_unit.text = money_string[1]
+	hundred.text = money_string[2]
+	ten.text = money_string[3]
+	unit.text = money_string[4]
+	decimal_1.text = money_string[5]
+	decimal_2.text = money_string[6]
 
 func _on_day_ended() -> void:
 	SaveManager.save_especific_data(
