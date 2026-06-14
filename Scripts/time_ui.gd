@@ -21,7 +21,6 @@ var days = [
 	"Fri.", "Sat.", "Sun."
 ]
 
-var money: int = 0
 var actual_month: int
 
 var scene_transition: Node
@@ -42,14 +41,16 @@ func _ready() -> void:
 
 	current_day_index = day_index
 	current_day_number = start_day
-
+	
+	money_count.text = str(GameData.money)
+	
 	SaveManager.day_ended.connect(_on_day_ended)
 	
 	scene_transition = get_tree().root.find_child("SceneTransition", true, false)
 
 func add_point(money_received: int) -> void:
-	money += money_received
-	money_count.text = str(money)
+	GameData.money += money_received
+	money_count.text = str(GameData.money)
 
 func _on_time_system_updated(date_time: DateTime) -> void:
 	var total_days := start_day + (date_time.days - 1)
@@ -109,7 +110,7 @@ func _on_day_ended() -> void:
 		"player",
 		{
 			"name": GameData.player_name,
-			"money": money,
+			"money": GameData.money,
 			"popularity": GameData.popularity
 		}
 	)
