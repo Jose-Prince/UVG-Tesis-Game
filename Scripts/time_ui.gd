@@ -25,13 +25,15 @@ var actual_month: int
 
 var scene_transition: Node
 
-@onready var day: Label = $DayControl/days
-@onready var hours: Label = $ClockControl/hours
-@onready var minutes: Label = $ClockControl/minutes
-@onready var money_count: Label = $MoneyControl/MoneyCount
-@onready var periodLabel: Label = $ClockControl/period
-@onready var day_name: Label = $DayControl/dayName
-@onready var month: Label = $MonthControl/Month
+@onready var month: Label = $Panel/MarginContainer/VBoxContainer/MonthContainer/MarginContainer/PanelContainer/Month
+@onready var day_name: Label = $Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer/dayName
+@onready var day: Label = $Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer2/day
+@onready var hours: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/hours
+@onready var space: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/space
+@onready var minutes: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/minutes
+@onready var period_label: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/period
+@onready var money_count: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MoneyCount
+
 
 func _ready() -> void:
 	start_month = GameData.month
@@ -73,7 +75,7 @@ func _on_time_system_updated(date_time: DateTime) -> void:
 	var display_minutes := int(date_time.minutes / 5) * 5
 	update_label(minutes, display_minutes)
 
-	periodLabel.text = period
+	period_label.text = period
 
 	current_day_index = (day_index + date_time.days - 1) % days.size()
 	day_name.text = days[current_day_index]
