@@ -8,6 +8,8 @@ var year: int
 var current_day_number: int
 var current_day_index: int
 
+var actual_hour: int = 0
+
 var months = [
 	"January", "February", "March", "April",
 	"May", "June", "July", "August",
@@ -55,6 +57,7 @@ func _on_time_system_updated(date_time: DateTime) -> void:
 	current_day_number = ((total_days - 1) % 30) + 1
 	update_label(day, current_day_number)
 
+	actual_hour = date_time.hours
 	var display_hour := date_time.hours
 	var period := "AM"
 
