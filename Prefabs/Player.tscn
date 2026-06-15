@@ -144,7 +144,7 @@ speed = 200.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=916734474]
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_gg3t4")
-animation = &"walk_up"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=41540243]
 position = Vector2(0, 9.5)
