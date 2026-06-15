@@ -67,6 +67,7 @@ func interact(player):
 					timer.start()
 					
 					order_completed.emit(check)
+					GameData.popularity += 1
 					check = 0
 					
 				return
