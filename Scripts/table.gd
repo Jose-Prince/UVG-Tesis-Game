@@ -4,7 +4,7 @@ signal order_completed
 
 var chairs: Array[Node2D]
 var customers: Array[Node2D]
-var order: Array[String]
+var orders := []
 var isAvailable: bool = true
 var check: int = 0
 var placed_food: Array[Node2D]
@@ -46,44 +46,67 @@ func update_availability():
 	isAvailable = get_free_chair() != null
 	
 func interact(player):
-	print(order)
+	print(orders)
 	for child in order_object.get_children():
 		var item = child.name.to_lower()
 		
-		if order.has(child.name.to_lower()):
-			print("Served order")
-			order.erase(item)
-			check += child.get_price()
-			place_food(child)
-			
-			if order.is_empty():
-				start_eating()
+		for order_data in orders:
+			if order_data.food == item:
+				check += child.get_price()
 				
-				progress_bar.visible = true
-				progress_bar.value = 0
+				place_food(child, order_data.customer)
 				
-				timer.start()
+				orders.erase(order_data)
 				
-				order_completed.emit(check)
-				check = 0
-				
-			break
+				if orders.is_empty():
+					start_eating()
+					
+					progress_bar.visible = true
+					progress_bar.value = 0
+					
+					timer.start()
+					
+					order_completed.emit(check)
+					check = 0
+					
+				return
 
-func place_food(food):
-	var marker: Marker2D = null
+func place_food(food, customer):
+	var markers = [food_place_1, food_place_2]
+	var free_markers := []
 	
-	if placed_food.size() == 0:
-		marker = food_place_1
-	elif placed_food.size() == 1:
-		marker = food_place_2
-	else:
+	for marker in markers:
+		var occupied := false
+		
+		for placed in placed_food:
+			if is_instance_valid(placed) && placed.global_position == marker.global_position:
+				occupied = true
+				break
+		
+		if !occupied:
+			free_markers.append(marker)
+	if free_markers.is_empty():
 		return
 	
+	var closest_marker = free_markers[0]
+	var closest_distance = customer.global_position.distance_to(
+		closest_marker.global_position
+	)
+	
+	for marker in free_markers:
+		var dist = customer.global_position.distance_to(
+			marker.global_position
+		)
+		
+		if dist < closest_distance:
+			closest_distance = dist
+			closest_marker = marker
+		
 	if food.has_method("drop"):
 		food.drop()
 	
 	food.reparent(self)
-	food.global_position = marker.global_position
+	food.global_position = closest_marker.global_position
 	
 	if food.has_method("place"):
 		food.place()
@@ -117,7 +140,10 @@ func send_customers_home():
 func assign_customer(customer):
 	if customer not in customers:
 		customers.append(customer)
-		order.append(customer.foodWanted)
+		orders.append({
+			"customer": customer,
+			"food": customer.foodWanted
+		})
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("chair"):

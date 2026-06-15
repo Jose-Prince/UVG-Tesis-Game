@@ -12,7 +12,7 @@ func _on_confirm_button_pressed() -> void:
 	var start_day = date["day"]
 	
 	SaveManager.save_especific_data(GameData.game_slot, "world", {"day_index": randi_range(0, 6), "num_day": start_day,"month": start_month, "year": 1})
-	SaveManager.save_especific_data(GameData.game_slot, "player", {"name": GameData.player_name, "money": 0})
+	SaveManager.save_especific_data(GameData.game_slot, "player", {"name": GameData.player_name, "money": 0, "popularity": 0})
 	SaveManager.save_especific_data(GameData.game_slot, "coffee_shop", {"name": GameData.shop_name})
 	
 	GameData.load_to_data(SaveManager.load_game(GameData.game_slot))

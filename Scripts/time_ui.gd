@@ -8,6 +8,8 @@ var year: int
 var current_day_number: int
 var current_day_index: int
 
+var actual_hour: int = 0
+
 var months = [
 	"January", "February", "March", "April",
 	"May", "June", "July", "August",
@@ -19,18 +21,25 @@ var days = [
 	"Fri.", "Sat.", "Sun."
 ]
 
-var money: int = 0
 var actual_month: int
 
 var scene_transition: Node
 
-@onready var day: Label = $DayControl/days
-@onready var hours: Label = $ClockControl/hours
-@onready var minutes: Label = $ClockControl/minutes
-@onready var money_count: Label = $MoneyControl/MoneyCount
-@onready var periodLabel: Label = $ClockControl/period
-@onready var day_name: Label = $DayControl/dayName
-@onready var month: Label = $MonthControl/Month
+@onready var month: Label = $Panel/MarginContainer/VBoxContainer/MonthContainer/MarginContainer/PanelContainer/Month
+@onready var day_name: Label = $Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer/dayName
+@onready var day: Label = $Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer2/day
+@onready var hours: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/hours
+@onready var space: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/space
+@onready var minutes: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/minutes
+@onready var period_label: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/period
+
+@onready var tens_of_thousand: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/TensOfThousand
+@onready var thousand_unit: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/ThousandUnit
+@onready var hundred: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Hundred
+@onready var ten: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Ten
+@onready var unit: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Unit
+@onready var decimal_1: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Decimal1
+@onready var decimal_2: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Decimal2
 
 func _ready() -> void:
 	start_month = GameData.month
@@ -40,14 +49,16 @@ func _ready() -> void:
 
 	current_day_index = day_index
 	current_day_number = start_day
-
+	
+	update_money_display()
+	
 	SaveManager.day_ended.connect(_on_day_ended)
 	
 	scene_transition = get_tree().root.find_child("SceneTransition", true, false)
 
 func add_point(money_received: int) -> void:
-	money += money_received
-	money_count.text = str(money)
+	GameData.money += money_received
+	update_money_display()
 
 func _on_time_system_updated(date_time: DateTime) -> void:
 	var total_days := start_day + (date_time.days - 1)
@@ -55,6 +66,7 @@ func _on_time_system_updated(date_time: DateTime) -> void:
 	current_day_number = ((total_days - 1) % 30) + 1
 	update_label(day, current_day_number)
 
+	actual_hour = date_time.hours
 	var display_hour := date_time.hours
 	var period := "AM"
 
@@ -69,7 +81,7 @@ func _on_time_system_updated(date_time: DateTime) -> void:
 	var display_minutes := int(date_time.minutes / 5) * 5
 	update_label(minutes, display_minutes)
 
-	periodLabel.text = period
+	period_label.text = period
 
 	current_day_index = (day_index + date_time.days - 1) % days.size()
 	day_name.text = days[current_day_index]
@@ -89,6 +101,21 @@ func update_label(label: Label, value: int, should_have_zero: bool = true) -> vo
 
 	label.text += str(value)
 
+func update_money_display():
+	var money_string := "%.2f" % GameData.money
+
+	money_string = money_string.replace(".", "")
+
+	money_string = money_string.pad_zeros(7)
+
+	tens_of_thousand.text = money_string[0]
+	thousand_unit.text = money_string[1]
+	hundred.text = money_string[2]
+	ten.text = money_string[3]
+	unit.text = money_string[4]
+	decimal_1.text = money_string[5]
+	decimal_2.text = money_string[6]
+
 func _on_day_ended() -> void:
 	SaveManager.save_especific_data(
 		GameData.game_slot,
@@ -98,6 +125,16 @@ func _on_day_ended() -> void:
 			"num_day": current_day_number + 1,
 			"month": actual_month,
 			"year": GameData.year
+		}
+	)
+	
+	SaveManager.save_especific_data(
+		GameData.game_slot,
+		"player",
+		{
+			"name": GameData.player_name,
+			"money": GameData.money,
+			"popularity": GameData.popularity
 		}
 	)
 	

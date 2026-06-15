@@ -1,10 +1,11 @@
 extends Node
 
-const SAVE_FOLDER: String = "res://saves/"
+const SAVE_FOLDER: String = "user://saves/"
 const default_dictionary: Dictionary = {
 	"player": {
 		"name": "Akice",
 		"money": 0,
+		"popularity": 0
 	},
 	"world": {
 		"day_index": 0,
