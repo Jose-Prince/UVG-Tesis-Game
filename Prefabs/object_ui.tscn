@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cgejjdvlywiw"]
+
+[ext_resource type="Texture2D" uid="uid://cgeaitckg5fnk" path="res://Sprites/Coffee_noB.PNG" id="1_lc5w0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4s8d"]
+bg_color = Color(0.81960785, 0.7372549, 0.627451, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.34509805, 0.22352941, 0.13333334, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Control" type="Control" unique_id=2113710388]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -262.0
+offset_right = 1.0
+offset_bottom = -262.0
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="." unique_id=682123693]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 177.0
+offset_right = 84.0
+offset_bottom = 257.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_k4s8d")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=2117874285]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/MarginContainer" unique_id=1022847989]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel/MarginContainer/CenterContainer" unique_id=33037209]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("1_lc5w0")

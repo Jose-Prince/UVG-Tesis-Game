@@ -5,11 +5,11 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4s8d"]
 bg_color = Color(0.81960785, 0.7372549, 0.627451, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.34674126, 0.22390294, 0.1318292, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -99,15 +99,16 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -203.0
-offset_right = -203.0
+offset_left = -365.0
+offset_right = -365.0
 grow_horizontal = 0
 
 [node name="Panel" type="Panel" parent="." unique_id=682123693]
-custom_minimum_size = Vector2(0, 210)
+custom_minimum_size = Vector2(220, 205)
 layout_mode = 0
+offset_left = 146.0
 offset_right = 203.0
-offset_bottom = 207.0
+offset_bottom = 72.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_k4s8d")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=2117874285]
@@ -117,10 +118,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1920286759]
 layout_mode = 2
@@ -145,7 +146,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_eu6ci")
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_eu6ci")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 30
 text = "January"
 horizontal_alignment = 1
 
@@ -170,7 +171,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_s1xu4")
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_eu6ci")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 30
 text = "Mon."
 horizontal_alignment = 1
 
@@ -182,7 +183,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3s2e7")
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_eu6ci")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 30
 text = "99"
 
 [node name="HourContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1400370157]
@@ -208,39 +209,32 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_eu6ci")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 30
 text = "06"
 
 [node name="space" type="Label" parent="Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=159799248]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_eu6ci")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 30
 text = ":"
 
 [node name="minutes" type="Label" parent="Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=1498722604]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_eu6ci")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 30
 text = "59"
 
 [node name="period" type="Label" parent="Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=1871939184]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_eu6ci")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 30
 text = "AM"
 
 [node name="MoneyContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1808751785]
 layout_mode = 2
-
-[node name="MoneyCount" type="Label" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer" unique_id=2122489974]
-visible = false
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_eu6ci")
-theme_override_font_sizes/font_size = 35
-text = "0"
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer" unique_id=2014347482]
 layout_mode = 2
@@ -260,7 +254,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4wooe")
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_s1xu4")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 30
 text = "$"
 horizontal_alignment = 1
 vertical_alignment = 1
