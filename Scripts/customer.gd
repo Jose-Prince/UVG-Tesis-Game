@@ -31,6 +31,13 @@ func _ready() -> void:
 	waiting_timer.one_shot = true
 	
 func _physics_process(delta: float) -> void:
+	if currentState == States.Sit or currentState == States.Wait or currentState == States.Eat:
+		if target_chair:
+			z_index = int(target_chair.global_position.y) + 1
+		else:
+			z_index = int(global_position.y) + 1
+	else:
+		z_index = int(global_position.y)
 	match currentState:
 		States.Navigate:
 			follow_path()
@@ -40,6 +47,8 @@ func _physics_process(delta: float) -> void:
 				currentState = States.Sit
 				
 		States.Sit:
+			if target_chair:
+				global_position = target_chair.get_sit_position()
 			velocity = Vector2.ZERO
 			currentState = States.Wait
 			
