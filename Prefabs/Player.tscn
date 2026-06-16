@@ -168,13 +168,25 @@ ticks_pr_second = 80
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1624174308]
 layer = 100
 
-[node name="TimeGui" parent="CanvasLayer" unique_id=2113710388 instance=ExtResource("3_shmu5")]
-script = ExtResource("4_vxq8l")
-
 [node name="PauseMenu" parent="CanvasLayer" unique_id=1486490026 instance=ExtResource("7_javds")]
 visible = false
 z_index = 2
 
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1489623884]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TimeGui" parent="CanvasLayer/MarginContainer" unique_id=2113710388 instance=ExtResource("3_shmu5")]
+layout_mode = 2
+script = ExtResource("4_vxq8l")
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
-[connection signal="updated" from="TimeSystem" to="CanvasLayer/TimeGui" method="_on_time_system_updated"]
+[connection signal="updated" from="TimeSystem" to="CanvasLayer/MarginContainer/TimeGui" method="_on_time_system_updated"]

@@ -4,15 +4,24 @@
 [ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Fonts/static/PixelifySans-Bold.ttf" id="2_s1xu4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4s8d"]
-bg_color = Color(0.56461394, 0.38017482, 0.24399894, 1)
+bg_color = Color(0.81960785, 0.7372549, 0.627451, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
+border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu6ci"]
 bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -20,6 +29,11 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1xu4"]
 bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -27,6 +41,11 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3s2e7"]
 bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -34,6 +53,11 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibm6u"]
 bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -41,6 +65,11 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wooe"]
 bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -48,6 +77,11 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tew1x"]
 bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -70,9 +104,10 @@ offset_right = -203.0
 grow_horizontal = 0
 
 [node name="Panel" type="Panel" parent="." unique_id=682123693]
+custom_minimum_size = Vector2(0, 210)
 layout_mode = 0
 offset_right = 203.0
-offset_bottom = 202.0
+offset_bottom = 207.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_k4s8d")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=2117874285]
