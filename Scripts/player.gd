@@ -106,3 +106,11 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 
 func set_held_item(item):
 	held_item = item
+	if held_item:
+		# set initial direction based on current facing
+		var dir = "down"
+		if skin.animation.contains("up"):
+			dir = "up"
+		elif skin.animation.contains("right"):
+			dir = "right"
+		held_item.set_hold_direction(dir, skin.flip_h)
