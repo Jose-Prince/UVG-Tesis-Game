@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 var player_name := ""
 var current_object = null
+var held_item = null
 
 @onready var skin: AnimatedSprite2D = $skin
 @onready var clothes: AnimatedSprite2D = $clothes
@@ -47,27 +48,45 @@ func make_action():
 		current_object.interact(self)
 		
 func update_animation():
+	var is_running = Input.is_action_pressed("run") and velocity != Vector2.ZERO
+	var is_holding = held_item != null
+
 	# Idle
 	if velocity == Vector2.ZERO:
-		if skin.animation == "walk_up":
-			play_layers("idle_up")
-		elif skin.animation == "walk_right":
-			play_layers("idle_right")
+		if is_holding:
+			if skin.animation.contains("up"):
+				play_layers("hold_idle_up")
+			elif skin.animation.contains("right"):
+				play_layers("hold_idle_right")
+			else:
+				play_layers("hold_idle")
 		else:
-			play_layers("idle")
+			if skin.animation.contains("up"):
+				play_layers("idle_up")
+			elif skin.animation.contains("right"):
+				play_layers("idle_right")
+			else:
+				play_layers("idle")
 		return
 
-	# Walking
+	# Determine prefix
+	var prefix = "walk"
+	if is_holding and is_running:
+		prefix = "hold_run"
+	elif is_holding:
+		prefix = "hold_walk"
+	elif is_running:
+		prefix = "run"
+
+	# Directional
 	if abs(velocity.x) > abs(velocity.y):
-		# Movimiento horizontal
-		play_layers("walk_right")
+		play_layers(prefix + "_right")
 		flip_layers(velocity.x < 0)
 	else:
-		# Movimiento vertical
 		if velocity.y < 0:
-			play_layers("walk_up")
+			play_layers(prefix + "_up")
 		else:
-			play_layers("walk_down")
+			play_layers(prefix + "_down")
 		flip_layers(false)
 	
 func _on_detection_area_body_entered(body: Node2D) -> void:
@@ -77,3 +96,6 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 func _on_detection_area_body_exited(body: Node2D) -> void:
 		if body.is_in_group("clickable"):
 			current_object = null
+
+func set_held_item(item):
+	held_item = item

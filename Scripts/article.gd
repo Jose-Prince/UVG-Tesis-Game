@@ -19,8 +19,12 @@ func get_price():
 
 func pickup(new_holder: Node2D):
 	holder = new_holder
+	if new_holder.has_method("set_held_item"):
+		new_holder.set_held_item(self)
 
 func drop():
+	if holder and holder.has_method("set_held_item"):
+		holder.set_held_item(null)
 	holder = null
 	
 	if kitchen_layer:
