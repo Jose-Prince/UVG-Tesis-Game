@@ -82,12 +82,19 @@ func update_animation():
 	if abs(velocity.x) > abs(velocity.y):
 		play_layers(prefix + "_right")
 		flip_layers(velocity.x < 0)
+		if is_holding:
+			held_item.set_hold_direction("right", velocity.x < 0)
 	else:
 		if velocity.y < 0:
 			play_layers(prefix + "_up")
+			flip_layers(false)
+			if is_holding:
+				held_item.set_hold_direction("up", false)
 		else:
 			play_layers(prefix + "_down")
-		flip_layers(false)
+			flip_layers(false)
+			if is_holding:
+				held_item.set_hold_direction("down", false)
 	
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("clickable"):
