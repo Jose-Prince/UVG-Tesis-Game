@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cn1a17pxcn375" path="res://Prefabs/coffee_maker.tscn" id="8_wvnb4"]
 [ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/CozyCaffe-Bossa-consolidated-consolidated.ogg" id="9_j1s20"]
 [ext_resource type="PackedScene" uid="uid://chcl2gv8i2851" path="res://Scenes/scene_transition.tscn" id="9_vffnu"]
+[ext_resource type="Script" uid="uid://bcqylyib4yrvl" path="res://Scripts/order_object.gd" id="12_2o2p7"]
 [ext_resource type="PackedScene" uid="uid://dy7unp36ghucf" path="res://Prefabs/glass_giver.tscn" id="12_4hl37"]
 [ext_resource type="PackedScene" uid="uid://5pgj7btnpwub" path="res://Prefabs/Sink.tscn" id="13_sk1vp"]
 [ext_resource type="PackedScene" uid="uid://bgduyi5wcuj0c" path="res://Prefabs/glass.tscn" id="14_xjtdl"]
@@ -1223,6 +1224,7 @@ autoplay = true
 parameters/looping = true
 
 [node name="OrderObject" type="Node2D" parent="." unique_id=1752300990]
+script = ExtResource("12_2o2p7")
 
 [node name="GlassGiver" parent="." unique_id=1691044326 groups=["clickable"] instance=ExtResource("12_4hl37")]
 z_index = 1
@@ -1250,3 +1252,5 @@ night_start = SubResource("Resource_eatfk")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="CustomerSpawn/LeavingZone" to="." method="_on_leaving_zone_body_entered"]
+[connection signal="child_entered_tree" from="OrderObject" to="OrderObject" method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="OrderObject" to="OrderObject" method="_on_child_exiting_tree"]

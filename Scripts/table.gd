@@ -8,6 +8,7 @@ var orders := []
 var isAvailable: bool = true
 var check: int = 0
 var placed_food: Array[Node2D]
+var actual_popularity := 0
 
 @onready var timer: Timer = $Timer
 @onready var progress_bar: ProgressBar = $ProgressBar
@@ -46,30 +47,38 @@ func update_availability():
 	isAvailable = get_free_chair() != null
 	
 func interact(player):
-	print(orders)
 	for child in order_object.get_children():
 		var item = child.name.to_lower()
-		
+		var found := false
+
 		for order_data in orders:
 			if order_data.food == item:
+				found = true
+
 				check += child.get_price()
-				
+
 				place_food(child, order_data.customer)
-				
+
 				orders.erase(order_data)
-				
+
 				if orders.is_empty():
 					start_eating()
-					
+
 					progress_bar.visible = true
 					progress_bar.value = 0
-					
+
 					timer.start()
-					
+
 					order_completed.emit(check)
 					check = 0
-					
+
 				return
+
+		if !found:
+			for customer in customers:
+				if is_instance_valid(customer):
+					actual_popularity -= 1
+					print("Actual popularity: " + str(actual_popularity))
 
 func place_food(food, customer):
 	var markers = [food_place_1, food_place_2]
@@ -136,10 +145,14 @@ func send_customers_home():
 		chair.isFree = true
 		
 	customers.clear()
+	
+	GameData.popularity += actual_popularity
+	actual_popularity = 0
 
 func assign_customer(customer):
 	if customer not in customers:
 		customers.append(customer)
+		actual_popularity += 1
 		orders.append({
 			"customer": customer,
 			"food": customer.foodWanted

@@ -6,13 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://r45ksajhucw5" path="res://Sprites/menu.PNG" id="3_55kwv"]
 [ext_resource type="Texture2D" uid="uid://cgeaitckg5fnk" path="res://Sprites/Coffee_noB.PNG" id="4_6vd4x"]
 [ext_resource type="FontFile" uid="uid://c0rmb6tjydgnl" path="res://Fonts/FascinateInline-Regular.ttf" id="4_12m1t"]
-[ext_resource type="Script" uid="uid://dyjktga4k8yto" path="res://Scripts/responsive_label.gd" id="5_0061g"]
+[ext_resource type="Script" path="res://Scripts/responsive_label.gd" id="5_0061g"]
+[ext_resource type="Script" uid="uid://dcxaa76iw32mu" path="res://Scripts/responsive_button.gd" id="8_8mikk"]
 [ext_resource type="FontFile" uid="uid://c6m8rdtvxahbg" path="res://Fonts/static/PixelifySans-Regular.ttf" id="8_0061g"]
-[ext_resource type="Script" uid="uid://csttlrovvx2gi" path="res://Scripts/curve_label.gd" id="9_0061g"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_0061g"]
-font = ExtResource("4_12m1t")
-font_size = 100
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n82rj"]
 bg_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
@@ -74,26 +70,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_twnyg")
 
-[node name="CurvedLabel" type="Control" parent="Panel" unique_id=2031254110]
-visible = false
-anchors_preset = 0
-offset_left = 59.0
-offset_top = 6.0
-offset_right = 1141.0
-offset_bottom = 123.0
-size_flags_vertical = 3
-script = ExtResource("9_0061g")
-text = "DREAM CAFE"
-curve_mode = 2
-radius_fraction = 1.0
-arc_degrees = 298.1
-start_angle_degrees = -180.0
-text_width = 600.0
-char_spacing = 1.0
-font = ExtResource("4_12m1t")
-label_settings = SubResource("LabelSettings_0061g")
-font_size_fraction = 0.936
-
 [node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=781481721]
 layout_mode = 1
 anchors_preset = 15
@@ -116,9 +92,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/LeftPanel" unique_id=1166437560]
+[node name="GameTitle" type="Label" parent="Panel/MarginContainer/HBoxContainer/LeftPanel" unique_id=1166437560]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_12m1t")
 theme_override_font_sizes/font_size = 8
 text = "DREAM CAFE"
@@ -187,7 +165,7 @@ size_flags_stretch_ratio = 1.1
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_constants/line_spacing = 3
 theme_override_fonts/font = ExtResource("4_12m1t")
-theme_override_font_sizes/font_size = 65
+theme_override_font_sizes/font_size = 8
 text = "Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -213,6 +191,7 @@ size_flags_vertical = 3
 
 [node name="NewGame" type="Button" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=935340656]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
@@ -221,6 +200,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_n82rj")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0061g")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8mikk")
 text = "New Game"
+script = ExtResource("8_8mikk")
 
 [node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=989697112]
 layout_mode = 2
@@ -228,6 +208,7 @@ size_flags_vertical = 3
 
 [node name="LoadGame" type="Button" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=141415103]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
@@ -236,6 +217,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_8mikk")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_o1e67")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w5sh6")
 text = "Load Game"
+script = ExtResource("8_8mikk")
 
 [node name="Control2" type="Control" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=348878340]
 layout_mode = 2
@@ -243,6 +225,7 @@ size_flags_vertical = 3
 
 [node name="Settings" type="Button" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=755254686]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
@@ -251,6 +234,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_sqelc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_w5sh6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o1e67")
 text = "Settings"
+script = ExtResource("8_8mikk")
 
 [node name="Control3" type="Control" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=212595720]
 layout_mode = 2
@@ -258,6 +242,7 @@ size_flags_vertical = 3
 
 [node name="Quit" type="Button" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=1908246047]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
@@ -266,6 +251,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_ycay6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bsy20")
 theme_override_styles/hover = SubResource("StyleBoxFlat_07cxn")
 text = "Exit Game"
+script = ExtResource("8_8mikk")
 
 [node name="Control4" type="Control" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=603793771]
 layout_mode = 2
