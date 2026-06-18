@@ -47,8 +47,6 @@ func update_availability():
 	isAvailable = get_free_chair() != null
 	
 func interact(player):
-	print(orders)
-
 	for child in order_object.get_children():
 		var item = child.name.to_lower()
 		var found := false
