@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bv762dwqnlrcw"]
+
+[ext_resource type="Texture2D" uid="uid://btgxr7a41en0j" path="res://Sprites/DialogueBox.PNG" id="1_m4115"]
+[ext_resource type="Script" uid="uid://bgmubsqvjwrgf" path="res://Scripts/dialogue_box.gd" id="1_mjj0w"]
+[ext_resource type="Texture2D" uid="uid://cy4hw2npgikog" path="res://Sprites/DialogueBoxName.PNG" id="1_sh7kx"]
+
+[node name="DialogueBox" type="Node2D" unique_id=1485621273]
+
+[node name="DialogueBox" type="CanvasLayer" parent="." unique_id=2007631610]
+script = ExtResource("1_mjj0w")
+
+[node name="CharacterPortrait" type="TextureRect" parent="DialogueBox" unique_id=1226125367]
+offset_left = 17.0
+offset_top = 20.0
+offset_right = 553.0
+offset_bottom = 652.0
+stretch_mode = 4
+
+[node name="NameBox" type="NinePatchRect" parent="DialogueBox" unique_id=1659138150]
+anchors_preset = -1
+anchor_left = 0.040000003
+anchor_top = 0.63900006
+anchor_right = 0.3
+anchor_bottom = 0.72800004
+offset_left = -0.08000183
+offset_top = -0.072052
+offset_right = 0.3999939
+offset_bottom = 0.25598145
+texture = ExtResource("1_sh7kx")
+
+[node name="NameLabel" type="Label" parent="DialogueBox/NameBox" unique_id=11050417]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_right = 0.97
+anchor_bottom = 0.93100005
+offset_left = 0.10000038
+offset_top = -0.99999046
+offset_right = 2.0
+offset_bottom = 0.002002716
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="DialoguePanel" type="NinePatchRect" parent="DialogueBox" unique_id=1188830023]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -178.0
+offset_right = -11.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_m4115")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="DialogueLabel" type="Label" parent="DialogueBox/DialoguePanel" unique_id=353180265]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 12.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
