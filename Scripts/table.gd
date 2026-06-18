@@ -46,6 +46,9 @@ func update_availability():
 	isAvailable = get_free_chair() != null
 	
 func interact(player):
+	for order_data in orders:
+		if is_instance_valid(order_data.customer):
+			order_data.customer.speech_bubble.show_order([order_data.food])
 	print(orders)
 	for child in order_object.get_children():
 		var item = child.name.to_lower()
@@ -55,6 +58,9 @@ func interact(player):
 				check += child.get_price()
 				
 				place_food(child, order_data.customer)
+				
+				if is_instance_valid(order_data.customer):
+					order_data.customer.speech_bubble.hide_order()
 				
 				orders.erase(order_data)
 				
