@@ -1190,10 +1190,11 @@ run_speed = null
 [node name="CustomerSpawn" type="Marker2D" parent="." unique_id=1376856490]
 position = Vector2(64, 160)
 
-[node name="LeavingZone" type="Area2D" parent="CustomerSpawn" unique_id=317473523]
+[node name="LeavingZone" type="Area2D" parent="." unique_id=317473523]
+position = Vector2(64, 160)
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerSpawn/LeavingZone" unique_id=569889899]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeavingZone" unique_id=569889899]
 shape = SubResource("CircleShape2D_df3mn")
 
 [node name="Chair" parent="." unique_id=1594550986 instance=ExtResource("7_wpc15")]
@@ -1251,6 +1252,6 @@ day_start = SubResource("Resource_2o2p7")
 night_start = SubResource("Resource_eatfk")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="CustomerSpawn/LeavingZone" to="." method="_on_leaving_zone_body_entered"]
+[connection signal="body_entered" from="LeavingZone" to="." method="_on_leaving_zone_body_entered"]
 [connection signal="child_entered_tree" from="OrderObject" to="OrderObject" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="OrderObject" to="OrderObject" method="_on_child_exiting_tree"]

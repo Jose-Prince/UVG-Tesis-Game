@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 	if timer.time_left > 0:
 		progress_bar.value = timer.wait_time - timer.time_left
 
-func get_free_chair():
+func get_free_chairs():
 	var free_chairs := []
 
 	for chair in chairs:
@@ -41,10 +41,10 @@ func get_free_chair():
 	if free_chairs.is_empty():
 		return null
 
-	return free_chairs.pick_random()
+	return free_chairs
 
 func update_availability():
-	isAvailable = get_free_chair() != null
+	isAvailable = get_free_chairs() != null
 	
 func interact(player):
 	for child in order_object.get_children():
