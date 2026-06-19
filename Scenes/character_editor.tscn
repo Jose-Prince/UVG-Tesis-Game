@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bx5hhn80ewyna" path="res://Scripts/name_entry.gd" id="1_3sdjg"]
 [ext_resource type="Texture2D" uid="uid://cx1nyacr2yebd" path="res://Sprites/gingham.PNG" id="2_1vb4o"]
 [ext_resource type="FontFile" uid="uid://bm4e365ecirdj" path="res://Fonts/Chalk.otf" id="2_7wrfq"]
+[ext_resource type="Script" uid="uid://cpnugcuyb5456" path="res://Scripts/button_ui.gd" id="4_uvaie"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vb4o"]
 bg_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
@@ -135,6 +136,7 @@ layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_c1sof")
 theme_override_font_sizes/font_size = 30
 text = "Confirm"
+script = ExtResource("4_uvaie")
 
 [connection signal="text_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/PlayerHDisplay/PlayerEdit" to="." method="_on_player_edit_text_changed"]
 [connection signal="text_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/CoffeeShopHDisplay/ShopEdit" to="." method="_on_shop_edit_text_changed"]

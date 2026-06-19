@@ -11,6 +11,9 @@ var slot: int
 
 @onready var delete_file_button: Button = $MarginContainer/HBoxContainer/DeleteFileButton
 
+func _ready() -> void:
+	pressed.connect(SfxManager.play_click)
+
 func setup(
 	save_slot: int,
 	player_name: String,
@@ -31,6 +34,7 @@ func setup(
 	date_label.text = "%s %d, %s, Year %d" % [day, num_day ,month_name, year]
 
 func _on_delete_file_button_pressed() -> void:
+	SfxManager.play_click()
 	SaveManager.delete_save(slot)
 
 	get_tree().reload_current_scene()

@@ -19,6 +19,7 @@ config/icon="uid://cgeaitckg5fnk"
 
 GameData="*res://Scripts/game_data.gd"
 SaveManager="*res://Scripts/save_manager.gd"
+SfxManager="*uid://dq03ralao18ys"
 
 [global_group]
 

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dq03ralao18ys"]
+
+[ext_resource type="AudioStream" uid="uid://bgcgsagmr3pdp" path="res://Audios/Buton1.ogg" id="1_4xxgw"]
+[ext_resource type="Script" uid="uid://mufslw6ip3sv" path="res://Scenes/sfx_manager.gd" id="1_8ebee"]
+
+[node name="SFXManager" type="Node" unique_id=647255754]
+script = ExtResource("1_8ebee")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="." unique_id=568104829]
+stream = ExtResource("1_4xxgw")
+volume_db = 14.345
