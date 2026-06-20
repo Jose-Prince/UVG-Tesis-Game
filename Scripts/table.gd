@@ -16,6 +16,7 @@ var actual_popularity := 0
 @onready var food_place_1: Marker2D = $FoodPlace1
 @onready var food_place_2: Marker2D = $FoodPlace2
 @onready var order_object: Node2D = $"../OrderObject"
+@onready var waiting_timer: Timer = $WaitingTimer
 
 func _ready():
 	await get_tree().physics_frame
@@ -157,6 +158,7 @@ func assign_customer(customer):
 			"customer": customer,
 			"food": customer.foodWanted
 		})
+		waiting_timer.start()
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("chair"):
@@ -174,3 +176,7 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_waiting_timer_timeout() -> void:
+	print("Se van")

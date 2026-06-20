@@ -16,19 +16,13 @@ var chair_reached := false
 var food: Array[String] = ["coffee", "water"]
 var foodWanted: String = food.pick_random()
 
-var waitingTime: int = 5
-
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var waiting_timer: Timer = $WaitingTimer
 @onready var grid_manager: Node = $"../GridManager"
 @onready var label: Label = $Label
 
 func _ready() -> void:
 	await get_tree().physics_frame
 	await get_tree().physics_frame 
-
-	waiting_timer.wait_time = waitingTime
-	waiting_timer.one_shot = true
 	
 func _physics_process(delta: float) -> void:
 	match currentState:
@@ -105,16 +99,6 @@ func set_target(target_world: Vector2):
 
 func path_finished() -> bool:
 	return path_index >= path.size()
-
-func _on_sitting_timer_timeout() -> void:
-	print("Agente se va")
-	
-	if target_chair:
-		target_chair.isFree = true
-	
-func _on_customer_timer_timeout() -> void:
-	leave_started = false
-	currentState = States.Leave
 	
 func assign_chair(chair):
 	target_chair = chair
