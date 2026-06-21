@@ -31,6 +31,10 @@ func _physics_process(delta: float) -> void:
 			
 			if path_finished() && !chair_reached:
 				chair_reached = true
+				if target_chair and target_chair.assigned_table:
+					target_chair.assigned_table.check_all_customers_seated()
+					target_chair.assigned_table.circular_bar.visible = true
+				
 				currentState = States.Sit
 				
 		States.Sit:
