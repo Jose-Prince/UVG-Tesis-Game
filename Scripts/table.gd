@@ -17,12 +17,15 @@ var actual_popularity := 0
 @onready var food_place_2: Marker2D = $FoodPlace2
 @onready var order_object: Node2D = $"../OrderObject"
 @onready var waiting_timer: Timer = $WaitingTimer
-@onready var circular_bar: Control = $CircularBar
+@onready var circular_bar: TextureProgressBar = $CircularBar
 
 func _ready():
 	await get_tree().physics_frame
 
 	progress_bar.max_value = timer.wait_time
+	
+	circular_bar.max_value = waiting_timer.wait_time
+	circular_bar.value = 0
 	
 	var shape = $collider.shape
 	var rect = Rect2(global_position - shape.size/2, shape.size)
@@ -32,6 +35,9 @@ func _process(delta: float) -> void:
 	z_index = int(global_position.y)
 	if timer.time_left > 0:
 		progress_bar.value = timer.wait_time - timer.time_left
+	
+	if waiting_timer.time_left > 0:
+		circular_bar.value = waiting_timer.wait_time - waiting_timer.time_left
 
 func get_free_chair():
 	var free_chairs := []
@@ -132,11 +138,15 @@ func clear_food():
 	placed_food.clear()
 
 func start_eating():
+	circular_bar.visible = false
+	
 	for customer in customers:
 		if is_instance_valid(customer):
 			customer.currentState = customer.States.Eat
 
 func send_customers_home():
+	circular_bar.visible = false
+	
 	for customer in customers:
 		if is_instance_valid(customer):
 			customer.currentState = customer.States.Leave
@@ -173,7 +183,7 @@ func check_all_customers_seated():
 			return
 
 	if waiting_timer.is_stopped():
-		print("Todos sentados")
+		circular_bar.visible = true
 		waiting_timer.start()
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
