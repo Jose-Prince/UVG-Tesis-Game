@@ -6,7 +6,7 @@ var chairs: Array[Node2D]
 var customers: Array[Node2D]
 var orders := []
 var isAvailable: bool = true
-var check: int = 0
+var check: float = 0
 var placed_food: Array[Node2D]
 var actual_popularity := 0
 

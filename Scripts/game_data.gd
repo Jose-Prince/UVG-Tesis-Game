@@ -4,7 +4,7 @@ var game_slot := 0
 
 # Player variables
 var player_name := ""
-var money := 0
+var money: float = 0.0
 var popularity := 0
 
 # Shop variables

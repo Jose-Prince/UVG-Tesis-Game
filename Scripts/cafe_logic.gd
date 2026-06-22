@@ -15,8 +15,7 @@ func _ready() -> void:
 	for id in GameData.menu_ids:
 		restaurant_menu.append(ArticleDatabase.articles[int(id)])
 	GameData.menu = restaurant_menu
-	print(GameData.menu_ids)
-	print(restaurant_menu)
+
 	await scene_transition.pixelate_out(0.6).finished
 	
 	time_gui = find_child("TimeGui", true, false)
