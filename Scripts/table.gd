@@ -71,6 +71,7 @@ func interact(player):
 
 				if orders.is_empty():
 					start_eating()
+					check += calculate_tip()
 
 					progress_bar.visible = true
 					progress_bar.value = 0
@@ -188,6 +189,15 @@ func check_all_customers_seated():
 	if waiting_timer.is_stopped():
 		circular_bar.visible = true
 		waiting_timer.start()
+
+func calculate_tip() -> float:
+	if waiting_timer.wait_time <= 0:
+		return 0.0
+
+	var time_ratio := waiting_timer.time_left / waiting_timer.wait_time
+	time_ratio = clamp(time_ratio, 0.0, 1.0)
+
+	return check * (time_ratio * 0.20)
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("chair"):
