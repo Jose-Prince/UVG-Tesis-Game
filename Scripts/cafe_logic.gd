@@ -10,6 +10,8 @@ var time_gui: Control
 @onready var scene_transition: CanvasLayer = $SceneTransition
 
 func _ready() -> void:
+	print(GameData.menu_ids)
+	print(GameData.menu)
 	await scene_transition.pixelate_out(0.6).finished
 	
 	time_gui = find_child("TimeGui", true, false)

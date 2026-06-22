@@ -13,14 +13,14 @@ var currentState: States = States.Navigate
 var leave_started := false
 var chair_reached := false
 
-var food: Array[String] = ["coffee", "water"]
-var foodWanted: String = food.pick_random()
+var foodWanted: ArticleData
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var grid_manager: Node = $"../GridManager"
 @onready var label: Label = $Label
 
 func _ready() -> void:
+	foodWanted = GameData.menu.pick_random()
 	await get_tree().physics_frame
 	await get_tree().physics_frame 
 	
@@ -33,7 +33,6 @@ func _physics_process(delta: float) -> void:
 				chair_reached = true
 				if target_chair and target_chair.assigned_table:
 					target_chair.assigned_table.check_all_customers_seated()
-					target_chair.assigned_table.circular_bar.visible = true
 				
 				currentState = States.Sit
 				
@@ -43,7 +42,7 @@ func _physics_process(delta: float) -> void:
 			
 		States.Wait:
 			velocity = Vector2.ZERO
-			label.text = foodWanted
+			label.text = foodWanted.name
 			
 		States.Eat:
 			velocity = Vector2.ZERO

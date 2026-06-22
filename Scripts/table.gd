@@ -56,11 +56,11 @@ func update_availability():
 	
 func interact(player):
 	for child in order_object.get_children():
-		var item = child.name.to_lower()
+		var item_id = child.article_data.id
 		var found := false
 
 		for order_data in orders:
-			if order_data.food == item:
+			if order_data.food.id == item_id:
 				found = true
 
 				check += child.get_price()
@@ -169,7 +169,6 @@ func assign_customer(customer):
 			"customer": customer,
 			"food": customer.foodWanted
 		})
-		waiting_timer.start()
 
 func check_all_customers_seated():
 	if customers.is_empty():
