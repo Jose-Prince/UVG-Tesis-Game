@@ -57,6 +57,7 @@ func customer_spawn():
 		return
 	
 	var new_customer: CharacterBody2D = CUSTOMER_SCENE.instantiate()
+	new_customer.foodWanted = GameData.menu.pick_random()
 	
 	selected_table.assign_customer(new_customer)
 	

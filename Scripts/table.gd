@@ -162,6 +162,7 @@ func send_customers_home():
 	actual_popularity = 0
 
 func assign_customer(customer):
+	print(customer.foodWanted)
 	if customer not in customers:
 		customers.append(customer)
 		actual_popularity += 1
@@ -169,6 +170,9 @@ func assign_customer(customer):
 			"customer": customer,
 			"food": customer.foodWanted
 		})
+		
+		waiting_timer.wait_time += customer.foodWanted.prep_time
+		circular_bar.max_value = waiting_timer.wait_time
 
 func check_all_customers_seated():
 	if customers.is_empty():

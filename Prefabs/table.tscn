@@ -62,7 +62,7 @@ position = Vector2(-14, -6)
 position = Vector2(14, -6)
 
 [node name="WaitingTimer" type="Timer" parent="." unique_id=1302349200]
-wait_time = 5.0
+wait_time = 10.0
 one_shot = true
 
 [node name="CircularBar" type="TextureProgressBar" parent="." unique_id=1266280371]

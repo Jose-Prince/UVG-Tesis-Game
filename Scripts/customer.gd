@@ -20,7 +20,6 @@ var foodWanted: ArticleData
 @onready var label: Label = $Label
 
 func _ready() -> void:
-	foodWanted = GameData.menu.pick_random()
 	await get_tree().physics_frame
 	await get_tree().physics_frame 
 	
