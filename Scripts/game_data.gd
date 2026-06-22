@@ -10,8 +10,7 @@ var popularity := 0
 # Shop variables
 var shop_name := ""
 var menu_ids: Array = []
-var menu: Array[ArticleData] = []
-
+var menu: Array[ArticleData]
 # World variables
 var month := 0
 var day_index := 0
@@ -25,12 +24,6 @@ func load_to_data(data: Dictionary):
 
 	shop_name = data["coffee_shop"]["name"]
 	menu_ids = data["coffee_shop"]["menu_ids"]
-
-	menu.clear()
-
-	for id in menu_ids:
-		if ArticleDatabase.articles.has(id):
-			menu.append(ArticleDatabase.articles[id])
 
 	day_index = data["world"]["day_index"]
 	num_day = data["world"]["num_day"]

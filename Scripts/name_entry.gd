@@ -9,17 +9,15 @@ extends Control
 func _ready() -> void:
 	GameData.menu = initial_menu
 
-	GameData.menu_ids.clear()
-
-	for article in initial_menu:
-		GameData.menu_ids.append(article.id)
-
 func _on_confirm_button_pressed() -> void:
 	randomize()
 	var date = Time.get_datetime_dict_from_system()
 	
 	var start_month = date["month"] - 1
 	var start_day = date["day"]
+	
+	for article in initial_menu:
+		GameData.menu_ids.append(article.id)
 	
 	SaveManager.save_especific_data(GameData.game_slot, "world", {"day_index": randi_range(0, 6), "num_day": start_day,"month": start_month, "year": 1})
 	SaveManager.save_especific_data(GameData.game_slot, "player", {"name": GameData.player_name, "money": 0, "popularity": 0})

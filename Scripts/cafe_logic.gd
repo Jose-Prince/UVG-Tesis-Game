@@ -1,6 +1,8 @@
 extends Node2D
 const CUSTOMER_SCENE = preload("res://Prefabs/customer.tscn")
 
+var restaurant_menu: Array[ArticleData]
+
 var tables: Array[Node]
 var coffee_name := ""
 var time_gui: Control
@@ -10,8 +12,11 @@ var time_gui: Control
 @onready var scene_transition: CanvasLayer = $SceneTransition
 
 func _ready() -> void:
+	for id in GameData.menu_ids:
+		restaurant_menu.append(ArticleDatabase.articles[int(id)])
+	GameData.menu = restaurant_menu
 	print(GameData.menu_ids)
-	print(GameData.menu)
+	print(restaurant_menu)
 	await scene_transition.pixelate_out(0.6).finished
 	
 	time_gui = find_child("TimeGui", true, false)
