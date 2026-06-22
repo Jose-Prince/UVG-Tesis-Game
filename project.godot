@@ -30,6 +30,10 @@ customer=""
 clickable="Clickable objects"
 Persist=""
 
+[gui]
+
+theme/custom_font="uid://cydo42c7pcqn2"
+
 [input]
 
 up={
