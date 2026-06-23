@@ -72,6 +72,7 @@ func interact(player):
 				if orders.is_empty():
 					start_eating()
 					check += calculate_tip()
+					actual_popularity += calculate_popularity_bonus()
 
 					progress_bar.visible = true
 					progress_bar.value = 0
@@ -198,6 +199,15 @@ func calculate_tip() -> float:
 	time_ratio = clamp(time_ratio, 0.0, 1.0)
 
 	return check * (time_ratio * 0.20)
+
+func calculate_popularity_bonus() -> int:
+	if waiting_timer.wait_time <= 0:
+		return 0
+
+	var time_ratio := waiting_timer.time_left / waiting_timer.wait_time
+	time_ratio = clamp(time_ratio, 0.0, 1.0)
+
+	return round(time_ratio * customers.size())
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("chair"):
