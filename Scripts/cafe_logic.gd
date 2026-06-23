@@ -39,43 +39,43 @@ func _on_timer_timeout() -> void:
 func customer_spawn():
 	update_customer_rate()
 	customer_timer.start()
-
+	
 	var available_tables := []
-
+	
 	for table in tables:
 		var free_chairs = table.get_free_chairs() 
 		if table.isAvailable and free_chairs != null and free_chairs.size() > 0:
 			available_tables.append(table)
-
+	
 	if available_tables.is_empty():
 		print("No hay mesas disponibles")
 		return
-
+	
 	var selected_table = available_tables.pick_random()
 	var chairs: Array = selected_table.get_free_chairs()
-
+	
 	var max_customers_possible = min(2, chairs.size())
 	var amount_to_spawn = randi_range(1, max_customers_possible)
-
+	
 	var customers_to_spawn: Array[Customer] = []
-
+	
 	for i in amount_to_spawn:
 		var new_customer: Customer = CUSTOMER_SCENE.instantiate() as Customer
 		customers_to_spawn.append(new_customer)
-
+	
 	for i in customers_to_spawn.size():
 		var customer = customers_to_spawn[i]
 		var chair = chairs[i]
 		
 		selected_table.assign_customer(customer)
-
+		
 		customer.global_position = spawn_point.global_position
 		customer.leaving_target_position = despawn_point.global_position
-
+		
 		customer.assign_chair(chair)
 		chair.isFree = false
 		selected_table.update_availability()
-
+	
 		get_tree().current_scene.add_child(customer)
 		customer.set_target(chair.go_to_pos.global_position)
 		
@@ -84,7 +84,8 @@ func customer_spawn():
 	await get_tree().physics_frame
 	
 	selected_table.isAvailable = false
-
+	
+	SfxManager.play_bell()
 
 func get_hour_factor() -> float:
 	var hour = time_gui.actual_hour
