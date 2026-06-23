@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://brsgf6flsog4g" path="res://Scripts/time_ui.gd" id="4_vxq8l"]
 [ext_resource type="Texture2D" uid="uid://d2vbs8xay60sf" path="res://Sprites/character/clothes_sheet.PNG" id="5_wuv02"]
 [ext_resource type="Texture2D" uid="uid://d3dns6cy40bbe" path="res://Sprites/character/hair_sheet.PNG" id="6_8afax"]
+[ext_resource type="PackedScene" uid="uid://cgejjdvlywiw" path="res://Prefabs/object_ui.tscn" id="7_3ygst"]
+[ext_resource type="PackedScene" uid="uid://ce5bfs85ds2ea" path="res://Scenes/PauseMenu.tscn" id="7_javds"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ijov"]
 atlas = ExtResource("2_t8lmw")
@@ -1907,7 +1909,6 @@ metadata/_custom_type_script = "uid://cc3yiapgcu05y"
 [node name="Player" type="CharacterBody2D" unique_id=1461023337 groups=["player"]]
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
-collision_mask = 3
 script = ExtResource("1_x3d5u")
 speed = 200.0
 
@@ -1951,9 +1952,26 @@ date_time = SubResource("Resource_javds")
 ticks_pr_second = 80
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1624174308]
+layer = 100
 
 [node name="TimeGui" parent="CanvasLayer" unique_id=2113710388 instance=ExtResource("3_shmu5")]
+anchors_preset = -1
+anchor_right = 1.04
+offset_left = -375.0
+offset_top = 10.0
+offset_right = -375.0
+offset_bottom = 10.0
 script = ExtResource("4_vxq8l")
+
+[node name="ObjectUI" parent="CanvasLayer" unique_id=1767827356 instance=ExtResource("7_3ygst")]
+offset_left = 5.0
+offset_top = -266.0
+offset_right = 5.0
+offset_bottom = -266.0
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1486490026 instance=ExtResource("7_javds")]
+visible = false
+z_index = 2
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

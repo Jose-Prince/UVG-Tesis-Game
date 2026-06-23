@@ -6,14 +6,29 @@
 [ext_resource type="Texture2D" uid="uid://r45ksajhucw5" path="res://Sprites/menu.PNG" id="3_55kwv"]
 [ext_resource type="Texture2D" uid="uid://cgeaitckg5fnk" path="res://Sprites/Coffee_noB.PNG" id="4_6vd4x"]
 [ext_resource type="FontFile" uid="uid://c0rmb6tjydgnl" path="res://Fonts/FascinateInline-Regular.ttf" id="4_12m1t"]
-[ext_resource type="Script" uid="uid://drc0u7k73tl0l" path="res://Scripts/curved_text.gd" id="4_twnyg"]
-[ext_resource type="FontFile" uid="uid://dliqq4g4bg0qy" path="res://Fonts/RobotoSlab-Regular.ttf" id="5_6vd4x"]
+[ext_resource type="Script" path="res://Scripts/responsive_label.gd" id="5_0061g"]
+[ext_resource type="Script" uid="uid://dcxaa76iw32mu" path="res://Scripts/responsive_button.gd" id="8_8mikk"]
+[ext_resource type="FontFile" uid="uid://c6m8rdtvxahbg" path="res://Fonts/static/PixelifySans-Regular.ttf" id="8_0061g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n82rj"]
+bg_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n82rj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0061g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mikk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8mikk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o1e67"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5sh6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sqelc"]
 
@@ -27,17 +42,6 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07cxn"]
 
-[sub_resource type="Curve2D" id="Curve2D_55kwv"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 78, 414, 0, 0, 0, 0, 106, 297, 0, 0, 0, 0, 174, 205, 0, 0, 0, 0, 259, 146, 0, 0, 0, 0, 345, 126, 0, 0, 0, 0, 411, 127, 0, 0, 0, 0, 484, 154)
-}
-point_count = 7
-
-[sub_resource type="LabelSettings" id="LabelSettings_12m1t"]
-font = ExtResource("4_12m1t")
-font_size = 100
-font_color = Color(0.9607843, 0.92941177, 0.8862745, 1)
-
 [node name="TitleScreen" type="Control" unique_id=1439522845]
 layout_mode = 3
 anchors_preset = 15
@@ -47,47 +51,95 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_klylv")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1441525278]
-visible = false
+[node name="Panel" type="Panel" parent="." unique_id=304959585]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.2509804, 0.101960786, 0.13725491, 1)
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=619703966]
+[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=619703966]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = 17.0
-offset_right = 17.0
-offset_bottom = 25.0
+offset_right = 8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_twnyg")
 
-[node name="Control" type="Control" parent="." unique_id=1506689805]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=781481721]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Control" unique_id=1701874499]
-layout_mode = 0
-offset_left = 630.0
-offset_top = 110.0
-offset_right = 1043.0
-offset_bottom = 584.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer" unique_id=214738360]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="LeftPanel" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer" unique_id=842475006]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="GameTitle" type="Label" parent="Panel/MarginContainer/HBoxContainer/LeftPanel" unique_id=1166437560]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_12m1t")
+theme_override_font_sizes/font_size = 8
+text = "DREAM CAFE"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+script = ExtResource("5_0061g")
+size_fraction = 0.078
+
+[node name="CoffeeDrawing" type="TextureRect" parent="Panel/MarginContainer/HBoxContainer/LeftPanel" unique_id=626094069]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_6vd4x")
+expand_mode = 1
+
+[node name="RightPanel" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer" unique_id=501243893]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/RightPanel" unique_id=1506689805]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control" unique_id=1746154043]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2" unique_id=1701874499]
+layout_mode = 2
 texture = ExtResource("3_55kwv")
 patch_margin_left = 9
 patch_margin_top = 9
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/NinePatchRect" unique_id=437061542]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect" unique_id=437061542]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,84 +151,118 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/NinePatchRect/MarginContainer" unique_id=1276538440]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer" unique_id=1276538440]
 layout_mode = 2
-theme_override_constants/separation = 23
+theme_override_constants/separation = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1611489862]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1611489862]
 layout_mode = 2
 theme_override_constants/separation = -11
 
-[node name="Label" type="Label" parent="Control/NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1624773213]
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1624773213]
 layout_mode = 2
 size_flags_stretch_ratio = 1.1
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_constants/line_spacing = 3
 theme_override_fonts/font = ExtResource("4_12m1t")
-theme_override_font_sizes/font_size = 65
+theme_override_font_sizes/font_size = 8
 text = "Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("5_0061g")
 
-[node name="Label2" type="Label" parent="Control/NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=894536310]
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1531549857]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
-text = "——————————"
-horizontal_alignment = 1
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxFlat_n82rj")
 
-[node name="NewGame" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=935340656]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer" unique_id=698147449]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+size_flags_vertical = 3
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer" unique_id=816277972]
+layout_mode = 2
+
+[node name="Control5" type="Control" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=1350071519]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NewGame" type="Button" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=935340656]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
-theme_override_fonts/font = ExtResource("5_6vd4x")
-theme_override_font_sizes/font_size = 45
+theme_override_fonts/font = ExtResource("8_0061g")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n82rj")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0061g")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8mikk")
 text = "New Game"
+script = ExtResource("8_8mikk")
 
-[node name="Settings" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=755254686]
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=989697112]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LoadGame" type="Button" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=141415103]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
-theme_override_fonts/font = ExtResource("5_6vd4x")
-theme_override_font_sizes/font_size = 45
+theme_override_fonts/font = ExtResource("8_0061g")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8mikk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o1e67")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w5sh6")
+text = "Load Game"
+script = ExtResource("8_8mikk")
+
+[node name="Control2" type="Control" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=348878340]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Settings" type="Button" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=755254686]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+theme_override_fonts/font = ExtResource("8_0061g")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sqelc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_w5sh6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o1e67")
 text = "Settings"
+script = ExtResource("8_8mikk")
 
-[node name="Quit" type="Button" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1908246047]
+[node name="Control3" type="Control" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=212595720]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Quit" type="Button" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=1908246047]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
-theme_override_fonts/font = ExtResource("5_6vd4x")
-theme_override_font_sizes/font_size = 45
+theme_override_fonts/font = ExtResource("8_0061g")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ycay6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bsy20")
 theme_override_styles/hover = SubResource("StyleBoxFlat_07cxn")
 text = "Exit Game"
+script = ExtResource("8_8mikk")
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=626094069]
-layout_mode = 0
-offset_left = 37.0
-offset_top = 130.0
-offset_right = 616.0
-offset_bottom = 685.0
-texture = ExtResource("4_6vd4x")
-expand_mode = 1
-
-[node name="CurvedTitle" type="Path2D" parent="." unique_id=1533437760]
-curve = SubResource("Curve2D_55kwv")
-script = ExtResource("4_twnyg")
-text = "DREAM CAFE"
-label_settings = SubResource("LabelSettings_12m1t")
+[node name="Control4" type="Control" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=603793771]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1789502888]
 stream = ExtResource("2_p3fck")
 autoplay = true
 parameters/looping = true
 
-[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Control/NinePatchRect/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Quit" to="." method="_on_quit_pressed"]

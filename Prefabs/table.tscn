@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://ds7fyi5wyq772" path="res://Scripts/table.gd" id="1_rbrsc"]
 [ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Sprites/TopDownHouse_FurnitureState1.png" id="1_sawk4"]
 [ext_resource type="Texture2D" uid="uid://bekptt5nso7ur" path="res://Sprites/kenney_ui-pack-space-expansion/PNG/Blue/Default/bar_round_gloss_large.png" id="3_uo8q5"]
+[ext_resource type="Texture2D" uid="uid://bag8nrdu7rgvn" path="res://Sprites/circular_bars/16x16/circle bar under.png" id="4_da6p8"]
+[ext_resource type="Texture2D" uid="uid://cwjfywym684yv" path="res://Sprites/circular_bars/16x16/circle bar over.png" id="5_jkops"]
+[ext_resource type="Texture2D" uid="uid://bifpu5cucekna" path="res://Sprites/circular_bars/16x16/circle bar progress dark green.png" id="6_8cnf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rbrsc"]
 size = Vector2(46, 21)
@@ -12,7 +15,7 @@ atlas = ExtResource("1_sawk4")
 region = Rect2(0, 31.597538, 48.727726, 31.21207)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sawk4"]
-size = Vector2(78, 45)
+size = Vector2(91, 45)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_faolu"]
 texture = ExtResource("3_uo8q5")
@@ -20,6 +23,7 @@ texture = ExtResource("3_uo8q5")
 [node name="Table" type="StaticBody2D" unique_id=639487740 groups=["clickable", "table"]]
 collision_layer = 3
 collision_mask = 3
+input_pickable = true
 script = ExtResource("1_rbrsc")
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=141406604]
@@ -30,9 +34,10 @@ shape = SubResource("RectangleShape2D_rbrsc")
 texture = SubResource("AtlasTexture_uo8q5")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=1021018811]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1347747545]
-position = Vector2(0, 0.5)
+position = Vector2(-6.5, 0.5)
 shape = SubResource("RectangleShape2D_sawk4")
 debug_color = Color(0.94935995, 5.390644e-06, 0.57624334, 0.41960785)
 
@@ -56,5 +61,22 @@ position = Vector2(-14, -6)
 [node name="FoodPlace2" type="Marker2D" parent="." unique_id=311461999]
 position = Vector2(14, -6)
 
+[node name="WaitingTimer" type="Timer" parent="." unique_id=1302349200]
+wait_time = 10.0
+one_shot = true
+
+[node name="CircularBar" type="TextureProgressBar" parent="." unique_id=1266280371]
+visible = false
+offset_left = -8.0
+offset_right = 8.0
+offset_bottom = 16.0
+fill_mode = 4
+texture_under = ExtResource("4_da6p8")
+texture_over = ExtResource("5_jkops")
+texture_progress = ExtResource("6_8cnf1")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="WaitingTimer" to="." method="_on_waiting_timer_timeout"]

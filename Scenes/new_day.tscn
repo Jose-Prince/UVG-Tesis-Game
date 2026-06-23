@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://fts6ubs0ghnf"]
+
+[ext_resource type="Script" uid="uid://3f8155uphsfu" path="res://Scripts/new_day.gd" id="1_640v5"]
+[ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Fonts/static/PixelifySans-Bold.ttf" id="2_rmkb3"]
+[ext_resource type="Script" uid="uid://cxfpqyib17r24" path="res://Scripts/animated_dots.gd" id="3_rmkb3"]
+[ext_resource type="AudioStream" uid="uid://bq6qcyxxs2w16" path="res://Audios/typewriter_sound.wav" id="4_1fu1n"]
+[ext_resource type="AudioStream" uid="uid://ebctnjjdpchb" path="res://Audios/clip_sound.wav" id="5_mm26e"]
+[ext_resource type="PackedScene" uid="uid://chcl2gv8i2851" path="res://Scenes/scene_transition.tscn" id="6_3smw6"]
+
+[node name="NewDay" type="Control" unique_id=1569627897]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_640v5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=24811249]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1878198379]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="DateLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=38937977]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rmkb3")
+theme_override_font_sizes/font_size = 30
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=427349068]
+layout_mode = 2
+
+[node name="SaveLabel" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=756021766]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rmkb3")
+theme_override_font_sizes/font_size = 30
+script = ExtResource("3_rmkb3")
+
+[node name="WriteSound" type="AudioStreamPlayer" parent="." unique_id=805475709]
+stream = ExtResource("4_1fu1n")
+
+[node name="ClicSound" type="AudioStreamPlayer" parent="." unique_id=75399278]
+stream = ExtResource("5_mm26e")
+
+[node name="SceneTransition" parent="." unique_id=441785496 instance=ExtResource("6_3smw6")]

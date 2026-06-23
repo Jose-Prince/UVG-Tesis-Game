@@ -1,9 +1,6 @@
 extends StaticBody2D
 
-@export var price: int = 2
-@export var hold_offset_down := Vector2(0, 10)
-@export var hold_offset_right := Vector2(5, 10)
-@export var hold_offset_up := Vector2(0, 10)
+@export var article_data: ArticleData
 
 var current_offset := Vector2.ZERO
 var holder: Node2D = null
@@ -29,10 +26,13 @@ func set_hold_direction(dir: String, flipped: bool):
 func _process(delta: float) -> void:
 	z_index = int(global_position.y + 2)
 	if holder:
-		global_position = (holder.global_position + current_offset)
+		global_position = (holder.global_position)
 
 func get_price():
-	return price
+	return article_data.price
+
+func get_article_name():
+	return article_data.name
 
 func pickup(new_holder: Node2D):
 	holder = new_holder
