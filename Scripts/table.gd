@@ -6,7 +6,7 @@ var chairs: Array[Node2D]
 var customers: Array[Node2D]
 var orders := []
 var isAvailable: bool = true
-var check: int = 0
+var check: float = 0
 var placed_food: Array[Node2D]
 var actual_popularity := 0
 
@@ -16,11 +16,16 @@ var actual_popularity := 0
 @onready var food_place_1: Marker2D = $FoodPlace1
 @onready var food_place_2: Marker2D = $FoodPlace2
 @onready var order_object: Node2D = $"../OrderObject"
+@onready var waiting_timer: Timer = $WaitingTimer
+@onready var circular_bar: TextureProgressBar = $CircularBar
 
 func _ready():
 	await get_tree().physics_frame
 
 	progress_bar.max_value = timer.wait_time
+	
+	circular_bar.max_value = waiting_timer.wait_time
+	circular_bar.value = 0
 	
 	var shape = $collider.shape
 	var rect = Rect2(global_position - shape.size/2, shape.size)
@@ -30,6 +35,9 @@ func _process(delta: float) -> void:
 	z_index = int(global_position.y)
 	if timer.time_left > 0:
 		progress_bar.value = timer.wait_time - timer.time_left
+	
+	if waiting_timer.time_left > 0:
+		circular_bar.value = waiting_timer.wait_time - waiting_timer.time_left
 
 func get_free_chair():
 	var free_chairs := []
@@ -48,11 +56,11 @@ func update_availability():
 	
 func interact(player):
 	for child in order_object.get_children():
-		var item = child.name.to_lower()
+		var item_id = child.article_data.id
 		var found := false
 
 		for order_data in orders:
-			if order_data.food == item:
+			if order_data.food.id == item_id:
 				found = true
 
 				check += child.get_price()
@@ -63,6 +71,8 @@ func interact(player):
 
 				if orders.is_empty():
 					start_eating()
+					check += calculate_tip()
+					actual_popularity += calculate_popularity_bonus()
 
 					progress_bar.visible = true
 					progress_bar.value = 0
@@ -130,11 +140,15 @@ func clear_food():
 	placed_food.clear()
 
 func start_eating():
+	circular_bar.visible = false
+	
 	for customer in customers:
 		if is_instance_valid(customer):
 			customer.currentState = customer.States.Eat
 
 func send_customers_home():
+	circular_bar.visible = false
+	
 	for customer in customers:
 		if is_instance_valid(customer):
 			customer.currentState = customer.States.Leave
@@ -150,6 +164,7 @@ func send_customers_home():
 	actual_popularity = 0
 
 func assign_customer(customer):
+	print(customer.foodWanted)
 	if customer not in customers:
 		customers.append(customer)
 		actual_popularity += 1
@@ -157,6 +172,42 @@ func assign_customer(customer):
 			"customer": customer,
 			"food": customer.foodWanted
 		})
+		
+		waiting_timer.wait_time += customer.foodWanted.prep_time
+		circular_bar.max_value = waiting_timer.wait_time
+
+func check_all_customers_seated():
+	if customers.is_empty():
+		return
+
+	for customer in customers:
+		if !is_instance_valid(customer):
+			return
+
+		if !customer.chair_reached:
+			return
+
+	if waiting_timer.is_stopped():
+		circular_bar.visible = true
+		waiting_timer.start()
+
+func calculate_tip() -> float:
+	if waiting_timer.wait_time <= 0:
+		return 0.0
+
+	var time_ratio := waiting_timer.time_left / waiting_timer.wait_time
+	time_ratio = clamp(time_ratio, 0.0, 1.0)
+
+	return check * (time_ratio * 0.20)
+
+func calculate_popularity_bonus() -> int:
+	if waiting_timer.wait_time <= 0:
+		return 0
+
+	var time_ratio := waiting_timer.time_left / waiting_timer.wait_time
+	time_ratio = clamp(time_ratio, 0.0, 1.0)
+
+	return round(time_ratio * customers.size())
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("chair"):
@@ -165,6 +216,7 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 		body.assign_table(self)
 
 func _on_timer_timeout() -> void:
+	actual_popularity = customers.size() * -3
 	progress_bar.visible = false
 	clear_food()
 	send_customers_home()
@@ -174,3 +226,6 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+func _on_waiting_timer_timeout() -> void:
+	send_customers_home()

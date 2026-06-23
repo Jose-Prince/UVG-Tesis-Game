@@ -1,7 +1,6 @@
 extends StaticBody2D
 
-@export var price: int = 2
-@export var hold_offset := Vector2.ZERO
+@export var article_data: ArticleData
 
 var holder: Node2D = null
 var kitchen_layer: TileMapLayer
@@ -12,10 +11,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	z_index = int(global_position.y + 2)
 	if holder:
-		global_position = (holder.global_position + hold_offset)
+		global_position = (holder.global_position)
 
 func get_price():
-	return price
+	return article_data.price
+
+func get_article_name():
+	return article_data.name
 
 func pickup(new_holder: Node2D):
 	holder = new_holder

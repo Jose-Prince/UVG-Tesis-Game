@@ -13,22 +13,15 @@ var currentState: States = States.Navigate
 var leave_started := false
 var chair_reached := false
 
-var food: Array[String] = ["coffee", "water"]
-var foodWanted: String = food.pick_random()
-
-var waitingTime: int = 5
+var foodWanted: ArticleData
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var waiting_timer: Timer = $WaitingTimer
 @onready var grid_manager: Node = $"../GridManager"
 @onready var label: Label = $Label
 
 func _ready() -> void:
 	await get_tree().physics_frame
 	await get_tree().physics_frame 
-
-	waiting_timer.wait_time = waitingTime
-	waiting_timer.one_shot = true
 	
 func _physics_process(delta: float) -> void:
 	match currentState:
@@ -37,6 +30,9 @@ func _physics_process(delta: float) -> void:
 			
 			if path_finished() && !chair_reached:
 				chair_reached = true
+				if target_chair and target_chair.assigned_table:
+					target_chair.assigned_table.check_all_customers_seated()
+				
 				currentState = States.Sit
 				
 		States.Sit:
@@ -45,7 +41,7 @@ func _physics_process(delta: float) -> void:
 			
 		States.Wait:
 			velocity = Vector2.ZERO
-			label.text = foodWanted
+			label.text = foodWanted.name
 			
 		States.Eat:
 			velocity = Vector2.ZERO
@@ -105,16 +101,6 @@ func set_target(target_world: Vector2):
 
 func path_finished() -> bool:
 	return path_index >= path.size()
-
-func _on_sitting_timer_timeout() -> void:
-	print("Agente se va")
-	
-	if target_chair:
-		target_chair.isFree = true
-	
-func _on_customer_timer_timeout() -> void:
-	leave_started = false
-	currentState = States.Leave
 	
 func assign_chair(chair):
 	target_chair = chair

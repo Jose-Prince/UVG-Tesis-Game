@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dgq50m38rejiv" path="res://Scripts/article.gd" id="1_2lmin"]
 [ext_resource type="Texture2D" uid="uid://20q7qmw0l88c" path="res://Sprites/cafe_items/Cup 2.png" id="1_ucr02"]
+[ext_resource type="Resource" uid="uid://d0riswjm5jcyk" path="res://Resources/coffee.tres" id="2_snflx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2lmin"]
 atlas = ExtResource("1_ucr02")
@@ -13,6 +14,7 @@ size = Vector2(6, 4)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_2lmin")
+article_data = ExtResource("2_snflx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=460583418]
 scale = Vector2(2, 2)
