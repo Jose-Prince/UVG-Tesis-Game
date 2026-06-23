@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Customer	
+
 var target_chair = null
 var movement_speed: float = 100.0
 var leaving_target_position: Vector2 = Vector2.ZERO
