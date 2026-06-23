@@ -13,15 +13,11 @@ var currentState: States = States.Navigate
 var leave_started := false
 var chair_reached := false
 
-var food: Array[String] = ["coffee", "water"]
-var foodWanted: String = food.pick_random()
-
-var waitingTime: int = 5
+var foodWanted: ArticleData
 
 var order_shown := false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var waiting_timer: Timer = $WaitingTimer
 @onready var grid_manager: Node = $"../GridManager"
 @onready var label: Label = $Label
 @onready var speech_bubble: Node2D = $SpeechBubble
@@ -29,20 +25,29 @@ var order_shown := false
 func _ready() -> void:
 	await get_tree().physics_frame
 	await get_tree().physics_frame 
-
-	waiting_timer.wait_time = waitingTime
-	waiting_timer.one_shot = true
 	
 func _physics_process(delta: float) -> void:
+	if currentState == States.Sit or currentState == States.Wait or currentState == States.Eat:
+		if target_chair:
+			z_index = int(target_chair.global_position.y) + 1
+		else:
+			z_index = int(global_position.y) + 1
+	else:
+		z_index = int(global_position.y)
 	match currentState:
 		States.Navigate:
 			follow_path()
 			
 			if path_finished() && !chair_reached:
 				chair_reached = true
+				if target_chair and target_chair.assigned_table:
+					target_chair.assigned_table.check_all_customers_seated()
+				
 				currentState = States.Sit
 				
 		States.Sit:
+			if target_chair:
+				global_position = target_chair.get_sit_position()
 			velocity = Vector2.ZERO
 			currentState = States.Wait
 			
@@ -109,16 +114,6 @@ func set_target(target_world: Vector2):
 
 func path_finished() -> bool:
 	return path_index >= path.size()
-
-func _on_sitting_timer_timeout() -> void:
-	print("Agente se va")
-	
-	if target_chair:
-		target_chair.isFree = true
-	
-func _on_customer_timer_timeout() -> void:
-	leave_started = false
-	currentState = States.Leave
 	
 func assign_chair(chair):
 	target_chair = chair
