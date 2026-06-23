@@ -56,7 +56,8 @@ func _ready() -> void:
 	
 	scene_transition = get_tree().root.find_child("SceneTransition", true, false)
 
-func add_point(money_received: int) -> void:
+func add_point(money_received: float) -> void:
+	print(money_received)
 	GameData.money += money_received
 	SfxManager.play_money()
 	update_money_display()

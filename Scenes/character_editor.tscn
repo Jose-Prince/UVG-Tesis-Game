@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cx1nyacr2yebd" path="res://Sprites/gingham.PNG" id="2_1vb4o"]
 [ext_resource type="FontFile" uid="uid://bm4e365ecirdj" path="res://Fonts/Chalk.otf" id="2_7wrfq"]
 [ext_resource type="Script" uid="uid://cpnugcuyb5456" path="res://Scripts/button_ui.gd" id="4_uvaie"]
+[ext_resource type="Script" uid="uid://6t4couakeorm" path="res://Scripts/article_data.gd" id="2_x5tlh"]
+[ext_resource type="Resource" uid="uid://d0riswjm5jcyk" path="res://Resources/coffee.tres" id="3_xj74l"]
+[ext_resource type="Resource" uid="uid://bg56uibnmcyir" path="res://Resources/water.tres" id="4_7igea"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vb4o"]
 bg_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
@@ -37,6 +40,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3sdjg")
+initial_menu = Array[ExtResource("2_x5tlh")]([ExtResource("3_xj74l"), ExtResource("4_7igea")])
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=951331320]
 layout_mode = 1
