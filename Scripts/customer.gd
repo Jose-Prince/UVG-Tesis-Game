@@ -15,9 +15,12 @@ var chair_reached := false
 
 var foodWanted: ArticleData
 
+var order_shown := false
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var grid_manager: Node = $"../GridManager"
 @onready var label: Label = $Label
+@onready var speech_bubble: Node2D = $SpeechBubble
 
 func _ready() -> void:
 	await get_tree().physics_frame
@@ -50,7 +53,6 @@ func _physics_process(delta: float) -> void:
 			
 		States.Wait:
 			velocity = Vector2.ZERO
-			label.text = foodWanted.name
 			
 		States.Eat:
 			velocity = Vector2.ZERO
@@ -58,6 +60,8 @@ func _physics_process(delta: float) -> void:
 			
 		States.Leave:
 			if !leave_started:
+				order_shown = false
+				speech_bubble.hide_order()
 				set_target(leaving_target_position)
 				leave_started = true
 				print("leaving")
