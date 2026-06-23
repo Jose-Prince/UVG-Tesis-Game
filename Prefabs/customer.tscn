@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://o2b0q4nuh4ni" path="res://Scripts/customer.gd" id="1_u4jb7"]
 [ext_resource type="Texture2D" uid="uid://dtle8u24eu8cw" path="res://Sprites/Characters_V3_Colour.png" id="2_u4jb7"]
+[ext_resource type="PackedScene" uid="uid://hytctloep3vg" path="res://Scenes/SpeechBubble.tscn" id="3_kkbk6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rhpu"]
 size = Vector2(13.333334, 4.333333)
@@ -134,10 +135,6 @@ position = Vector2(0, 6.8333335)
 shape = SubResource("RectangleShape2D_5rhpu")
 debug_color = Color(0.91343504, 0.14206949, 0.6324621, 0.41960785)
 
-[node name="WaitingTimer" type="Timer" parent="." unique_id=1966011886]
-wait_time = 5.0
-one_shot = true
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1647952521]
 sprite_frames = SubResource("SpriteFrames_4eorp")
 animation = &"idle"
@@ -148,5 +145,9 @@ offset_top = -18.666666
 offset_right = 12.0
 offset_bottom = -6.666666
 theme_override_font_sizes/font_size = 8
+
+[node name="SpeechBubble" parent="." unique_id=1244530394 instance=ExtResource("3_kkbk6")]
+position = Vector2(0, -10)
+scale = Vector2(0.25, 0.25)
 
 [connection signal="timeout" from="WaitingTimer" to="." method="_on_waiting_timer_timeout"]

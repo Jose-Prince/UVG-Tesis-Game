@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArticleData" format=3 uid="uid://d0riswjm5jcyk"]
+
+[ext_resource type="Script" uid="uid://6t4couakeorm" path="res://Scripts/article_data.gd" id="1_k8cyi"]
+
+[resource]
+script = ExtResource("1_k8cyi")
+name = "coffee"
+price = 1.25
+prep_time = 5
+metadata/_custom_type_script = "uid://6t4couakeorm"

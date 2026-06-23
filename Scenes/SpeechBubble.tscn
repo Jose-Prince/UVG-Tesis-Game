@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://hytctloep3vg"]
+
+[ext_resource type="Script" uid="uid://cm2rnwurqljso" path="res://Scripts/speech_bubble.gd" id="1_joscm"]
+[ext_resource type="Texture2D" uid="uid://cf0tivs2bk34r" path="res://Sprites/Speech_bubble.PNG" id="2_anisj"]
+
+[node name="SpeechBubble" type="Node2D" unique_id=1244530394]
+script = ExtResource("1_joscm")
+
+[node name="BubblePanel" type="NinePatchRect" parent="." unique_id=1810863881]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_anisj")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 7
+
+[node name="ItemContainer" type="HBoxContainer" parent="." unique_id=255509426]
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1

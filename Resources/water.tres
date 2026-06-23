@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ArticleData" format=3 uid="uid://bg56uibnmcyir"]
+
+[ext_resource type="Script" uid="uid://6t4couakeorm" path="res://Scripts/article_data.gd" id="1_n55gu"]
+
+[resource]
+script = ExtResource("1_n55gu")
+id = 1
+name = "water"
+price = 0.5
+prep_time = 5
+metadata/_custom_type_script = "uid://6t4couakeorm"
