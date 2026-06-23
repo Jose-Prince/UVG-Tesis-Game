@@ -61,6 +61,7 @@ func customer_spawn():
 	
 	for i in amount_to_spawn:
 		var new_customer: Customer = CUSTOMER_SCENE.instantiate() as Customer
+		new_customer.foodWanted = GameData.menu.pick_random()
 		customers_to_spawn.append(new_customer)
 	
 	for i in customers_to_spawn.size():

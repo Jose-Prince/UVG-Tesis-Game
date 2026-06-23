@@ -1,8 +1,12 @@
 extends StaticBody2D
 
 @export var article_data: ArticleData
+@export var hold_offset_down := Vector2(0, 10)
+@export var hold_offset_right := Vector2(5, 10)
+@export var hold_offset_up := Vector2(0, 10)
 
 var current_offset := Vector2.ZERO
+
 var holder: Node2D = null
 var kitchen_layer: TileMapLayer
 
