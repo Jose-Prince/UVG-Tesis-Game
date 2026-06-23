@@ -216,6 +216,7 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 		body.assign_table(self)
 
 func _on_timer_timeout() -> void:
+	actual_popularity = customers.size() * -3
 	progress_bar.visible = false
 	clear_food()
 	send_customers_home()
