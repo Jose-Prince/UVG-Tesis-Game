@@ -58,7 +58,7 @@ func interact(player):
 	for order_data in orders:
 		if is_instance_valid(order_data.customer):
 			order_data.customer.speech_bubble.show_order([order_data.food])
-	print(orders)
+	
 	for child in order_object.get_children():
 		var item_id = child.article_data.id
 		var found := false

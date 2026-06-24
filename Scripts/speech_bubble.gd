@@ -1,11 +1,6 @@
 extends Node2D
 
-const ITEM_ICONS: Dictionary = {
-	"coffee": preload("res://Sprites/cafe_items/Beer 1.png"),
-	"water": preload("res://Sprites/cafe_items/Cup 1.png"),
-}
-
-const ITEM_SIZE := Vector2(12, 12)
+const ITEM_SIZE := Vector2(24, 24)
 const PADDING := Vector2(6, 6)
 const ITEM_SPACING := 4
 
@@ -27,8 +22,7 @@ func show_order(items: Array) -> void:
 		slot.custom_minimum_size = ITEM_SIZE
 		slot.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		slot.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		if ITEM_ICONS.has(item):
-			slot.texture = ITEM_ICONS[item]
+		slot.texture = item.image
 		item_container.add_child(slot)
 
 	# wait one frame for HBoxContainer to calculate its size

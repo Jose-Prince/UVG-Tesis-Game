@@ -1,10 +1,15 @@
 [gd_resource type="Resource" script_class="ArticleData" format=3 uid="uid://d0riswjm5jcyk"]
 
+[ext_resource type="Texture2D" uid="uid://20q7qmw0l88c" path="res://Sprites/cafe_items/Cup 2.png" id="1_1i376"]
 [ext_resource type="Script" uid="uid://6t4couakeorm" path="res://Scripts/article_data.gd" id="1_k8cyi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qamwf"]
+atlas = ExtResource("1_1i376")
 
 [resource]
 script = ExtResource("1_k8cyi")
 name = "coffee"
 price = 1.25
 prep_time = 5
+image = SubResource("AtlasTexture_qamwf")
 metadata/_custom_type_script = "uid://6t4couakeorm"
