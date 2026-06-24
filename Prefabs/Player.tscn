@@ -1916,7 +1916,8 @@ speed = 200.0
 position = Vector2(0, -19.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_gg3t4")
-animation = &"hold_idle_up"
+animation = &"hold_run_up"
+frame_progress = 0.0847703
 
 [node name="lineart" type="AnimatedSprite2D" parent="." unique_id=1218478053]
 position = Vector2(0, -19.546667)

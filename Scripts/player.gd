@@ -32,6 +32,10 @@ func _physics_process(delta: float) -> void:
 	get_input()
 	make_action()
 	update_animation()
+
+	if held_item:
+		held_item.update_bob(skin.animation, skin.frame)
+
 	move_and_slide()
 	
 func get_input():
