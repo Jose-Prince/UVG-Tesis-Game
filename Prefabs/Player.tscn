@@ -1913,37 +1913,43 @@ script = ExtResource("1_x3d5u")
 speed = 200.0
 
 [node name="skin" type="AnimatedSprite2D" parent="." unique_id=916734474]
+position = Vector2(0, -19.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_gg3t4")
 animation = &"hold_idle_up"
 
 [node name="lineart" type="AnimatedSprite2D" parent="." unique_id=1218478053]
+position = Vector2(0, -19.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_3b1fg")
 animation = &"hold_run_up"
 
 [node name="clothes" type="AnimatedSprite2D" parent="." unique_id=1372496936]
+position = Vector2(0, -19.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_ty6fx")
 animation = &"hold_idle_up"
 
 [node name="hair" type="AnimatedSprite2D" parent="." unique_id=794520138]
+position = Vector2(0, -19.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_fd7od")
 animation = &"hold_idle_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=41540243]
-position = Vector2(-4.7683716e-07, 17.666668)
+position = Vector2(0, -2.666668)
 shape = SubResource("RectangleShape2D_javds")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1178547395]
+position = Vector2(0.6666666, -17.333334)
 scale = Vector2(0.947, 1)
 zoom = Vector2(5, 5)
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=167484192]
+position = Vector2(0, -17.333334)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=144964780]
-position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_x3d5u")
 
 [node name="TimeSystem" type="Node" parent="." unique_id=98841440]
