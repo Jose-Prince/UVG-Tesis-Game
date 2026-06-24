@@ -1897,10 +1897,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_javds"]
-size = Vector2(10, 3)
+size = Vector2(21.333334, 6.0000005)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3d5u"]
-radius = 11.045361
+radius = 18.669643
 
 [sub_resource type="Resource" id="Resource_javds"]
 script = ExtResource("4_gg3t4")
@@ -1915,25 +1915,25 @@ speed = 200.0
 [node name="skin" type="AnimatedSprite2D" parent="." unique_id=916734474]
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_gg3t4")
-animation = &"hold_idle_right"
+animation = &"hold_idle_up"
 
 [node name="lineart" type="AnimatedSprite2D" parent="." unique_id=1218478053]
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_3b1fg")
-animation = &"hold_idle"
+animation = &"hold_run_up"
 
 [node name="clothes" type="AnimatedSprite2D" parent="." unique_id=1372496936]
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_ty6fx")
-animation = &"hold_idle_right"
+animation = &"hold_idle_up"
 
 [node name="hair" type="AnimatedSprite2D" parent="." unique_id=794520138]
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_fd7od")
-animation = &"hold_idle_right"
+animation = &"hold_idle_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=41540243]
-position = Vector2(0, 9.5)
+position = Vector2(-4.7683716e-07, 17.666668)
 shape = SubResource("RectangleShape2D_javds")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1178547395]
