@@ -13,6 +13,7 @@ var time_gui: Control
 @onready var scene_transition: CanvasLayer = $SceneTransition
 
 func _ready() -> void:
+	print("popularity: " + str(GameData.popularity))
 	for id in GameData.menu_ids:
 		restaurant_menu.append(ArticleDatabase.articles[int(id)])
 	GameData.menu = restaurant_menu

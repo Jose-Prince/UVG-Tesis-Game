@@ -168,6 +168,8 @@ func send_customers_home():
 	customers.clear()
 	
 	GameData.popularity += actual_popularity
+	if GameData.popularity < 0:
+		GameData.popularity = 0
 	actual_popularity = 0
 
 func assign_customer(customer):

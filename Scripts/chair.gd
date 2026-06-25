@@ -27,4 +27,4 @@ func assign_table(table):
 	assigned_table = table
 	
 func get_sit_position() -> Vector2:
-	return global_position + sit_offset
+	return go_to_pos.global_position
