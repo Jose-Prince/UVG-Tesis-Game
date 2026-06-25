@@ -50,6 +50,9 @@ func _physics_process(delta: float) -> void:
 		States.Sit:
 			if target_chair:
 				global_position = target_chair.get_sit_position()
+			
+			face_table()
+			
 			velocity = Vector2.ZERO
 			currentState = States.Wait
 			
@@ -88,6 +91,11 @@ func follow_path():
 	velocity = global_position.direction_to(target) * movement_speed
 
 func update_animation():
+	if currentState == States.Wait \
+	or currentState == States.Eat \
+	or currentState == States.Sit:
+		return
+	
 	# Idle
 	if velocity == Vector2.ZERO:
 		if animated_sprite.animation == "walk_up":
@@ -122,3 +130,10 @@ func assign_chair(chair):
 	target_chair.isFree = false
 	
 	#movement_target_position = target_chair.go_to_pos.global_position
+
+func face_table():
+	if !target_chair:
+		return
+
+	animated_sprite.play("idle_right")
+	animated_sprite.flip_h = target_chair.isRotated

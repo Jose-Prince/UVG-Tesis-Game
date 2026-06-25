@@ -26,7 +26,8 @@ func _ready() -> void:
 	for table in tables:
 		table.order_completed.connect(time_gui.add_point)
 	
-	var popularity_ratio = GameData.popularity / 1000.0
+	#var popularity_ratio = GameData.popularity / 1000.0
+	var popularity_ratio = 1000.0 / 1000.0
 	var popularity_factor = sqrt(popularity_ratio)
 	var base_spawn_time = lerp(50.0, 8.0, popularity_factor)
 	var final_spawn_time = base_spawn_time / get_hour_factor()
