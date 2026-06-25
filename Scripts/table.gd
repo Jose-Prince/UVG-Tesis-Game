@@ -9,6 +9,7 @@ var isAvailable: bool = true
 var check: float = 0
 var placed_food: Array[Node2D]
 var table_popularity := 0
+var base_wait_time: float
 
 @onready var timer: Timer = $Timer
 @onready var progress_bar: ProgressBar = $ProgressBar
@@ -24,6 +25,7 @@ func _ready():
 
 	progress_bar.max_value = timer.wait_time
 	
+	base_wait_time = waiting_timer.wait_time
 	circular_bar.max_value = waiting_timer.wait_time
 	circular_bar.value = 0
 	
@@ -57,6 +59,7 @@ func update_availability():
 func interact(player):
 	print(customers)
 	print("POPULARITY: " + str(table_popularity))
+	print("TIME: %s" % waiting_timer.wait_time)
 	var delivered := false
 	
 	for child in order_object.get_children():
@@ -82,6 +85,7 @@ func interact(player):
 					
 					orders.erase(order_data)
 					delivered = true
+					waiting_timer.stop()
 					
 					if orders.is_empty():
 						start_eating()
@@ -164,8 +168,8 @@ func start_eating():
 func send_customers_home():
 	orders.clear()
 	
-	waiting_timer.stop()
-	waiting_timer.wait_time = 0
+	waiting_timer.wait_time = base_wait_time
+	circular_bar.value = 0
 	
 	circular_bar.visible = false
 	
