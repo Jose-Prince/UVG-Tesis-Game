@@ -40,9 +40,12 @@ func _process(delta):
 		global_position = holder.global_position + current_offset
 		global_position.y += bob_offset
 
-		z_index = holder.z_index + 10
+		if holder.has_method("set_held_item"):
+			z_index = holder.z_index + 10
+		else:
+			z_index = holder.z_index
 	else:
-		z_index = int(global_position.y + 10)
+		z_index = int(global_position.y)
 
 func get_price():
 	return article_data.price

@@ -144,7 +144,7 @@ func place_food(food, customer):
 		food.drop()
 	
 	food.reparent(self)
-	food.global_position = closest_marker.global_position
+	food.pickup(closest_marker)
 	food.visible = true
 	
 	if food.has_method("place"):
