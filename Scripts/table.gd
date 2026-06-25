@@ -8,7 +8,7 @@ var orders := []
 var isAvailable: bool = true
 var check: float = 0
 var placed_food: Array[Node2D]
-var actual_popularity := 0
+var table_popularity := 0
 
 @onready var timer: Timer = $Timer
 @onready var progress_bar: ProgressBar = $ProgressBar
@@ -55,6 +55,7 @@ func update_availability():
 	isAvailable = get_free_chairs() != null
 	
 func interact(player):
+	print("POPULARITY: " + str(table_popularity))
 	var delivered := false
 	
 	for child in order_object.get_children():
@@ -74,7 +75,7 @@ func interact(player):
 				if orders.is_empty():
 					start_eating()
 					check += calculate_tip()
-					actual_popularity += calculate_popularity_bonus()
+					table_popularity += calculate_popularity_bonus()
 					progress_bar.visible = true
 					progress_bar.value = 0
 					timer.start()
@@ -86,7 +87,7 @@ func interact(player):
 		if !delivered:
 			for customer in customers:
 				if is_instance_valid(customer):
-					actual_popularity -= 1
+					table_popularity -= 1
 
 	if !delivered:
 		for order_data in orders:
@@ -163,16 +164,17 @@ func send_customers_home():
 		
 	customers.clear()
 	
-	GameData.popularity += actual_popularity
+	GameData.popularity += table_popularity
 	if GameData.popularity < 0:
 		GameData.popularity = 0
-	actual_popularity = 0
+	table_popularity = 0
+	
+	print("ACTUAL POPULARITY: " + str(GameData.popularity))
 
 func assign_customer(customer):
-	print(customer.foodWanted)
 	if customer not in customers:
 		customers.append(customer)
-		actual_popularity += 1
+		table_popularity += 1
 		orders.append({
 			"customer": customer,
 			"food": customer.foodWanted
@@ -216,12 +218,10 @@ func calculate_popularity_bonus() -> int:
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("chair"):
-		print("Silla asignada")
 		chairs.append(body)
 		body.assign_table(self)
 
 func _on_timer_timeout() -> void:
-	actual_popularity = customers.size() * -3
 	progress_bar.visible = false
 	clear_food()
 	send_customers_home()
@@ -233,4 +233,5 @@ func _on_mouse_exited():
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 func _on_waiting_timer_timeout() -> void:
+	table_popularity += customers.size() * -3
 	send_customers_home()
