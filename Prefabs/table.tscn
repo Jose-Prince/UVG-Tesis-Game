@@ -47,9 +47,8 @@ debug_color = Color(0.94935995, 5.390644e-06, 0.57624334, 0.41960785)
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=687169642]
 visible = false
 offset_left = -24.0
-offset_top = 16.0
 offset_right = 23.0
-offset_bottom = 26.0
+offset_bottom = 10.0
 theme_override_styles/fill = SubResource("StyleBoxTexture_faolu")
 value = 100.0
 show_percentage = false
@@ -71,8 +70,8 @@ one_shot = true
 [node name="CircularBar" type="TextureProgressBar" parent="." unique_id=1266280371]
 visible = false
 offset_left = -8.0
+offset_top = -16.0
 offset_right = 8.0
-offset_bottom = 16.0
 fill_mode = 4
 texture_under = ExtResource("4_da6p8")
 texture_over = ExtResource("5_jkops")

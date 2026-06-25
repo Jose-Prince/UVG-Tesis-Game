@@ -21,7 +21,6 @@ var order_shown := false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var grid_manager: Node = $"../GridManager"
-@onready var label: Label = $Label
 @onready var speech_bubble: Node2D = $SpeechBubble
 
 func _ready() -> void:
@@ -61,7 +60,7 @@ func _physics_process(delta: float) -> void:
 			
 		States.Eat:
 			velocity = Vector2.ZERO
-			label.text = ""
+			speech_bubble.hide_order()
 			
 		States.Leave:
 			if !leave_started:

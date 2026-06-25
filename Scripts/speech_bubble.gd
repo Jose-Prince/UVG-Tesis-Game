@@ -12,6 +12,7 @@ func _ready() -> void:
 	item_container.add_theme_constant_override("separation", ITEM_SPACING)
 
 func show_order(items: Array) -> void:
+	print(item_container.get_child_count())
 	# clear previous icons
 	for child in item_container.get_children():
 		child.queue_free()

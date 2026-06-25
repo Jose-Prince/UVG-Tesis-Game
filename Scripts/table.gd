@@ -55,47 +55,43 @@ func update_availability():
 	isAvailable = get_free_chairs() != null
 	
 func interact(player):
-	for order_data in orders:
-		if is_instance_valid(order_data.customer):
-			order_data.customer.speech_bubble.show_order([order_data.food])
+	var delivered := false
 	
 	for child in order_object.get_children():
 		var item_id = child.article_data.id
-		var found := false
 
 		for order_data in orders:
 			if order_data.food.id == item_id:
-				found = true
-
 				check += child.get_price()
-
 				place_food(child, order_data.customer)
 				
 				if is_instance_valid(order_data.customer):
 					order_data.customer.speech_bubble.hide_order()
 				
 				orders.erase(order_data)
+				delivered = true
 
 				if orders.is_empty():
 					start_eating()
 					check += calculate_tip()
 					actual_popularity += calculate_popularity_bonus()
-
 					progress_bar.visible = true
 					progress_bar.value = 0
-
 					timer.start()
-
 					order_completed.emit(check)
 					check = 0
 
 				return
 
-		if !found:
+		if !delivered:
 			for customer in customers:
 				if is_instance_valid(customer):
 					actual_popularity -= 1
-					print("Actual popularity: " + str(actual_popularity))
+
+	if !delivered:
+		for order_data in orders:
+			if is_instance_valid(order_data.customer):
+				order_data.customer.speech_bubble.show_order([order_data.food])
 
 func place_food(food, customer):
 	var markers = [food_place_1, food_place_2]
