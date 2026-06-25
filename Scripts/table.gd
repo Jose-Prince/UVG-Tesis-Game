@@ -60,44 +60,45 @@ func interact(player):
 	var delivered := false
 	
 	for child in order_object.get_children():
-		var item_id = child.article_data.id
-
-		for order_data in orders:
-			if order_data.food.id == item_id:
-				check += child.get_price()
-				
-				for order in orders:
-					print(
-						"ORDER CUSTOMER: ",
-						order.customer,
-						" VALID: ",
-						is_instance_valid(order.customer)
-					)
-				
-				place_food(child, order_data.customer)
-				
-				if is_instance_valid(order_data.customer):
-					order_data.customer.speech_bubble.hide_order()
-				
-				orders.erase(order_data)
-				delivered = true
-
-				if orders.is_empty():
-					start_eating()
-					check += calculate_tip()
-					table_popularity += calculate_popularity_bonus()
-					progress_bar.visible = true
-					progress_bar.value = 0
-					timer.start()
-					order_completed.emit(check)
-					check = 0
-
-				return
-
-		if !delivered:
-			for customer in customers:
-				if is_instance_valid(customer):
-					table_popularity -= 1
+		if child.is_giveable() != null:
+			var item_id = child.article_data.id
+			
+			for order_data in orders:
+				if order_data.food.id == item_id:
+					check += child.get_price()
+					
+					for order in orders:
+						print(
+							"ORDER CUSTOMER: ",
+							order.customer,
+							" VALID: ",
+							is_instance_valid(order.customer)
+						)
+					
+					place_food(child, order_data.customer)
+					
+					if is_instance_valid(order_data.customer):
+						order_data.customer.speech_bubble.hide_order()
+					
+					orders.erase(order_data)
+					delivered = true
+					
+					if orders.is_empty():
+						start_eating()
+						check += calculate_tip()
+						table_popularity += calculate_popularity_bonus()
+						progress_bar.visible = true
+						progress_bar.value = 0
+						timer.start()
+						order_completed.emit(check)
+						check = 0
+						
+					return
+			
+			if !delivered:
+				for customer in customers:
+					if is_instance_valid(customer):
+						table_popularity -= 1
 
 	if !delivered:
 		for order_data in orders:

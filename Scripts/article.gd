@@ -78,3 +78,6 @@ func update_bob(anim_name: String, frame: int):
 			bob_offset = 1
 		_:
 			bob_offset = 0
+
+func is_giveable():
+	return article_data
