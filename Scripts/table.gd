@@ -55,6 +55,7 @@ func update_availability():
 	isAvailable = get_free_chairs() != null
 	
 func interact(player):
+	print(customers)
 	print("POPULARITY: " + str(table_popularity))
 	var delivered := false
 	
@@ -64,6 +65,15 @@ func interact(player):
 		for order_data in orders:
 			if order_data.food.id == item_id:
 				check += child.get_price()
+				
+				for order in orders:
+					print(
+						"ORDER CUSTOMER: ",
+						order.customer,
+						" VALID: ",
+						is_instance_valid(order.customer)
+					)
+				
 				place_food(child, order_data.customer)
 				
 				if is_instance_valid(order_data.customer):
@@ -151,6 +161,11 @@ func start_eating():
 			customer.currentState = customer.States.Eat
 
 func send_customers_home():
+	orders.clear()
+	
+	waiting_timer.stop()
+	waiting_timer.wait_time = 0
+	
 	circular_bar.visible = false
 	
 	for customer in customers:

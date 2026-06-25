@@ -68,7 +68,6 @@ func _physics_process(delta: float) -> void:
 				speech_bubble.hide_order()
 				set_target(leaving_target_position)
 				leave_started = true
-				print("leaving")
 			
 			follow_path()
 			

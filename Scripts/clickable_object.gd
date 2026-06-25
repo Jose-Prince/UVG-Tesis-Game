@@ -16,7 +16,6 @@ func interact(player):
 		
 		else:
 			SfxManager.play_pick()
-		print("Objeto creado")
 
 func _on_mouse_entered() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)

@@ -13,6 +13,7 @@ var time_gui: Control
 @onready var scene_transition: CanvasLayer = $SceneTransition
 
 func _ready() -> void:
+	print("RESTAURANT %d" % GameData.popularity)
 	for id in GameData.menu_ids:
 		restaurant_menu.append(ArticleDatabase.articles[int(id)])
 	GameData.menu = restaurant_menu
@@ -81,8 +82,6 @@ func customer_spawn():
 		get_tree().current_scene.add_child(customer)
 		customer.set_target(chair.go_to_pos.global_position)
 		
-		print("Customer: ",  i, " Chair: ", chairs[i], " Destination: ", chair.global_position)
-		
 	await get_tree().physics_frame
 	
 	selected_table.isAvailable = false
@@ -110,7 +109,8 @@ func get_hour_factor() -> float:
 	return 0.7
 
 func update_customer_rate():
-	var popularity_ratio = GameData.popularity / 1000.0
+	#var popularity_ratio = GameData.popularity / 1000.0
+	var popularity_ratio = 1000.0 / 1000.0
 	var popularity_factor = sqrt(popularity_ratio)
 	
 	var base_spawn_time = lerp(
@@ -127,5 +127,4 @@ func update_customer_rate():
 func _on_leaving_zone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("customer"):
 		if body.currentState == body.States.Leave:
-			print("Customer despawned")
 			body.queue_free()
