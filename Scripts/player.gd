@@ -11,7 +11,6 @@ var held_item = null
 @onready var clothes: AnimatedSprite2D = $clothes
 @onready var lineart: AnimatedSprite2D = $lineart
 @onready var hair: AnimatedSprite2D = $hair
-@onready var pause_menu: Control = $CanvasLayer/PauseMenu
 
 func play_layers(anim_name: String):
 	skin.play(anim_name)
