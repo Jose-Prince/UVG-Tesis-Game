@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cr7xd8y2pehh4" path="res://Scripts/sound_menu.gd" id="1_l18rq"]
 [ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Fonts/static/PixelifySans-Bold.ttf" id="1_n755r"]
+[ext_resource type="Texture2D" uid="uid://djmg2wkx2yige" path="res://Sprites/notebook.png" id="3_rgb7i"]
+[ext_resource type="Script" uid="uid://bytdb7qrxipfh" path="res://Scripts/notebook_anim.gd" id="4_2dj2j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6771"]
 bg_color = Color(0.81960785, 0.7372549, 0.627451, 1)
@@ -37,6 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=358285968]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -124,6 +127,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/ConfigItem" unique_id=657706061]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Makes the player run automatically without pressing the run button"
 autowrap_mode = 2
 
@@ -275,6 +279,7 @@ text = "Makes the player run automatically without pressing the run button"
 autowrap_mode = 2
 
 [node name="VBoxContainer" type="GridContainer" parent="PanelContainer/Panel" unique_id=1148773290]
+visible = false
 custom_minimum_size = Vector2(250, 150)
 layout_mode = 1
 anchors_preset = -1
@@ -294,6 +299,20 @@ layout_mode = 2
 text = "Volver
 
 "
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=629685519]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.076000005
+anchor_top = 0.019000001
+anchor_right = 0.785
+anchor_bottom = 1.2470001
+offset_left = 0.44799805
+offset_top = -0.31200123
+offset_right = -0.32000732
+offset_bottom = -0.05609131
+texture = ExtResource("3_rgb7i")
+script = ExtResource("4_2dj2j")
 
 [connection signal="value_changed" from="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="pressed" from="PanelContainer/Panel/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
