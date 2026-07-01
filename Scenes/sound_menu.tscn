@@ -6,12 +6,12 @@
 [ext_resource type="Script" uid="uid://bytdb7qrxipfh" path="res://Scripts/notebook_anim.gd" id="4_2dj2j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6771"]
-bg_color = Color(0.81960785, 0.7372549, 0.627451, 1)
+bg_color = Color(0.81960785, 0.7372549, 0.627451, 0)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.34509805, 0.22352941, 0.13333334, 1)
+border_color = Color(0.34509805, 0.22352941, 0.13333334, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l18rq"]
 bg_color = Color(0, 0, 0, 1)
@@ -39,27 +39,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=358285968]
-visible = false
+[node name="TextureRect" type="TextureRect" parent="." unique_id=629685519]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -125.0
-offset_right = 150.0
-offset_bottom = 125.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = 12.0
+offset_right = -248.0
+offset_bottom = 188.0
+texture = ExtResource("3_rgb7i")
+script = ExtResource("4_2dj2j")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=761894875]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
 
-[node name="Panel" type="Panel" parent="PanelContainer" unique_id=778284612]
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=778284612]
 custom_minimum_size = Vector2(800, 500)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f6771")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/Panel" unique_id=757283196]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel" unique_id=757283196]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,10 +80,10 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/Panel/MarginContainer" unique_id=1364177422]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer" unique_id=1364177422]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2" unique_id=789632845]
+[node name="TitleLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=789632845]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_n755r")
@@ -83,187 +92,187 @@ text = "Configuration Menu"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2" unique_id=1399373694]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=1399373694]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxFlat_l18rq")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2" unique_id=4412606]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=4412606]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LeftColumn" type="VBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1047483521]
+[node name="LeftColumn" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1047483521]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GeneralTitle" type="VBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn" unique_id=107671315]
+[node name="GeneralTitle" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn" unique_id=107671315]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/GeneralTitle" unique_id=1861475626]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/GeneralTitle" unique_id=1861475626]
 layout_mode = 2
 text = "General"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/GeneralTitle" unique_id=1772085987]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/GeneralTitle" unique_id=1772085987]
 layout_mode = 2
 
-[node name="ConfigItem" type="VBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn" unique_id=1714049656]
+[node name="ConfigItem" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn" unique_id=1714049656]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/ConfigItem" unique_id=1270683193]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/ConfigItem" unique_id=1270683193]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/ConfigItem/GridContainer" unique_id=4305304]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/ConfigItem/GridContainer" unique_id=4305304]
 layout_mode = 2
 text = "Auto Run"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/ConfigItem/GridContainer" unique_id=1834895459]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/ConfigItem/GridContainer" unique_id=1834895459]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="CheckBox" type="CheckBox" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/ConfigItem/GridContainer/HBoxContainer" unique_id=1754681687]
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/ConfigItem/GridContainer/HBoxContainer" unique_id=1754681687]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/ConfigItem" unique_id=657706061]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftColumn/ConfigItem" unique_id=657706061]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Makes the player run automatically without pressing the run button"
 autowrap_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1715550912]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1715550912]
 layout_mode = 2
 
-[node name="RightColumn" type="VBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1939749830]
+[node name="RightColumn" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1939749830]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AudioTitle" type="VBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn" unique_id=1908796703]
+[node name="AudioTitle" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn" unique_id=1908796703]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/AudioTitle" unique_id=845210989]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/AudioTitle" unique_id=845210989]
 layout_mode = 2
 text = "Audio"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/AudioTitle" unique_id=1521547231]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/AudioTitle" unique_id=1521547231]
 layout_mode = 2
 
-[node name="SliderItem" type="VBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn" unique_id=1424683049]
+[node name="SliderItem" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn" unique_id=1424683049]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem" unique_id=839405820]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem" unique_id=839405820]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem/GridContainer" unique_id=1564781711]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem/GridContainer" unique_id=1564781711]
 layout_mode = 2
 text = "Master"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem/GridContainer" unique_id=392656132]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem/GridContainer" unique_id=392656132]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="MasterSlider" type="HSlider" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem/GridContainer/HBoxContainer" unique_id=1451708743]
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem/GridContainer/HBoxContainer" unique_id=1451708743]
 custom_minimum_size = Vector2(125, 40)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="Label" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem" unique_id=783378791]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem" unique_id=783378791]
 layout_mode = 2
 text = "Makes the player run automatically without pressing the run button"
 autowrap_mode = 2
 
-[node name="SliderItem2" type="VBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn" unique_id=116083948]
+[node name="SliderItem2" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn" unique_id=116083948]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem2" unique_id=239136614]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem2" unique_id=239136614]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem2/GridContainer" unique_id=1357672851]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem2/GridContainer" unique_id=1357672851]
 layout_mode = 2
 text = "Music"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem2/GridContainer" unique_id=46051166]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem2/GridContainer" unique_id=46051166]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="MusicSlider" type="HSlider" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem2/GridContainer/HBoxContainer" unique_id=368456407]
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem2/GridContainer/HBoxContainer" unique_id=368456407]
 custom_minimum_size = Vector2(125, 40)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="Label" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem2" unique_id=259234405]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem2" unique_id=259234405]
 layout_mode = 2
 text = "Makes the player run automatically without pressing the run button"
 autowrap_mode = 2
 
-[node name="SliderItem3" type="VBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn" unique_id=678701165]
+[node name="SliderItem3" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn" unique_id=678701165]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem3" unique_id=641155600]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem3" unique_id=641155600]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem3/GridContainer" unique_id=579839289]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem3/GridContainer" unique_id=579839289]
 layout_mode = 2
 text = "Sounds"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem3/GridContainer" unique_id=965358554]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem3/GridContainer" unique_id=965358554]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="SoundsSlider" type="HSlider" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem3/GridContainer/HBoxContainer" unique_id=1470946359]
+[node name="SoundsSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem3/GridContainer/HBoxContainer" unique_id=1470946359]
 custom_minimum_size = Vector2(125, 40)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="Label" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem3" unique_id=1492357652]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem3" unique_id=1492357652]
 layout_mode = 2
 text = "Makes the player run automatically without pressing the run button"
 autowrap_mode = 2
 
-[node name="VisualTitle" type="VBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn" unique_id=232400049]
+[node name="VisualTitle" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn" unique_id=232400049]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/VisualTitle" unique_id=756381167]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/VisualTitle" unique_id=756381167]
 layout_mode = 2
 text = "Visual"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/VisualTitle" unique_id=2058366693]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/VisualTitle" unique_id=2058366693]
 layout_mode = 2
 
-[node name="DropdownItem" type="VBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn" unique_id=502930613]
+[node name="DropdownItem" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn" unique_id=502930613]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/DropdownItem" unique_id=942219292]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/DropdownItem" unique_id=942219292]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/DropdownItem/GridContainer" unique_id=282684065]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/DropdownItem/GridContainer" unique_id=282684065]
 layout_mode = 2
 text = "Window Mode"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/DropdownItem/GridContainer" unique_id=1994461203]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/DropdownItem/GridContainer" unique_id=1994461203]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="OptionButton" type="OptionButton" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/DropdownItem/GridContainer/HBoxContainer" unique_id=1288097571]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/DropdownItem/GridContainer/HBoxContainer" unique_id=1288097571]
 layout_mode = 2
 selected = 1
 item_count = 3
@@ -274,12 +283,12 @@ popup/item_1/id = 1
 popup/item_2/text = "3"
 popup/item_2/id = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/DropdownItem" unique_id=700298308]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/DropdownItem" unique_id=700298308]
 layout_mode = 2
 text = "Makes the player run automatically without pressing the run button"
 autowrap_mode = 2
 
-[node name="VBoxContainer" type="GridContainer" parent="PanelContainer/Panel" unique_id=1148773290]
+[node name="VBoxContainer" type="GridContainer" parent="MarginContainer/Panel" unique_id=1148773290]
 visible = false
 custom_minimum_size = Vector2(250, 150)
 layout_mode = 1
@@ -295,27 +304,12 @@ theme_override_constants/v_separation = 9
 columns = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ReturnButton" type="Button" parent="PanelContainer/Panel/VBoxContainer" unique_id=1608572635]
+[node name="ReturnButton" type="Button" parent="MarginContainer/Panel/VBoxContainer" unique_id=1608572635]
 layout_mode = 2
 text = "Volver
 
 "
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=629685519]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.076000005
-anchor_top = 0.019000001
-anchor_right = 0.785
-anchor_bottom = 1.2900001
-offset_left = 0.44799805
-offset_top = -0.31200123
-offset_right = -0.32000732
-offset_bottom = 0.079956055
-texture = ExtResource("3_rgb7i")
-script = ExtResource("4_2dj2j")
-desired_position_y = 535.916
-
 [connection signal="visibility_changed" from="." to="TextureRect" method="_on_sound_menu_visibility_changed"]
-[connection signal="value_changed" from="PanelContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
-[connection signal="pressed" from="PanelContainer/Panel/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
