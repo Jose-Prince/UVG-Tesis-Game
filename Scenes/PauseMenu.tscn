@@ -86,7 +86,6 @@ text = "Return to title"
 script = ExtResource("4_ey1tb")
 
 [node name="SoundMenu" parent="." unique_id=915478763 instance=ExtResource("5_siy43")]
-visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="Buttons/ContinueButton" to="." method="_on_continue_button_pressed"]
