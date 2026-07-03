@@ -45,11 +45,11 @@ func apply_initial_state():
 	offset_right = initial_anchor_offset_right
 	offset_bottom = initial_anchor_offset_bottom
 
-func animate_to_desired():
+func animate_to_desired() -> Tween:
 	is_desired = true
-	_apply_desired(true)
+	return _apply_desired(true)
 
-func _apply_desired(animated: bool):
+func _apply_desired(animated: bool) -> Tween:
 	var viewport_size = get_viewport_rect().size
 	var target_size = Vector2(viewport_size.y, viewport_size.x)
 	var target_position = Vector2(
@@ -78,6 +78,8 @@ func _apply_desired(animated: bool):
 		tween.tween_property(margin_container, "theme_override_constants/margin_top", m_top, animation_duration)
 		tween.tween_property(margin_container, "theme_override_constants/margin_right", m_right, animation_duration)
 		tween.tween_property(margin_container, "theme_override_constants/margin_bottom", m_bottom, animation_duration)
+	
+		return tween
 	else:
 		size = target_size
 		pivot_offset = target_size / 2
@@ -88,10 +90,15 @@ func _apply_desired(animated: bool):
 		margin_container.add_theme_constant_override("margin_top", m_top)
 		margin_container.add_theme_constant_override("margin_right", m_right)
 		margin_container.add_theme_constant_override("margin_bottom", m_bottom)
+		
+	return null
 
 func _on_viewport_size_changed():
 	if is_desired:
 		_apply_desired(false)
 
 func _on_sound_menu_visibility_changed() -> void:
-	animate_to_desired()
+	var tween := animate_to_desired()
+	await  tween.finished
+	
+	margin_container.visible = true
