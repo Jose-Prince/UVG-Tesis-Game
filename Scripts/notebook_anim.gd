@@ -1,7 +1,6 @@
 extends TextureRect
 
 @export var animation_duration := 1.0
-
 @export var margin_left_percent := 0.25
 @export var margin_top_percent := 0.01
 @export var margin_right_percent := 0.05
@@ -23,6 +22,7 @@ var initial_anchor_offset_bottom := 0
 var is_desired := false
 
 @onready var margin_container: MarginContainer = $"../MarginContainer"
+@onready var sound_menu: Control = $".."
 
 func _ready() -> void:
 	apply_initial_state()
@@ -48,6 +48,23 @@ func apply_initial_state():
 func animate_to_desired() -> Tween:
 	is_desired = true
 	return _apply_desired(true)
+
+func animate_to_initial() -> Tween:
+	is_desired = false
+	var tween = create_tween()
+	tween.set_parallel(true)
+
+	tween.tween_property(self, "size", Vector2(initial_size_x, initial_size_y), animation_duration)
+	tween.tween_property(self, "pivot_offset", Vector2.ZERO, animation_duration)
+	tween.tween_property(self, "position", Vector2(initial_position_x, initial_position_y), animation_duration)
+	tween.tween_property(self, "rotation_degrees", 0.0, animation_duration)
+
+	tween.tween_property(margin_container, "theme_override_constants/margin_left", 0, animation_duration)
+	tween.tween_property(margin_container, "theme_override_constants/margin_top", 0, animation_duration)
+	tween.tween_property(margin_container, "theme_override_constants/margin_right", 0, animation_duration)
+	tween.tween_property(margin_container, "theme_override_constants/margin_bottom", 0, animation_duration)
+
+	return tween
 
 func _apply_desired(animated: bool) -> Tween:
 	var viewport_size = get_viewport_rect().size
@@ -78,7 +95,7 @@ func _apply_desired(animated: bool) -> Tween:
 		tween.tween_property(margin_container, "theme_override_constants/margin_top", m_top, animation_duration)
 		tween.tween_property(margin_container, "theme_override_constants/margin_right", m_right, animation_duration)
 		tween.tween_property(margin_container, "theme_override_constants/margin_bottom", m_bottom, animation_duration)
-	
+
 		return tween
 	else:
 		size = target_size
@@ -90,7 +107,7 @@ func _apply_desired(animated: bool) -> Tween:
 		margin_container.add_theme_constant_override("margin_top", m_top)
 		margin_container.add_theme_constant_override("margin_right", m_right)
 		margin_container.add_theme_constant_override("margin_bottom", m_bottom)
-		
+
 	return null
 
 func _on_viewport_size_changed():
@@ -99,6 +116,12 @@ func _on_viewport_size_changed():
 
 func _on_sound_menu_visibility_changed() -> void:
 	var tween := animate_to_desired()
-	await  tween.finished
-	
+	await tween.finished
 	margin_container.visible = true
+
+func _on_return_button_pressed() -> void:
+	SfxManager.play_click()
+	margin_container.visible = false
+	var tween := animate_to_initial()
+	await tween.finished
+	sound_menu.visible = false

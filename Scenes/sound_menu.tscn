@@ -295,6 +295,6 @@ text = "Volver
 
 "
 
-[connection signal="visibility_changed" from="." to="TextureRect" method="_on_sound_menu_visibility_changed"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/SliderItem/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightColumn/ReturnButton" to="." method="_on_return_button_pressed"]
