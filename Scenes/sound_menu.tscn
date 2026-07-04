@@ -22,7 +22,6 @@ border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
 [node name="SoundMenu" type="Control" unique_id=915478763]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,7 +51,6 @@ texture = ExtResource("3_rgb7i")
 script = ExtResource("4_2dj2j")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=761894875]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -160,7 +158,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Makes the player run automatically without pressing the run button"
+text = "Automatically runs while moving without needing to hold the run button."
 autowrap_mode = 2
 
 [node name="ShowInteractionLocation" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn" unique_id=322837221]
@@ -192,7 +190,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Makes the player run automatically without pressing the run button"
+text = "Displays a marker indicating where interactions with objects or characters can occur."
 autowrap_mode = 2
 
 [node name="HideInteractionWhenMoving" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn" unique_id=905588369]
@@ -224,7 +222,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Makes the player run automatically without pressing the run button"
+text = "Hides interaction markers while the player is moving."
 autowrap_mode = 2
 
 [node name="PauseWhenGameInactive" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn" unique_id=504285361]
@@ -256,7 +254,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Makes the player run automatically without pressing the run button"
+text = "Automatically pauses the game when the game window loses focus."
 autowrap_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1715550912]
@@ -294,112 +292,112 @@ vertical_alignment = 1
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/AudioTitle" unique_id=1521547231]
 layout_mode = 2
 
-[node name="SliderItem" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=247233931]
+[node name="Master" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=247233931]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem" unique_id=1147041888]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master" unique_id=1147041888]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem/GridContainer" unique_id=1280953565]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer" unique_id=1280953565]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Master"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem/GridContainer" unique_id=665823788]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer" unique_id=665823788]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem/GridContainer/HBoxContainer" unique_id=1169640486]
+[node name="HSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer" unique_id=1169640486]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem" unique_id=162444404]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master" unique_id=162444404]
 layout_mode = 2
 theme_override_constants/margin_right = 50
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem/MarginContainer" unique_id=2134145139]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/MarginContainer" unique_id=2134145139]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Makes the player run automatically without pressing the run button"
+text = "Adjusts the overall volume of all game audio."
 autowrap_mode = 2
 
-[node name="SliderItem2" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1131490753]
+[node name="Music" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1131490753]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem2" unique_id=265710250]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music" unique_id=265710250]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem2/GridContainer" unique_id=1709175452]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer" unique_id=1709175452]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Music"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem2/GridContainer" unique_id=844678871]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer" unique_id=844678871]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem2/GridContainer/HBoxContainer" unique_id=61212103]
+[node name="HSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer" unique_id=61212103]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem2" unique_id=453410090]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music" unique_id=453410090]
 layout_mode = 2
 theme_override_constants/margin_right = 50
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem2/MarginContainer" unique_id=523408815]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/MarginContainer" unique_id=523408815]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Makes the player run automatically without pressing the run button"
+text = "Adjusts the volume of background music."
 autowrap_mode = 2
 
-[node name="SliderItem3" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1280496127]
+[node name="Sounds" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1280496127]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem3" unique_id=1838815206]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds" unique_id=1838815206]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem3/GridContainer" unique_id=1055178191]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer" unique_id=1055178191]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Sounds"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem3/GridContainer" unique_id=364456577]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer" unique_id=364456577]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem3/GridContainer/HBoxContainer" unique_id=369616423]
+[node name="HSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer" unique_id=369616423]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem3" unique_id=557588624]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds" unique_id=557588624]
 layout_mode = 2
 theme_override_constants/margin_right = 50
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/SliderItem3/MarginContainer" unique_id=918897347]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/MarginContainer" unique_id=918897347]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Makes the player run automatically without pressing the run button"
+text = "Adjusts the volume of sound effects, including interactions and ambient sounds."
 autowrap_mode = 2
 
 [node name="VisualTitle" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=232400049]
@@ -452,7 +450,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Makes the player run automatically without pressing the run button"
+text = "Changes how the game is displayed, such as fullscreen, borderless, or windowed mode."
 autowrap_mode = 2
 
 [node name="Resolution" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=75481698]
@@ -492,7 +490,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Makes the player run automatically without pressing the run button"
+text = "Changes the game rendering resolution."
 autowrap_mode = 2
 
 [node name="Vsync" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1609019983]
@@ -524,7 +522,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Makes the player run automatically without pressing the run button"
+text = "synchronize the game's frame rate with your monitor's refresh rate to reduce screen tearing."
 autowrap_mode = 2
 
 [node name="UI Scale" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=46229646]
@@ -556,7 +554,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Makes the player run automatically without pressing the run button"
+text = "Adjusts the size of the game's user interface for better readability."
 autowrap_mode = 2
 
 [node name="HardwareCursor" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=175434042]
@@ -588,7 +586,7 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Makes the player run automatically without pressing the run button"
+text = "Uses your operating system's native mouse cursor, instead of the game's cursor."
 autowrap_mode = 2
 
 [node name="ButtonsDisplay" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=120483941]
