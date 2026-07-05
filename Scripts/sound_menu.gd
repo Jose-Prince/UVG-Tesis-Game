@@ -7,6 +7,7 @@ extends Control
 @onready var texture_rect: TextureRect = $TextureRect
 
 @onready var TitleMusic: AudioStreamPlayer = $"../AudioStreamPlayer"
+@onready var ui_line_edit: LineEdit = $"MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/UI Scale/GridContainer/HBoxContainer/UILineEdit"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,4 +31,58 @@ func _on_return_button_pressed() -> void:
 	margin_container.visible = false
 	var tween: Tween = texture_rect.animate_to_initial()
 	await tween.finished
+	
+	SaveManager.save_especific_data(
+		GameData.game_slot,
+		"settings",
+		{
+			"auto_run": GameData.auto_run,
+			"show_interaction": GameData.show_interaction,
+			"hide_interaction_moving": GameData.hide_interaction_moving,
+			"pause_game_inactive": GameData.pause_game_inactive,
+			"master": GameData.master,
+			"music": GameData.music,
+			"sounds": GameData.sounds,
+			"window_mode": GameData.window_mode,
+			"resolution": GameData.resolution,
+			"vsync": GameData.vsync,
+			"ui_scale": GameData.ui_scale,
+			"hardware_cursor": GameData.hardware_cursor,
+			"max_fps": GameData.max_fps
+		}
+	)
+	
 	self.visible = false
+
+func _on_default_settings_button_pressed() -> void:
+	GameData.set_default()
+
+func _on_ar_check_box_toggled(toggled_on: bool) -> void:
+	GameData.auto_run = toggled_on
+
+func _on_location_check_box_toggled(toggled_on: bool) -> void:
+	GameData.show_interaction = toggled_on
+
+func _on_hide_check_box_toggled(toggled_on: bool) -> void:
+	GameData.hide_interaction_moving = toggled_on
+
+func _on_pause_check_box_toggled(toggled_on: bool) -> void:
+	GameData.pause_game_inactive = toggled_on
+
+func _on_master_h_slider_value_changed(value: float) -> void:
+	GameData.master = value
+
+func _on_music_h_slider_value_changed(value: float) -> void:
+	GameData.music = value
+
+func _on_sounds_h_slider_value_changed(value: float) -> void:
+	GameData.sounds = value
+
+func _on_window_option_button_item_selected(index: int) -> void:
+	GameData.window_mode = index
+
+func _on_resolution_option_button_item_selected(index: int) -> void:
+	GameData.resolution = index
+
+func _on_vsync_check_box_toggled(toggled_on: bool) -> void:
+	GameData.vsync = toggled_on

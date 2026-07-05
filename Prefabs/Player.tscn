@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d3dns6cy40bbe" path="res://Sprites/character/hair_sheet.PNG" id="6_8afax"]
 [ext_resource type="PackedScene" uid="uid://cgejjdvlywiw" path="res://Prefabs/object_ui.tscn" id="7_3ygst"]
 [ext_resource type="PackedScene" uid="uid://ce5bfs85ds2ea" path="res://Scenes/PauseMenu.tscn" id="7_javds"]
-[ext_resource type="PackedScene" uid="uid://ciqhnxpcvejhp" path="res://Scenes/sound_menu.tscn" id="12_wuv02"]
+[ext_resource type="PackedScene" uid="uid://ciqhnxpcvejhp" path="res://Scenes/settings_menu.tscn" id="12_wuv02"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ijov"]
 atlas = ExtResource("2_t8lmw")

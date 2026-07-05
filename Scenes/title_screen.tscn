@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://dyjktga4k8yto" path="res://Scripts/responsive_label.gd" id="5_0061g"]
 [ext_resource type="Script" uid="uid://dcxaa76iw32mu" path="res://Scripts/responsive_button.gd" id="8_8mikk"]
 [ext_resource type="FontFile" uid="uid://c6m8rdtvxahbg" path="res://Fonts/static/PixelifySans-Regular.ttf" id="8_0061g"]
-[ext_resource type="PackedScene" uid="uid://ciqhnxpcvejhp" path="res://Scenes/sound_menu.tscn" id="9_0061g"]
+[ext_resource type="PackedScene" uid="uid://ciqhnxpcvejhp" path="res://Scenes/settings_menu.tscn" id="9_0061g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n82rj"]
 bg_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
@@ -99,7 +99,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_12m1t")
-theme_override_font_sizes/font_size = 91
+theme_override_font_sizes/font_size = 8
 text = "DREAM CAFE"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -166,7 +166,7 @@ size_flags_stretch_ratio = 1.1
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_constants/line_spacing = 3
 theme_override_fonts/font = ExtResource("4_12m1t")
-theme_override_font_sizes/font_size = 58
+theme_override_font_sizes/font_size = 8
 text = "Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -196,7 +196,7 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
-theme_override_font_sizes/font_size = 58
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n82rj")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0061g")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8mikk")
@@ -213,7 +213,7 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
-theme_override_font_sizes/font_size = 58
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8mikk")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_o1e67")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w5sh6")
@@ -230,7 +230,7 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
-theme_override_font_sizes/font_size = 58
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sqelc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_w5sh6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o1e67")
@@ -247,7 +247,7 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
-theme_override_font_sizes/font_size = 58
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ycay6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bsy20")
 theme_override_styles/hover = SubResource("StyleBoxFlat_07cxn")
