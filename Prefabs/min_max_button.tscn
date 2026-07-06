@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b5o0i2tfyc4jy"]
+
+[ext_resource type="Script" uid="uid://dgd7neqweakjd" path="res://Scripts/min_max_button.gd" id="1_boncr"]
+
+[node name="MinMaxButton" type="Control" unique_id=700767153]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_boncr")
+text = "50"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=468973264]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MinusButton" type="Button" parent="HBoxContainer" unique_id=1690182729]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "-"
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer" unique_id=895591192]
+layout_mode = 2
+alignment = 1
+editable = false
+
+[node name="PlusButton" type="Button" parent="HBoxContainer" unique_id=96529534]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "+"
+
+[connection signal="pressed" from="HBoxContainer/MinusButton" to="." method="_on_minus_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/PlusButton" to="." method="_on_plus_button_pressed"]
