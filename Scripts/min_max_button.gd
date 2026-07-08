@@ -1,10 +1,11 @@
+class_name  MinMaxButton 
 extends Control
 
 @export var text := ""
 @export var max_value := 100
 @export var min_value := 0
 
-@onready var line_edit: LineEdit = $HBoxContainer/LineEdit
+@onready var line_edit: LineEdit = $LineEdit
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

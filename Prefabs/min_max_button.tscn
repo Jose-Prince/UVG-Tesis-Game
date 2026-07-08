@@ -2,35 +2,30 @@
 
 [ext_resource type="Script" uid="uid://dgd7neqweakjd" path="res://Scripts/min_max_button.gd" id="1_boncr"]
 
-[node name="MinMaxButton" type="Control" unique_id=700767153]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="MinMaxButton" type="HBoxContainer" unique_id=1503408069]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_boncr")
-text = "50"
+text = "45"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=468973264]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="MinusButton" type="Button" parent="HBoxContainer" unique_id=1690182729]
+[node name="MinusButton" type="Button" parent="." unique_id=1399849623]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 text = "-"
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer" unique_id=895591192]
+[node name="LineEdit" type="LineEdit" parent="." unique_id=515577949]
 layout_mode = 2
-alignment = 1
 editable = false
 
-[node name="PlusButton" type="Button" parent="HBoxContainer" unique_id=96529534]
+[node name="PlusButton" type="Button" parent="." unique_id=1050541992]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 text = "+"
 
-[connection signal="pressed" from="HBoxContainer/MinusButton" to="." method="_on_minus_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/PlusButton" to="." method="_on_plus_button_pressed"]
+[connection signal="pressed" from="MinusButton" to="." method="_on_minus_button_pressed"]
+[connection signal="pressed" from="PlusButton" to="." method="_on_plus_button_pressed"]

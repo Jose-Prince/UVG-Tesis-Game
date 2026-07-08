@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://djmg2wkx2yige" path="res://Sprites/notebook.png" id="2_3etfd"]
 [ext_resource type="Script" uid="uid://bytdb7qrxipfh" path="res://Scripts/notebook_anim.gd" id="3_rahb6"]
 [ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Fonts/static/PixelifySans-Bold.ttf" id="4_fe37x"]
+[ext_resource type="PackedScene" uid="uid://b5o0i2tfyc4jy" path="res://Prefabs/min_max_button.tscn" id="5_3etfd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6771"]
 bg_color = Color(0.81960785, 0.7372549, 0.627451, 0)
@@ -22,6 +23,7 @@ border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
 [node name="SettingsMenu" type="Control" unique_id=915478763]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,6 +53,7 @@ texture = ExtResource("2_3etfd")
 script = ExtResource("3_rahb6")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=761894875]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -555,18 +558,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="-Button" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/UI Scale/GridContainer/HBoxContainer" unique_id=983427856]
-layout_mode = 2
-text = "-"
-
-[node name="UILineEdit" type="LineEdit" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/UI Scale/GridContainer/HBoxContainer" unique_id=696915473]
+[node name="MinMaxButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/UI Scale/GridContainer/HBoxContainer" unique_id=1503408069 instance=ExtResource("5_3etfd")]
 layout_mode = 2
 text = "100%"
-editable = false
-
-[node name="+Button" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/UI Scale/GridContainer/HBoxContainer" unique_id=1117142074]
-layout_mode = 2
-text = "+"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/UI Scale" unique_id=1251988063]
 layout_mode = 2
@@ -609,6 +603,39 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Uses your operating system's native mouse cursor, instead of the game's cursor."
+autowrap_mode = 2
+
+[node name="MaxFPS" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1669733969]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS" unique_id=1032637514]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer" unique_id=1523195850]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Max FPS"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer" unique_id=1357138409]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="MinMaxButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer/HBoxContainer" unique_id=521250400 instance=ExtResource("5_3etfd")]
+layout_mode = 2
+text = "60"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS" unique_id=566822260]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/MarginContainer" unique_id=735723322]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Set the maximun the maximun frames per second for the game. "
 autowrap_mode = 2
 
 [node name="ButtonsDisplay" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=120483941]
