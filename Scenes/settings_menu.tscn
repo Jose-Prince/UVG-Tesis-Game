@@ -319,7 +319,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="MasterHSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer" unique_id=1169640486]
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer" unique_id=1169640486]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 max_value = 1.0
@@ -356,7 +356,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="MusicHSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer" unique_id=61212103]
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer" unique_id=61212103]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 max_value = 1.0
@@ -393,7 +393,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="SoundsHSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer" unique_id=369616423]
+[node name="SoundsSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer" unique_id=369616423]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 max_value = 1.0
@@ -657,9 +657,9 @@ text = "Use default settings"
 [connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox" to="." method="_on_location_check_box_toggled"]
 [connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox" to="." method="_on_hide_check_box_toggled"]
 [connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox" to="." method="_on_pause_check_box_toggled"]
-[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterHSlider" to="." method="_on_master_h_slider_value_changed"]
-[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer/MusicHSlider" to="." method="_on_music_h_slider_value_changed"]
-[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer/SoundsHSlider" to="." method="_on_sounds_h_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_h_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer/MusicSlider" to="." method="_on_music_h_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer/SoundsSlider" to="." method="_on_sounds_h_slider_value_changed"]
 [connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer/HBoxContainer/WindowOptionButton" to="." method="_on_window_option_button_item_selected"]
 [connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution/GridContainer/HBoxContainer/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]
 [connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync/GridContainer/HBoxContainer/VsyncCheckBox" to="." method="_on_vsync_check_box_toggled"]

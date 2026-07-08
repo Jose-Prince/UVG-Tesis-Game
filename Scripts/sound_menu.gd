@@ -1,13 +1,12 @@
 extends Control
 
-@onready var master_slider: HSlider = $Panel/VBoxContainer/MasterSlider
-@onready var music_slider: HSlider = $Panel/VBoxContainer/MusicSlider
-@onready var sounds_slider: HSlider = $Panel/VBoxContainer/SoundsSlider
+@onready var master_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider
+@onready var music_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer/MusicSlider
+@onready var sounds_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer/SoundsSlider
 @onready var margin_container: MarginContainer = $MarginContainer
 @onready var texture_rect: TextureRect = $TextureRect
 
 @onready var TitleMusic: AudioStreamPlayer = $"../AudioStreamPlayer"
-@onready var ui_line_edit: LineEdit = $"MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/UI Scale/GridContainer/HBoxContainer/UILineEdit"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
