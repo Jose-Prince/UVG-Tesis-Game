@@ -8,7 +8,8 @@ var orders := []
 var isAvailable: bool = true
 var check: float = 0
 var placed_food: Array[Node2D]
-var actual_popularity := 0
+var table_popularity := 0
+var base_wait_time: float
 
 @onready var timer: Timer = $Timer
 @onready var progress_bar: ProgressBar = $ProgressBar
@@ -24,6 +25,7 @@ func _ready():
 
 	progress_bar.max_value = timer.wait_time
 	
+	base_wait_time = waiting_timer.wait_time
 	circular_bar.max_value = waiting_timer.wait_time
 	circular_bar.value = 0
 	
@@ -55,47 +57,57 @@ func update_availability():
 	isAvailable = get_free_chairs() != null
 	
 func interact(player):
-	for order_data in orders:
-		if is_instance_valid(order_data.customer):
-			order_data.customer.speech_bubble.show_order([order_data.food])
-	print(orders)
+	print(customers)
+	print("POPULARITY: " + str(table_popularity))
+	print("TIME: %s" % waiting_timer.wait_time)
+	var delivered := false
+	
 	for child in order_object.get_children():
-		var item_id = child.article_data.id
-		var found := false
+		if child.is_giveable() != null:
+			var item_id = child.article_data.id
+			
+			for order_data in orders:
+				if order_data.food.id == item_id:
+					check += child.get_price()
+					
+					for order in orders:
+						print(
+							"ORDER CUSTOMER: ",
+							order.customer,
+							" VALID: ",
+							is_instance_valid(order.customer)
+						)
+					
+					place_food(child, order_data.customer)
+					
+					if is_instance_valid(order_data.customer):
+						order_data.customer.speech_bubble.hide_order()
+					
+					orders.erase(order_data)
+					delivered = true
+					waiting_timer.stop()
+					
+					if orders.is_empty():
+						start_eating()
+						check += calculate_tip()
+						table_popularity += calculate_popularity_bonus()
+						progress_bar.visible = true
+						progress_bar.value = 0
+						timer.start()
+						order_completed.emit(check)
+						check = 0
+						
+					return
+			
+			if !delivered:
+				for customer in customers:
+					if is_instance_valid(customer):
+						table_popularity -= 1
 
+	if !delivered:
 		for order_data in orders:
-			if order_data.food.id == item_id:
-				found = true
-
-				check += child.get_price()
-
-				place_food(child, order_data.customer)
-				
-				if is_instance_valid(order_data.customer):
-					order_data.customer.speech_bubble.hide_order()
-				
-				orders.erase(order_data)
-
-				if orders.is_empty():
-					start_eating()
-					check += calculate_tip()
-					actual_popularity += calculate_popularity_bonus()
-
-					progress_bar.visible = true
-					progress_bar.value = 0
-
-					timer.start()
-
-					order_completed.emit(check)
-					check = 0
-
-				return
-
-		if !found:
-			for customer in customers:
-				if is_instance_valid(customer):
-					actual_popularity -= 1
-					print("Actual popularity: " + str(actual_popularity))
+			if is_instance_valid(order_data.customer):
+				order_data.customer.speech_bubble.show_order([order_data.food])
 
 func place_food(food, customer):
 	var markers = [food_place_1, food_place_2]
@@ -132,7 +144,8 @@ func place_food(food, customer):
 		food.drop()
 	
 	food.reparent(self)
-	food.global_position = closest_marker.global_position
+	food.pickup(closest_marker)
+	food.visible = true
 	
 	if food.has_method("place"):
 		food.place()
@@ -154,6 +167,11 @@ func start_eating():
 			customer.currentState = customer.States.Eat
 
 func send_customers_home():
+	orders.clear()
+	
+	waiting_timer.wait_time = base_wait_time
+	circular_bar.value = 0
+	
 	circular_bar.visible = false
 	
 	for customer in customers:
@@ -167,14 +185,17 @@ func send_customers_home():
 		
 	customers.clear()
 	
-	GameData.popularity += actual_popularity
-	actual_popularity = 0
+	GameData.popularity += table_popularity
+	if GameData.popularity < 0:
+		GameData.popularity = 0
+	table_popularity = 0
+	
+	print("ACTUAL POPULARITY: " + str(GameData.popularity))
 
 func assign_customer(customer):
-	print(customer.foodWanted)
 	if customer not in customers:
 		customers.append(customer)
-		actual_popularity += 1
+		table_popularity += 1
 		orders.append({
 			"customer": customer,
 			"food": customer.foodWanted
@@ -218,12 +239,10 @@ func calculate_popularity_bonus() -> int:
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("chair"):
-		print("Silla asignada")
 		chairs.append(body)
 		body.assign_table(self)
 
 func _on_timer_timeout() -> void:
-	actual_popularity = customers.size() * -3
 	progress_bar.visible = false
 	clear_food()
 	send_customers_home()
@@ -235,4 +254,5 @@ func _on_mouse_exited():
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 func _on_waiting_timer_timeout() -> void:
+	table_popularity += customers.size() * -3
 	send_customers_home()

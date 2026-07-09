@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d3dns6cy40bbe" path="res://Sprites/character/hair_sheet.PNG" id="6_8afax"]
 [ext_resource type="PackedScene" uid="uid://cgejjdvlywiw" path="res://Prefabs/object_ui.tscn" id="7_3ygst"]
 [ext_resource type="PackedScene" uid="uid://ce5bfs85ds2ea" path="res://Scenes/PauseMenu.tscn" id="7_javds"]
+[ext_resource type="PackedScene" uid="uid://ciqhnxpcvejhp" path="res://Scenes/settings_menu.tscn" id="12_wuv02"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ijov"]
 atlas = ExtResource("2_t8lmw")
@@ -1897,10 +1898,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_javds"]
-size = Vector2(10, 3)
+size = Vector2(21.333334, 6.0000005)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3d5u"]
-radius = 11.045361
+radius = 18.669643
 
 [sub_resource type="Resource" id="Resource_javds"]
 script = ExtResource("4_gg3t4")
@@ -1913,37 +1914,44 @@ script = ExtResource("1_x3d5u")
 speed = 200.0
 
 [node name="skin" type="AnimatedSprite2D" parent="." unique_id=916734474]
+position = Vector2(0, -19.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_gg3t4")
-animation = &"hold_idle_right"
+animation = &"hold_run_up"
+frame_progress = 0.0847703
 
 [node name="lineart" type="AnimatedSprite2D" parent="." unique_id=1218478053]
+position = Vector2(0, -19.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_3b1fg")
-animation = &"hold_idle"
+animation = &"hold_run_up"
 
 [node name="clothes" type="AnimatedSprite2D" parent="." unique_id=1372496936]
+position = Vector2(0, -19.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_ty6fx")
-animation = &"hold_idle_right"
+animation = &"hold_idle_up"
 
 [node name="hair" type="AnimatedSprite2D" parent="." unique_id=794520138]
+position = Vector2(0, -19.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_fd7od")
-animation = &"hold_idle_right"
+animation = &"hold_idle_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=41540243]
-position = Vector2(0, 9.5)
+position = Vector2(0, -2.666668)
 shape = SubResource("RectangleShape2D_javds")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1178547395]
+position = Vector2(0.6666666, -17.333334)
 scale = Vector2(0.947, 1)
 zoom = Vector2(5, 5)
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=167484192]
+position = Vector2(0, -17.333334)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=144964780]
-position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_x3d5u")
 
 [node name="TimeSystem" type="Node" parent="." unique_id=98841440]
@@ -1972,6 +1980,8 @@ offset_bottom = -266.0
 [node name="PauseMenu" parent="CanvasLayer" unique_id=1486490026 instance=ExtResource("7_javds")]
 visible = false
 z_index = 2
+
+[node name="SoundMenu" parent="CanvasLayer" unique_id=915478763 instance=ExtResource("12_wuv02")]
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

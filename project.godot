@@ -12,15 +12,15 @@ config_version=5
 
 config/name="Cozy Cafe"
 run/main_scene="uid://crnpw414hlu34"
-config/features=PackedStringArray("4.7", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://cgeaitckg5fnk"
 
 [autoload]
 
 GameData="*res://Scripts/game_data.gd"
 SaveManager="*res://Scripts/save_manager.gd"
-SfxManager="*uid://dq03ralao18ys"
-ArticleDatabase="*uid://cnche81sjc8la"
+SfxManager="*res://Scenes/SFX_manager.tscn"
+ArticleDatabase="*res://Scripts/article_database.gd"
 
 [global_group]
 

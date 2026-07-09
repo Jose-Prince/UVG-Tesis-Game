@@ -48,11 +48,6 @@ func _input(event):
 
 			obj.global_position = tile_world
 
-			print(
-				"Objeto colocado en:",
-				cell
-			)
-
 func set_tile_occupied(world_pos: Vector2, occupied: bool):
 	var cell = local_to_map(to_local(world_pos))
 	

@@ -13,6 +13,7 @@ var time_gui: Control
 @onready var scene_transition: CanvasLayer = $SceneTransition
 
 func _ready() -> void:
+	print("RESTAURANT %d" % GameData.popularity)
 	for id in GameData.menu_ids:
 		restaurant_menu.append(ArticleDatabase.articles[int(id)])
 	GameData.menu = restaurant_menu
@@ -25,7 +26,8 @@ func _ready() -> void:
 	for table in tables:
 		table.order_completed.connect(time_gui.add_point)
 	
-	var popularity_ratio = GameData.popularity / 1000.0
+	#var popularity_ratio = GameData.popularity / 1000.0
+	var popularity_ratio = 1000.0 / 1000.0
 	var popularity_factor = sqrt(popularity_ratio)
 	var base_spawn_time = lerp(50.0, 8.0, popularity_factor)
 	var final_spawn_time = base_spawn_time / get_hour_factor()
@@ -61,6 +63,7 @@ func customer_spawn():
 	
 	for i in amount_to_spawn:
 		var new_customer: Customer = CUSTOMER_SCENE.instantiate() as Customer
+		new_customer.foodWanted = GameData.menu.pick_random()
 		customers_to_spawn.append(new_customer)
 	
 	for i in customers_to_spawn.size():
@@ -78,8 +81,6 @@ func customer_spawn():
 	
 		get_tree().current_scene.add_child(customer)
 		customer.set_target(chair.go_to_pos.global_position)
-		
-		print("Customer: ",  i, " Chair: ", chairs[i], " Destination: ", chair.global_position)
 		
 	await get_tree().physics_frame
 	
@@ -108,7 +109,8 @@ func get_hour_factor() -> float:
 	return 0.7
 
 func update_customer_rate():
-	var popularity_ratio = GameData.popularity / 1000.0
+	#var popularity_ratio = GameData.popularity / 1000.0
+	var popularity_ratio = 1000.0 / 1000.0
 	var popularity_factor = sqrt(popularity_ratio)
 	
 	var base_spawn_time = lerp(
@@ -125,5 +127,4 @@ func update_customer_rate():
 func _on_leaving_zone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("customer"):
 		if body.currentState == body.States.Leave:
-			print("Customer despawned")
 			body.queue_free()

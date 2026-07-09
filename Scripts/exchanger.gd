@@ -23,7 +23,6 @@ func interact(player):
 				new_obj.pickup(player)
 			
 			SfxManager.play_liquid()
-			print("Objeto intercambiado")
 
 func _on_mouse_entered() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)

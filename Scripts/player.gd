@@ -11,7 +11,6 @@ var held_item = null
 @onready var clothes: AnimatedSprite2D = $clothes
 @onready var lineart: AnimatedSprite2D = $lineart
 @onready var hair: AnimatedSprite2D = $hair
-@onready var pause_menu: Control = $CanvasLayer/PauseMenu
 
 func play_layers(anim_name: String):
 	skin.play(anim_name)
@@ -32,6 +31,10 @@ func _physics_process(delta: float) -> void:
 	get_input()
 	make_action()
 	update_animation()
+
+	if held_item:
+		held_item.update_bob(skin.animation, skin.frame)
+
 	move_and_slide()
 	
 func get_input():

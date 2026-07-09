@@ -1,0 +1,640 @@
+[gd_scene format=3 uid="uid://ciqhnxpcvejhp"]
+
+[ext_resource type="Script" uid="uid://cr7xd8y2pehh4" path="res://Scripts/sound_menu.gd" id="1_h2y1r"]
+[ext_resource type="Texture2D" uid="uid://djmg2wkx2yige" path="res://Sprites/notebook.png" id="2_3etfd"]
+[ext_resource type="Script" uid="uid://bytdb7qrxipfh" path="res://Scripts/notebook_anim.gd" id="3_rahb6"]
+[ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Fonts/static/PixelifySans-Bold.ttf" id="4_fe37x"]
+[ext_resource type="PackedScene" uid="uid://b5o0i2tfyc4jy" path="res://Prefabs/min_max_button.tscn" id="5_3etfd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6771"]
+bg_color = Color(0.81960785, 0.7372549, 0.627451, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.34509805, 0.22352941, 0.13333334, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l18rq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[node name="SettingsMenu" type="Control" unique_id=915478763]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h2y1r")
+
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1894712450]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=629685519]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = 12.0
+offset_right = -248.0
+offset_bottom = 188.0
+texture = ExtResource("2_3etfd")
+script = ExtResource("3_rahb6")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=761894875]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=778284612]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f6771")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel" unique_id=757283196]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer" unique_id=1364177422]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=789632845]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_fe37x")
+theme_override_font_sizes/font_size = 40
+text = "Configuration Menu"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=1399373694]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_l18rq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=4412606]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftScrollContainer" type="ScrollContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1281996859]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer" unique_id=512989675]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="LeftColumn" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer" unique_id=1047483521]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GeneralTitle" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn" unique_id=107671315]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/GeneralTitle" unique_id=1861475626]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "General"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/GeneralTitle" unique_id=1772085987]
+layout_mode = 2
+
+[node name="AutoRun" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn" unique_id=1714049656]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun" unique_id=1270683193]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer" unique_id=4305304]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Auto Run"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer" unique_id=1834895459]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="ARCheckBox" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer/HBoxContainer" unique_id=1754681687]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun" unique_id=2025664869]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/MarginContainer" unique_id=657706061]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Automatically runs while moving without needing to hold the run button."
+autowrap_mode = 2
+
+[node name="ShowInteractionLocation" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn" unique_id=322837221]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation" unique_id=1728027869]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer" unique_id=1726829138]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Show Interaction Location"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer" unique_id=55463546]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="LocationCheckBox" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer" unique_id=442258323]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation" unique_id=882438533]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/MarginContainer" unique_id=1898302163]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Displays a marker indicating where interactions with objects or characters can occur."
+autowrap_mode = 2
+
+[node name="HideInteractionWhenMoving" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn" unique_id=905588369]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving" unique_id=1364112736]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer" unique_id=93294865]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Hide Interaction When Moving"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer" unique_id=1215587785]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="HideCheckBox" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer/HBoxContainer" unique_id=804102313]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving" unique_id=286402265]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/MarginContainer" unique_id=1103853339]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Hides interaction markers while the player is moving."
+autowrap_mode = 2
+
+[node name="PauseWhenGameInactive" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn" unique_id=504285361]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive" unique_id=1857813757]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer" unique_id=1238144831]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Pause When Game Is Inactive"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer" unique_id=1645472247]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="PauseCheckBox" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer" unique_id=1351030543]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive" unique_id=72451792]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/MarginContainer" unique_id=1144419908]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Automatically pauses the game when the game window loses focus."
+autowrap_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1715550912]
+layout_mode = 2
+
+[node name="RightScrollContainer" type="ScrollContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=323486464]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/scrollbar_v_separation = 30
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer" unique_id=1920066043]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="RightColumn" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer" unique_id=1939749830]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AudioTitle" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1908796703]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/AudioTitle" unique_id=845210989]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/AudioTitle" unique_id=1521547231]
+layout_mode = 2
+
+[node name="Master" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=247233931]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master" unique_id=1147041888]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer" unique_id=1280953565]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Master"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer" unique_id=665823788]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer" unique_id=1169640486]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master" unique_id=162444404]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/MarginContainer" unique_id=2134145139]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Adjusts the overall volume of all game audio."
+autowrap_mode = 2
+
+[node name="Music" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1131490753]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music" unique_id=265710250]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer" unique_id=1709175452]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Music"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer" unique_id=844678871]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer" unique_id=61212103]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music" unique_id=453410090]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/MarginContainer" unique_id=523408815]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Adjusts the volume of background music."
+autowrap_mode = 2
+
+[node name="Sounds" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1280496127]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds" unique_id=1838815206]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer" unique_id=1055178191]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Sounds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer" unique_id=364456577]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="SoundsSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer" unique_id=369616423]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds" unique_id=557588624]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/MarginContainer" unique_id=918897347]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Adjusts the volume of sound effects, including interactions and ambient sounds."
+autowrap_mode = 2
+
+[node name="VisualTitle" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=232400049]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/VisualTitle" unique_id=756381167]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Visual"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/VisualTitle" unique_id=2058366693]
+layout_mode = 2
+
+[node name="WindowMode" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1195188542]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode" unique_id=2106341660]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer" unique_id=250361117]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Window Mode"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer" unique_id=632599429]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="WindowOptionButton" type="OptionButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer/HBoxContainer" unique_id=1288097571]
+layout_mode = 2
+selected = 1
+item_count = 3
+popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+popup/item_2/text = "Windowed Borderless"
+popup/item_2/id = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode" unique_id=1258834097]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode/MarginContainer" unique_id=579305527]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Changes how the game is displayed, such as fullscreen, borderless, or windowed mode."
+autowrap_mode = 2
+
+[node name="Resolution" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=75481698]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution" unique_id=1153680570]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution/GridContainer" unique_id=1375531441]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Resolution"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution/GridContainer" unique_id=1023556911]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="ResolutionOptionButton" type="OptionButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution/GridContainer/HBoxContainer" unique_id=1482708579]
+layout_mode = 2
+selected = 1
+item_count = 6
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1680x1050"
+popup/item_1/id = 1
+popup/item_2/text = "1280x1024"
+popup/item_2/id = 2
+popup/item_3/text = "1600x900"
+popup/item_3/id = 3
+popup/item_4/text = "1366x768"
+popup/item_4/id = 4
+popup/item_5/text = "1280x720"
+popup/item_5/id = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution" unique_id=20168771]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution/MarginContainer" unique_id=2065612457]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Changes the game rendering resolution."
+autowrap_mode = 2
+
+[node name="Vsync" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1609019983]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync" unique_id=1422944905]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync/GridContainer" unique_id=1264948079]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Vsync"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync/GridContainer" unique_id=1717019729]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="VsyncCheckBox" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync/GridContainer/HBoxContainer" unique_id=1301527205]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync" unique_id=1994920700]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync/MarginContainer" unique_id=2119692589]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "synchronize the game's frame rate with your monitor's refresh rate to reduce screen tearing."
+autowrap_mode = 2
+
+[node name="HardwareCursor" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=175434042]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/HardwareCursor" unique_id=22113889]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/HardwareCursor/GridContainer" unique_id=56926055]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Hardware Cursor"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/HardwareCursor/GridContainer" unique_id=1871838819]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="CursorCheckBox" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/HardwareCursor/GridContainer/HBoxContainer" unique_id=1788509588]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/HardwareCursor" unique_id=975995089]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/HardwareCursor/MarginContainer" unique_id=990249001]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Uses your operating system's native mouse cursor, instead of the game's cursor."
+autowrap_mode = 2
+
+[node name="MaxFPS" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1669733969]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS" unique_id=1032637514]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer" unique_id=1523195850]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Max FPS"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer" unique_id=1357138409]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="FpsMinMaxButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer/HBoxContainer" unique_id=521250400 instance=ExtResource("5_3etfd")]
+layout_mode = 2
+text = "60"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS" unique_id=566822260]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/MarginContainer" unique_id=735723322]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Set the maximun the maximun frames per second for the game. "
+autowrap_mode = 2
+
+[node name="ButtonsDisplay" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=120483941]
+layout_mode = 2
+alignment = 2
+
+[node name="ReturnButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay" unique_id=1608572635]
+layout_mode = 2
+text = "Volver
+
+"
+
+[node name="DefaultSettingsButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay" unique_id=215915247]
+layout_mode = 2
+text = "Use default settings"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer/HBoxContainer/ARCheckBox" to="." method="_on_ar_check_box_toggled"]
+[connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox" to="." method="_on_location_check_box_toggled"]
+[connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox" to="." method="_on_hide_check_box_toggled"]
+[connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox" to="." method="_on_pause_check_box_toggled"]
+[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_h_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer/MusicSlider" to="." method="_on_music_h_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer/SoundsSlider" to="." method="_on_sounds_h_slider_value_changed"]
+[connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer/HBoxContainer/WindowOptionButton" to="." method="_on_window_option_button_item_selected"]
+[connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution/GridContainer/HBoxContainer/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]
+[connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync/GridContainer/HBoxContainer/VsyncCheckBox" to="." method="_on_vsync_check_box_toggled"]
+[connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/HardwareCursor/GridContainer/HBoxContainer/CursorCheckBox" to="." method="_on_cursor_check_box_toggled"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer/HBoxContainer/FpsMinMaxButton" to="." method="_on_fps_min_max_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay/DefaultSettingsButton" to="." method="_on_default_settings_button_pressed"]

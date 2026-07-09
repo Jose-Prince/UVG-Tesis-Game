@@ -27,14 +27,17 @@ input_pickable = true
 script = ExtResource("1_rbrsc")
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=141406604]
-position = Vector2(0, 4.5)
+position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_rbrsc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1872101582]
+position = Vector2(0, -15)
 texture = SubResource("AtlasTexture_uo8q5")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=1021018811]
+position = Vector2(0, -15)
 collision_mask = 3
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1347747545]
 position = Vector2(-6.5, 0.5)
@@ -44,9 +47,8 @@ debug_color = Color(0.94935995, 5.390644e-06, 0.57624334, 0.41960785)
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=687169642]
 visible = false
 offset_left = -24.0
-offset_top = 16.0
 offset_right = 23.0
-offset_bottom = 26.0
+offset_bottom = 10.0
 theme_override_styles/fill = SubResource("StyleBoxTexture_faolu")
 value = 100.0
 show_percentage = false
@@ -56,10 +58,10 @@ wait_time = 5.0
 one_shot = true
 
 [node name="FoodPlace1" type="Marker2D" parent="." unique_id=1840278373]
-position = Vector2(-14, -6)
+position = Vector2(-14, -21)
 
 [node name="FoodPlace2" type="Marker2D" parent="." unique_id=311461999]
-position = Vector2(14, -6)
+position = Vector2(14, -21)
 
 [node name="WaitingTimer" type="Timer" parent="." unique_id=1302349200]
 wait_time = 10.0
@@ -68,8 +70,8 @@ one_shot = true
 [node name="CircularBar" type="TextureProgressBar" parent="." unique_id=1266280371]
 visible = false
 offset_left = -8.0
+offset_top = -16.0
 offset_right = 8.0
-offset_bottom = 16.0
 fill_mode = 4
 texture_under = ExtResource("4_da6p8")
 texture_over = ExtResource("5_jkops")
