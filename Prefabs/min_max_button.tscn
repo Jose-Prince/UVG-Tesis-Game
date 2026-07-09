@@ -12,6 +12,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_boncr")
 text = "45"
+max_value = 120
+min_value = 15
 
 [node name="MinusButton" type="Button" parent="." unique_id=1399849623]
 custom_minimum_size = Vector2(25, 0)

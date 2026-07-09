@@ -6,7 +6,7 @@ signal pressed(value: int)
 @export var text := ""
 @export var max_value := 100
 @export var min_value := 0
-
+@export var increment := 5
 @onready var line_edit: LineEdit = $LineEdit
 
 # Called when the node enters the scene tree for the first time.
@@ -51,11 +51,11 @@ func _set_numeric_value(value: int) -> void:
 	line_edit.text = prefix + str(value) + suffix
 
 func _on_minus_button_pressed() -> void:
-	var value := maxi(_get_numeric_value() - 1, min_value)
+	var value := maxi(_get_numeric_value() - increment, min_value)
 	_set_numeric_value(value)
 	emit_signal("pressed", value)
 
 func _on_plus_button_pressed() -> void:
-	var value := mini(_get_numeric_value() + 1, max_value)
+	var value := mini(_get_numeric_value() + increment, max_value)
 	_set_numeric_value(value)
 	emit_signal("pressed", value)
