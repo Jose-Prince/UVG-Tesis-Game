@@ -6,6 +6,8 @@ extends Control
 @onready var margin_container: MarginContainer = $MarginContainer
 @onready var texture_rect: TextureRect = $TextureRect
 
+var cursor_texture := preload("res://Sprites/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
+
 @onready var TitleMusic: AudioStreamPlayer = $"../AudioStreamPlayer"
 
 # Called when the node enters the scene tree for the first time.
@@ -124,3 +126,14 @@ func _on_vsync_check_box_toggled(toggled_on: bool) -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+
+func _on_min_max_button_pressed(value: int) -> void:
+	GameData.max_fps = value
+	
+	Engine.max_fps = value
+
+func _on_cursor_check_box_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		Input.set_custom_mouse_cursor(cursor_texture)
+	else:
+		Input.set_custom_mouse_cursor(null)

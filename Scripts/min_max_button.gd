@@ -1,6 +1,8 @@
 class_name  MinMaxButton 
 extends Control
 
+signal pressed(value: int)
+
 @export var text := ""
 @export var max_value := 100
 @export var min_value := 0
@@ -51,7 +53,9 @@ func _set_numeric_value(value: int) -> void:
 func _on_minus_button_pressed() -> void:
 	var value := maxi(_get_numeric_value() - 1, min_value)
 	_set_numeric_value(value)
+	emit_signal("pressed")
 
 func _on_plus_button_pressed() -> void:
 	var value := mini(_get_numeric_value() + 1, max_value)
 	_set_numeric_value(value)
+	emit_signal("pressed")
