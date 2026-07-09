@@ -117,7 +117,10 @@ func _on_resolution_option_button_item_selected(index: int) -> void:
 	var position = (screen.size - resolution) / 2
 	DisplayServer.window_set_position(Vector2i(position))
 
-
-
 func _on_vsync_check_box_toggled(toggled_on: bool) -> void:
 	GameData.vsync = toggled_on
+	
+	if toggled_on:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
