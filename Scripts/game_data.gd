@@ -30,7 +30,7 @@ var window_mode := 0
 var resolution := 0
 var vsync := false
 var ui_scale := 1.0
-var hardware_cursor := false
+var hardware_cursor := true
 var max_fps := 60
 
 # Default settings values
@@ -45,7 +45,7 @@ var _window_mode := 0
 var _resolution := 0
 var _vsync := false
 var _ui_scale := 1.0
-var _hardware_cursor := false
+var _hardware_cursor := true
 var _max_fps := 60
 
 func load_to_data(data: Dictionary):

@@ -127,13 +127,13 @@ func _on_vsync_check_box_toggled(toggled_on: bool) -> void:
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
-func _on_min_max_button_pressed(value: int) -> void:
-	GameData.max_fps = value
-	
-	Engine.max_fps = value
-
 func _on_cursor_check_box_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		Input.set_custom_mouse_cursor(cursor_texture)
 	else:
 		Input.set_custom_mouse_cursor(null)
+
+func _on_fps_min_max_button_pressed(value: int) -> void:
+	GameData.max_fps = value
+	
+	Engine.max_fps = value

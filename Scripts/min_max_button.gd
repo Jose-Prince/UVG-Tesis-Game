@@ -53,9 +53,9 @@ func _set_numeric_value(value: int) -> void:
 func _on_minus_button_pressed() -> void:
 	var value := maxi(_get_numeric_value() - 1, min_value)
 	_set_numeric_value(value)
-	emit_signal("pressed")
+	emit_signal("pressed", value)
 
 func _on_plus_button_pressed() -> void:
 	var value := mini(_get_numeric_value() + 1, max_value)
 	_set_numeric_value(value)
-	emit_signal("pressed")
+	emit_signal("pressed", value)
