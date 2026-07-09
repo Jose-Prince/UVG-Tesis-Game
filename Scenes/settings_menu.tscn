@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cr7xd8y2pehh4" path="res://Scripts/sound_menu.gd" id="1_h2y1r"]
 [ext_resource type="Texture2D" uid="uid://djmg2wkx2yige" path="res://Sprites/notebook.png" id="2_3etfd"]
-[ext_resource type="Script" uid="uid://bytdb7qrxipfh" path="res://Scripts/notebook_anim.gd" id="3_rahb6"]
+[ext_resource type="Script" path="res://Scripts/notebook_anim.gd" id="3_rahb6"]
 [ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Fonts/static/PixelifySans-Bold.ttf" id="4_fe37x"]
 [ext_resource type="PackedScene" uid="uid://b5o0i2tfyc4jy" path="res://Prefabs/min_max_button.tscn" id="5_3etfd"]
 
@@ -448,11 +448,11 @@ alignment = 2
 layout_mode = 2
 selected = 1
 item_count = 3
-popup/item_0/text = "1"
+popup/item_0/text = "Fullscreen"
 popup/item_0/id = 0
-popup/item_1/text = "2"
+popup/item_1/text = "Windowed"
 popup/item_1/id = 1
-popup/item_2/text = "3"
+popup/item_2/text = "Windowed Borderless"
 popup/item_2/id = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode" unique_id=1258834097]
@@ -467,7 +467,6 @@ text = "Changes how the game is displayed, such as fullscreen, borderless, or wi
 autowrap_mode = 2
 
 [node name="Resolution" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=75481698]
-visible = false
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution" unique_id=1153680570]
@@ -488,13 +487,19 @@ alignment = 2
 [node name="ResolutionOptionButton" type="OptionButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution/GridContainer/HBoxContainer" unique_id=1482708579]
 layout_mode = 2
 selected = 1
-item_count = 3
-popup/item_0/text = "1"
+item_count = 6
+popup/item_0/text = "1920x1080"
 popup/item_0/id = 0
-popup/item_1/text = "2"
+popup/item_1/text = "1680x1050"
 popup/item_1/id = 1
-popup/item_2/text = "3"
+popup/item_2/text = "1280x1024"
 popup/item_2/id = 2
+popup/item_3/text = "1600x900"
+popup/item_3/id = 3
+popup/item_4/text = "1366x768"
+popup/item_4/id = 4
+popup/item_5/text = "1280x720"
+popup/item_5/id = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution" unique_id=20168771]
 layout_mode = 2
@@ -508,7 +513,6 @@ text = "Changes the game rendering resolution."
 autowrap_mode = 2
 
 [node name="Vsync" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1609019983]
-visible = false
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync" unique_id=1422944905]
