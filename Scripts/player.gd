@@ -118,3 +118,7 @@ func set_held_item(item):
 		elif skin.animation.contains("right"):
 			dir = "right"
 		held_item.set_hold_direction(dir, skin.flip_h)
+
+func _on_item_detection_area_body_entered(body: CharacterBody2D) -> void:
+	if body is NPC:
+		print("Diálogo")
