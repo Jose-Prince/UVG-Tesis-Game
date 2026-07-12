@@ -2012,7 +2012,7 @@ z_index = 2
 [node name="InteractionPoint" type="Marker2D" parent="." unique_id=2051005676]
 position = Vector2(0, -10.666667)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="InteractionPoint" unique_id=1695959168]
+[node name="PointerSprite" type="AnimatedSprite2D" parent="InteractionPoint" unique_id=1695959168]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_h1tre")
 

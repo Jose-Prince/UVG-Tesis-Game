@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const TILE_SIZE := 19
+const TILE_SIZE := 16
 
 @export var speed : float = 400.0
 @export var run_speed : float = 650.0
@@ -15,6 +15,7 @@ var facing := Vector2.DOWN
 @onready var lineart: AnimatedSprite2D = $lineart
 @onready var hair: AnimatedSprite2D = $hair
 @onready var interaction_point: Marker2D = $InteractionPoint
+@onready var pointer_sprite: AnimatedSprite2D = $InteractionPoint/PointerSprite
 
 func play_layers(anim_name: String):
 	skin.play(anim_name)
@@ -63,13 +64,20 @@ func get_input():
 
 func update_interaction_point():
 	var dir := Vector2(sign(facing.x), sign(facing.y))
-	interaction_point.position = dir * TILE_SIZE
-	
+	var target_world_pos = global_position + dir * TILE_SIZE
+	interaction_point.global_position = snap_to_tile_center(target_world_pos)
+
+func snap_to_tile_center(world_pos: Vector2) -> Vector2:
+	var tile_coord = (world_pos / TILE_SIZE).floor()
+	return (tile_coord * TILE_SIZE) + Vector2(TILE_SIZE / 2.0, TILE_SIZE / 2.0)
+
 func make_action():
 	if Input.is_action_just_pressed("Action") and current_object:
 		current_object.interact(self)
 		
 func update_animation():
+	pointer_sprite.play("default")
+	
 	var is_running = Input.is_action_pressed("run") and velocity != Vector2.ZERO
 	var is_holding = held_item != null
 
@@ -118,19 +126,15 @@ func update_animation():
 			if is_holding:
 				held_item.set_hold_direction("down", false)
 
-
-
 func set_held_item(item):
 	held_item = item
 	if held_item:
-		# set initial direction based on current facing
 		var dir = "down"
 		if skin.animation.contains("up"):
 			dir = "up"
 		elif skin.animation.contains("right"):
 			dir = "right"
 		held_item.set_hold_direction(dir, skin.flip_h)
-
 
 func _draw() -> void:
 	draw_circle(interaction_point.position, 4, Color.RED)
