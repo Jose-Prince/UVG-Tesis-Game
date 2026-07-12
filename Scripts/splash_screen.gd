@@ -8,7 +8,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	pass 
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_pressed():
+		get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
 
 
 func _on_video_stream_player_finished() -> void:
