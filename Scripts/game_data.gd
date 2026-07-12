@@ -48,6 +48,14 @@ var _ui_scale := 1.0
 var _hardware_cursor := true
 var _max_fps := 60
 
+func _notification(what: int) -> void:
+	if pause_game_inactive:
+		match what:
+			NOTIFICATION_APPLICATION_FOCUS_IN:
+				get_tree().paused = false
+			NOTIFICATION_APPLICATION_FOCUS_OUT:
+				get_tree().paused = true
+
 func load_to_data(data: Dictionary):
 	player_name = data["player"]["name"]
 	money = data["player"]["money"]
