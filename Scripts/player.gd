@@ -13,6 +13,7 @@ var facing := Vector2.DOWN
 var current_tile := Vector2i.ZERO
 var last_facing := Vector2.ZERO
 
+var show_interaction := true
 
 @onready var skin: AnimatedSprite2D = $skin
 @onready var clothes: AnimatedSprite2D = $clothes
@@ -32,7 +33,13 @@ func flip_layers(value: bool):
 	clothes.flip_h = value
 	lineart.flip_h = value
 	hair.flip_h = value
-	
+
+func _ready() -> void:
+	if GameData.show_interaction:
+		interaction_point.visible = true
+	else:
+		interaction_point.visible = false
+
 func _process(delta: float):
 	queue_redraw()
 	z_index = int(global_position.y)
@@ -74,6 +81,10 @@ func get_input():
 	velocity = input_direction * current_speed
 
 func update_interaction_point():
+	if show_interaction != GameData.show_interaction:
+		interaction_point.visible = GameData.show_interaction
+		show_interaction = GameData.show_interaction
+	
 	var dir := Vector2(sign(facing.x), sign(facing.y))
 	var player_tile := Vector2i((global_position / TILE_SIZE).floor())
 	
