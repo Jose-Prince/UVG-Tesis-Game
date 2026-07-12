@@ -1948,7 +1948,8 @@ size = Vector2(8.666667, 8)
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
 script = ExtResource("1_x3d5u")
-speed = 200.0
+speed = 100.0
+run_speed = 200.0
 
 [node name="skin" type="AnimatedSprite2D" parent="." unique_id=916734474]
 position = Vector2(0, -13.546667)

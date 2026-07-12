@@ -48,21 +48,28 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func get_input():
+	var current_speed = speed
+	
+	# Set the player speed for auto run
+	if GameData.auto_run:
+		current_speed = run_speed
+	
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	var interaction_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-
+	
 	if interaction_direction != Vector2.ZERO:
 		facing = interaction_direction.normalized()
 	
 	elif input_direction != Vector2.ZERO:
 		facing = input_direction.normalized()
-
+	
 	update_interaction_point()
 	
-	var current_speed = speed
-	
 	if Input.is_action_pressed("run"):
-		current_speed = run_speed
+		if GameData.auto_run:
+			current_speed = speed
+		else:
+			current_speed = run_speed
 	
 	velocity = input_direction * current_speed
 
