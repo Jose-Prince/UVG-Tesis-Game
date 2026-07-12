@@ -62,6 +62,10 @@ func get_input():
 		current_speed = run_speed
 	
 	var input_direction = Input.get_vector("left", "right", "up", "down")
+	
+	if input_direction != Vector2.ZERO and GameData.hide_interaction_moving:
+		interaction_point.visible = false
+	
 	var interaction_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
 	if interaction_direction != Vector2.ZERO:
@@ -79,6 +83,9 @@ func get_input():
 			current_speed = run_speed
 	
 	velocity = input_direction * current_speed
+	
+	if input_direction == Vector2.ZERO and GameData.show_interaction:
+		interaction_point.visible = true
 
 func update_interaction_point():
 	if show_interaction != GameData.show_interaction:
