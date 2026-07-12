@@ -10,6 +10,10 @@ var current_object = null
 var held_item = null
 var facing := Vector2.DOWN
 
+var current_tile := Vector2i.ZERO
+var last_facing := Vector2.ZERO
+
+
 @onready var skin: AnimatedSprite2D = $skin
 @onready var clothes: AnimatedSprite2D = $clothes
 @onready var lineart: AnimatedSprite2D = $lineart
@@ -64,8 +68,15 @@ func get_input():
 
 func update_interaction_point():
 	var dir := Vector2(sign(facing.x), sign(facing.y))
-	var target_world_pos = global_position + dir * TILE_SIZE
-	interaction_point.global_position = snap_to_tile_center(target_world_pos)
+	var player_tile := Vector2i((global_position / TILE_SIZE).floor())
+	
+	if player_tile != current_tile or dir != last_facing:
+		current_tile = player_tile
+		last_facing = dir
+	
+		var target_tile := current_tile + Vector2i(dir)
+		var target_center := Vector2(target_tile) * TILE_SIZE + Vector2(TILE_SIZE / 2.0, TILE_SIZE / 2.0)
+		interaction_point.global_position = target_center
 
 func snap_to_tile_center(world_pos: Vector2) -> Vector2:
 	var tile_coord = (world_pos / TILE_SIZE).floor()
@@ -136,5 +147,11 @@ func set_held_item(item):
 			dir = "right"
 		held_item.set_hold_direction(dir, skin.flip_h)
 
-func _draw() -> void:
-	draw_circle(interaction_point.position, 4, Color.RED)
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("clickable"):
+		current_object = body
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("clickable"):
+		current_object = null
