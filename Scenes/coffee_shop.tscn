@@ -1184,7 +1184,7 @@ one_shot = true
 autostart = true
 
 [node name="Player" parent="." unique_id=1461023337 instance=ExtResource("6_df3mn")]
-position = Vector2(232, 64)
+position = Vector2(224, 96)
 scale = Vector2(1, 1)
 
 [node name="CustomerSpawn" type="Marker2D" parent="." unique_id=1376856490]

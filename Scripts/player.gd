@@ -1,16 +1,20 @@
 extends CharacterBody2D
 
+const TILE_SIZE := 19
+
 @export var speed : float = 400.0
 @export var run_speed : float = 650.0
 
 var player_name := ""
 var current_object = null
 var held_item = null
+var facing := Vector2.DOWN
 
 @onready var skin: AnimatedSprite2D = $skin
 @onready var clothes: AnimatedSprite2D = $clothes
 @onready var lineart: AnimatedSprite2D = $lineart
 @onready var hair: AnimatedSprite2D = $hair
+@onready var interaction_point: Marker2D = $InteractionPoint
 
 func play_layers(anim_name: String):
 	skin.play(anim_name)
@@ -25,6 +29,7 @@ func flip_layers(value: bool):
 	hair.flip_h = value
 	
 func _process(delta: float):
+	queue_redraw()
 	z_index = int(global_position.y)
 
 func _physics_process(delta: float) -> void:
@@ -39,6 +44,15 @@ func _physics_process(delta: float) -> void:
 	
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
+	var interaction_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+
+	if interaction_direction != Vector2.ZERO:
+		facing = interaction_direction.normalized()
+	
+	elif input_direction != Vector2.ZERO:
+		facing = input_direction.normalized()
+
+	update_interaction_point()
 	
 	var current_speed = speed
 	
@@ -47,6 +61,10 @@ func get_input():
 	
 	velocity = input_direction * current_speed
 
+func update_interaction_point():
+	var dir := Vector2(sign(facing.x), sign(facing.y))
+	interaction_point.position = dir * TILE_SIZE
+	
 func make_action():
 	if Input.is_action_just_pressed("Action") and current_object:
 		current_object.interact(self)
@@ -99,14 +117,8 @@ func update_animation():
 			flip_layers(false)
 			if is_holding:
 				held_item.set_hold_direction("down", false)
-	
-func _on_detection_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("clickable"):
-		current_object = body
 
-func _on_detection_area_body_exited(body: Node2D) -> void:
-		if body.is_in_group("clickable"):
-			current_object = null
+
 
 func set_held_item(item):
 	held_item = item
@@ -118,3 +130,7 @@ func set_held_item(item):
 		elif skin.animation.contains("right"):
 			dir = "right"
 		held_item.set_hold_direction(dir, skin.flip_h)
+
+
+func _draw() -> void:
+	draw_circle(interaction_point.position, 4, Color.RED)
