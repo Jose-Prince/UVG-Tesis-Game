@@ -56,6 +56,21 @@ func _on_visibility_changed() -> void:
 	margin_container.visible = true
 
 func _on_return_button_pressed() -> void:
+	SaveManager.save_settings({
+		"auto_run": GameData.auto_run,
+		"hardware_cursor": GameData.hardware_cursor,
+		"hide_interaction_moving": GameData.hide_interaction_moving,
+		"master": GameData.master,
+		"max_fps": GameData.max_fps,
+		"music": GameData.music,
+		"pause_game_inactive": GameData.pause_game_inactive,
+		"resolution": GameData.resolution,
+		"show_interaction": GameData.show_interaction,
+		"sounds": GameData.sounds,
+		"vsync": GameData.vsync,
+		"window_mode": GameData.window_mode
+	})
+	
 	SfxManager.play_click()
 	margin_container.visible = false
 	var tween: Tween = texture_rect.animate_to_initial()
