@@ -6,6 +6,7 @@ extends CharacterBody2D
 var player_name := ""
 var current_object = null
 var held_item = null
+var current_npc: NPC = null
 
 @onready var skin: AnimatedSprite2D = $skin
 @onready var clothes: AnimatedSprite2D = $clothes
@@ -120,11 +121,20 @@ func set_held_item(item):
 			dir = "right"
 		held_item.set_hold_direction(dir, skin.flip_h)
 
+func _unhandled_input(event: InputEvent) -> void:
+	print(event)
+	if event.is_action_pressed("Action") and current_npc != null:
+		current_npc.talk()
+
 func _on_item_detection_area_body_entered(body: CharacterBody2D) -> void:
 	if body is NPC:
-		DialogueBubble.show_dialogue("Muy buenas y tal, bro", "res://Sprites/NPC_PLACEHOLDER.png")
-		dialogue.show()
+		current_npc =  body
+		body.player_in_range = true
+		print("Cerca de: ", body.npc_name)
 
 func _on_item_detection_area_body_exited(body: Node2D) -> void:
-	if body is NPC:
-		dialogue.hide()
+	if body == current_npc:
+		current_npc.untalk()
+		current_npc.player_in_range = false
+		current_npc = null
+		print("NPC borrado")
