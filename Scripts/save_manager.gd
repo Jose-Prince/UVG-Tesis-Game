@@ -1,7 +1,7 @@
 extends Node
 
 const SAVE_FOLDER: String = "user://saves/"
-const default_dictionary: Dictionary = {
+const DEFAULT_DATA: Dictionary = {
 	"player": {
 		"name": "Akice",
 		"money": 0,
@@ -17,6 +17,21 @@ const default_dictionary: Dictionary = {
 		"name": "Place",
 	},
 }
+const DEFAULT_SETTINGS = {
+	"auto_run": true,
+	"hardware_cursor": false,
+	"hide_interaction_moving": false,
+	"master": 1.0,
+	"max_fps": 60,
+	"music": 1.0,
+	"pause_game_inactive": false,
+	"resolution": 0,
+	"show_interaction": true,
+	"sounds": 1.0,
+	"vsync": false,
+	"window_mode": 0
+}
+const SETTINGS_FILE := SAVE_FOLDER + "settings.json"
 
 signal day_ended
 
@@ -43,12 +58,12 @@ func load_game(slot: int):
 	var save_path := SAVE_FOLDER + "save_%d.json" % slot
 	
 	if not FileAccess.file_exists(save_path):
-		return default_dictionary.duplicate()
+		return DEFAULT_DATA.duplicate()
 	
 	var save_file := FileAccess.open(save_path, FileAccess.READ)
 	
 	if save_file == null:
-		return default_dictionary.duplicate()
+		return DEFAULT_DATA.duplicate()
 	
 	var json_string := save_file.get_as_text()
 	save_file.close()
@@ -56,7 +71,7 @@ func load_game(slot: int):
 	var data = JSON.parse_string(json_string)
 	
 	if data == null:
-		return default_dictionary.duplicate()
+		return DEFAULT_DATA.duplicate()
 	
 	return data
 
@@ -116,3 +131,35 @@ func directory_has_content(path: String) -> bool:
 
 	dir.list_dir_end()
 	return false
+
+func save_settings(settings: Dictionary) -> void:
+	ensure_save_folder()
+	
+	var file := FileAccess.open(SETTINGS_FILE, FileAccess.WRITE)
+	
+	if file == null:
+		push_error("Impossible to save game settings")
+		return
+		
+	file.store_string(JSON.stringify(settings))
+	file.close()
+
+func load_settings() -> Dictionary:
+	ensure_save_folder()
+	
+	if not FileAccess.file_exists(SETTINGS_FILE):
+		return DEFAULT_SETTINGS.duplicate(true)
+		
+	var file := FileAccess.open(SETTINGS_FILE, FileAccess.READ)
+	
+	if file == null:
+		return DEFAULT_SETTINGS.duplicate(true)
+	
+	var data = JSON.parse_string(file.get_as_text())
+	
+	file.close()
+	
+	if data == null:
+		return DEFAULT_SETTINGS.duplicate(true)
+		
+	return data

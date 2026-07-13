@@ -1,5 +1,6 @@
 extends Node
 
+var cursor_texture := preload("res://Sprites/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
 var game_slot := 0
 
 # Player variables
@@ -29,24 +30,8 @@ var sounds := 1.0
 var window_mode := 0
 var resolution := 0
 var vsync := false
-var ui_scale := 1.0
 var hardware_cursor := true
 var max_fps := 60
-
-# Default settings values
-var _auto_run := false
-var _show_interaction := false
-var _hide_interaction_moving := false
-var _pause_game_inactive := false
-var _master := 1.0
-var _music := 1.0
-var _sounds := 1.0
-var _window_mode := 0
-var _resolution := 0
-var _vsync := false
-var _ui_scale := 1.0
-var _hardware_cursor := true
-var _max_fps := 60
 
 func _notification(what: int) -> void:
 	if pause_game_inactive:
@@ -69,17 +54,68 @@ func load_to_data(data: Dictionary):
 	month = data["world"]["month"]
 	year = data["world"]["year"]
 
-func set_default() -> void:
-	auto_run = _auto_run
-	show_interaction = _show_interaction
-	hide_interaction_moving = _hide_interaction_moving
-	pause_game_inactive = _pause_game_inactive
-	master = _master
-	music = _music
-	sounds = _sounds
-	window_mode = _window_mode
-	resolution = _resolution
-	vsync = _vsync
-	ui_scale = _ui_scale
-	hardware_cursor = _hardware_cursor
-	max_fps = _max_fps
+func load_settings(data: Dictionary) -> void:
+	auto_run = data["auto_run"]
+	show_interaction = data["show_interaction"]
+	hide_interaction_moving = data["hide_interaction_moving"]
+	pause_game_inactive = data["pause_game_inactive"]
+
+	master = data["master"]
+	music = data["music"]
+	sounds = data["sounds"]
+
+	window_mode = data["window_mode"]
+	resolution = data["resolution"]
+	vsync = data["vsync"]
+	max_fps = data["max_fps"]
+
+	hardware_cursor = data["hardware_cursor"]
+
+	apply_settings()
+
+func apply_settings() -> void:
+	match window_mode:
+		0: # Fullscreen
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+		1: # Windowed
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+
+		2: # Windowed Borderless
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+	
+	var resolutions: Vector2i
+	
+	match resolution:
+		0:
+			resolutions = Vector2i(1920, 1080)
+		1:
+			resolutions = Vector2i(1680, 1050)
+		2:
+			resolutions = Vector2i(1280, 1024)
+		3:
+			resolutions = Vector2i(1600, 900)
+		4:
+			resolutions = Vector2i(1366, 768)
+		5:
+			resolutions = Vector2i(1280, 720)
+	
+	DisplayServer.window_set_size(resolutions)
+	var screen = DisplayServer.screen_get_usable_rect()
+	var position = (screen.size - resolutions) / 2
+	DisplayServer.window_set_position(Vector2i(position))
+	
+	if vsync:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	
+	if hardware_cursor:
+		Input.set_custom_mouse_cursor(cursor_texture)
+	else:
+		Input.set_custom_mouse_cursor(null)
+
+	Engine.max_fps = max_fps
