@@ -11,6 +11,7 @@ var held_item = null
 @onready var clothes: AnimatedSprite2D = $clothes
 @onready var lineart: AnimatedSprite2D = $lineart
 @onready var hair: AnimatedSprite2D = $hair
+@onready var dialogue: CanvasLayer = $"../DialogueBubble"
 
 func play_layers(anim_name: String):
 	skin.play(anim_name)
@@ -121,4 +122,9 @@ func set_held_item(item):
 
 func _on_item_detection_area_body_entered(body: CharacterBody2D) -> void:
 	if body is NPC:
-		print("Diálogo")
+		DialogueBubble.show_dialogue("Muy buenas y tal, bro", "res://Sprites/NPC_PLACEHOLDER.png")
+		dialogue.show()
+
+func _on_item_detection_area_body_exited(body: Node2D) -> void:
+	if body is NPC:
+		dialogue.hide()

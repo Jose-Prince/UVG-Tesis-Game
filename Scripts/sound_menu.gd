@@ -8,8 +8,6 @@ extends Control
 
 var cursor_texture := preload("res://Sprites/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
 
-@onready var TitleMusic: AudioStreamPlayer = $"../AudioStreamPlayer"
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -17,9 +15,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-func _on_master_slider_value_changed(value: float) -> void:
-	TitleMusic.volume_db = linear_to_db(value) # To-Do: implementar un control maestro de música bg
 
 
 func _on_visibility_changed() -> void:

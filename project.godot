@@ -19,8 +19,9 @@ config/icon="uid://cgeaitckg5fnk"
 
 GameData="*res://Scripts/game_data.gd"
 SaveManager="*res://Scripts/save_manager.gd"
-SfxManager="*res://Scenes/SFX_manager.tscn"
+SfxManager="*res://Scenes/sfx_manager.tscn"
 ArticleDatabase="*res://Scripts/article_database.gd"
+DialogueBubble="*uid://ekk16wju7cjv"
 
 [global_group]
 

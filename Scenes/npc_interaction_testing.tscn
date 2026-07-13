@@ -1,18 +1,19 @@
 [gd_scene format=4 uid="uid://b24de4nmx7pop"]
 
-[ext_resource type="Script" uid="uid://d315dg6v264o8" path="res://Scripts/cafe_logic.gd" id="1_mkrt5"]
-[ext_resource type="Texture2D" uid="uid://crttdqpbnjv3e" path="res://Sprites/TopDownHouse_FloorsAndWalls.png" id="2_o3aft"]
-[ext_resource type="Script" uid="uid://cgpmptmi7io6m" path="res://Scripts/grid_manager.gd" id="5_iiw1o"]
-[ext_resource type="PackedScene" uid="uid://h6uqvesj3b8s" path="res://Prefabs/Player.tscn" id="7_3r0ab"]
-[ext_resource type="PackedScene" uid="uid://chcl2gv8i2851" path="res://Scenes/scene_transition.tscn" id="9_8l7oc"]
-[ext_resource type="PackedScene" uid="uid://bk2m0scr81vd2" path="res://Prefabs/NPC.tscn" id="10_c5qfu"]
-[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/CozyCaffe-Bossa-consolidated-consolidated.ogg" id="11_7hscl"]
-[ext_resource type="Script" uid="uid://bcqylyib4yrvl" path="res://Scripts/order_object.gd" id="12_p5fgy"]
-[ext_resource type="Script" uid="uid://d3285ev7ubckh" path="res://Scripts/directional_light_2d.gd" id="17_57d2p"]
-[ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/date_time.gd" id="18_3en5h"]
+[ext_resource type="Script" uid="uid://d315dg6v264o8" path="res://Scripts/cafe_logic.gd" id="1_7fbxu"]
+[ext_resource type="Texture2D" uid="uid://crttdqpbnjv3e" path="res://Sprites/TopDownHouse_FloorsAndWalls.png" id="2_sh8if"]
+[ext_resource type="Script" uid="uid://cgpmptmi7io6m" path="res://Scripts/grid_manager.gd" id="3_bo86s"]
+[ext_resource type="PackedScene" uid="uid://h6uqvesj3b8s" path="res://Prefabs/Player.tscn" id="4_pa6yj"]
+[ext_resource type="PackedScene" uid="uid://chcl2gv8i2851" path="res://Scenes/scene_transition.tscn" id="5_0ltt6"]
+[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/CozyCaffe-Bossa-consolidated-consolidated.ogg" id="6_tuvhp"]
+[ext_resource type="Script" uid="uid://bcqylyib4yrvl" path="res://Scripts/order_object.gd" id="7_oadwp"]
+[ext_resource type="Script" uid="uid://d3285ev7ubckh" path="res://Scripts/directional_light_2d.gd" id="8_swy37"]
+[ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/date_time.gd" id="9_4t6ha"]
+[ext_resource type="PackedScene" uid="uid://bk2m0scr81vd2" path="res://Prefabs/NPC.tscn" id="10_o0k5q"]
+[ext_resource type="PackedScene" uid="uid://bhk2kle5imqhn" path="res://Prefabs/DialogueBubble.tscn" id="11_sh8if"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kswvu"]
-texture = ExtResource("2_o3aft")
+texture = ExtResource("2_sh8if")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -517,17 +518,17 @@ custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_bxugb")
 
 [sub_resource type="Resource" id="Resource_2o2p7"]
-script = ExtResource("18_3en5h")
+script = ExtResource("9_4t6ha")
 minutes = 2
 metadata/_custom_type_script = "uid://cc3yiapgcu05y"
 
 [sub_resource type="Resource" id="Resource_eatfk"]
-script = ExtResource("18_3en5h")
+script = ExtResource("9_4t6ha")
 hours = 18
 metadata/_custom_type_script = "uid://cc3yiapgcu05y"
 
 [node name="CoffeeShop" type="Node2D" unique_id=152045886]
-script = ExtResource("1_mkrt5")
+script = ExtResource("1_7fbxu")
 
 [node name="FloorLayer" type="TileMapLayer" parent="." unique_id=851991393]
 tile_map_data = PackedByteArray("AAADAAMAAQABAAUAAAADAAQAAQABAAYAAAADAAUAAQABAAcAAAAEAAMAAQACAAUAAAAEAAQAAQACAAYAAAAEAAUAAQACAAcAAAAFAAMAAQADAAUAAAAFAAQAAQADAAYAAAAFAAUAAQADAAcAAAAGAAMAAQAEAAUAAAAGAAQAAQAEAAYAAAAGAAUAAQAEAAcAAAAHAAMAAQABAAUAAAAHAAQAAQABAAYAAAAHAAUAAQABAAcAAAAIAAMAAQACAAUAAAAIAAQAAQACAAYAAAAIAAUAAQACAAcAAAAJAAMAAQADAAUAAAAJAAQAAQADAAYAAAAJAAUAAQADAAcAAAAKAAMAAQAEAAUAAAAKAAQAAQAEAAYAAAAKAAUAAQAEAAcAAAALAAMAAQABAAUAAAALAAQAAQABAAYAAAALAAUAAQABAAcAAAAMAAMAAQACAAUAAAAMAAQAAQACAAYAAAAMAAUAAQACAAcAAAANAAMAAQADAAUAAAANAAQAAQADAAYAAAANAAUAAQADAAcAAAAOAAMAAQAEAAUAAAAOAAQAAQAEAAYAAAAOAAUAAQAEAAcAAAAPAAMAAQABAAUAAAAPAAQAAQABAAYAAAAPAAUAAQABAAcAAAAQAAMAAQACAAUAAAAQAAQAAQACAAYAAAAQAAUAAQACAAcAAAARAAMAAQADAAUAAAARAAQAAQADAAYAAAARAAUAAQADAAcAAAASAAMAAQAEAAUAAAASAAQAAQAEAAYAAAASAAUAAQAEAAcAAAAPAAYAAQABAAUAAAAPAAcAAQABAAYAAAAPAAgAAQABAAcAAAAQAAYAAQACAAUAAAAQAAcAAQACAAYAAAAQAAgAAQACAAcAAAARAAYAAQADAAUAAAARAAcAAQADAAYAAAARAAgAAQADAAcAAAASAAYAAQAEAAUAAAASAAcAAQAEAAYAAAASAAgAAQAEAAcAAAALAAYAAQABAAUAAAALAAcAAQABAAYAAAALAAgAAQABAAcAAAAMAAYAAQACAAUAAAAMAAcAAQACAAYAAAAMAAgAAQACAAcAAAANAAYAAQADAAUAAAANAAcAAQADAAYAAAANAAgAAQADAAcAAAAOAAYAAQAEAAUAAAAOAAcAAQAEAAYAAAAOAAgAAQAEAAcAAAAHAAYAAQABAAUAAAAHAAcAAQABAAYAAAAHAAgAAQABAAcAAAAIAAYAAQACAAUAAAAIAAcAAQACAAYAAAAIAAgAAQACAAcAAAAJAAYAAQADAAUAAAAJAAcAAQADAAYAAAAJAAgAAQADAAcAAAAKAAYAAQAEAAUAAAAKAAcAAQAEAAYAAAAKAAgAAQAEAAcAAAADAAYAAQABAAUAAAADAAcAAQABAAYAAAADAAgAAQABAAcAAAAEAAYAAQACAAUAAAAEAAcAAQACAAYAAAAEAAgAAQACAAcAAAAFAAYAAQADAAUAAAAGAAYAAQAEAAUAAAAGAAcAAQAEAAYAAAAGAAgAAQAEAAcAAAADAAkAAQABAAUAAAADAAoAAQABAAYAAAADAAsAAQABAAcAAAAEAAkAAQACAAUAAAAEAAoAAQACAAYAAAAEAAsAAQACAAcAAAAFAAsAAQADAAcAAAAGAAkAAQAEAAUAAAAGAAoAAQAEAAYAAAAGAAsAAQAEAAcAAAADAAwAAQABAAUAAAADAA0AAQABAAYAAAADAA4AAQABAAcAAAAEAAwAAQACAAUAAAAEAA0AAQACAAYAAAAEAA4AAQACAAcAAAAFAAwAAQADAAUAAAAFAA0AAQADAAYAAAAFAA4AAQADAAcAAAAGAAwAAQAEAAUAAAAGAA0AAQAEAAYAAAAGAA4AAQAEAAcAAAAHAAwAAQABAAUAAAAHAA0AAQABAAYAAAAHAA4AAQABAAcAAAAIAAwAAQACAAUAAAAIAA0AAQACAAYAAAAIAA4AAQACAAcAAAAJAAwAAQADAAUAAAAJAA0AAQADAAYAAAAJAA4AAQADAAcAAAAKAAwAAQAEAAUAAAAKAA0AAQAEAAYAAAAKAA4AAQAEAAcAAAALAAwAAQABAAUAAAALAA0AAQABAAYAAAALAA4AAQABAAcAAAAMAAwAAQACAAUAAAAMAA0AAQACAAYAAAAMAA4AAQACAAcAAAANAAwAAQADAAUAAAANAA0AAQADAAYAAAANAA4AAQADAAcAAAAOAAwAAQAEAAUAAAAOAA0AAQAEAAYAAAAOAA4AAQAEAAcAAAAPAAwAAQABAAUAAAAPAA0AAQABAAYAAAAPAA4AAQABAAcAAAAQAAwAAQACAAUAAAAQAA0AAQACAAYAAAAQAA4AAQACAAcAAAARAAwAAQADAAUAAAARAA0AAQADAAYAAAARAA4AAQADAAcAAAASAAwAAQAEAAUAAAASAA0AAQAEAAYAAAASAA4AAQAEAAcAAAAPAAkAAQABAAUAAAAPAAoAAQABAAYAAAAPAAsAAQABAAcAAAAQAAkAAQACAAUAAAAQAAoAAQACAAYAAAAQAAsAAQACAAcAAAARAAkAAQADAAUAAAARAAoAAQADAAYAAAARAAsAAQADAAcAAAASAAkAAQAEAAUAAAASAAoAAQAEAAYAAAASAAsAAQAEAAcAAAALAAkAAQABAAUAAAALAAoAAQABAAYAAAALAAsAAQABAAcAAAAMAAkAAQACAAUAAAAMAAoAAQACAAYAAAAMAAsAAQACAAcAAAANAAkAAQADAAUAAAANAAoAAQADAAYAAAANAAsAAQADAAcAAAAOAAkAAQAEAAUAAAAOAAoAAQAEAAYAAAAOAAsAAQAEAAcAAAAHAAkAAQABAAUAAAAHAAoAAQABAAYAAAAHAAsAAQABAAcAAAAIAAkAAQACAAUAAAAIAAoAAQACAAYAAAAIAAsAAQACAAcAAAAJAAkAAQADAAUAAAAJAAoAAQADAAYAAAAJAAsAAQADAAcAAAAKAAkAAQAEAAUAAAAKAAoAAQAEAAYAAAAKAAsAAQAEAAcAAAAFAAoAAQADAAYAAAAFAAcAAQADAAYAAAAFAAgAAQADAAcAAAAFAAkAAQADAAUAAAA=")
@@ -538,42 +539,52 @@ tile_map_data = PackedByteArray("AAADAP7/AAABAAAAAAADAP//AAABAAEAAAADAAAAAAABAAI
 tile_set = SubResource("TileSet_kswvu")
 
 [node name="GridManager" type="Node" parent="." unique_id=222073008 node_paths=PackedStringArray("wall_layer")]
-script = ExtResource("5_iiw1o")
+script = ExtResource("3_bo86s")
 wall_layer = NodePath("../WallLayer")
 
 [node name="Timer" type="Timer" parent="." unique_id=1369650397]
 one_shot = true
 autostart = true
 
-[node name="Player" parent="." unique_id=1461023337 instance=ExtResource("7_3r0ab")]
+[node name="Player" parent="." unique_id=1461023337 instance=ExtResource("4_pa6yj")]
 position = Vector2(181, 75)
 scale = Vector2(1, 1)
+
+[node name="CanvasLayer" parent="Player" index="8" unique_id=1624174308]
+layer = 1
 
 [node name="CustomerSpawn" type="Marker2D" parent="." unique_id=1376856490]
 position = Vector2(64, 160)
 
-[node name="SceneTransition" parent="." unique_id=441785496 instance=ExtResource("9_8l7oc")]
+[node name="SceneTransition" parent="." unique_id=441785496 instance=ExtResource("5_0ltt6")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=865978164]
-stream = ExtResource("11_7hscl")
+stream = ExtResource("6_tuvhp")
 volume_db = -17.034
 autoplay = true
 parameters/looping = true
 
 [node name="OrderObject" type="Node2D" parent="." unique_id=1752300990]
-script = ExtResource("12_p5fgy")
+script = ExtResource("7_oadwp")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1367486698]
 blend_mode = 2
-script = ExtResource("17_57d2p")
+script = ExtResource("8_swy37")
 day_color = Color(1, 1, 1, 1)
 night_color = Color(0.17254902, 0.078431375, 0.43529412, 1)
 day_start = SubResource("Resource_2o2p7")
 night_start = SubResource("Resource_eatfk")
 
-[node name="NPC" parent="." unique_id=272031947 instance=ExtResource("10_c5qfu")]
+[node name="NPC" parent="." unique_id=272031947 instance=ExtResource("10_o0k5q")]
 position = Vector2(178, 191)
+
+[node name="DialogueBubble" parent="." unique_id=2046258878 instance=ExtResource("11_sh8if")]
+layer = 2
+visible = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="child_entered_tree" from="OrderObject" to="OrderObject" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="OrderObject" to="OrderObject" method="_on_child_exiting_tree"]
+
+[editable path="Player"]
+[editable path="DialogueBubble"]

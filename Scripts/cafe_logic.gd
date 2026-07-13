@@ -9,7 +9,6 @@ var time_gui: Control
 
 @onready var customer_timer: Timer = $Timer
 @onready var spawn_point: Marker2D = $CustomerSpawn
-@onready var despawn_point: Area2D = $LeavingZone
 @onready var scene_transition: CanvasLayer = $SceneTransition
 
 func _ready() -> void:
@@ -73,7 +72,6 @@ func customer_spawn():
 		selected_table.assign_customer(customer)
 		
 		customer.global_position = spawn_point.global_position
-		customer.leaving_target_position = despawn_point.global_position
 		
 		customer.assign_chair(chair)
 		chair.isFree = false
