@@ -20,7 +20,7 @@ const DEFAULT_DATA: Dictionary = {
 const DEFAULT_SETTINGS = {
 	"auto_run": true,
 	"hardware_cursor": false,
-	"hide_interaction_moving": false,
+	"hide_interaction_moving": true,
 	"master": 1.0,
 	"max_fps": 60,
 	"music": 1.0,
@@ -31,6 +31,7 @@ const DEFAULT_SETTINGS = {
 	"vsync": false,
 	"window_mode": 0
 }
+
 const SETTINGS_FILE := SAVE_FOLDER + "settings.json"
 
 signal day_ended

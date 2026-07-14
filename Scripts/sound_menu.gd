@@ -43,6 +43,8 @@ func update_ui() -> void:
 	
 	vsync_check_box.button_pressed = GameData.vsync
 	cursor_check_box.button_pressed = GameData.hardware_cursor
+	
+	fps_min_max_button._set_numeric_value(GameData.max_fps)
 
 func _on_master_slider_value_changed(value: float) -> void:
 	title_music.volume_db = linear_to_db(value) # To-Do: implementar un control maestro de música bg
@@ -80,6 +82,7 @@ func _on_return_button_pressed() -> void:
 
 func _on_default_settings_button_pressed() -> void:
 	GameData.set_default()
+	update_ui()
 
 func _on_ar_check_box_toggled(toggled_on: bool) -> void:
 	GameData.auto_run = toggled_on

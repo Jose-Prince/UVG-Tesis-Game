@@ -119,3 +119,20 @@ func apply_settings() -> void:
 		Input.set_custom_mouse_cursor(null)
 
 	Engine.max_fps = max_fps
+
+func set_default():
+	auto_run = true
+	show_interaction = true
+	hide_interaction_moving = true
+	pause_game_inactive = false
+	master = 1.0
+	music = 1.0
+	sounds = 1.0
+	window_mode = 0
+	resolution = 0
+	vsync = false
+	max_fps = 60
+	hardware_cursor = false
+
+	apply_settings()
+	
