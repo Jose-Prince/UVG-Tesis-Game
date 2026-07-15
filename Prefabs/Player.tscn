@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cgejjdvlywiw" path="res://Prefabs/object_ui.tscn" id="7_3ygst"]
 [ext_resource type="PackedScene" uid="uid://ce5bfs85ds2ea" path="res://Scenes/pause_menu.tscn" id="7_javds"]
 [ext_resource type="PackedScene" uid="uid://ciqhnxpcvejhp" path="res://Scenes/settings_menu.tscn" id="12_wuv02"]
+[ext_resource type="Texture2D" uid="uid://drkfohtbv1tbl" path="res://Sprites/Spritesheets/Spritesheet_UI_Flat_Animated.png" id="13_8afax"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ijov"]
 atlas = ExtResource("2_t8lmw")
@@ -1900,61 +1901,89 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_javds"]
 size = Vector2(21.333334, 6.0000005)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_x3d5u"]
-radius = 18.669643
-
 [sub_resource type="Resource" id="Resource_javds"]
 script = ExtResource("4_gg3t4")
 metadata/_custom_type_script = "uid://cc3yiapgcu05y"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n85xq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc7f0"]
+atlas = ExtResource("13_8afax")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh01y"]
+atlas = ExtResource("13_8afax")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b8io"]
+atlas = ExtResource("13_8afax")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0diru"]
+atlas = ExtResource("13_8afax")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h1tre"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tc7f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yh01y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5b8io")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0diru")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8afax"]
+size = Vector2(8.666667, 8)
 
 [node name="Player" type="CharacterBody2D" unique_id=1461023337 groups=["player"]]
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
 script = ExtResource("1_x3d5u")
-speed = 200.0
+speed = 100.0
+run_speed = 200.0
 
 [node name="skin" type="AnimatedSprite2D" parent="." unique_id=916734474]
-position = Vector2(0, -19.546667)
+position = Vector2(0, -13.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_gg3t4")
-animation = &"hold_run_up"
-frame_progress = 0.0847703
+animation = &"hold_run_right"
 
 [node name="lineart" type="AnimatedSprite2D" parent="." unique_id=1218478053]
-position = Vector2(0, -19.546667)
+position = Vector2(0, -13.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_3b1fg")
-animation = &"hold_run_up"
+animation = &"hold_run_right"
 
 [node name="clothes" type="AnimatedSprite2D" parent="." unique_id=1372496936]
-position = Vector2(0, -19.546667)
+position = Vector2(0, -13.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_ty6fx")
-animation = &"hold_idle_up"
+animation = &"hold_run_right"
 
 [node name="hair" type="AnimatedSprite2D" parent="." unique_id=794520138]
-position = Vector2(0, -19.546667)
+position = Vector2(0, -13.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_fd7od")
-animation = &"hold_idle_up"
+animation = &"hold_run_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=41540243]
-position = Vector2(0, -2.666668)
+position = Vector2(0, 3.333332)
 shape = SubResource("RectangleShape2D_javds")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1178547395]
-position = Vector2(0.6666666, -17.333334)
+position = Vector2(0.6666666, -11.333334)
 scale = Vector2(0.947, 1)
 zoom = Vector2(5, 5)
-
-[node name="DetectionArea" type="Area2D" parent="." unique_id=167484192]
-position = Vector2(0, -17.333334)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=144964780]
-shape = SubResource("CircleShape2D_x3d5u")
 
 [node name="TimeSystem" type="Node" parent="." unique_id=98841440]
 script = ExtResource("3_vxq8l")
@@ -1999,3 +2028,19 @@ debug_color = Color(0.75498325, 0.1922082, 0.99999994, 0.41960785)
 [connection signal="updated" from="TimeSystem" to="CanvasLayer/TimeGui" method="_on_time_system_updated"]
 [connection signal="body_entered" from="ItemDetectionArea" to="." method="_on_item_detection_area_body_entered"]
 [connection signal="body_exited" from="ItemDetectionArea" to="." method="_on_item_detection_area_body_exited"]
+[node name="InteractionPoint" type="Marker2D" parent="." unique_id=2051005676]
+position = Vector2(0, -10.666667)
+
+[node name="PointerSprite" type="AnimatedSprite2D" parent="InteractionPoint" unique_id=1695959168]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_h1tre")
+
+[node name="Area2D" type="Area2D" parent="InteractionPoint" unique_id=2067156958]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionPoint/Area2D" unique_id=1669506662]
+position = Vector2(0.3333335, 0)
+shape = SubResource("RectangleShape2D_8afax")
+
+[connection signal="updated" from="TimeSystem" to="CanvasLayer/TimeGui" method="_on_time_system_updated"]
+[connection signal="body_entered" from="InteractionPoint/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="InteractionPoint/Area2D" to="." method="_on_area_2d_body_exited"]

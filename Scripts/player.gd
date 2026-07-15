@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const TILE_SIZE := 16
+
 @export var speed : float = 400.0
 @export var run_speed : float = 650.0
 
@@ -7,12 +9,20 @@ var player_name := ""
 var current_object = null
 var held_item = null
 var current_npc: NPC = null
+var facing := Vector2.DOWN
+
+var current_tile := Vector2i.ZERO
+var last_facing := Vector2.ZERO
+
+var show_interaction := true
 
 @onready var skin: AnimatedSprite2D = $skin
 @onready var clothes: AnimatedSprite2D = $clothes
 @onready var lineart: AnimatedSprite2D = $lineart
 @onready var hair: AnimatedSprite2D = $hair
 @onready var dialogue: CanvasLayer = $"../DialogueBubble"
+@onready var interaction_point: Marker2D = $InteractionPoint
+@onready var pointer_sprite: AnimatedSprite2D = $InteractionPoint/PointerSprite
 
 func play_layers(anim_name: String):
 	skin.play(anim_name)
@@ -25,8 +35,15 @@ func flip_layers(value: bool):
 	clothes.flip_h = value
 	lineart.flip_h = value
 	hair.flip_h = value
-	
+
+func _ready() -> void:
+	if GameData.show_interaction:
+		interaction_point.visible = true
+	else:
+		interaction_point.visible = false
+
 func _process(delta: float):
+	queue_redraw()
 	z_index = int(global_position.y)
 
 func _physics_process(delta: float) -> void:
@@ -40,20 +57,65 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func get_input():
-	var input_direction = Input.get_vector("left", "right", "up", "down")
-	
 	var current_speed = speed
 	
-	if Input.is_action_pressed("run"):
+	# Set the player speed for auto run
+	if GameData.auto_run:
 		current_speed = run_speed
 	
+	var input_direction = Input.get_vector("left", "right", "up", "down")
+	
+	if input_direction != Vector2.ZERO and GameData.hide_interaction_moving:
+		interaction_point.visible = false
+	
+	var interaction_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
+	if interaction_direction != Vector2.ZERO:
+		facing = interaction_direction.normalized()
+	
+	elif input_direction != Vector2.ZERO:
+		facing = input_direction.normalized()
+	
+	update_interaction_point()
+	
+	if Input.is_action_pressed("run"):
+		if GameData.auto_run:
+			current_speed = speed
+		else:
+			current_speed = run_speed
+	
 	velocity = input_direction * current_speed
+	
+	if input_direction == Vector2.ZERO and GameData.show_interaction:
+		interaction_point.visible = true
+
+func update_interaction_point():
+	if show_interaction != GameData.show_interaction:
+		interaction_point.visible = GameData.show_interaction
+		show_interaction = GameData.show_interaction
+	
+	var dir := Vector2(sign(facing.x), sign(facing.y))
+	var player_tile := Vector2i((global_position / TILE_SIZE).floor())
+	
+	if player_tile != current_tile or dir != last_facing:
+		current_tile = player_tile
+		last_facing = dir
+	
+		var target_tile := current_tile + Vector2i(dir)
+		var target_center := Vector2(target_tile) * TILE_SIZE + Vector2(TILE_SIZE / 2.0, TILE_SIZE / 2.0)
+		interaction_point.global_position = target_center
+
+func snap_to_tile_center(world_pos: Vector2) -> Vector2:
+	var tile_coord = (world_pos / TILE_SIZE).floor()
+	return (tile_coord * TILE_SIZE) + Vector2(TILE_SIZE / 2.0, TILE_SIZE / 2.0)
 
 func make_action():
 	if Input.is_action_just_pressed("Action") and current_object:
 		current_object.interact(self)
 		
 func update_animation():
+	pointer_sprite.play("default")
+	
 	var is_running = Input.is_action_pressed("run") and velocity != Vector2.ZERO
 	var is_holding = held_item != null
 
@@ -101,19 +163,10 @@ func update_animation():
 			flip_layers(false)
 			if is_holding:
 				held_item.set_hold_direction("down", false)
-	
-func _on_detection_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("clickable"):
-		current_object = body
-
-func _on_detection_area_body_exited(body: Node2D) -> void:
-		if body.is_in_group("clickable"):
-			current_object = null
 
 func set_held_item(item):
 	held_item = item
 	if held_item:
-		# set initial direction based on current facing
 		var dir = "down"
 		if skin.animation.contains("up"):
 			dir = "up"
@@ -138,3 +191,11 @@ func _on_item_detection_area_body_exited(body: Node2D) -> void:
 		current_npc.player_in_range = false
 		current_npc = null
 		print("NPC borrado")
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("clickable"):
+		current_object = body
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("clickable"):
+		current_object = null

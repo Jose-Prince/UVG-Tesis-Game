@@ -6,14 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://bj1uha56tsqxm" path="res://Sprites/kitchen16_blue.png" id="3_k3to3"]
 [ext_resource type="PackedScene" uid="uid://d3hb3h1ih8e8w" path="res://Prefabs/table.tscn" id="4_0k3ma"]
 [ext_resource type="Script" uid="uid://bl0lr7p5pqe12" path="res://Scripts/kitchen_interaction.gd" id="4_ug16k"]
-[ext_resource type="PackedScene" uid="uid://h6uqvesj3b8s" path="res://Prefabs/Player.tscn" id="6_df3mn"]
+[ext_resource type="PackedScene" uid="uid://h6uqvesj3b8s" path="res://Prefabs/player.tscn" id="6_df3mn"]
 [ext_resource type="PackedScene" uid="uid://05y0ghmm4qsq" path="res://Prefabs/chair.tscn" id="7_wpc15"]
 [ext_resource type="PackedScene" uid="uid://cn1a17pxcn375" path="res://Prefabs/coffee_maker.tscn" id="8_wvnb4"]
-[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/CozyCaffe-Bossa-consolidated-consolidated.ogg" id="9_j1s20"]
+[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/cozycaffe_bossa_consolidated_consolidated.ogg" id="9_j1s20"]
 [ext_resource type="PackedScene" uid="uid://chcl2gv8i2851" path="res://Scenes/scene_transition.tscn" id="9_vffnu"]
 [ext_resource type="Script" uid="uid://bcqylyib4yrvl" path="res://Scripts/order_object.gd" id="12_2o2p7"]
 [ext_resource type="PackedScene" uid="uid://dy7unp36ghucf" path="res://Prefabs/glass_giver.tscn" id="12_4hl37"]
-[ext_resource type="PackedScene" uid="uid://5pgj7btnpwub" path="res://Prefabs/Sink.tscn" id="13_sk1vp"]
+[ext_resource type="PackedScene" uid="uid://5pgj7btnpwub" path="res://Prefabs/sink.tscn" id="13_sk1vp"]
 [ext_resource type="PackedScene" uid="uid://bgduyi5wcuj0c" path="res://Prefabs/glass.tscn" id="14_xjtdl"]
 [ext_resource type="PackedScene" uid="uid://cyeftfpjy6lld" path="res://Prefabs/water.tscn" id="15_2i3s5"]
 [ext_resource type="Script" uid="uid://d3285ev7ubckh" path="res://Scripts/directional_light_2d.gd" id="16_2i3s5"]
@@ -1184,7 +1184,7 @@ one_shot = true
 autostart = true
 
 [node name="Player" parent="." unique_id=1461023337 instance=ExtResource("6_df3mn")]
-position = Vector2(232, 64)
+position = Vector2(224, 96)
 scale = Vector2(1, 1)
 
 [node name="CustomerSpawn" type="Marker2D" parent="." unique_id=1376856490]

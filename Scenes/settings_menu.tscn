@@ -15,12 +15,48 @@ border_width_bottom = 5
 border_color = Color(0.34509805, 0.22352941, 0.13333334, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l18rq"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.34018075, 0.19922581, 0.1006208, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3etfd"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.34117648, 0.2, 0.101960786, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsgis"]
+bg_color = Color(0.78431374, 0.60784316, 0.3882353, 1)
+border_color = Color(0.3529412, 0.21960784, 0.14117648, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rahb6"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.34117648, 0.2, 0.101960786, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fe37x"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.34117648, 0.2, 0.101960786, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjs6x"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.34117648, 0.2, 0.101960786, 1)
 
 [node name="SettingsMenu" type="Control" unique_id=915478763]
 visible = false
@@ -132,6 +168,7 @@ vertical_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/GeneralTitle" unique_id=1772085987]
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_3etfd")
 
 [node name="AutoRun" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn" unique_id=1714049656]
 layout_mode = 2
@@ -153,6 +190,14 @@ alignment = 2
 
 [node name="ARCheckBox" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer/HBoxContainer" unique_id=1754681687]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9490196, 0.9098039, 0.8352941, 1)
+theme_override_colors/font_focus_color = Color(1, 0.9607843, 0.9098039, 1)
+theme_override_colors/font_pressed_color = Color(0.8509804, 0.7764706, 0.64705884, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9607843, 0.9098039, 1)
+theme_override_colors/font_disabled_color = Color(0.56078434, 0.50980395, 0.44705883, 1)
+theme_override_constants/h_separation = 12
+theme_override_styles/focus = SubResource("StyleBoxFlat_fsgis")
+icon_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun" unique_id=2025664869]
 layout_mode = 2
@@ -267,6 +312,7 @@ autowrap_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=1715550912]
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_rahb6")
 
 [node name="RightScrollContainer" type="ScrollContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer" unique_id=323486464]
 layout_mode = 2
@@ -300,6 +346,7 @@ vertical_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/AudioTitle" unique_id=1521547231]
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_fe37x")
 
 [node name="Master" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=247233931]
 layout_mode = 2
@@ -425,6 +472,7 @@ vertical_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/VisualTitle" unique_id=2058366693]
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_jjs6x")
 
 [node name="WindowMode" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1195188542]
 layout_mode = 2
@@ -467,6 +515,7 @@ text = "Changes how the game is displayed, such as fullscreen, borderless, or wi
 autowrap_mode = 2
 
 [node name="Resolution" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=75481698]
+visible = false
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution" unique_id=1153680570]
@@ -513,6 +562,7 @@ text = "Changes the game rendering resolution."
 autowrap_mode = 2
 
 [node name="Vsync" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1609019983]
+visible = false
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync" unique_id=1422944905]
@@ -545,6 +595,7 @@ text = "synchronize the game's frame rate with your monitor's refresh rate to re
 autowrap_mode = 2
 
 [node name="HardwareCursor" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=175434042]
+visible = false
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/HardwareCursor" unique_id=22113889]
@@ -629,6 +680,7 @@ text = "Use default settings"
 [connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox" to="." method="_on_hide_check_box_toggled"]
 [connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox" to="." method="_on_pause_check_box_toggled"]
 [connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_h_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer/MusicSlider" to="." method="_on_music_h_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer/SoundsSlider" to="." method="_on_sounds_h_slider_value_changed"]
 [connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer/HBoxContainer/WindowOptionButton" to="." method="_on_window_option_button_item_selected"]

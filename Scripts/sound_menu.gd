@@ -1,5 +1,16 @@
 extends Control
 
+@onready var ar_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer/HBoxContainer/ARCheckBox
+@onready var location_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox
+@onready var hide_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox
+@onready var pause_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox
+
+@onready var window_option_button: OptionButton = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer/HBoxContainer/WindowOptionButton
+@onready var resolution_option_button: OptionButton = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution/GridContainer/HBoxContainer/ResolutionOptionButton
+@onready var vsync_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync/GridContainer/HBoxContainer/VsyncCheckBox
+@onready var cursor_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/HardwareCursor/GridContainer/HBoxContainer/CursorCheckBox
+@onready var fps_min_max_button: MinMaxButton = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer/HBoxContainer/FpsMinMaxButton
+
 @onready var master_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider
 @onready var music_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer/MusicSlider
 @onready var sounds_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer/SoundsSlider
@@ -7,51 +18,71 @@ extends Control
 @onready var texture_rect: TextureRect = $TextureRect
 
 var cursor_texture := preload("res://Sprites/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
+var title_music: AudioStreamPlayer 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	title_music = get_tree().current_scene.find_child("AudioStreamPlayer", true, false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
+func update_ui() -> void:
+	ar_check_box.button_pressed = GameData.auto_run
+	location_check_box.button_pressed = GameData.show_interaction
+	hide_check_box.button_pressed = GameData.hide_interaction_moving
+	pause_check_box.button_pressed = GameData.pause_game_inactive
+	
+	master_slider.value = GameData.master
+	music_slider.value = GameData.music
+	sounds_slider.value = GameData.sounds
+	
+	window_option_button.select(GameData.window_mode)
+	resolution_option_button.select(GameData.resolution)
+	
+	vsync_check_box.button_pressed = GameData.vsync
+	cursor_check_box.button_pressed = GameData.hardware_cursor
+	
+	fps_min_max_button._set_numeric_value(GameData.max_fps)
+
+func _on_master_slider_value_changed(value: float) -> void:
+	title_music.volume_db = linear_to_db(value) # To-Do: implementar un control maestro de música bg
 
 func _on_visibility_changed() -> void:
+	if visible:
+		update_ui()
+		
 	var tween: Tween = texture_rect.animate_to_desired()
 	await tween.finished
 	margin_container.visible = true
 
 func _on_return_button_pressed() -> void:
+	SaveManager.save_settings({
+		"auto_run": GameData.auto_run,
+		"hardware_cursor": GameData.hardware_cursor,
+		"hide_interaction_moving": GameData.hide_interaction_moving,
+		"master": GameData.master,
+		"max_fps": GameData.max_fps,
+		"music": GameData.music,
+		"pause_game_inactive": GameData.pause_game_inactive,
+		"resolution": GameData.resolution,
+		"show_interaction": GameData.show_interaction,
+		"sounds": GameData.sounds,
+		"vsync": GameData.vsync,
+		"window_mode": GameData.window_mode
+	})
+	
 	SfxManager.play_click()
 	margin_container.visible = false
 	var tween: Tween = texture_rect.animate_to_initial()
 	await tween.finished
 	
-	SaveManager.save_especific_data(
-		GameData.game_slot,
-		"settings",
-		{
-			"auto_run": GameData.auto_run,
-			"show_interaction": GameData.show_interaction,
-			"hide_interaction_moving": GameData.hide_interaction_moving,
-			"pause_game_inactive": GameData.pause_game_inactive,
-			"master": GameData.master,
-			"music": GameData.music,
-			"sounds": GameData.sounds,
-			"window_mode": GameData.window_mode,
-			"resolution": GameData.resolution,
-			"vsync": GameData.vsync,
-			"ui_scale": GameData.ui_scale,
-			"hardware_cursor": GameData.hardware_cursor,
-			"max_fps": GameData.max_fps
-		}
-	)
-	
 	self.visible = false
 
 func _on_default_settings_button_pressed() -> void:
 	GameData.set_default()
+	update_ui()
 
 func _on_ar_check_box_toggled(toggled_on: bool) -> void:
 	GameData.auto_run = toggled_on
