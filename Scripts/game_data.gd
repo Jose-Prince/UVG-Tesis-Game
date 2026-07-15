@@ -108,11 +108,6 @@ func apply_settings() -> void:
 	var position = (screen.size - resolutions) / 2
 	DisplayServer.window_set_position(Vector2i(position))
 	
-	if vsync:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	else:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-	
 	if hardware_cursor:
 		Input.set_custom_mouse_cursor(cursor_texture)
 	else:
