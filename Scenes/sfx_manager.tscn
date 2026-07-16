@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dq03ralao18ys"]
 
-[ext_resource type="AudioStream" uid="uid://bgcgsagmr3pdp" path="res://Audios/Buton1.ogg" id="1_4xxgw"]
+[ext_resource type="AudioStream" uid="uid://bgcgsagmr3pdp" path="res://Audios/buton1.ogg" id="1_4xxgw"]
 [ext_resource type="Script" uid="uid://mufslw6ip3sv" path="res://Scripts/sfx_manager.gd" id="1_8ebee"]
-[ext_resource type="AudioStream" uid="uid://cmls7jty460k6" path="res://Audios/Campana1.ogg" id="3_oxhci"]
+[ext_resource type="AudioStream" uid="uid://cmls7jty460k6" path="res://Audios/campana1.ogg" id="3_oxhci"]
 [ext_resource type="AudioStream" uid="uid://de40pgcigvxev" path="res://Audios/líquido.mp3" id="4_7g7du"]
 [ext_resource type="AudioStream" uid="uid://hrkbygn7puk2" path="res://Audios/chiklin.mp3" id="5_trne8"]
 [ext_resource type="AudioStream" uid="uid://c4y350nvpvbyq" path="res://Audios/pick.mp3" id="6_trne8"]

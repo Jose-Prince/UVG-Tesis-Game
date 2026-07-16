@@ -21,7 +21,7 @@ GameData="*res://Scripts/game_data.gd"
 SaveManager="*res://Scripts/save_manager.gd"
 SfxManager="*res://Scenes/sfx_manager.tscn"
 ArticleDatabase="*res://Scripts/article_database.gd"
-DialogueBubble="*uid://ekk16wju7cjv"
+DialogueBubble="*res://Scripts/dialogue_bubble.gd"
 
 [global_group]
 
