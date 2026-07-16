@@ -8,6 +8,7 @@ const TILE_SIZE := 16
 var player_name := ""
 var current_object = null
 var held_item = null
+var current_npc: NPC = null
 var facing := Vector2.DOWN
 
 var current_tile := Vector2i.ZERO
@@ -19,6 +20,7 @@ var show_interaction := true
 @onready var clothes: AnimatedSprite2D = $clothes
 @onready var lineart: AnimatedSprite2D = $lineart
 @onready var hair: AnimatedSprite2D = $hair
+@onready var dialogue: CanvasLayer = $"../DialogueBubble"
 @onready var interaction_point: Marker2D = $InteractionPoint
 @onready var pointer_sprite: AnimatedSprite2D = $InteractionPoint/PointerSprite
 
@@ -172,6 +174,23 @@ func set_held_item(item):
 			dir = "right"
 		held_item.set_hold_direction(dir, skin.flip_h)
 
+func _unhandled_input(event: InputEvent) -> void:
+	print(event)
+	if event.is_action_pressed("Action") and current_npc != null:
+		current_npc.talk()
+
+func _on_item_detection_area_body_entered(body: CharacterBody2D) -> void:
+	if body is NPC:
+		current_npc =  body
+		body.player_in_range = true
+		print("Cerca de: ", body.npc_name)
+
+func _on_item_detection_area_body_exited(body: Node2D) -> void:
+	if body == current_npc:
+		current_npc.untalk()
+		current_npc.player_in_range = false
+		current_npc = null
+		print("NPC borrado")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("clickable"):

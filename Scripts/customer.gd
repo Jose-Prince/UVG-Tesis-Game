@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name Customer	
+class_name Customer
 
 var target_chair = null
 var movement_speed: float = 100.0
