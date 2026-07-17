@@ -15,6 +15,7 @@ var current_tile := Vector2i.ZERO
 var last_facing := Vector2.ZERO
 
 var show_interaction := true
+var side_offset := Vector2(8, 0)
 
 @onready var skin: AnimatedSprite2D = $skin
 @onready var clothes: AnimatedSprite2D = $clothes

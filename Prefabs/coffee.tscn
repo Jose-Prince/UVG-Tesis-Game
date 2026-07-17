@@ -17,7 +17,7 @@ script = ExtResource("1_2lmin")
 article_data = ExtResource("2_snflx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=460583418]
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 texture = SubResource("AtlasTexture_2lmin")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=381685739]

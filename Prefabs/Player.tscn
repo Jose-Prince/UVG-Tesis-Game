@@ -1955,25 +1955,25 @@ run_speed = 200.0
 position = Vector2(0, -13.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_gg3t4")
-animation = &"hold_run_right"
+animation = &"hold_walk_down"
 
 [node name="lineart" type="AnimatedSprite2D" parent="." unique_id=1218478053]
 position = Vector2(0, -13.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_3b1fg")
-animation = &"hold_run_right"
+animation = &"hold_walk_down"
 
 [node name="clothes" type="AnimatedSprite2D" parent="." unique_id=1372496936]
 position = Vector2(0, -13.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_ty6fx")
-animation = &"hold_run_right"
+animation = &"hold_walk_down"
 
 [node name="hair" type="AnimatedSprite2D" parent="." unique_id=794520138]
 position = Vector2(0, -13.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_fd7od")
-animation = &"hold_run_right"
+animation = &"hold_walk_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=41540243]
 position = Vector2(0, 3.333332)
@@ -2025,6 +2025,9 @@ sprite_frames = SubResource("SpriteFrames_h1tre")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionPoint/Area2D" unique_id=1669506662]
 position = Vector2(0.3333335, 0)
 shape = SubResource("RectangleShape2D_8afax")
+
+[node name="HoldSideMarker" type="Marker2D" parent="." unique_id=1262564026]
+position = Vector2(8, 0)
 
 [connection signal="updated" from="TimeSystem" to="CanvasLayer/TimeGui" method="_on_time_system_updated"]
 [connection signal="body_entered" from="InteractionPoint/Area2D" to="." method="_on_area_2d_body_entered"]
