@@ -29,7 +29,6 @@ var music := 1.0
 var sounds := 1.0
 var window_mode := 0
 var resolution := 0
-var vsync := false
 var hardware_cursor := true
 var max_fps := 60
 
@@ -66,7 +65,6 @@ func load_settings(data: Dictionary) -> void:
 
 	window_mode = data["window_mode"]
 	resolution = data["resolution"]
-	vsync = data["vsync"]
 	max_fps = data["max_fps"]
 
 	hardware_cursor = data["hardware_cursor"]
@@ -125,7 +123,6 @@ func set_default():
 	sounds = 1.0
 	window_mode = 0
 	resolution = 0
-	vsync = false
 	max_fps = 60
 	hardware_cursor = false
 

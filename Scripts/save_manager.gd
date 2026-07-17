@@ -28,7 +28,6 @@ const DEFAULT_SETTINGS = {
 	"resolution": 0,
 	"show_interaction": true,
 	"sounds": 1.0,
-	"vsync": false,
 	"window_mode": 0
 }
 

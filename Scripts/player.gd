@@ -15,6 +15,7 @@ var current_tile := Vector2i.ZERO
 var last_facing := Vector2.ZERO
 
 var show_interaction := true
+var side_offset := Vector2(8, 0)
 
 @onready var skin: AnimatedSprite2D = $skin
 @onready var clothes: AnimatedSprite2D = $clothes
@@ -116,7 +117,10 @@ func make_action():
 func update_animation():
 	pointer_sprite.play("default")
 	
-	var is_running = Input.is_action_pressed("run") and velocity != Vector2.ZERO
+	var is_running := velocity != Vector2.ZERO and (
+		(GameData.auto_run and !Input.is_action_pressed("run")) or
+		(!GameData.auto_run and Input.is_action_pressed("run"))
+	)
 	var is_holding = held_item != null
 
 	# Idle
@@ -175,27 +179,22 @@ func set_held_item(item):
 		held_item.set_hold_direction(dir, skin.flip_h)
 
 func _unhandled_input(event: InputEvent) -> void:
-	print(event)
 	if event.is_action_pressed("Action") and current_npc != null:
 		current_npc.talk()
-
-func _on_item_detection_area_body_entered(body: CharacterBody2D) -> void:
-	if body is NPC:
-		current_npc =  body
-		body.player_in_range = true
-		print("Cerca de: ", body.npc_name)
-
-func _on_item_detection_area_body_exited(body: Node2D) -> void:
-	if body == current_npc:
-		current_npc.untalk()
-		current_npc.player_in_range = false
-		current_npc = null
-		print("NPC borrado")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("clickable"):
 		current_object = body
+	
+	if body is NPC:
+		current_npc =  body
+		body.player_in_range = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("clickable"):
 		current_object = null
+		
+	if body == current_npc:
+		current_npc.untalk()
+		current_npc.player_in_range = false
+		current_npc = null

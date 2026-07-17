@@ -561,39 +561,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Changes the game rendering resolution."
 autowrap_mode = 2
 
-[node name="Vsync" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=1609019983]
-visible = false
-layout_mode = 2
-
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync" unique_id=1422944905]
-layout_mode = 2
-columns = 2
-
-[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync/GridContainer" unique_id=1264948079]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Vsync"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync/GridContainer" unique_id=1717019729]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 2
-
-[node name="VsyncCheckBox" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync/GridContainer/HBoxContainer" unique_id=1301527205]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync" unique_id=1994920700]
-layout_mode = 2
-theme_override_constants/margin_right = 50
-
-[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync/MarginContainer" unique_id=2119692589]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "synchronize the game's frame rate with your monitor's refresh rate to reduce screen tearing."
-autowrap_mode = 2
-
 [node name="HardwareCursor" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=175434042]
 visible = false
 layout_mode = 2
@@ -685,7 +652,6 @@ text = "Use default settings"
 [connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer/SoundsSlider" to="." method="_on_sounds_h_slider_value_changed"]
 [connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer/HBoxContainer/WindowOptionButton" to="." method="_on_window_option_button_item_selected"]
 [connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution/GridContainer/HBoxContainer/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]
-[connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync/GridContainer/HBoxContainer/VsyncCheckBox" to="." method="_on_vsync_check_box_toggled"]
 [connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/HardwareCursor/GridContainer/HBoxContainer/CursorCheckBox" to="." method="_on_cursor_check_box_toggled"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer/HBoxContainer/FpsMinMaxButton" to="." method="_on_fps_min_max_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay/ReturnButton" to="." method="_on_return_button_pressed"]
