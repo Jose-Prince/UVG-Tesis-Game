@@ -116,7 +116,10 @@ func make_action():
 func update_animation():
 	pointer_sprite.play("default")
 	
-	var is_running = Input.is_action_pressed("run") and velocity != Vector2.ZERO
+	var is_running := velocity != Vector2.ZERO and (
+		(GameData.auto_run and !Input.is_action_pressed("run")) or
+		(!GameData.auto_run and Input.is_action_pressed("run"))
+	)
 	var is_holding = held_item != null
 
 	# Idle
