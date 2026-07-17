@@ -7,7 +7,6 @@ extends Control
 
 @onready var window_option_button: OptionButton = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer/HBoxContainer/WindowOptionButton
 @onready var resolution_option_button: OptionButton = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution/GridContainer/HBoxContainer/ResolutionOptionButton
-@onready var vsync_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Vsync/GridContainer/HBoxContainer/VsyncCheckBox
 @onready var cursor_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/HardwareCursor/GridContainer/HBoxContainer/CursorCheckBox
 @onready var fps_min_max_button: MinMaxButton = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer/HBoxContainer/FpsMinMaxButton
 
@@ -41,7 +40,6 @@ func update_ui() -> void:
 	window_option_button.select(GameData.window_mode)
 	resolution_option_button.select(GameData.resolution)
 	
-	vsync_check_box.button_pressed = GameData.vsync
 	cursor_check_box.button_pressed = GameData.hardware_cursor
 	
 	fps_min_max_button._set_numeric_value(GameData.max_fps)
@@ -69,7 +67,6 @@ func _on_return_button_pressed() -> void:
 		"resolution": GameData.resolution,
 		"show_interaction": GameData.show_interaction,
 		"sounds": GameData.sounds,
-		"vsync": GameData.vsync,
 		"window_mode": GameData.window_mode
 	})
 	
@@ -144,14 +141,6 @@ func _on_resolution_option_button_item_selected(index: int) -> void:
 	var screen = DisplayServer.screen_get_usable_rect()
 	var position = (screen.size - resolution) / 2
 	DisplayServer.window_set_position(Vector2i(position))
-
-func _on_vsync_check_box_toggled(toggled_on: bool) -> void:
-	GameData.vsync = toggled_on
-	
-	if toggled_on:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	else:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
 func _on_cursor_check_box_toggled(toggled_on: bool) -> void:
 	if toggled_on:
