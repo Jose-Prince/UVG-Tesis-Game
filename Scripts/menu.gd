@@ -9,18 +9,27 @@ extends Control
 @onready var coffee_drawing: TextureRect = $Panel/MarginContainer/HBoxContainer/LeftPanel/CoffeeDrawing   # Down
 @onready var nine_patch_rect: NinePatchRect = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect # Up
 
+# Buttons
+@onready var new_game: ResponsiveButton = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/NewGame
+
+
 # How far off-screen (in px) each element starts before sliding in
 const SLIDE_DISTANCE := 80.0
 const ANIM_DURATION := 0.6
 const ANIM_DELAY_STEP := 0.12
 
 func _ready() -> void:
+	new_game.grab_focus()
 	load_game.visible = SaveManager.directory_has_content("user://saves/")
 	control_2.visible = SaveManager.directory_has_content("user://saves/")
 
 	# Wait one frame so layout/anchors have resolved final positions
 	await get_tree().process_frame
 	_animate_intro()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_pressed():
+		new_game.has_focus()
 
 func _animate_intro() -> void:
 	_slide_in(game_title, Vector2(-SLIDE_DISTANCE, 0), 0.0)

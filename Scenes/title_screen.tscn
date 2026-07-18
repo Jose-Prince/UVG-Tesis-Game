@@ -50,6 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 script = ExtResource("1_klylv")
 
 [node name="Panel" type="Panel" parent="." unique_id=304959585]
@@ -99,7 +100,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_12m1t")
-theme_override_font_sizes/font_size = 88
+theme_override_font_sizes/font_size = 8
 text = "DREAM CAFE"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -166,7 +167,7 @@ size_flags_stretch_ratio = 1.1
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_constants/line_spacing = 3
 theme_override_fonts/font = ExtResource("4_12m1t")
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 8
 text = "Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -185,6 +186,7 @@ theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer" unique_id=816277972]
 layout_mode = 2
+focus_mode = 2
 
 [node name="Control5" type="Control" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=1350071519]
 layout_mode = 2
@@ -193,10 +195,11 @@ size_flags_vertical = 3
 [node name="NewGame" type="Button" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=935340656]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_bottom = NodePath("../LoadGame")
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n82rj")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0061g")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8mikk")
@@ -210,10 +213,12 @@ size_flags_vertical = 3
 [node name="LoadGame" type="Button" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=141415103]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../NewGame")
+focus_neighbor_bottom = NodePath("../Settings")
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8mikk")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_o1e67")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w5sh6")
@@ -227,10 +232,12 @@ size_flags_vertical = 3
 [node name="Settings" type="Button" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=755254686]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../LoadGame")
+focus_neighbor_bottom = NodePath("../Quit")
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sqelc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_w5sh6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o1e67")
@@ -244,10 +251,11 @@ size_flags_vertical = 3
 [node name="Quit" type="Button" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=1908246047]
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Settings")
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ycay6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bsy20")
 theme_override_styles/hover = SubResource("StyleBoxFlat_07cxn")
