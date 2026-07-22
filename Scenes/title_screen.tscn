@@ -24,24 +24,40 @@ border_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0061g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mikk"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqelc"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8mikk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o1e67"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5sh6"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycay6"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sqelc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w5sh6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1e67"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsy20"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ycay6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bsy20"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07cxn"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2pfe"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
 
 [node name="TitleScreen" type="Control" unique_id=1439522845]
 layout_mode = 3
@@ -198,12 +214,14 @@ size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Quit")
 focus_neighbor_bottom = NodePath("../LoadGame")
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+theme_override_colors/font_focus_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
 theme_override_font_sizes/font_size = 49
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n82rj")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0061g")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8mikk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sqelc")
 text = "New Game"
 script = ExtResource("8_8mikk")
 
@@ -217,12 +235,14 @@ size_flags_vertical = 3
 focus_neighbor_top = NodePath("../NewGame")
 focus_neighbor_bottom = NodePath("../Settings")
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+theme_override_colors/font_focus_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
 theme_override_font_sizes/font_size = 49
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8mikk")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_o1e67")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w5sh6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ycay6")
 text = "Load Game"
 script = ExtResource("8_8mikk")
 
@@ -236,12 +256,14 @@ size_flags_vertical = 3
 focus_neighbor_top = NodePath("../LoadGame")
 focus_neighbor_bottom = NodePath("../Quit")
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+theme_override_colors/font_focus_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
 theme_override_font_sizes/font_size = 49
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sqelc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_w5sh6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o1e67")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bsy20")
 text = "Settings"
 script = ExtResource("8_8mikk")
 
@@ -255,12 +277,14 @@ size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Settings")
 focus_neighbor_bottom = NodePath("../NewGame")
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+theme_override_colors/font_focus_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_fonts/font = ExtResource("8_0061g")
 theme_override_font_sizes/font_size = 49
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ycay6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bsy20")
 theme_override_styles/hover = SubResource("StyleBoxFlat_07cxn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_x2pfe")
 text = "Exit Game"
 script = ExtResource("8_8mikk")
 
