@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://cmls7jty460k6"
-path="res://.godot/imported/campana1.ogg-902cb819df60f3e12d6f41770a25d25c.oggvorbisstr"
+path="res://.godot/imported/Campana1.ogg-ee917d15f8604ef0bdfbf9f9e942b57d.oggvorbisstr"
 
 [deps]
 
-source_file="res://Audios/campana1.ogg"
-dest_files=["res://.godot/imported/campana1.ogg-902cb819df60f3e12d6f41770a25d25c.oggvorbisstr"]
+source_file="res://Audios/Campana1.ogg"
+dest_files=["res://.godot/imported/Campana1.ogg-ee917d15f8604ef0bdfbf9f9e942b57d.oggvorbisstr"]
 
 [params]
 
