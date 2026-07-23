@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dclatuh7yvi5x"]
 
-[ext_resource type="Script" path="res://Scripts/filebutton_container.gd" id="1_aa0qy"]
+[ext_resource type="Script" uid="uid://bpqk0y7rn4qsr" path="res://Scripts/filebutton_container.gd" id="1_aa0qy"]
 [ext_resource type="Texture2D" uid="uid://cx1nyacr2yebd" path="res://Sprites/gingham.PNG" id="1_bmwgd"]
 
 [node name="FilesScreen" type="Control" unique_id=1530240423]
@@ -38,39 +38,53 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 150
 theme_override_constants/margin_bottom = 15
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer" unique_id=52834068]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=756651216]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/PanelContainer" unique_id=540422301]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=52834068]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=540422301]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=1317851028]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=1317851028]
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1913841823]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1913841823]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Menu of the Day"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1677770677]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1677770677]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=163270569]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=163270569]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=967108865]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=967108865]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 script = ExtResource("1_aa0qy")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=1770501121]
+layout_mode = 2
+alignment = 2
+
+[node name="BackButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1628764477]
+layout_mode = 2
+text = "Back"
+
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=915312153]
 layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="VBoxContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" method="_on_back_button_pressed"]
