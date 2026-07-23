@@ -18,6 +18,8 @@ const SLIDE_DISTANCE := 80.0
 const ANIM_DURATION := 0.6
 const ANIM_DELAY_STEP := 0.12
 
+var button_selected : Button = null
+
 func _ready() -> void:
 	load_game.visible = SaveManager.directory_has_content("user://saves/")
 	control_2.visible = SaveManager.directory_has_content("user://saves/")
@@ -27,8 +29,10 @@ func _ready() -> void:
 	_animate_intro()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_pressed() and !event.is_action_pressed("ui_accept"):
+	if event.is_pressed() and !event.is_action_pressed("ui_accept") and !event.is_action_pressed("ui_cancel"):
 		new_game.grab_focus()
+	
+	button_selected = get_viewport().gui_get_focus_owner()
 
 func _animate_intro() -> void:
 	_slide_in(game_title, Vector2(-SLIDE_DISTANCE, 0), 0.0)
