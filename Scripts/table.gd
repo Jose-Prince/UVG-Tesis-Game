@@ -147,9 +147,6 @@ func place_food(food, customer):
 	food.pickup(closest_marker)
 	food.visible = true
 	
-	if food.has_method("place"):
-		food.place()
-	
 	placed_food.append(food)
 
 func clear_food():

@@ -72,6 +72,7 @@ func customer_spawn():
 		selected_table.assign_customer(customer)
 		
 		customer.global_position = spawn_point.global_position
+		customer.leaving_target_position = spawn_point.global_position
 		
 		customer.assign_chair(chair)
 		chair.isFree = false
