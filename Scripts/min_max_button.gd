@@ -29,6 +29,15 @@ func _get_numeric_value() -> int:
 
 	return int(numbers)
 
+func _gui_input(event):
+	if event.is_action_pressed("ui_left"):
+		_on_minus_button_pressed()
+		accept_event()
+	
+	elif event.is_action_pressed("ui_right"):
+		_on_plus_button_pressed()
+		accept_event()
+
 func _set_numeric_value(value: int) -> void:
 	var text := line_edit.text
 
