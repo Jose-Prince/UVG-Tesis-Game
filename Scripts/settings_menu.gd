@@ -16,6 +16,12 @@ extends Control
 @onready var margin_container: MarginContainer = $MarginContainer
 @onready var texture_rect: TextureRect = $TextureRect
 
+# Scrolls
+@onready var left_scroll_container: ScrollContainer = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer
+@onready var right_scroll_container: ScrollContainer = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer
+
+const SCROLL_MARGIN := 46
+
 var cursor_texture := preload("res://Sprites/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
 var title_music: AudioStreamPlayer 
 
@@ -23,10 +29,9 @@ var title_music: AudioStreamPlayer
 func _ready() -> void:
 	ar_check_box.grab_focus()
 	title_music = get_tree().current_scene.find_child("AudioStreamPlayer", true, false)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	
+	_register_focus(left_scroll_container)
+	_register_focus(right_scroll_container)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !visible:
@@ -51,6 +56,52 @@ func update_ui() -> void:
 	cursor_check_box.button_pressed = GameData.hardware_cursor
 	
 	fps_min_max_button._set_numeric_value(GameData.max_fps)
+
+func _register_focus(node: Node) -> void:
+	for child in node.get_children():
+		if child is Control:
+			child.focus_entered.connect(_on_focus_entered.bind(child))
+		
+		_register_focus(child)
+
+func _on_focus_entered(control: Control) -> void:
+	var scroll := _find_scroll_container(control)
+	
+	if scroll == null:
+		return
+	
+	_scroll_to_control(scroll, control)
+
+func _find_scroll_container(control: Control) -> ScrollContainer:
+	var node := control.get_parent()
+	
+	while node != null:
+		if node is ScrollContainer:
+			return node
+	
+		node = node.get_parent()
+	
+	return null
+
+func _scroll_to_control(scroll: ScrollContainer, control: Control) -> void:
+	var top := control.global_position.y - scroll.global_position.y + scroll.scroll_vertical
+	
+	var bottom := top + control.size.y
+	
+	var view_top := scroll.scroll_vertical
+	var view_bottom := view_top + scroll.size.y
+	
+	if top < view_top + SCROLL_MARGIN:
+		scroll.scroll_vertical = maxi(
+			int(top - SCROLL_MARGIN),
+			0
+		)
+	
+	elif bottom > view_bottom - SCROLL_MARGIN:
+		scroll.scroll_vertical = mini(
+			int(bottom - scroll.size.y + SCROLL_MARGIN),
+			scroll.get_v_scroll_bar().max_value
+		)
 
 func _on_master_slider_value_changed(value: float) -> void:
 	title_music.volume_db = linear_to_db(value) # To-Do: implementar un control maestro de música bg
