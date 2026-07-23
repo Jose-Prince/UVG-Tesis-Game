@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://buu71e7lwp8u2"]
+
+[ext_resource type="Script" uid="uid://ce3e2hqkljw1m" path="res://Scripts/input_menu.gd" id="1_j5iht"]
+
+[node name="SettingsMenu" type="Control" unique_id=915478763]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j5iht")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=278901098]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1839556892]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 49.0
+grow_horizontal = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 20)
+theme_override_constants/separation = 240
+alignment = 1
+
+[node name="ActionLabel" type="Label" parent="HBoxContainer" unique_id=2125757354]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Acción"
+
+[node name="CurrentLabel" type="Label" parent="HBoxContainer" unique_id=1515384874]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Tecla actual"
+
+[node name="ChangeLabel" type="Label" parent="HBoxContainer" unique_id=228876783]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Cambiar"
+
+[node name="InputContainer" type="VBoxContainer" parent="." unique_id=523706664]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -486.0
+offset_top = -24.5
+offset_right = 486.0
+offset_bottom = 69.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_position = Vector2(0, 100)
+
+[node name="UpContainer" type="HBoxContainer" parent="InputContainer" unique_id=906468775]
+layout_mode = 2
+alignment = 1
+
+[node name="UpLabel" type="Label" parent="InputContainer/UpContainer" unique_id=539740933]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Arriba"
+
+[node name="UpCurrentLabel" type="Label" parent="InputContainer/UpContainer" unique_id=1243213128]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Current"
+
+[node name="UpButton" type="Button" parent="InputContainer/UpContainer" unique_id=1560006881]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Cambiar"
+
+[node name="DownContainer" type="HBoxContainer" parent="InputContainer" unique_id=246418332]
+layout_mode = 2
+alignment = 1
+
+[node name="DownLabel" type="Label" parent="InputContainer/DownContainer" unique_id=401745914]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Arriba"
+
+[node name="DownCurrentLabel" type="Label" parent="InputContainer/DownContainer" unique_id=1776164182]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Current"
+
+[node name="DownButton" type="Button" parent="InputContainer/DownContainer" unique_id=393301192]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Cambiar"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
