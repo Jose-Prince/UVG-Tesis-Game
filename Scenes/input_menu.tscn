@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_j5iht")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=278901098]
@@ -18,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1839556892]
 layout_mode = 1
@@ -34,19 +36,19 @@ alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-text = "Acción"
+text = "Action"
 
 [node name="CurrentLabel" type="Label" parent="HBoxContainer" unique_id=1515384874]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-text = "Tecla actual"
+text = "Current Key"
 
 [node name="ChangeLabel" type="Label" parent="HBoxContainer" unique_id=228876783]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-text = "Cambiar"
+text = "Change"
 
 [node name="InputContainer" type="VBoxContainer" parent="." unique_id=523706664]
 layout_mode = 1
@@ -71,7 +73,7 @@ alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "Arriba"
+text = "Up"
 
 [node name="UpCurrentLabel" type="Label" parent="InputContainer/UpContainer" unique_id=1243213128]
 layout_mode = 2
@@ -80,10 +82,11 @@ theme_override_font_sizes/font_size = 30
 text = "Current"
 
 [node name="UpButton" type="Button" parent="InputContainer/UpContainer" unique_id=1560006881]
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "Cambiar"
+text = "Change"
 
 [node name="DownContainer" type="HBoxContainer" parent="InputContainer" unique_id=246418332]
 layout_mode = 2
@@ -93,7 +96,7 @@ alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "Arriba"
+text = "Down"
 
 [node name="DownCurrentLabel" type="Label" parent="InputContainer/DownContainer" unique_id=1776164182]
 layout_mode = 2
@@ -102,9 +105,129 @@ theme_override_font_sizes/font_size = 30
 text = "Current"
 
 [node name="DownButton" type="Button" parent="InputContainer/DownContainer" unique_id=393301192]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Change"
+
+[node name="RightContainer" type="HBoxContainer" parent="InputContainer" unique_id=266894145]
+layout_mode = 2
+alignment = 1
+
+[node name="RightLabel" type="Label" parent="InputContainer/RightContainer" unique_id=608635101]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Right"
+
+[node name="RightCurrentLabel" type="Label" parent="InputContainer/RightContainer" unique_id=561792914]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Current"
+
+[node name="RightButton" type="Button" parent="InputContainer/RightContainer" unique_id=1754829937]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Change"
+
+[node name="LeftContainer" type="HBoxContainer" parent="InputContainer" unique_id=967659972]
+layout_mode = 2
+alignment = 1
+
+[node name="LeftLabel" type="Label" parent="InputContainer/LeftContainer" unique_id=990340788]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Left"
+
+[node name="LeftCurrentLabel" type="Label" parent="InputContainer/LeftContainer" unique_id=1898690195]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Current"
+
+[node name="LeftButton" type="Button" parent="InputContainer/LeftContainer" unique_id=2130694219]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Change"
+
+[node name="RunContainer" type="HBoxContainer" parent="InputContainer" unique_id=314464914]
+layout_mode = 2
+alignment = 1
+
+[node name="RunLabel" type="Label" parent="InputContainer/RunContainer" unique_id=26306901]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Run"
+
+[node name="RunCurrentLabel" type="Label" parent="InputContainer/RunContainer" unique_id=1956204396]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Current"
+
+[node name="RunButton" type="Button" parent="InputContainer/RunContainer" unique_id=1843433733]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Change"
+
+[node name="ActionContainer" type="HBoxContainer" parent="InputContainer" unique_id=154260560]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="ActionLabel" type="Label" parent="InputContainer/ActionContainer" unique_id=697520466]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Acción"
+
+[node name="ActionCurrentLabel" type="Label" parent="InputContainer/ActionContainer" unique_id=1755870108]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Current"
+
+[node name="ActionButton" type="Button" parent="InputContainer/ActionContainer" unique_id=248144090]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Cambiar"
 
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[node name="SaveCloseContainer" type="HBoxContainer" parent="." unique_id=1032740168]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -79.0
+offset_top = -45.0
+offset_right = 79.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="SaveButton" type="Button" parent="SaveCloseContainer" unique_id=828374673]
+layout_mode = 2
+offset_transform_position = Vector2(0, -25.115)
+theme_override_font_sizes/font_size = 30
+text = "Save"
+
+[node name="CloseButton" type="Button" parent="SaveCloseContainer" unique_id=1465353783]
+layout_mode = 2
+offset_transform_position = Vector2(0, -25.115)
+theme_override_font_sizes/font_size = 30
+text = "Close"
+
+[connection signal="pressed" from="SaveCloseContainer/SaveButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="SaveCloseContainer/CloseButton" to="." method="_on_close_pressed"]

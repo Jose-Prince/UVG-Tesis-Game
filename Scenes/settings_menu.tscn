@@ -641,6 +641,10 @@ text = "Volver
 layout_mode = 2
 text = "Use default settings"
 
+[node name="Button" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay" unique_id=448022488]
+layout_mode = 2
+text = "Input settings"
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer/HBoxContainer/ARCheckBox" to="." method="_on_ar_check_box_toggled"]
 [connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox" to="." method="_on_location_check_box_toggled"]
@@ -656,3 +660,4 @@ text = "Use default settings"
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer/HBoxContainer/FpsMinMaxButton" to="." method="_on_fps_min_max_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay/DefaultSettingsButton" to="." method="_on_default_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay/Button" to="." method="_on_input_pressed"]

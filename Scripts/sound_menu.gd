@@ -152,3 +152,6 @@ func _on_fps_min_max_button_pressed(value: int) -> void:
 	GameData.max_fps = value
 	
 	Engine.max_fps = value
+
+func _on_input_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/input_menu.tscn")

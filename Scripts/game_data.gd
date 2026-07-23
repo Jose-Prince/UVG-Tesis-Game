@@ -54,22 +54,23 @@ func load_to_data(data: Dictionary):
 	year = data["world"]["year"]
 
 func load_settings(data: Dictionary) -> void:
-	auto_run = data["auto_run"]
-	show_interaction = data["show_interaction"]
-	hide_interaction_moving = data["hide_interaction_moving"]
-	pause_game_inactive = data["pause_game_inactive"]
-
-	master = data["master"]
-	music = data["music"]
-	sounds = data["sounds"]
-
-	window_mode = data["window_mode"]
-	resolution = data["resolution"]
-	max_fps = data["max_fps"]
-
-	hardware_cursor = data["hardware_cursor"]
-
-	apply_settings()
+	pass
+	#auto_run = data["auto_run"]
+	#show_interaction = data["show_interaction"]
+	#hide_interaction_moving = data["hide_interaction_moving"]
+	#pause_game_inactive = data["pause_game_inactive"]
+#
+	#master = data["master"]
+	#music = data["music"]
+	#sounds = data["sounds"]
+#
+	#window_mode = data["window_mode"]
+	#resolution = data["resolution"]
+	#max_fps = data["max_fps"]
+#
+	#hardware_cursor = data["hardware_cursor"]
+#
+	#apply_settings()
 
 func apply_settings() -> void:
 	match window_mode:
