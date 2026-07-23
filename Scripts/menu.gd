@@ -55,7 +55,7 @@ func _slide_in(node: Control, start_offset: Vector2, delay: float) -> void:
 
 func _on_new_game_pressed() -> void:
 	SfxManager.play_click()
-	GameData.game_slot = SaveManager.get_save_count()
+	GameData.game_slot = SaveManager.get_next_slot()
 	get_tree().change_scene_to_file("res://Scenes/character_editor.tscn")
 
 func _on_settings_pressed() -> void:
