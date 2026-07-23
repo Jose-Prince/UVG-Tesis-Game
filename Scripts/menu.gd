@@ -29,10 +29,11 @@ func _ready() -> void:
 	_animate_intro()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_pressed() and !event.is_action_pressed("ui_accept") and !event.is_action_pressed("ui_cancel"):
-		new_game.grab_focus()
+	if !sound_menu.visible:
+		if event.is_pressed() and !event.is_action_pressed("ui_accept") and !event.is_action_pressed("ui_cancel"):
+			new_game.grab_focus()
 	
-	button_selected = get_viewport().gui_get_focus_owner()
+		button_selected = get_viewport().gui_get_focus_owner()
 
 func _animate_intro() -> void:
 	_slide_in(game_title, Vector2(-SLIDE_DISTANCE, 0), 0.0)
