@@ -3,6 +3,55 @@
 [ext_resource type="Script" uid="uid://dmk14hw4mroav" path="res://Scripts/load_button.gd" id="1_rs1dc"]
 [ext_resource type="Texture2D" uid="uid://din3urf5gah2f" path="res://Sprites/trash-can.png" id="2_m5ikh"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5ikh"]
+bg_color = Color(0.9443732, 0.9011045, 0.7766644, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_we6vn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xx6f7"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ckxnv"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m5ikh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_we6vn"]
+bg_color = Color(0.3789232, 0.22477412, 0.114683576, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34db1"]
+bg_color = Color(0.38039216, 0.22352941, 0.11372549, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 10
+
 [node name="LoadButton" type="Button" unique_id=1461185614]
 custom_minimum_size = Vector2(0, 150)
 anchors_preset = 15
@@ -11,6 +60,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("MarginContainer/HBoxContainer/DeleteFileButton")
+focus_neighbor_right = NodePath("MarginContainer/HBoxContainer/DeleteFileButton")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_m5ikh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_we6vn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xx6f7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ckxnv")
 script = ExtResource("1_rs1dc")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1195779977]
@@ -37,6 +95,7 @@ columns = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Player's name"
 vertical_alignment = 1
@@ -45,6 +104,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Shop's name"
 vertical_alignment = 1
@@ -53,6 +113,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Money"
 vertical_alignment = 1
@@ -61,13 +122,19 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Date"
 vertical_alignment = 1
 
 [node name="DeleteFileButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=2072909198]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+focus_neighbor_left = NodePath("../../..")
+focus_neighbor_right = NodePath("../../..")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m5ikh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_we6vn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_34db1")
 icon = ExtResource("2_m5ikh")
 expand_icon = true
 

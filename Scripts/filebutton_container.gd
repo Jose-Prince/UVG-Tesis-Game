@@ -46,7 +46,7 @@ func _ready() -> void:
 				_on_save_button_pressed.bind(slot)
 			)
 			
-	#_setup_focus()
+	_setup_focus()
 
 func _setup_focus() -> void:
 	if load_buttons.is_empty():

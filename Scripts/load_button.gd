@@ -14,6 +14,22 @@ var slot: int
 func _ready() -> void:
 	pressed.connect(SfxManager.play_click)
 
+func _process(_delta):
+	var color: Color
+	
+	if has_focus():
+		color = get_theme_color("font_focus_color")
+	elif is_hovered():
+		color = get_theme_color("font_hover_color")
+	
+	_set_labels_color(color)
+
+func _set_labels_color(color: Color) -> void:
+	player_label.add_theme_color_override("font_color", color)
+	shop_label.add_theme_color_override("font_color", color)
+	money_label.add_theme_color_override("font_color", color)
+	date_label.add_theme_color_override("font_color", color)
+
 func setup(
 	save_slot: int,
 	player_name: String,
