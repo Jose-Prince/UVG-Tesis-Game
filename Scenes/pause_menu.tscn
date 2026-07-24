@@ -60,6 +60,8 @@ theme_override_constants/separation = 29
 
 [node name="ContinueButton" type="Button" parent="Buttons" unique_id=985122910]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ReturnButton")
+focus_neighbor_bottom = NodePath("../SettingsButton")
 theme_override_colors/font_color = Color(0.009317472, 0.009317516, 0.009317483, 1)
 theme_override_fonts/font = ExtResource("3_5w4ur")
 theme_override_font_sizes/font_size = 60
@@ -69,6 +71,8 @@ script = ExtResource("4_ey1tb")
 
 [node name="SettingsButton" type="Button" parent="Buttons" unique_id=1719123335]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ContinueButton")
+focus_neighbor_bottom = NodePath("../ReturnButton")
 theme_override_colors/font_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
 theme_override_fonts/font = ExtResource("3_5w4ur")
 theme_override_font_sizes/font_size = 60
@@ -78,6 +82,8 @@ script = ExtResource("4_ey1tb")
 
 [node name="ReturnButton" type="Button" parent="Buttons" unique_id=1204164739]
 layout_mode = 2
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_bottom = NodePath("../ContinueButton")
 theme_override_colors/font_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
 theme_override_fonts/font = ExtResource("3_5w4ur")
 theme_override_font_sizes/font_size = 60
@@ -85,7 +91,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_yxrls")
 text = "Return to title"
 script = ExtResource("4_ey1tb")
 
-[node name="SoundMenu" parent="." unique_id=915478763 instance=ExtResource("5_siy43")]
+[node name="SettingsMenu" parent="." unique_id=915478763 instance=ExtResource("5_siy43")]
 layout_mode = 1
 
 [connection signal="pressed" from="Buttons/ContinueButton" to="." method="_on_continue_button_pressed"]

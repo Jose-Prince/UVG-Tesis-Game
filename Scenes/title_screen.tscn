@@ -297,7 +297,7 @@ stream = ExtResource("2_p3fck")
 autoplay = true
 parameters/looping = true
 
-[node name="SoundMenu" parent="." unique_id=915478763 instance=ExtResource("9_0061g")]
+[node name="SettingsMenu" parent="." unique_id=915478763 instance=ExtResource("9_0061g")]
 layout_mode = 1
 
 [connection signal="mouse_entered" from="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/NewGame" to="." method="_on_new_game_mouse_entered"]
@@ -308,3 +308,4 @@ layout_mode = 1
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Settings" to="." method="_on_settings_pressed"]
 [connection signal="mouse_entered" from="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Quit" to="." method="_on_quit_pressed"]
+[connection signal="visibility_changed" from="SettingsMenu" to="." method="_on_settings_menu_visibility_changed"]

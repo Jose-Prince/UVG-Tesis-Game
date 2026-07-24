@@ -1,7 +1,7 @@
 extends Control
 
 @onready var control_2: Control = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Control2
-@onready var sound_menu: Control = $SoundMenu
+@onready var settings_menu: Control = $SettingsMenu
 
 # Elements to animate
 @onready var game_title: ResponsiveLabel = $Panel/MarginContainer/HBoxContainer/LeftPanel/GameTitle       # Left
@@ -30,11 +30,16 @@ func _ready() -> void:
 	_animate_intro()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if !sound_menu.visible:
-		if event.is_pressed() and !event.is_action_pressed("ui_accept") and !event.is_action_pressed("ui_cancel"):
-			new_game.grab_focus()
+	if settings_menu.visible:
+		return
 	
-		button_selected = get_viewport().gui_get_focus_owner()
+	if event.is_action_pressed("ui_up") \
+	or event.is_action_pressed("ui_down") \
+	or event.is_action_pressed("ui_left") \
+	or event.is_action_pressed("ui_right"):
+	
+		if get_viewport().gui_get_focus_owner() == null:
+			new_game.grab_focus()
 
 func _animate_intro() -> void:
 	_slide_in(game_title, Vector2(-SLIDE_DISTANCE, 0), 0.0)
@@ -61,7 +66,7 @@ func _on_new_game_pressed() -> void:
 
 func _on_settings_pressed() -> void:
 	SfxManager.play_click()
-	sound_menu.visible = true
+	settings_menu.visible = true
 
 func _on_quit_pressed() -> void:
 	SfxManager.play_click()
@@ -82,3 +87,7 @@ func _on_settings_mouse_entered() -> void:
  
 func _on_quit_mouse_entered() -> void:
 	quit.grab_focus()
+
+func _on_settings_menu_visibility_changed() -> void:
+	if !settings_menu.visible and button_selected:
+		button_selected.grab_focus()
