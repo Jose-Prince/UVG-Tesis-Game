@@ -12,6 +12,30 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0463p"]
+bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0463p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lp34"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4ls2"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="FilesScreen" type="Control" unique_id=1530240423]
 layout_mode = 3
 anchors_preset = 15
@@ -76,7 +100,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_0463p")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "Menu of the Day"
 horizontal_alignment = 1
 
@@ -100,10 +124,20 @@ layout_mode = 2
 alignment = 2
 
 [node name="BackButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1628764477]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_0463p")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0463p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6lp34")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p4ls2")
 text = "Back"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=915312153]
 layout_mode = 2
 
+[connection signal="mouse_entered" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="VBoxContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="VBoxContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" method="_on_back_button_pressed"]

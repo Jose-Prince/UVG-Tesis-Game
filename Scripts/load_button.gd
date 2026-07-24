@@ -54,3 +54,9 @@ func _on_delete_file_button_pressed() -> void:
 	SaveManager.delete_save(slot)
 
 	get_tree().reload_current_scene()
+
+func _on_delete_file_button_mouse_entered() -> void:
+	delete_file_button.grab_focus()
+
+func _on_mouse_entered() -> void:
+	grab_focus()
