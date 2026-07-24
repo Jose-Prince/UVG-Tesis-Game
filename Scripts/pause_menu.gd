@@ -53,3 +53,12 @@ func _on_return_button_pressed() -> void:
 
 func _on_settings_button_pressed() -> void:
 	settings_menu.visible = true
+
+func _on_continue_button_mouse_entered() -> void:
+	continue_button.grab_focus()
+
+func _on_settings_button_mouse_entered() -> void:
+	settings_button.grab_focus()
+
+func _on_return_button_mouse_entered() -> void:
+	return_button.grab_focus()
