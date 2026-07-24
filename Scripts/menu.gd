@@ -1,7 +1,6 @@
 extends Control
 
 @onready var control_2: Control = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Control2
-@onready var load_game: Button = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/LoadGame
 @onready var sound_menu: Control = $SoundMenu
 
 # Elements to animate
@@ -11,7 +10,9 @@ extends Control
 
 # Buttons
 @onready var new_game: ResponsiveButton = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/NewGame
-
+@onready var load_game: Button = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/LoadGame
+@onready var settings: ResponsiveButton = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Settings
+@onready var quit: ResponsiveButton = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Quit
 
 # How far off-screen (in px) each element starts before sliding in
 const SLIDE_DISTANCE := 80.0
@@ -69,3 +70,15 @@ func _on_quit_pressed() -> void:
 func _on_load_game_pressed() -> void:
 	SfxManager.play_click()
 	get_tree().change_scene_to_file("res://Scenes/files_screen.tscn")
+
+func _on_new_game_mouse_entered() -> void:
+	new_game.grab_focus()
+
+func _on_load_game_mouse_entered() -> void:
+	load_game.grab_focus()
+
+func _on_settings_mouse_entered() -> void:
+	settings.grab_focus()
+ 
+func _on_quit_mouse_entered() -> void:
+	quit.grab_focus()
