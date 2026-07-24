@@ -1,18 +1,25 @@
 extends Control
 
 @onready var control_2: Control = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Control2
-@onready var load_game: Button = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/LoadGame
-@onready var sound_menu: Control = $SoundMenu
+@onready var settings_menu: Control = $SettingsMenu
 
 # Elements to animate
 @onready var game_title: ResponsiveLabel = $Panel/MarginContainer/HBoxContainer/LeftPanel/GameTitle       # Left
 @onready var coffee_drawing: TextureRect = $Panel/MarginContainer/HBoxContainer/LeftPanel/CoffeeDrawing   # Down
 @onready var nine_patch_rect: NinePatchRect = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect # Up
 
+# Buttons
+@onready var new_game: ResponsiveButton = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/NewGame
+@onready var load_game: Button = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/LoadGame
+@onready var settings: ResponsiveButton = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Settings
+@onready var quit: ResponsiveButton = $Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2/Quit
+
 # How far off-screen (in px) each element starts before sliding in
 const SLIDE_DISTANCE := 80.0
 const ANIM_DURATION := 0.6
 const ANIM_DELAY_STEP := 0.12
+
+var button_selected : Button = null
 
 func _ready() -> void:
 	load_game.visible = SaveManager.directory_has_content("user://saves/")
@@ -21,6 +28,18 @@ func _ready() -> void:
 	# Wait one frame so layout/anchors have resolved final positions
 	await get_tree().process_frame
 	_animate_intro()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if settings_menu.visible:
+		return
+	
+	if event.is_action_pressed("ui_up") \
+	or event.is_action_pressed("ui_down") \
+	or event.is_action_pressed("ui_left") \
+	or event.is_action_pressed("ui_right"):
+	
+		if get_viewport().gui_get_focus_owner() == null:
+			new_game.grab_focus()
 
 func _animate_intro() -> void:
 	_slide_in(game_title, Vector2(-SLIDE_DISTANCE, 0), 0.0)
@@ -42,12 +61,12 @@ func _slide_in(node: Control, start_offset: Vector2, delay: float) -> void:
 
 func _on_new_game_pressed() -> void:
 	SfxManager.play_click()
-	GameData.game_slot = SaveManager.get_save_count()
+	GameData.game_slot = SaveManager.get_next_slot()
 	get_tree().change_scene_to_file("res://Scenes/character_editor.tscn")
 
 func _on_settings_pressed() -> void:
 	SfxManager.play_click()
-	sound_menu.visible = true
+	settings_menu.visible = true
 
 func _on_quit_pressed() -> void:
 	SfxManager.play_click()
@@ -56,3 +75,19 @@ func _on_quit_pressed() -> void:
 func _on_load_game_pressed() -> void:
 	SfxManager.play_click()
 	get_tree().change_scene_to_file("res://Scenes/files_screen.tscn")
+
+func _on_new_game_mouse_entered() -> void:
+	new_game.grab_focus()
+
+func _on_load_game_mouse_entered() -> void:
+	load_game.grab_focus()
+
+func _on_settings_mouse_entered() -> void:
+	settings.grab_focus()
+ 
+func _on_quit_mouse_entered() -> void:
+	quit.grab_focus()
+
+func _on_settings_menu_visibility_changed() -> void:
+	if !settings_menu.visible and button_selected:
+		button_selected.grab_focus()
