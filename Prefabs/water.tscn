@@ -7,9 +7,20 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxs27"]
 size = Vector2(6, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1w0hm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wntym"]
 atlas = ExtResource("1_ypf2s")
-region = Rect2(21.054367, 84.19086, 7.311779, 11.012474)
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u33qs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wntym")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Water" type="StaticBody2D" unique_id=1158235660]
 script = ExtResource("1_pwbcw")
@@ -18,5 +29,5 @@ article_data = ExtResource("2_wntym")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1335671834]
 shape = SubResource("RectangleShape2D_bxs27")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=429738743]
-texture = SubResource("AtlasTexture_1w0hm")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=877368898]
+sprite_frames = SubResource("SpriteFrames_u33qs")

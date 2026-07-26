@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://chcl2gv8i2851" path="res://Scenes/scene_transition.tscn" id="9_vffnu"]
 [ext_resource type="Script" uid="uid://bcqylyib4yrvl" path="res://Scripts/order_object.gd" id="12_2o2p7"]
 [ext_resource type="PackedScene" uid="uid://dy7unp36ghucf" path="res://Prefabs/glass_giver.tscn" id="12_4hl37"]
-[ext_resource type="PackedScene" uid="uid://5pgj7btnpwub" path="res://Prefabs/sink.tscn" id="13_sk1vp"]
+[ext_resource type="PackedScene" uid="uid://5pgj7btnpwub" path="res://Prefabs/Sink.tscn" id="13_sk1vp"]
 [ext_resource type="PackedScene" uid="uid://bgduyi5wcuj0c" path="res://Prefabs/glass.tscn" id="14_xjtdl"]
 [ext_resource type="PackedScene" uid="uid://cyeftfpjy6lld" path="res://Prefabs/water.tscn" id="15_2i3s5"]
 [ext_resource type="Script" uid="uid://d3285ev7ubckh" path="res://Scripts/directional_light_2d.gd" id="16_2i3s5"]

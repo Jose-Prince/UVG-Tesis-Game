@@ -11,7 +11,7 @@ var holder: Node2D = null
 var kitchen_layer: TileMapLayer
 var flip = false
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
 	kitchen_layer = get_tree().get_first_node_in_group("clickable_tile")
@@ -21,17 +21,17 @@ func set_hold_direction(dir: String, flipped: bool):
 
 	match dir:
 		"down":
-			sprite_2d.flip_h = flip
+			animated_sprite_2d.flip_h = flip
 			visible = true
 
 		"right":
 			visible = true
 
-			sprite_2d.flip_h = !flip
+			animated_sprite_2d.flip_h = !flip
 			current_offset = side_offset
 
 			if flipped:
-				sprite_2d.flip_h = flip
+				animated_sprite_2d.flip_h = flip
 				current_offset.x *= -1
 
 		"up":
@@ -82,16 +82,16 @@ func update_bob(anim_name: String, frame: int):
 	if anim_name.contains("walk"):
 		match frame:
 			1, 3:
-				bob_offset = 1
-			_:
 				bob_offset = 0
+			_:
+				bob_offset = -1
 	
 	if anim_name.contains("run"):
 		match frame:
 			1, 3:
-				bob_offset = 0
+				bob_offset = -1
 			_:
-				bob_offset = 1
+				bob_offset = 0
 
 func is_giveable():
 	return article_data
