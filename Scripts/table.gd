@@ -37,6 +37,7 @@ func _process(delta: float) -> void:
 	z_index = int(global_position.y)
 	if timer.time_left > 0:
 		progress_bar.value = timer.wait_time - timer.time_left
+		_update_food_progress()
 	
 	if waiting_timer.time_left > 0:
 		circular_bar.value = waiting_timer.wait_time - waiting_timer.time_left
@@ -162,6 +163,12 @@ func start_eating():
 	for customer in customers:
 		if is_instance_valid(customer):
 			customer.currentState = customer.States.Eat
+	
+	for food in placed_food:
+		if is_instance_valid(food):
+			food.animated_sprite_2d.frame = 0
+	
+	_update_food_progress()
 
 func send_customers_home():
 	orders.clear()
@@ -228,11 +235,36 @@ func calculate_tip() -> float:
 func calculate_popularity_bonus() -> int:
 	if waiting_timer.wait_time <= 0:
 		return 0
-
+	
 	var time_ratio := waiting_timer.time_left / waiting_timer.wait_time
 	time_ratio = clamp(time_ratio, 0.0, 1.0)
-
+	
 	return round(time_ratio * customers.size())
+
+func _update_food_progress() -> void:
+	if progress_bar.max_value <= 0:
+		return
+		
+	var progress_time := progress_bar.value
+	
+	for food in placed_food:
+		if !is_instance_valid(food):
+			continue
+		
+		var sprite: AnimatedSprite2D = food.animated_sprite_2d
+		var total_frames := sprite.sprite_frames.get_frame_count("default")
+		
+		if total_frames <= 1:
+			continue
+		
+		var frame_duration := progress_bar.max_value / float(total_frames)
+		
+		var frame := mini(
+			int(progress_time / frame_duration),
+			total_frames - 1
+		)
+		
+		sprite.frame = frame
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("chair"):
