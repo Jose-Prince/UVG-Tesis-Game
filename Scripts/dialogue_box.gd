@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var portrait: TextureRect = $CharacterPortrait
-@onready var name_label: Label = $NameBox/NameLabel
+@onready var name_label: Label = $NameBox/MarginContainer/NameLabel
 @onready var dialogue_label: Label = $DialoguePanel/ScrollContainer/MarginContainer/DialogueLabel
 @onready var scroll_container: ScrollContainer = $DialoguePanel/ScrollContainer
 

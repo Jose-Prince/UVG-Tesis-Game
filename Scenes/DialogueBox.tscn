@@ -10,6 +10,7 @@
 script = ExtResource("1_mjj0w")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=568600761]
+visible = false
 offset_right = 1152.0
 offset_bottom = 646.0
 
@@ -32,16 +33,20 @@ offset_right = 0.3999939
 offset_bottom = 0.25598145
 texture = ExtResource("1_sh7kx")
 
-[node name="NameLabel" type="Label" parent="NameBox" unique_id=11050417]
+[node name="MarginContainer" type="MarginContainer" parent="NameBox" unique_id=189002799]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.033
-anchor_right = 0.97
-anchor_bottom = 0.93100005
-offset_left = 14.1
-offset_top = 7.0000095
-offset_right = -16.0
-offset_bottom = -6.9979973
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 8
+
+[node name="NameLabel" type="Label" parent="NameBox/MarginContainer" unique_id=11050417]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("3_unbg6")
 theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1

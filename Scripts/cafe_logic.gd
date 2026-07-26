@@ -11,7 +11,9 @@ var time_gui: Control
 
 func _ready() -> void:
 	await scene_transition.pixelate_out(0.6).finished
-	
+	#prueba
+	#var placeholder = load("res://Sprites/daniel.PNG")  # any image you have
+	#DialogueBox.show_dialogue("Ana", "B¡Bienvenido al café! Me alegra mucho que hayas venido hoy. Tenemos café recién hecho, agua fresca, y algunos especiales del día. El ambiente es tranquilo por la mañana, pero a mediodía se llena bastante. Si necesitas algo, no dudes en pedirlo. ¡Esperamos que disfrutes tu visita!Me alegra mucho que hayas venido hoy. Tenemos café recién hecho, agua fresca, y algunos especiales del día. El ambiente es tranquilo por la mañana, pero a mediodía se llena bastante. Si necesitas algo, no dudes en pedirlo. ¡Esperamos que disfrutes tu visita!", placeholder)
 	time_gui = find_child("TimeGui", true, false)
 	tables = get_tree().get_nodes_in_group("table")
 	
