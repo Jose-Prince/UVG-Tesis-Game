@@ -3,20 +3,24 @@
 [ext_resource type="Texture2D" uid="uid://btgxr7a41en0j" path="res://Sprites/DialogueBox.PNG" id="1_m4115"]
 [ext_resource type="Script" uid="uid://bgmubsqvjwrgf" path="res://Scripts/dialogue_box.gd" id="1_mjj0w"]
 [ext_resource type="Texture2D" uid="uid://cy4hw2npgikog" path="res://Sprites/DialogueBoxName.PNG" id="1_sh7kx"]
+[ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Fonts/static/PixelifySans-Bold.ttf" id="3_unbg6"]
+[ext_resource type="FontFile" uid="uid://c6m8rdtvxahbg" path="res://Fonts/static/PixelifySans-Regular.ttf" id="4_in0bf"]
 
-[node name="DialogueBox" type="Node2D" unique_id=1485621273]
-
-[node name="DialogueBox" type="CanvasLayer" parent="." unique_id=2007631610]
+[node name="DialogueBox" type="CanvasLayer" unique_id=2007631610]
 script = ExtResource("1_mjj0w")
 
-[node name="CharacterPortrait" type="TextureRect" parent="DialogueBox" unique_id=1226125367]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=568600761]
+offset_right = 1152.0
+offset_bottom = 646.0
+
+[node name="CharacterPortrait" type="TextureRect" parent="." unique_id=1226125367]
 offset_left = 17.0
 offset_top = 20.0
 offset_right = 553.0
 offset_bottom = 652.0
 stretch_mode = 4
 
-[node name="NameBox" type="NinePatchRect" parent="DialogueBox" unique_id=1659138150]
+[node name="NameBox" type="NinePatchRect" parent="." unique_id=1659138150]
 anchors_preset = -1
 anchor_left = 0.040000003
 anchor_top = 0.63900006
@@ -28,21 +32,23 @@ offset_right = 0.3999939
 offset_bottom = 0.25598145
 texture = ExtResource("1_sh7kx")
 
-[node name="NameLabel" type="Label" parent="DialogueBox/NameBox" unique_id=11050417]
+[node name="NameLabel" type="Label" parent="NameBox" unique_id=11050417]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.033
 anchor_right = 0.97
 anchor_bottom = 0.93100005
-offset_left = 0.10000038
-offset_top = -0.99999046
-offset_right = 2.0
-offset_bottom = 0.002002716
+offset_left = 14.1
+offset_top = 7.0000095
+offset_right = -16.0
+offset_bottom = -6.9979973
+theme_override_fonts/font = ExtResource("3_unbg6")
+theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="DialoguePanel" type="NinePatchRect" parent="DialogueBox" unique_id=1188830023]
+[node name="DialoguePanel" type="NinePatchRect" parent="." unique_id=1188830023]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -59,13 +65,27 @@ patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 
-[node name="DialogueLabel" type="Label" parent="DialogueBox/DialoguePanel" unique_id=353180265]
+[node name="ScrollContainer" type="ScrollContainer" parent="DialoguePanel" unique_id=1248234441]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 18.0
-offset_top = 12.0
-offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DialoguePanel/ScrollContainer" unique_id=1508618261]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="DialogueLabel" type="Label" parent="DialoguePanel/ScrollContainer/MarginContainer" unique_id=345797918]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_in0bf")
+theme_override_font_sizes/font_size = 30
+autowrap_mode = 2

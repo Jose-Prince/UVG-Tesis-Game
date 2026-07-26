@@ -1184,7 +1184,6 @@ autostart = true
 
 [node name="Player" parent="." unique_id=1461023337 instance=ExtResource("6_df3mn")]
 position = Vector2(232, 64)
-run_speed = null
 
 [node name="CustomerSpawn" type="Marker2D" parent="." unique_id=1376856490]
 position = Vector2(64, 160)
