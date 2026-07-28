@@ -61,6 +61,8 @@ func get_free_chairs():
 
 func interact(player):
 	if actual_state == States.BILLING:
+		order_completed.emit(check)
+		check = 0
 		set_state(States.AVAILABLE)
 		return
 	
@@ -98,8 +100,6 @@ func interact(player):
 						progress_bar.visible = true
 						progress_bar.value = 0
 						timer.start()
-						order_completed.emit(check)
-						check = 0
 						
 					return
 			

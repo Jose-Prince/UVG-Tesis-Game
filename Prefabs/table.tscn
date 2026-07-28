@@ -58,10 +58,10 @@ wait_time = 5.0
 one_shot = true
 
 [node name="FoodPlace1" type="Marker2D" parent="." unique_id=1840278373]
-position = Vector2(-14, -6)
+position = Vector2(-14, -7)
 
 [node name="FoodPlace2" type="Marker2D" parent="." unique_id=311461999]
-position = Vector2(14, -6)
+position = Vector2(14, -7)
 
 [node name="WaitingTimer" type="Timer" parent="." unique_id=1302349200]
 wait_time = 10.0
