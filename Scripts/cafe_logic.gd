@@ -45,7 +45,7 @@ func customer_spawn():
 	
 	for table in tables:
 		var free_chairs = table.get_free_chairs() 
-		if table.isAvailable and free_chairs != null and free_chairs.size() > 0:
+		if table.actual_state == table.States.AVAILABLE and free_chairs != null and free_chairs.size() > 0:
 			available_tables.append(table)
 	
 	if available_tables.is_empty():
@@ -76,14 +76,14 @@ func customer_spawn():
 		
 		customer.assign_chair(chair)
 		chair.isFree = false
-		selected_table.update_availability()
+		selected_table.set_state(selected_table.States.UNAVAILABLE)
 	
 		get_tree().current_scene.add_child(customer)
 		customer.set_target(chair.go_to_pos.global_position)
 		
 	await get_tree().physics_frame
 	
-	selected_table.isAvailable = false
+	selected_table.set_state(selected_table.States.UNAVAILABLE)
 	
 	SfxManager.play_bell()
 
