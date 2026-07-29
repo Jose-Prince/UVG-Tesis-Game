@@ -66,6 +66,9 @@ func _physics_process(delta: float) -> void:
 			if !leave_started:
 				order_shown = false
 				speech_bubble.hide_order()
+				
+				global_position = target_chair.go_to_pos.global_position
+				
 				set_target(leaving_target_position)
 				leave_started = true
 			
