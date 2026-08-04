@@ -135,127 +135,121 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="Preview" type="Node2D" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1149307034]
-position = Vector2(163, 68)
+position = Vector2(350, 100)
+scale = Vector2(5, 5)
 
-[node name="skin" type="AnimatedSprite2D" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview" unique_id=1443159405]
-position = Vector2(1, 6)
+[node name="skin" type="AnimatedSprite2D" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview" unique_id=1131072842]
 
-[node name="clothes_bottom" type="AnimatedSprite2D" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview" unique_id=918626828]
-position = Vector2(2, 6)
+[node name="clothes_bottom" type="AnimatedSprite2D" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview" unique_id=635479818]
 
-[node name="clothes_top" type="AnimatedSprite2D" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview" unique_id=844464520]
-position = Vector2(0, 5)
+[node name="clothes_top" type="AnimatedSprite2D" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview" unique_id=1594179411]
 
-[node name="hair" type="AnimatedSprite2D" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview" unique_id=1283491093]
-position = Vector2(0, 4)
+[node name="hair" type="AnimatedSprite2D" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview" unique_id=157597309]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1282485371]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=481609777]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer" unique_id=1282485371]
 layout_mode = 2
 
-[node name="SkinColorRow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=589558110]
+[node name="VBoxSkinColor" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=274112306]
 layout_mode = 2
+alignment = 1
 
-[node name="PrevButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/SkinColorRow" unique_id=1848017053]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxSkinColor" unique_id=163521350]
+layout_mode = 2
+text = "Skin color"
+horizontal_alignment = 1
+
+[node name="SkinColorRow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxSkinColor" unique_id=589558110]
+layout_mode = 2
+alignment = 1
+
+[node name="HairStyleRow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=543437874]
+layout_mode = 2
+alignment = 1
+
+[node name="PrevButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HairStyleRow" unique_id=107087939]
 layout_mode = 2
 text = "<"
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/SkinColorRow" unique_id=858442268]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HairStyleRow" unique_id=348728845]
 layout_mode = 2
-text = "Skin color"
+text = "Hair style"
 
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/SkinColorRow" unique_id=1094074147]
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HairStyleRow" unique_id=1854218476]
 layout_mode = 2
 text = ">"
 
-[node name="HairStyleRow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=543437874]
+[node name="VBoxHairColor" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=2014785903]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxHairColor" unique_id=782393823]
+layout_mode = 2
+text = "Hair Color"
+horizontal_alignment = 1
+
+[node name="HairColorRow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxHairColor" unique_id=229407021]
 layout_mode = 2
 
-[node name="PrevButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HairStyleRow" unique_id=107087939]
+[node name="ShirtStyleRow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=403163487]
+layout_mode = 2
+alignment = 1
+
+[node name="PrevButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ShirtStyleRow" unique_id=567324643]
 layout_mode = 2
 text = "<"
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HairStyleRow" unique_id=348728845]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ShirtStyleRow" unique_id=153245127]
 layout_mode = 2
-text = "Skin color"
+text = "Shirt style"
 
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HairStyleRow" unique_id=1854218476]
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ShirtStyleRow" unique_id=621902934]
 layout_mode = 2
 text = ">"
 
-[node name="HairColorRow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=229407021]
+[node name="VBoxShirtColor" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=970225507]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxShirtColor" unique_id=2137592820]
+layout_mode = 2
+text = "Shirt color"
+horizontal_alignment = 1
+
+[node name="ShirtColorRow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxShirtColor" unique_id=1423673587]
 layout_mode = 2
 
-[node name="PrevButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HairColorRow" unique_id=1090978300]
+[node name="PantsStyleRow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1674019112]
+layout_mode = 2
+alignment = 1
+
+[node name="PrevButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PantsStyleRow" unique_id=11773475]
 layout_mode = 2
 text = "<"
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HairColorRow" unique_id=183173466]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PantsStyleRow" unique_id=1849538670]
 layout_mode = 2
-text = "Skin color"
+text = "Pants style"
 
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HairColorRow" unique_id=137013417]
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PantsStyleRow" unique_id=1074111124]
 layout_mode = 2
 text = ">"
 
-[node name="ShirtStyleRow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=403163487]
+[node name="VBoxPantsColor" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=581406071]
 layout_mode = 2
+alignment = 1
 
-[node name="PrevButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/ShirtStyleRow" unique_id=567324643]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxPantsColor" unique_id=781705599]
 layout_mode = 2
-text = "<"
+text = "Pants color"
+horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/ShirtStyleRow" unique_id=153245127]
+[node name="PantsColorRow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxPantsColor" unique_id=1392371227]
 layout_mode = 2
-text = "Skin color"
-
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/ShirtStyleRow" unique_id=621902934]
-layout_mode = 2
-text = ">"
-
-[node name="ShirtColorRow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1423673587]
-layout_mode = 2
-
-[node name="PrevButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/ShirtColorRow" unique_id=1714702986]
-layout_mode = 2
-text = "<"
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/ShirtColorRow" unique_id=2083524968]
-layout_mode = 2
-text = "Skin color"
-
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/ShirtColorRow" unique_id=1801658932]
-layout_mode = 2
-text = ">"
-
-[node name="PantsStyleRow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1674019112]
-layout_mode = 2
-
-[node name="PrevButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PantsStyleRow" unique_id=11773475]
-layout_mode = 2
-text = "<"
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PantsStyleRow" unique_id=1849538670]
-layout_mode = 2
-text = "Skin color"
-
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PantsStyleRow" unique_id=1074111124]
-layout_mode = 2
-text = ">"
-
-[node name="PantsColorRow" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1392371227]
-layout_mode = 2
-
-[node name="PrevButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PantsColorRow" unique_id=1480316877]
-layout_mode = 2
-text = "<"
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PantsColorRow" unique_id=781705599]
-layout_mode = 2
-text = "Skin color"
-
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PantsColorRow" unique_id=461086971]
-layout_mode = 2
-text = ">"
 
 [node name="ButtonDisplay" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=510557697]
 layout_mode = 2
@@ -270,18 +264,10 @@ script = ExtResource("4_uvaie")
 
 [connection signal="text_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/PlayerHDisplay/PlayerEdit" to="." method="_on_player_edit_text_changed"]
 [connection signal="text_changed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/CoffeeShopHDisplay/ShopEdit" to="." method="_on_shop_edit_text_changed"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/SkinColorRow/PrevButton" to="." method="prev_skin_color"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/SkinColorRow/NextButton" to="." method="next_skin_color"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HairStyleRow/PrevButton" to="." method="prev_hair_style"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HairStyleRow/NextButton" to="." method="next_hair_style"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HairColorRow/PrevButton" to="." method="prev_hair_color"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HairColorRow/NextButton" to="." method="next_hair_color"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/ShirtStyleRow/PrevButton" to="." method="prev_shirt_style"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/ShirtStyleRow/NextButton" to="." method="next_shirt_style"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/ShirtColorRow/PrevButton" to="." method="prev_shirt_color"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/ShirtColorRow/NextButton" to="." method="next_shirt_color"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PantsStyleRow/PrevButton" to="." method="prev_pants_style"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PantsStyleRow/NextButton" to="." method="next_pants_style"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PantsColorRow/PrevButton" to="." method="prev_pants_color"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PantsColorRow/NextButton" to="." method="next_pants_color"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HairStyleRow/PrevButton" to="." method="prev_hair_style"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HairStyleRow/NextButton" to="." method="next_hair_style"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ShirtStyleRow/PrevButton" to="." method="prev_shirt_style"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ShirtStyleRow/NextButton" to="." method="next_shirt_style"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PantsStyleRow/PrevButton" to="." method="prev_pants_style"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PantsStyleRow/NextButton" to="." method="next_pants_style"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonDisplay/ConfirmButton" to="." method="_on_confirm_button_pressed"]
