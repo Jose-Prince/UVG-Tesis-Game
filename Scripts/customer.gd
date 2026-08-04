@@ -15,7 +15,7 @@ var order_shown := false
 
 # appearance
 const SKIN_COLORS: Array[Color] = [
-	Color(1.0, 0.85, 0.70),
+	Color(1.0, 0.90, 0.70),
 	Color(0.90, 0.70, 0.50),
 	Color(0.75, 0.55, 0.35),
 	Color(0.55, 0.35, 0.20),
@@ -25,7 +25,7 @@ const HAIR_COLORS: Array[Color] = [
 	Color(0.15, 0.10, 0.05),
 	Color(0.35, 0.20, 0.10),
 	Color(0.60, 0.35, 0.15),
-	Color(0.85, 0.60, 0.25),
+	Color(0.80, 0.65, 0.25),
 	Color(0.80, 0.30, 0.10),
 	Color(0.75, 0.75, 0.75),
 	Color(0.90, 0.25, 0.25),
