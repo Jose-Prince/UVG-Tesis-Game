@@ -18,26 +18,54 @@ var show_interaction := true
 var side_offset := Vector2(8, 0)
 
 @onready var skin: AnimatedSprite2D = $skin
-@onready var clothes: AnimatedSprite2D = $clothes
-@onready var lineart: AnimatedSprite2D = $lineart
+@onready var clothes_bottom: AnimatedSprite2D = $clothes_bottom
+@onready var clothes_top: AnimatedSprite2D = $clothes_top
 @onready var hair: AnimatedSprite2D = $hair
 @onready var dialogue: CanvasLayer = $"../DialogueBubble"
 @onready var interaction_point: Marker2D = $InteractionPoint
 @onready var pointer_sprite: AnimatedSprite2D = $InteractionPoint/PointerSprite
 
 func play_layers(anim_name: String):
+	if skin.animation == anim_name and skin.is_playing():
+		return
 	skin.play(anim_name)
-	clothes.play(anim_name)
-	lineart.play(anim_name)
+	clothes_bottom.play(anim_name)
+	clothes_top.play(anim_name)
 	hair.play(anim_name)
 
 func flip_layers(value: bool):
 	skin.flip_h = value
-	clothes.flip_h = value
-	lineart.flip_h = value
+	clothes_bottom.flip_h = value
+	clothes_top.flip_h = value
 	hair.flip_h = value
+	
+const SKIN_FRAMES: SpriteFrames = preload("res://Sprites/character/player_skin.tres")
+const HAIR_FRAMES: Array = [
+	preload("res://Sprites/character/hair_1.tres"),
+	preload("res://Sprites/character/hair_2.tres"),
+	preload("res://Sprites/character/hair_3.tres"),
+]
+const SHIRT_FRAMES: Array = [
+	preload("res://Sprites/character/shirt_1.tres"),
+	preload("res://Sprites/character/shirt_2.tres"),
+]
+const PANTS_FRAMES: Array = [
+	preload("res://Sprites/character/pants_1.tres"),
+	preload("res://Sprites/character/pants_2.tres"),
+]
+
+func apply_appearance() -> void:
+	skin.sprite_frames = SKIN_FRAMES
+	skin.modulate = GameData.player_skin_color
+	hair.sprite_frames = HAIR_FRAMES[GameData.player_hair_style]
+	hair.modulate = GameData.player_hair_color
+	clothes_top.sprite_frames = SHIRT_FRAMES[GameData.player_shirt_style]
+	clothes_top.modulate = GameData.player_shirt_color
+	clothes_bottom.sprite_frames = PANTS_FRAMES[GameData.player_pants_style]
+	clothes_bottom.modulate = GameData.player_pants_color
 
 func _ready() -> void:
+	apply_appearance()
 	if GameData.show_interaction:
 		interaction_point.visible = true
 	else:

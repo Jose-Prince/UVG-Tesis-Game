@@ -1957,13 +1957,13 @@ scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_gg3t4")
 animation = &"hold_walk_down"
 
-[node name="lineart" type="AnimatedSprite2D" parent="." unique_id=1218478053]
+[node name="clothes_bottom" type="AnimatedSprite2D" parent="." unique_id=1218478053]
 position = Vector2(0, -13.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_3b1fg")
 animation = &"hold_walk_down"
 
-[node name="clothes" type="AnimatedSprite2D" parent="." unique_id=1372496936]
+[node name="clothes_top" type="AnimatedSprite2D" parent="." unique_id=1372496936]
 position = Vector2(0, -13.546667)
 scale = Vector2(1, 1.056)
 sprite_frames = SubResource("SpriteFrames_ty6fx")
