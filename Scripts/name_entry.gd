@@ -2,7 +2,7 @@ extends Control
 
 @export var initial_menu: Array[ArticleData] = []
 
-const SKIN_FRAMES: SpriteFrames = preload("res://Sprites/Character/skin.tres")
+const SKIN_FRAMES: SpriteFrames = preload("res://Sprites/Character/player_skin.tres")
 const HAIR_FRAMES: Array = [
 	preload("res://Sprites/Character/hair_1.tres"),
 	preload("res://Sprites/Character/hair_2.tres"),
