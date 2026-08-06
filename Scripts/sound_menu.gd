@@ -1,5 +1,7 @@
 extends Control
 
+@onready var input_container: MarginContainer = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HSeparator2/MarginContainer
+
 @onready var ar_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer/HBoxContainer/ARCheckBox
 @onready var location_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox
 @onready var hide_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox
@@ -16,12 +18,18 @@ extends Control
 @onready var margin_container: MarginContainer = $MarginContainer
 @onready var texture_rect: TextureRect = $TextureRect
 
+var INPUT_MENU_SCENE := preload("res://Scenes/input_menu.tscn")
+
+@onready var input_dictionary: Dictionary = {}
+
 var cursor_texture := preload("res://Sprites/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
 var title_music: AudioStreamPlayer 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	title_music = get_tree().current_scene.find_child("AudioStreamPlayer", true, false)
+	var input_menu_instance = INPUT_MENU_SCENE.instantiate()
+	input_container.add_child(input_menu_instance)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -56,7 +64,7 @@ func _on_visibility_changed() -> void:
 	margin_container.visible = true
 
 func _on_return_button_pressed() -> void:
-	SaveManager.save_settings({
+	var settings_dictionary: Dictionary = {
 		"auto_run": GameData.auto_run,
 		"hardware_cursor": GameData.hardware_cursor,
 		"hide_interaction_moving": GameData.hide_interaction_moving,
@@ -68,6 +76,10 @@ func _on_return_button_pressed() -> void:
 		"show_interaction": GameData.show_interaction,
 		"sounds": GameData.sounds,
 		"window_mode": GameData.window_mode
+		}
+	
+	SaveManager.save_settings({
+		
 	})
 	
 	SfxManager.play_click()
@@ -152,6 +164,3 @@ func _on_fps_min_max_button_pressed(value: int) -> void:
 	GameData.max_fps = value
 	
 	Engine.max_fps = value
-
-func _on_input_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/input_menu.tscn")

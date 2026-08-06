@@ -27,9 +27,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 49.0
 grow_horizontal = 2
-offset_transform_enabled = true
 offset_transform_position = Vector2(0, 20)
-theme_override_constants/separation = 240
 alignment = 1
 
 [node name="ActionLabel" type="Label" parent="HBoxContainer" unique_id=2125757354]
@@ -204,6 +202,7 @@ theme_override_font_sizes/font_size = 30
 text = "Cambiar"
 
 [node name="SaveCloseContainer" type="HBoxContainer" parent="." unique_id=1032740168]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

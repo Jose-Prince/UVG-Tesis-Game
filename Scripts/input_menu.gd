@@ -42,10 +42,6 @@ func _ready() -> void:
 		button.set_meta("action", action)
 		button.pressed.connect(_on_change_button.bind(button))
 		
-		print(up_button.disabled)
-		print(up_button.mouse_filter)
-		print(up_button.focus_mode)
-		
 		update_button_map(action)
 
 func update_button_map(action: String) -> void:
@@ -66,11 +62,8 @@ func update_button_map(action: String) -> void:
 		currentLabel.text = "-"
 	else:
 		currentLabel.text = events[0].as_text()
-	
-	print("Listo")
 
 func _on_change_button(button: Button):
-	print("AAAAAA")
 	waiting_action = button.get_meta("action")
 	button.text = "..."
 
@@ -85,9 +78,3 @@ func _input(event: InputEvent) -> void:
 		update_button_map(waiting_action)
 		
 		waiting_action = ""
-
-func _on_button_pressed() -> void:
-	SaveManager.save_settings(actions)
-
-func _on_close_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")

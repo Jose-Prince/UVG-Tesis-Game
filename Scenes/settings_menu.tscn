@@ -627,6 +627,21 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Set the maximun the maximun frames per second for the game. "
 autowrap_mode = 2
 
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=377292073]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HSeparator2" unique_id=1757057899]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
+
 [node name="ButtonsDisplay" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=120483941]
 layout_mode = 2
 alignment = 2
@@ -640,10 +655,6 @@ text = "Volver
 [node name="DefaultSettingsButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay" unique_id=215915247]
 layout_mode = 2
 text = "Use default settings"
-
-[node name="Button" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay" unique_id=448022488]
-layout_mode = 2
-text = "Input settings"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer/HBoxContainer/ARCheckBox" to="." method="_on_ar_check_box_toggled"]
@@ -660,4 +671,3 @@ text = "Input settings"
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer/HBoxContainer/FpsMinMaxButton" to="." method="_on_fps_min_max_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay/DefaultSettingsButton" to="." method="_on_default_settings_button_pressed"]
-[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay/Button" to="." method="_on_input_pressed"]
