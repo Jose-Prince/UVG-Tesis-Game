@@ -165,3 +165,28 @@ func load_settings() -> Dictionary:
 		return DEFAULT_SETTINGS.duplicate(true)
 		
 	return data
+
+func get_next_slot() -> int:
+	var highest := -1
+		
+	var dir := DirAccess.open(SAVE_FOLDER)
+		
+	if dir == null:
+		return 0
+			
+	dir.list_dir_begin()
+		
+	var file := dir.get_next()
+		
+	while file != "":
+		if !dir.current_is_dir():
+			if file.begins_with("save_") and file.ends_with(".json"):
+				var number := file.trim_prefix("save_").trim_suffix(".json").to_int()
+				
+				highest = maxi(highest, number)
+			
+		file = dir.get_next()
+			
+	dir.list_dir_end()
+		
+	return highest + 1

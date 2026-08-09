@@ -1,7 +1,40 @@
 [gd_scene format=3 uid="uid://dclatuh7yvi5x"]
 
-[ext_resource type="Script" path="res://Scripts/filebutton_container.gd" id="1_aa0qy"]
+[ext_resource type="Script" uid="uid://bpqk0y7rn4qsr" path="res://Scripts/filebutton_container.gd" id="1_aa0qy"]
 [ext_resource type="Texture2D" uid="uid://cx1nyacr2yebd" path="res://Sprites/gingham.PNG" id="1_bmwgd"]
+[ext_resource type="Texture2D" uid="uid://r45ksajhucw5" path="res://Sprites/menu.PNG" id="2_82ox4"]
+[ext_resource type="FontFile" uid="uid://c0rmb6tjydgnl" path="res://Fonts/FascinateInline-Regular.ttf" id="3_0463p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_82ox4"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0463p"]
+bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0463p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lp34"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p4ls2"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="FilesScreen" type="Control" unique_id=1530240423]
 layout_mode = 3
@@ -38,39 +71,73 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 150
 theme_override_constants/margin_bottom = 15
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer" unique_id=52834068]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=756651216]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/PanelContainer" unique_id=540422301]
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=1780271417]
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 20
+size_flags_vertical = 3
+texture = ExtResource("2_82ox4")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/NinePatchRect" unique_id=540422301]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 120
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=1317851028]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer" unique_id=1317851028]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 5
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1913841823]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1913841823]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_0463p")
+theme_override_font_sizes/font_size = 50
 text = "Menu of the Day"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1677770677]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1677770677]
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_82ox4")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=163270569]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=163270569]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer" unique_id=967108865]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/ScrollContainer" unique_id=967108865]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 script = ExtResource("1_aa0qy")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer" unique_id=1770501121]
+layout_mode = 2
+alignment = 2
+
+[node name="BackButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1628764477]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_0463p")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0463p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6lp34")
+theme_override_styles/focus = SubResource("StyleBoxFlat_p4ls2")
+text = "Back"
+
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=915312153]
 layout_mode = 2
+
+[connection signal="mouse_entered" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="VBoxContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" method="_on_back_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="VBoxContainer/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" method="_on_back_button_pressed"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ciqhnxpcvejhp"]
 
-[ext_resource type="Script" uid="uid://cr7xd8y2pehh4" path="res://Scripts/sound_menu.gd" id="1_h2y1r"]
+[ext_resource type="Script" uid="uid://cr7xd8y2pehh4" path="res://Scripts/settings_menu.gd" id="1_h2y1r"]
 [ext_resource type="Texture2D" uid="uid://djmg2wkx2yige" path="res://Sprites/notebook.png" id="2_3etfd"]
 [ext_resource type="Script" uid="uid://bytdb7qrxipfh" path="res://Scripts/notebook_anim.gd" id="3_rahb6"]
 [ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Fonts/static/PixelifySans-Bold.ttf" id="4_fe37x"]
@@ -190,6 +190,10 @@ alignment = 2
 
 [node name="ARCheckBox" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer/HBoxContainer" unique_id=1754681687]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider")
+focus_neighbor_top = NodePath("../../../../../../../../ButtonsDisplay/ReturnButton")
+focus_neighbor_right = NodePath("../../../../../../../RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider")
+focus_neighbor_bottom = NodePath("../../../../ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox")
 theme_override_colors/font_color = Color(0.9490196, 0.9098039, 0.8352941, 1)
 theme_override_colors/font_focus_color = Color(1, 0.9607843, 0.9098039, 1)
 theme_override_colors/font_pressed_color = Color(0.8509804, 0.7764706, 0.64705884, 1)
@@ -231,6 +235,10 @@ alignment = 2
 
 [node name="LocationCheckBox" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer" unique_id=442258323]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer/MusicSlider")
+focus_neighbor_top = NodePath("../../../../AutoRun/GridContainer/HBoxContainer/ARCheckBox")
+focus_neighbor_right = NodePath("../../../../../../../RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer/MusicSlider")
+focus_neighbor_bottom = NodePath("../../../../HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation" unique_id=882438533]
 layout_mode = 2
@@ -264,6 +272,10 @@ alignment = 2
 
 [node name="HideCheckBox" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer/HBoxContainer" unique_id=804102313]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer/SoundsSlider")
+focus_neighbor_top = NodePath("../../../../ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox")
+focus_neighbor_right = NodePath("../../../../../../../RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer/SoundsSlider")
+focus_neighbor_bottom = NodePath("../../../../PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving" unique_id=286402265]
 layout_mode = 2
@@ -297,6 +309,10 @@ alignment = 2
 
 [node name="PauseCheckBox" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer" unique_id=1351030543]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer/HBoxContainer/WindowOptionButton")
+focus_neighbor_top = NodePath("../../../../HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox")
+focus_neighbor_right = NodePath("../../../../../../../RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer/HBoxContainer/WindowOptionButton")
+focus_neighbor_bottom = NodePath("../../../../../../../../ButtonsDisplay/ReturnButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive" unique_id=72451792]
 layout_mode = 2
@@ -369,6 +385,10 @@ alignment = 2
 [node name="MasterSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer" unique_id=1169640486]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer/HBoxContainer/ARCheckBox")
+focus_neighbor_top = NodePath("../../../../../../../../ButtonsDisplay/DefaultSettingsButton")
+focus_neighbor_right = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer/HBoxContainer/ARCheckBox")
+focus_neighbor_bottom = NodePath("../../../../Music/GridContainer/HBoxContainer/MusicSlider")
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -406,6 +426,10 @@ alignment = 2
 [node name="MusicSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer" unique_id=61212103]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox")
+focus_neighbor_top = NodePath("../../../../Master/GridContainer/HBoxContainer/MasterSlider")
+focus_neighbor_right = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox")
+focus_neighbor_bottom = NodePath("../../../../Sounds/GridContainer/HBoxContainer/SoundsSlider")
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -443,6 +467,10 @@ alignment = 2
 [node name="SoundsSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer" unique_id=369616423]
 custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox")
+focus_neighbor_top = NodePath("../../../../Music/GridContainer/HBoxContainer/MusicSlider")
+focus_neighbor_right = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox")
+focus_neighbor_bottom = NodePath("../../../../WindowMode/GridContainer/HBoxContainer/WindowOptionButton")
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -494,6 +522,10 @@ alignment = 2
 
 [node name="WindowOptionButton" type="OptionButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer/HBoxContainer" unique_id=1288097571]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_top = NodePath("../../../../Sounds/GridContainer/HBoxContainer/SoundsSlider")
+focus_neighbor_right = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_bottom = NodePath("../../../../Resolution/GridContainer/HBoxContainer/ResolutionOptionButton")
 selected = 1
 item_count = 3
 popup/item_0/text = "Fullscreen"
@@ -515,7 +547,6 @@ text = "Changes how the game is displayed, such as fullscreen, borderless, or wi
 autowrap_mode = 2
 
 [node name="Resolution" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=75481698]
-visible = false
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution" unique_id=1153680570]
@@ -535,6 +566,10 @@ alignment = 2
 
 [node name="ResolutionOptionButton" type="OptionButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Resolution/GridContainer/HBoxContainer" unique_id=1482708579]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_top = NodePath("../../../../WindowMode/GridContainer/HBoxContainer/WindowOptionButton")
+focus_neighbor_right = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_bottom = NodePath("../../../../HardwareCursor/GridContainer/HBoxContainer/CursorCheckBox")
 selected = 1
 item_count = 6
 popup/item_0/text = "1920x1080"
@@ -562,7 +597,6 @@ text = "Changes the game rendering resolution."
 autowrap_mode = 2
 
 [node name="HardwareCursor" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn" unique_id=175434042]
-visible = false
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/HardwareCursor" unique_id=22113889]
@@ -582,6 +616,10 @@ alignment = 2
 
 [node name="CursorCheckBox" type="CheckBox" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/HardwareCursor/GridContainer/HBoxContainer" unique_id=1788509588]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_top = NodePath("../../../../Resolution/GridContainer/HBoxContainer/ResolutionOptionButton")
+focus_neighbor_right = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_bottom = NodePath("../../../../MaxFPS/GridContainer/HBoxContainer/FpsMinMaxButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/HardwareCursor" unique_id=975995089]
 layout_mode = 2
@@ -614,6 +652,10 @@ alignment = 2
 
 [node name="FpsMinMaxButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer/HBoxContainer" unique_id=521250400 instance=ExtResource("5_3etfd")]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_top = NodePath("../../../../HardwareCursor/GridContainer/HBoxContainer/CursorCheckBox")
+focus_neighbor_right = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_bottom = NodePath("../../../../../../../../ButtonsDisplay/DefaultSettingsButton")
 text = "60"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS" unique_id=566822260]
@@ -648,12 +690,20 @@ alignment = 2
 
 [node name="ReturnButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay" unique_id=1608572635]
 layout_mode = 2
+focus_neighbor_left = NodePath("../DefaultSettingsButton")
+focus_neighbor_top = NodePath("../../HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_right = NodePath("../DefaultSettingsButton")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer/HBoxContainer/ARCheckBox")
 text = "Volver
 
 "
 
 [node name="DefaultSettingsButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay" unique_id=215915247]
 layout_mode = 2
+focus_neighbor_left = NodePath("../ReturnButton")
+focus_neighbor_top = NodePath("../../HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer/HBoxContainer/FpsMinMaxButton")
+focus_neighbor_right = NodePath("../ReturnButton")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider")
 text = "Use default settings"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
