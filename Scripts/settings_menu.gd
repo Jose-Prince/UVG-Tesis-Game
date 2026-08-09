@@ -1,6 +1,6 @@
 extends Control
 
-@onready var input_container: MarginContainer = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HSeparator2/MarginContainer
+@onready var input_container: MarginContainer = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HSeparator2/ScrollContainer/MarginContainer
 
 @onready var ar_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer/HBoxContainer/ARCheckBox
 @onready var location_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox
