@@ -1,28 +1,32 @@
 extends Control
 
-@onready var up_label: Label = $InputContainer/UpContainer/UpLabel
-@onready var up_current_label: Label = $InputContainer/UpContainer/UpCurrentLabel
-@onready var up_button: Button = $InputContainer/UpContainer/UpButton
+@onready var action_label_title: Label = $VBoxContainer/HBoxContainer/ActionLabel
+@onready var current_label_title: Label = $VBoxContainer/HBoxContainer/CurrentLabel
+@onready var change_label_title: Label = $VBoxContainer/HBoxContainer/ChangeLabel
 
-@onready var down_label: Label = $InputContainer/DownContainer/DownLabel
-@onready var down_current_label: Label = $InputContainer/DownContainer/DownCurrentLabel
-@onready var down_button: Button = $InputContainer/DownContainer/DownButton
+@onready var up_label: Label = $VBoxContainer/InputContainer/UpContainer/UpLabel
+@onready var up_current_label: Label = $VBoxContainer/InputContainer/UpContainer/UpCurrentLabel
+@onready var up_button: Button = $VBoxContainer/InputContainer/UpContainer/UpButton
 
-@onready var right_label: Label = $InputContainer/RightContainer/RightLabel
-@onready var right_current_label: Label = $InputContainer/RightContainer/RightCurrentLabel
-@onready var right_button: Button = $InputContainer/RightContainer/RightButton
+@onready var down_label: Label = $VBoxContainer/InputContainer/DownContainer/DownLabel
+@onready var down_current_label: Label = $VBoxContainer/InputContainer/DownContainer/DownCurrentLabel
+@onready var down_button: Button = $VBoxContainer/InputContainer/DownContainer/DownButton
 
-@onready var left_label: Label = $InputContainer/LeftContainer/LeftLabel
-@onready var left_current_label: Label = $InputContainer/LeftContainer/LeftCurrentLabel
-@onready var left_button: Button = $InputContainer/LeftContainer/LeftButton
+@onready var right_label: Label = $VBoxContainer/InputContainer/RightContainer/RightLabel
+@onready var right_current_label: Label = $VBoxContainer/InputContainer/RightContainer/RightCurrentLabel
+@onready var right_button: Button = $VBoxContainer/InputContainer/RightContainer/RightButton
 
-@onready var run_label: Label = $InputContainer/RunContainer/RunLabel
-@onready var run_current_label: Label = $InputContainer/RunContainer/RunCurrentLabel
-@onready var run_button: Button = $InputContainer/RunContainer/RunButton
+@onready var left_label: Label = $VBoxContainer/InputContainer/LeftContainer/LeftLabel
+@onready var left_current_label: Label = $VBoxContainer/InputContainer/LeftContainer/LeftCurrentLabel
+@onready var left_button: Button = $VBoxContainer/InputContainer/LeftContainer/LeftButton
 
-@onready var action_label: Label = $InputContainer/ActionContainer/ActionLabel
-@onready var action_current_label: Label = $InputContainer/ActionContainer/ActionCurrentLabel
-@onready var action_button: Button = $InputContainer/ActionContainer/ActionButton
+@onready var run_label: Label = $VBoxContainer/InputContainer/RunContainer/RunLabel
+@onready var run_current_label: Label = $VBoxContainer/InputContainer/RunContainer/RunCurrentLabel
+@onready var run_button: Button = $VBoxContainer/InputContainer/RunContainer/RunButton
+
+@onready var action_label: Label = $VBoxContainer/InputContainer/ActionContainer/ActionLabel
+@onready var action_current_label: Label = $VBoxContainer/InputContainer/ActionContainer/ActionCurrentLabel
+@onready var action_button: Button = $VBoxContainer/InputContainer/ActionContainer/ActionButton
 
 var waiting_action: String = ""
 
@@ -42,26 +46,29 @@ func _ready() -> void:
 		button.set_meta("action", action)
 		button.pressed.connect(_on_change_button.bind(button))
 		
+		action_label_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		current_label_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		
 		update_button_map(action)
 
 func update_button_map(action: String) -> void:
-	var actionLabel: Label = actions[action][0]
-	var currentLabel: Label = actions[action][1]
-	var changeButton: Button = actions[action][2]
+	var action_label: Label = actions[action][0]
+	var current_label: Label = actions[action][1]
+	var change_button: Button = actions[action][2]
 	
-	actionLabel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	currentLabel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	action_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	current_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	
-	changeButton.set_meta("action", action)
-	changeButton.text = "Cambiar"
+	change_button.set_meta("action", action)
+	change_button.text = "Cambiar"
 	
 	var events = InputMap.action_get_events(action)
 	
 	if events.is_empty():
-		actionLabel.text = "-"
-		currentLabel.text = "-"
+		action_label.text = "-"
+		current_label.text = "-"
 	else:
-		currentLabel.text = events[0].as_text()
+		current_label.text = events[0].as_text()
 
 func _on_change_button(button: Button):
 	waiting_action = button.get_meta("action")
