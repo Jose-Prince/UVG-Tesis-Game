@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dbke0julx6f02"]
+
+[ext_resource type="Script" uid="uid://cnche81sjc8la" path="res://Scripts/article_database.gd" id="1_gueyn"]
+
+[node name="ArticleDatabase" type="Node2D" unique_id=376497997]
+script = ExtResource("1_gueyn")

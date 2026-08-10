@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://b5o0i2tfyc4jy"]
+
+[ext_resource type="Script" uid="uid://dgd7neqweakjd" path="res://Scripts/min_max_button.gd" id="1_boncr"]
+
+[node name="MinMaxButton" type="HBoxContainer" unique_id=1503408069]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("1_boncr")
+text = "45"
+max_value = 120
+min_value = 15
+
+[node name="MinusButton" type="Button" parent="." unique_id=1399849623]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "-"
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=515577949]
+layout_mode = 2
+editable = false
+
+[node name="PlusButton" type="Button" parent="." unique_id=1050541992]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "+"
+
+[connection signal="pressed" from="MinusButton" to="." method="_on_minus_button_pressed"]
+[connection signal="pressed" from="PlusButton" to="." method="_on_plus_button_pressed"]

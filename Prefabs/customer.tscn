@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://o2b0q4nuh4ni" path="res://Scripts/customer.gd" id="1_u4jb7"]
 [ext_resource type="Texture2D" uid="uid://dtle8u24eu8cw" path="res://Sprites/Characters_V3_Colour.png" id="2_u4jb7"]
+[ext_resource type="PackedScene" uid="uid://hytctloep3vg" path="res://Scenes/speech_bubble.tscn" id="3_kkbk6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rhpu"]
 size = Vector2(13.333334, 4.333333)
@@ -60,7 +61,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kkbk6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -68,7 +69,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uc7pi")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_right",
 "speed": 5.0
 }, {
@@ -76,7 +77,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4eorp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_up",
 "speed": 5.0
 }, {
@@ -90,7 +91,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_372ll")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_down",
 "speed": 5.0
 }, {
@@ -104,7 +105,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tnph2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_right",
 "speed": 5.0
 }, {
@@ -118,13 +119,12 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r072q")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_up",
 "speed": 5.0
 }]
 
 [node name="Customer" type="CharacterBody2D" unique_id=272031947 groups=["customer"]]
-scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_u4jb7")
@@ -134,19 +134,20 @@ position = Vector2(0, 6.8333335)
 shape = SubResource("RectangleShape2D_5rhpu")
 debug_color = Color(0.91343504, 0.14206949, 0.6324621, 0.41960785)
 
-[node name="WaitingTimer" type="Timer" parent="." unique_id=1966011886]
-wait_time = 5.0
-one_shot = true
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1647952521]
+visible = false
 sprite_frames = SubResource("SpriteFrames_4eorp")
-animation = &"idle"
+animation = &"idle_right"
 
-[node name="Label" type="Label" parent="." unique_id=2078621784]
-offset_left = -12.0
-offset_top = -18.666666
-offset_right = 12.0
-offset_bottom = -6.666666
-theme_override_font_sizes/font_size = 8
+[node name="SpeechBubble" parent="." unique_id=1244530394 instance=ExtResource("3_kkbk6")]
+visible = false
+position = Vector2(0, -10)
+scale = Vector2(0.25, 0.25)
 
-[connection signal="timeout" from="WaitingTimer" to="." method="_on_waiting_timer_timeout"]
+[node name="skin" type="AnimatedSprite2D" parent="." unique_id=87294383]
+
+[node name="clothes_bottom" type="AnimatedSprite2D" parent="." unique_id=538484481]
+
+[node name="clothes_top" type="AnimatedSprite2D" parent="." unique_id=1295410580]
+
+[node name="hair" type="AnimatedSprite2D" parent="." unique_id=1413469130]

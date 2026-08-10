@@ -11,7 +11,11 @@ func interact(player):
 		obj.global_position = player.global_position
 		obj.pickup(player)
 		
-		print("Objeto creado")
+		if self.name == "CoffeeMaker":
+			SfxManager.play_liquid()
+		
+		else:
+			SfxManager.play_pick()
 
 func _on_mouse_entered() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)

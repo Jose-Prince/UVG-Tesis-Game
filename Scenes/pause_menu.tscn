@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://ce5bfs85ds2ea"]
+
+[ext_resource type="Texture2D" uid="uid://b4xvxiwa8tned" path="res://Sprites/Pause_menu.PNG" id="1_lj4oq"]
+[ext_resource type="Script" uid="uid://cicc5dfnfka84" path="res://Scripts/pause_menu.gd" id="1_qwhev"]
+[ext_resource type="Script" uid="uid://cpnugcuyb5456" path="res://Scripts/button_ui.gd" id="4_ey1tb"]
+[ext_resource type="PackedScene" uid="uid://ciqhnxpcvejhp" path="res://Scenes/settings_menu.tscn" id="5_siy43"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ey1tb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpi0q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmyb1"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myy0f"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_siy43"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vmyb1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjs17"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8tnp"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxrls"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_stj27"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ix48p"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_524vl"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+
+[node name="PauseMenu" type="Control" unique_id=1486490026]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_qwhev")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1109873366]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.003921569, 0.003921569, 0.003921569, 0.49803922)
+
+[node name="Notebook" type="TextureRect" parent="." unique_id=1290637139]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.081
+anchor_right = 0.78200006
+anchor_bottom = 1.0
+offset_left = -0.31199646
+offset_top = 4.0
+offset_right = 0.1359253
+offset_bottom = 164.0
+texture = ExtResource("1_lj4oq")
+expand_mode = 5
+
+[node name="Buttons" type="VBoxContainer" parent="." unique_id=2123297871]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.372
+anchor_top = 0.21100001
+anchor_right = 0.61300004
+anchor_bottom = 0.75900006
+offset_left = -0.54400635
+offset_top = 0.27198792
+offset_right = 4.8239746
+offset_bottom = 0.16796875
+theme_override_constants/separation = 25
+
+[node name="ContinueButton" type="Button" parent="Buttons" unique_id=985122910]
+layout_mode = 2
+focus_neighbor_top = NodePath("../ReturnButton")
+focus_neighbor_bottom = NodePath("../SettingsButton")
+theme_override_colors/font_color = Color(0.009317472, 0.009317516, 0.009317483, 1)
+theme_override_colors/font_focus_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ey1tb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bpi0q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vmyb1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_myy0f")
+text = "Continue"
+script = ExtResource("4_ey1tb")
+
+[node name="SettingsButton" type="Button" parent="Buttons" unique_id=1719123335]
+layout_mode = 2
+focus_neighbor_top = NodePath("../ContinueButton")
+focus_neighbor_bottom = NodePath("../ReturnButton")
+theme_override_colors/font_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
+theme_override_colors/font_focus_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_siy43")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vmyb1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sjs17")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u8tnp")
+text = "Settings"
+script = ExtResource("4_ey1tb")
+
+[node name="ReturnButton" type="Button" parent="Buttons" unique_id=1204164739]
+layout_mode = 2
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_bottom = NodePath("../ContinueButton")
+theme_override_colors/font_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yxrls")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_stj27")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ix48p")
+theme_override_styles/focus = SubResource("StyleBoxFlat_524vl")
+text = "Return 
+to title"
+script = ExtResource("4_ey1tb")
+
+[node name="SettingsMenu" parent="." unique_id=915478763 instance=ExtResource("5_siy43")]
+layout_mode = 1
+
+[connection signal="mouse_entered" from="Buttons/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
+[connection signal="pressed" from="Buttons/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="mouse_entered" from="Buttons/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
+[connection signal="pressed" from="Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="mouse_entered" from="Buttons/ReturnButton" to="." method="_on_return_button_mouse_entered"]
+[connection signal="pressed" from="Buttons/ReturnButton" to="." method="_on_return_button_pressed"]

@@ -16,11 +16,12 @@ collision_mask = 0
 script = ExtResource("1_r2gyq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=169816347]
+position = Vector2(0, -13.5)
 texture = SubResource("AtlasTexture_r2gyq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1641243643]
-position = Vector2(0.5, 4)
+position = Vector2(0.5, -9.5)
 shape = SubResource("RectangleShape2D_avq0k")
 
 [node name="GoToPos" type="Marker2D" parent="." unique_id=1450133005]
-position = Vector2(-15, 0)
+position = Vector2(1, -12)

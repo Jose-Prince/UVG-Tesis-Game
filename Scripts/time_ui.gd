@@ -56,8 +56,9 @@ func _ready() -> void:
 	
 	scene_transition = get_tree().root.find_child("SceneTransition", true, false)
 
-func add_point(money_received: int) -> void:
+func add_point(money_received: float) -> void:
 	GameData.money += money_received
+	SfxManager.play_money()
 	update_money_display()
 
 func _on_time_system_updated(date_time: DateTime) -> void:
@@ -115,6 +116,7 @@ func update_money_display():
 	unit.text = money_string[4]
 	decimal_1.text = money_string[5]
 	decimal_2.text = money_string[6]
+	
 
 func _on_day_ended() -> void:
 	SaveManager.save_especific_data(

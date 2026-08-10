@@ -9,10 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://h6uqvesj3b8s" path="res://Prefabs/Player.tscn" id="6_df3mn"]
 [ext_resource type="PackedScene" uid="uid://05y0ghmm4qsq" path="res://Prefabs/chair.tscn" id="7_wpc15"]
 [ext_resource type="PackedScene" uid="uid://cn1a17pxcn375" path="res://Prefabs/coffee_maker.tscn" id="8_wvnb4"]
-[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/CozyCaffe-Bossa-consolidated-consolidated.ogg" id="9_j1s20"]
+[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/cozycaffe_bossa_consolidated_consolidated.ogg" id="9_j1s20"]
 [ext_resource type="PackedScene" uid="uid://chcl2gv8i2851" path="res://Scenes/scene_transition.tscn" id="9_vffnu"]
+[ext_resource type="Script" uid="uid://bcqylyib4yrvl" path="res://Scripts/order_object.gd" id="12_2o2p7"]
 [ext_resource type="PackedScene" uid="uid://dy7unp36ghucf" path="res://Prefabs/glass_giver.tscn" id="12_4hl37"]
-[ext_resource type="PackedScene" uid="uid://5pgj7btnpwub" path="res://Prefabs/Sink.tscn" id="13_sk1vp"]
+[ext_resource type="PackedScene" uid="uid://5pgj7btnpwub" path="res://Prefabs/sink.tscn" id="13_sk1vp"]
 [ext_resource type="PackedScene" uid="uid://bgduyi5wcuj0c" path="res://Prefabs/glass.tscn" id="14_xjtdl"]
 [ext_resource type="PackedScene" uid="uid://cyeftfpjy6lld" path="res://Prefabs/water.tscn" id="15_2i3s5"]
 [ext_resource type="Script" uid="uid://d3285ev7ubckh" path="res://Scripts/directional_light_2d.gd" id="16_2i3s5"]
@@ -1183,32 +1184,34 @@ one_shot = true
 autostart = true
 
 [node name="Player" parent="." unique_id=1461023337 instance=ExtResource("6_df3mn")]
-position = Vector2(232, 64)
+position = Vector2(224, 96)
+scale = Vector2(1, 1)
 
 [node name="CustomerSpawn" type="Marker2D" parent="." unique_id=1376856490]
 position = Vector2(64, 160)
 
-[node name="LeavingZone" type="Area2D" parent="CustomerSpawn" unique_id=317473523]
+[node name="LeavingZone" type="Area2D" parent="." unique_id=317473523]
+position = Vector2(64, 160)
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerSpawn/LeavingZone" unique_id=569889899]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeavingZone" unique_id=569889899]
 shape = SubResource("CircleShape2D_df3mn")
 
 [node name="Chair" parent="." unique_id=1594550986 instance=ExtResource("7_wpc15")]
-position = Vector2(80, 96)
+position = Vector2(80, 92)
 
 [node name="Chair2" parent="." unique_id=514882653 instance=ExtResource("7_wpc15")]
-position = Vector2(144, 96)
+position = Vector2(144, 92)
 isRotated = true
 
 [node name="Chair3" parent="." unique_id=411604972 instance=ExtResource("7_wpc15")]
-position = Vector2(104, 208)
+position = Vector2(104, 204)
 
 [node name="Chair7" parent="." unique_id=578940718 instance=ExtResource("7_wpc15")]
-position = Vector2(208, 144)
+position = Vector2(208, 140)
 
 [node name="Chair8" parent="." unique_id=1740387041 instance=ExtResource("7_wpc15")]
-position = Vector2(272, 144)
+position = Vector2(272, 140)
 isRotated = true
 
 [node name="SceneTransition" parent="." unique_id=441785496 instance=ExtResource("9_vffnu")]
@@ -1218,10 +1221,12 @@ position = Vector2(224, 32)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=865978164]
 stream = ExtResource("9_j1s20")
+volume_db = -17.034
 autoplay = true
 parameters/looping = true
 
 [node name="OrderObject" type="Node2D" parent="." unique_id=1752300990]
+script = ExtResource("12_2o2p7")
 
 [node name="GlassGiver" parent="." unique_id=1691044326 groups=["clickable"] instance=ExtResource("12_4hl37")]
 z_index = 1
@@ -1248,4 +1253,6 @@ day_start = SubResource("Resource_2o2p7")
 night_start = SubResource("Resource_eatfk")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="CustomerSpawn/LeavingZone" to="." method="_on_leaving_zone_body_entered"]
+[connection signal="body_entered" from="LeavingZone" to="." method="_on_leaving_zone_body_entered"]
+[connection signal="child_entered_tree" from="OrderObject" to="OrderObject" method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="OrderObject" to="OrderObject" method="_on_child_exiting_tree"]
