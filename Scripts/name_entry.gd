@@ -2,19 +2,19 @@ extends Control
 
 @export var initial_menu: Array[ArticleData] = []
 
-const SKIN_FRAMES: SpriteFrames = preload("res://Sprites/Character/player_skin.tres")
+const SKIN_FRAMES: SpriteFrames = preload("res://Sprites/character/player_skin.tres")
 const HAIR_FRAMES: Array = [
-	preload("res://Sprites/Character/hair_1.tres"),
-	preload("res://Sprites/Character/hair_2.tres"),
-	preload("res://Sprites/Character/hair_3.tres"),
+	preload("res://Sprites/character/hair_1.tres"),
+	preload("res://Sprites/character/hair_2.tres"),
+	preload("res://Sprites/character/hair_3.tres"),
 ]
 const SHIRT_FRAMES: Array = [
-	preload("res://Sprites/Character/shirt_1.tres"),
-	preload("res://Sprites/Character/shirt_2.tres"),
+	preload("res://Sprites/character/shirt_1.tres"),
+	preload("res://Sprites/character/shirt_2.tres"),
 ]
 const PANTS_FRAMES: Array = [
-	preload("res://Sprites/Character/pants_1.tres"),
-	preload("res://Sprites/Character/pants_2.tres"),
+	preload("res://Sprites/character/pants_1.tres"),
+	preload("res://Sprites/character/pants_2.tres"),
 ]
 const SKIN_COLORS: Array[Color] = [
 	Color(1.0, 0.85, 0.70),
