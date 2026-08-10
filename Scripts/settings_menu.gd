@@ -137,11 +137,9 @@ func _on_return_button_pressed() -> void:
 		"show_interaction": GameData.show_interaction,
 		"sounds": GameData.sounds,
 		"window_mode": GameData.window_mode
-		}
+	}
 	
-	SaveManager.save_settings({
-		
-	})
+	SaveManager.save_settings(settings_dictionary)
 	
 	SfxManager.play_click()
 	margin_container.visible = false

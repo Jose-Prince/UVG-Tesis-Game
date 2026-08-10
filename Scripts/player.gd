@@ -18,26 +18,55 @@ var show_interaction := true
 var side_offset := Vector2(8, 0)
 
 @onready var skin: AnimatedSprite2D = $skin
-@onready var clothes: AnimatedSprite2D = $clothes
-@onready var lineart: AnimatedSprite2D = $lineart
+@onready var clothes_bottom: AnimatedSprite2D = $clothes_bottom
+@onready var clothes_top: AnimatedSprite2D = $clothes_top
 @onready var hair: AnimatedSprite2D = $hair
 @onready var dialogue: CanvasLayer = $"../DialogueBubble"
 @onready var interaction_point: Marker2D = $InteractionPoint
 @onready var pointer_sprite: AnimatedSprite2D = $InteractionPoint/PointerSprite
 
+const SKIN_FRAMES: SpriteFrames = preload("res://Sprites/character/player_skin.tres")
+const HAIR_FRAMES: Array = [
+	preload("res://Sprites/character/hair_1.tres"),
+	preload("res://Sprites/character/hair_2.tres"),
+	preload("res://Sprites/character/hair_3.tres"),
+]
+const SHIRT_FRAMES: Array = [
+	preload("res://Sprites/character/shirt_1.tres"),
+	preload("res://Sprites/character/shirt_2.tres"),
+]
+const PANTS_FRAMES: Array = [
+	preload("res://Sprites/character/pants_1.tres"),
+	preload("res://Sprites/character/pants_2.tres"),
+]
+
 func play_layers(anim_name: String):
+	if skin.animation == anim_name and skin.is_playing():
+		return
 	skin.play(anim_name)
-	clothes.play(anim_name)
-	lineart.play(anim_name)
+	clothes_bottom.play(anim_name)
+	clothes_top.play(anim_name)
 	hair.play(anim_name)
 
 func flip_layers(value: bool):
 	skin.flip_h = value
-	clothes.flip_h = value
-	lineart.flip_h = value
+	clothes_bottom.flip_h = value
+	clothes_top.flip_h = value
 	hair.flip_h = value
 
+func apply_appearance() -> void:
+	skin.sprite_frames = SKIN_FRAMES
+	skin.modulate = GameData.player_skin_color
+	hair.sprite_frames = HAIR_FRAMES[GameData.player_hair_style]
+	hair.modulate = GameData.player_hair_color
+	clothes_top.sprite_frames = SHIRT_FRAMES[GameData.player_shirt_style]
+	clothes_top.modulate = GameData.player_shirt_color
+	clothes_bottom.sprite_frames = PANTS_FRAMES[GameData.player_pants_style]
+	clothes_bottom.modulate = GameData.player_pants_color
+
 func _ready() -> void:
+	await get_tree().process_frame
+	apply_appearance()
 	if GameData.show_interaction:
 		interaction_point.visible = true
 	else:
@@ -56,37 +85,35 @@ func _physics_process(delta: float) -> void:
 		held_item.update_bob(skin.animation, skin.frame)
 
 	move_and_slide()
-	
+
 func get_input():
 	var current_speed = speed
-	
-	# Set the player speed for auto run
+
 	if GameData.auto_run:
 		current_speed = run_speed
-	
+
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-	
+
 	if input_direction != Vector2.ZERO and GameData.hide_interaction_moving:
 		interaction_point.visible = false
-	
+
 	var interaction_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
+
 	if interaction_direction != Vector2.ZERO:
 		facing = interaction_direction.normalized()
-	
 	elif input_direction != Vector2.ZERO:
 		facing = input_direction.normalized()
-	
+
 	update_interaction_point()
-	
+
 	if Input.is_action_pressed("run"):
 		if GameData.auto_run:
 			current_speed = speed
 		else:
 			current_speed = run_speed
-	
+
 	velocity = input_direction * current_speed
-	
+
 	if input_direction == Vector2.ZERO and GameData.show_interaction:
 		interaction_point.visible = true
 
@@ -94,14 +121,14 @@ func update_interaction_point():
 	if show_interaction != GameData.show_interaction:
 		interaction_point.visible = GameData.show_interaction
 		show_interaction = GameData.show_interaction
-	
+
 	var dir := Vector2(sign(facing.x), sign(facing.y))
 	var player_tile := Vector2i((global_position / TILE_SIZE).floor())
-	
+
 	if player_tile != current_tile or dir != last_facing:
 		current_tile = player_tile
 		last_facing = dir
-	
+
 		var target_tile := current_tile + Vector2i(dir)
 		var target_center := Vector2(target_tile) * TILE_SIZE + Vector2(TILE_SIZE / 2.0, TILE_SIZE / 2.0)
 		interaction_point.global_position = target_center
@@ -113,17 +140,16 @@ func snap_to_tile_center(world_pos: Vector2) -> Vector2:
 func make_action():
 	if Input.is_action_just_pressed("Action") and current_object:
 		current_object.interact(self)
-		
+
 func update_animation():
 	pointer_sprite.play("default")
-	
+
 	var is_running := velocity != Vector2.ZERO and (
 		(GameData.auto_run and !Input.is_action_pressed("run")) or
 		(!GameData.auto_run and Input.is_action_pressed("run"))
 	)
 	var is_holding = held_item != null
 
-	# Idle
 	if velocity == Vector2.ZERO:
 		if is_holding:
 			if skin.animation.contains("up"):
@@ -141,7 +167,6 @@ func update_animation():
 				play_layers("idle")
 		return
 
-	# Determine prefix
 	var prefix = "walk"
 	if is_holding and is_running:
 		prefix = "hold_run"
@@ -150,7 +175,6 @@ func update_animation():
 	elif is_running:
 		prefix = "run"
 
-	# Directional
 	if abs(velocity.x) > abs(velocity.y):
 		play_layers(prefix + "_right")
 		flip_layers(velocity.x < 0)
@@ -185,15 +209,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("clickable"):
 		current_object = body
-	
 	if body is NPC:
-		current_npc =  body
+		current_npc = body
 		body.player_in_range = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("clickable"):
 		current_object = null
-		
 	if body == current_npc:
 		current_npc.untalk()
 		current_npc.player_in_range = false

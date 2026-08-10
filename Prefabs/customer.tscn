@@ -125,7 +125,6 @@ animations = [{
 }]
 
 [node name="Customer" type="CharacterBody2D" unique_id=272031947 groups=["customer"]]
-scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_u4jb7")
@@ -136,6 +135,7 @@ shape = SubResource("RectangleShape2D_5rhpu")
 debug_color = Color(0.91343504, 0.14206949, 0.6324621, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1647952521]
+visible = false
 sprite_frames = SubResource("SpriteFrames_4eorp")
 animation = &"idle_right"
 
@@ -143,3 +143,11 @@ animation = &"idle_right"
 visible = false
 position = Vector2(0, -10)
 scale = Vector2(0.25, 0.25)
+
+[node name="skin" type="AnimatedSprite2D" parent="." unique_id=87294383]
+
+[node name="clothes_bottom" type="AnimatedSprite2D" parent="." unique_id=538484481]
+
+[node name="clothes_top" type="AnimatedSprite2D" parent="." unique_id=1295410580]
+
+[node name="hair" type="AnimatedSprite2D" parent="." unique_id=1413469130]
