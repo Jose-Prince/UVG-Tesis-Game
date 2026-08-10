@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://djmg2wkx2yige" path="res://Sprites/notebook.png" id="2_3etfd"]
 [ext_resource type="Script" uid="uid://bytdb7qrxipfh" path="res://Scripts/notebook_anim.gd" id="3_rahb6"]
 [ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Fonts/static/PixelifySans-Bold.ttf" id="4_fe37x"]
+[ext_resource type="PackedScene" uid="uid://buu71e7lwp8u2" path="res://Scenes/input_menu.tscn" id="4_rahb6"]
 [ext_resource type="PackedScene" uid="uid://b5o0i2tfyc4jy" path="res://Prefabs/min_max_button.tscn" id="5_3etfd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6771"]
@@ -119,6 +120,9 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer" unique_id=1364177422]
+layout_mode = 2
+
+[node name="SettingsMenu" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=205128339 instance=ExtResource("4_rahb6")]
 layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=789632845]
@@ -668,6 +672,21 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Set the maximun the maximun frames per second for the game. "
 autowrap_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=377292073]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HSeparator2" unique_id=514738643]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HSeparator2/ScrollContainer" unique_id=1757057899]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
 
 [node name="ButtonsDisplay" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=120483941]
 layout_mode = 2

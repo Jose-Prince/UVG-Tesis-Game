@@ -48,6 +48,8 @@ func save_game(slot: int, data: Dictionary) -> void:
 	
 	save_file.store_line(string_data)
 	save_file.close()
+	
+	print("Archivo guardado en ", save_path)
 
 func save_especific_data(slot: int, data_slot: String, specific_data: Dictionary):
 	var data = load_game(slot)

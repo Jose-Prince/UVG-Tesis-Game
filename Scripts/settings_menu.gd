@@ -1,5 +1,7 @@
 extends Control
 
+@onready var input_container: MarginContainer = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HSeparator2/ScrollContainer/MarginContainer
+
 @onready var ar_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer/HBoxContainer/ARCheckBox
 @onready var location_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox
 @onready var hide_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox
@@ -16,6 +18,9 @@ extends Control
 @onready var margin_container: MarginContainer = $MarginContainer
 @onready var texture_rect: TextureRect = $TextureRect
 
+var INPUT_MENU_SCENE := preload("res://Scenes/input_menu.tscn")
+
+@onready var input_dictionary: Dictionary = {}
 # Scrolls
 @onready var left_scroll_container: ScrollContainer = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer
 @onready var right_scroll_container: ScrollContainer = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer
@@ -29,6 +34,8 @@ var title_music: AudioStreamPlayer
 func _ready() -> void:
 	ar_check_box.grab_focus()
 	title_music = get_tree().current_scene.find_child("AudioStreamPlayer", true, false)
+	var input_menu_instance = INPUT_MENU_SCENE.instantiate()
+	input_container.add_child(input_menu_instance)
 	
 	_register_focus(left_scroll_container)
 	_register_focus(right_scroll_container)
@@ -118,7 +125,7 @@ func _on_visibility_changed() -> void:
 		ar_check_box.grab_focus()
 
 func _on_return_button_pressed() -> void:
-	SaveManager.save_settings({
+	var settings_dictionary: Dictionary = {
 		"auto_run": GameData.auto_run,
 		"hardware_cursor": GameData.hardware_cursor,
 		"hide_interaction_moving": GameData.hide_interaction_moving,
@@ -130,7 +137,9 @@ func _on_return_button_pressed() -> void:
 		"show_interaction": GameData.show_interaction,
 		"sounds": GameData.sounds,
 		"window_mode": GameData.window_mode
-	})
+	}
+	
+	SaveManager.save_settings(settings_dictionary)
 	
 	SfxManager.play_click()
 	margin_container.visible = false
