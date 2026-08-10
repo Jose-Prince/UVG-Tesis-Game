@@ -75,7 +75,7 @@ func _ready() -> void:
 func _process(delta: float):
 	queue_redraw()
 	z_index = int(global_position.y)
-	if Input.is_action_just_pressed("Action") and DialogueBox.visible and !DialogueBox.is_typing and !DialogueBox.just_skipped:
+	if Input.is_action_just_pressed("ui_accept") and DialogueBox.visible and !DialogueBox.is_typing:
 		DialogueBox.hide_dialogue()
 
 func _physics_process(delta: float) -> void:
@@ -98,8 +98,6 @@ func get_input():
 
 	if GameData.auto_run:
 		current_speed = run_speed
-
-	var input_direction = Input.get_vector("left", "right", "up", "down")
 
 	if input_direction != Vector2.ZERO and GameData.hide_interaction_moving:
 		interaction_point.visible = false
@@ -224,6 +222,5 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("clickable"):
 		current_object = null
 	if body == current_npc:
-		current_npc.untalk()
 		current_npc.player_in_range = false
 		current_npc = null
