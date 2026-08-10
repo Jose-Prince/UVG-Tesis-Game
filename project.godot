@@ -19,9 +19,13 @@ config/icon="uid://cgeaitckg5fnk"
 
 GameData="*res://Scripts/game_data.gd"
 SaveManager="*res://Scripts/save_manager.gd"
+DialogueBox="*uid://bv762dwqnlrcw"
 SfxManager="*res://Scenes/sfx_manager.tscn"
 ArticleDatabase="*res://Scripts/article_database.gd"
-DialogueBubble="*res://Scripts/dialogue_bubble.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [global_group]
 

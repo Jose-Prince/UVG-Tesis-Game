@@ -75,6 +75,8 @@ func _ready() -> void:
 func _process(delta: float):
 	queue_redraw()
 	z_index = int(global_position.y)
+	if Input.is_action_just_pressed("Action") and DialogueBox.visible and !DialogueBox.is_typing and !DialogueBox.just_skipped:
+		DialogueBox.hide_dialogue()
 
 func _physics_process(delta: float) -> void:
 	get_input()
@@ -87,6 +89,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func get_input():
+	if DialogueBox.visible:
+		velocity = Vector2.ZERO
+		return
+	var input_direction = Input.get_vector("left", "right", "up", "down")
+	
 	var current_speed = speed
 
 	if GameData.auto_run:
