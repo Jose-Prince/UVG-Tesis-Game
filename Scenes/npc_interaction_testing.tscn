@@ -527,7 +527,7 @@ script = ExtResource("9_4t6ha")
 hours = 18
 metadata/_custom_type_script = "uid://cc3yiapgcu05y"
 
-[node name="CoffeeShop" type="Node2D" unique_id=152045886]
+[node name="CoffeeShop2" type="Node2D" unique_id=152045886]
 script = ExtResource("1_7fbxu")
 
 [node name="FloorLayer" type="TileMapLayer" parent="." unique_id=851991393]

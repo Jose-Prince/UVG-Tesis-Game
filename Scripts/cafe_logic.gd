@@ -12,6 +12,7 @@ var time_gui: Control
 @onready var scene_transition: CanvasLayer = $SceneTransition
 
 func _ready() -> void:
+	DialogueBox.show_dialogue("Steve", "Hello", preload("uid://nxlljthxlqp5"))
 	print("RESTAURANT %d" % GameData.popularity)
 	for id in GameData.menu_ids:
 		restaurant_menu.append(ArticleDatabase.articles[int(id)])
