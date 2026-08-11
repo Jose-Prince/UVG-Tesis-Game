@@ -60,20 +60,20 @@ func load_game(slot: int):
 	var save_path := SAVE_FOLDER + "save_%d.json" % slot
 	
 	if not FileAccess.file_exists(save_path):
-		return DEFAULT_DATA.duplicate()
+		return DEFAULT_DATA.duplicate(true)
 	
 	var save_file := FileAccess.open(save_path, FileAccess.READ)
 	
 	if save_file == null:
-		return DEFAULT_DATA.duplicate()
+		return DEFAULT_DATA.duplicate(true)
 	
 	var json_string := save_file.get_as_text()
 	save_file.close()
 	
 	var data = JSON.parse_string(json_string)
 	
-	if data == null:
-		return DEFAULT_DATA.duplicate()
+	if data == null or not data is Dictionary:
+		return DEFAULT_DATA.duplicate(true)
 	
 	return data
 
@@ -107,6 +107,32 @@ func get_save_count() -> int:
 	dir.list_dir_end()
 	
 	return count
+
+func get_save_slots() -> Array[int]:
+	var slots: Array[int] = []
+	
+	var dir := DirAccess.open(SAVE_FOLDER)
+	
+	if dir == null:
+		return slots
+	
+	dir.list_dir_begin()
+	
+	var file_name := dir.get_next()
+	
+	while file_name != "":
+		if not dir.current_is_dir():
+			if file_name.begins_with("save_") and file_name.ends_with(".json"):
+				var slot := file_name.trim_prefix("save_").trim_suffix(".json").to_int()
+				slots.append(slot)
+				
+		file_name = dir.get_next()
+	
+	dir.list_dir_end()
+	
+	slots.sort()
+	
+	return slots
 
 func delete_save(slot: int) -> void:
 	var save_path := SAVE_FOLDER + "save_%d.json" % slot
@@ -167,26 +193,11 @@ func load_settings() -> Dictionary:
 	return data
 
 func get_next_slot() -> int:
-	var highest := -1
+	var slots := get_save_slots()
 		
-	var dir := DirAccess.open(SAVE_FOLDER)
+	var slot := 0
+	
+	while slot in slots:
+		slot += 1
 		
-	if dir == null:
-		return 0
-			
-	dir.list_dir_begin()
-		
-	var file := dir.get_next()
-		
-	while file != "":
-		if !dir.current_is_dir():
-			if file.begins_with("save_") and file.ends_with(".json"):
-				var number := file.trim_prefix("save_").trim_suffix(".json").to_int()
-				
-				highest = maxi(highest, number)
-			
-		file = dir.get_next()
-			
-	dir.list_dir_end()
-		
-	return highest + 1
+	return slot

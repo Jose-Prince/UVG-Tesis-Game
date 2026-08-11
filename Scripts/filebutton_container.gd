@@ -7,45 +7,45 @@ var load_buttons: Array[Button] = []
 @onready var back_button: Button = $"../../../../../HBoxContainer/BackButton"
 
 func _ready() -> void:
-	var max_slot = SaveManager.get_save_count()
+	var saves_slots := SaveManager.get_save_slots()
 	
-	if max_slot <= 0:
+	if saves_slots.is_empty():
 		get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
+		return
 	
-	for slot in range(0, max_slot + 1):
-		if SaveManager.save_exists(slot):
-			var save_data = SaveManager.load_game(slot)
-
-			var player_name = save_data["player"]["name"]
-			var money = save_data["player"]["money"]
-
-			var shop_name = save_data["coffee_shop"]["name"]
-
-			var day_index = save_data["world"]["day_index"]
-			var num_day = save_data["world"]["num_day"]
-			var month = save_data["world"]["month"]
-			var year = save_data["world"]["year"]
-
-			var button := LOAD_BUTTON_PREFAB.instantiate()
-			add_child(button)
-			
-			load_buttons.append(button)
-			
-			button.setup(
-				slot,
-				str(player_name),
-				str(shop_name),
-				int(money),
-				int(day_index),
-				int(num_day),
-				int(month),
-				int(year)
-			)
-			
-			button.pressed.connect(
-				_on_save_button_pressed.bind(slot)
-			)
-			
+	for slot in saves_slots:
+		var save_data = SaveManager.load_game(slot)
+		
+		var player_name = save_data["player"]["name"]
+		var money = save_data["player"]["money"]
+		
+		var shop_name = save_data["coffee_shop"]["name"]
+		
+		var day_index = save_data["world"]["day_index"]
+		var num_day = save_data["world"]["num_day"]
+		var month = save_data["world"]["month"]
+		var year = save_data["world"]["year"]
+		
+		var button := LOAD_BUTTON_PREFAB.instantiate()
+		add_child(button)
+		
+		load_buttons.append(button)
+		
+		button.setup(
+			slot,
+			str(player_name),
+			str(shop_name),
+			int(money),
+			int(day_index),
+			int(num_day),
+			int(month),
+			int(year)
+		)
+		
+		button.pressed.connect(
+			_on_save_button_pressed.bind(slot)
+		)
+	
 	_setup_focus()
 
 func _setup_focus() -> void:
