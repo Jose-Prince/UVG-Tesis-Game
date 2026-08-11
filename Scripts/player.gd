@@ -21,7 +21,6 @@ var side_offset := Vector2(8, 0)
 @onready var clothes_bottom: AnimatedSprite2D = $clothes_bottom
 @onready var clothes_top: AnimatedSprite2D = $clothes_top
 @onready var hair: AnimatedSprite2D = $hair
-@onready var dialogue: CanvasLayer = $"../DialogueBubble"
 @onready var interaction_point: Marker2D = $InteractionPoint
 @onready var pointer_sprite: AnimatedSprite2D = $InteractionPoint/PointerSprite
 
