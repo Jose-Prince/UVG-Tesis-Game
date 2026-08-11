@@ -91,13 +91,18 @@ func interact(player):
 					
 					orders.erase(order_data)
 					delivered = true
-					waiting_timer.stop()
 					
 					if orders.is_empty():
+						var tip := calculate_tip()
+						var popularity_bonus := calculate_popularity_bonus()
+						
+						waiting_timer.stop()
+						
 						start_eating()
-						check += calculate_tip()
-						table_popularity += calculate_popularity_bonus()
-						progress_bar.visible = true
+						
+						check += tip
+						table_popularity += popularity_bonus
+						
 						progress_bar.value = 0
 						timer.start()
 						
@@ -287,7 +292,6 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 		body.assign_table(self)
 
 func _on_timer_timeout() -> void:
-	progress_bar.visible = false
 	clear_food()
 	send_customers_home()
 	set_state(States.BILLING)

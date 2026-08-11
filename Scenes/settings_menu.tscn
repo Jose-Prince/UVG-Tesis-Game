@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ciqhnxpcvejhp"]
 
-[ext_resource type="Script" uid="uid://cr7xd8y2pehh4" path="res://Scripts/settings_menu.gd" id="1_h2y1r"]
+[ext_resource type="Script" uid="uid://ccsdtiboh7p2s" path="res://Scripts/settings_menu.gd" id="1_h2y1r"]
 [ext_resource type="Texture2D" uid="uid://djmg2wkx2yige" path="res://Sprites/notebook.png" id="2_3etfd"]
 [ext_resource type="Script" uid="uid://bytdb7qrxipfh" path="res://Scripts/notebook_anim.gd" id="3_rahb6"]
 [ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Fonts/static/PixelifySans-Bold.ttf" id="4_fe37x"]
@@ -696,8 +696,8 @@ text = "Use default settings"
 [connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox" to="." method="_on_location_check_box_toggled"]
 [connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox" to="." method="_on_hide_check_box_toggled"]
 [connection signal="toggled" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox" to="." method="_on_pause_check_box_toggled"]
-[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_h_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_h_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer/MusicSlider" to="." method="_on_music_h_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer/SoundsSlider" to="." method="_on_sounds_h_slider_value_changed"]
 [connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer/HBoxContainer/WindowOptionButton" to="." method="_on_window_option_button_item_selected"]
