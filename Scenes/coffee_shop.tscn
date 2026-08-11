@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bj1uha56tsqxm" path="res://Sprites/kitchen16_blue.png" id="3_k3to3"]
 [ext_resource type="PackedScene" uid="uid://d3hb3h1ih8e8w" path="res://Prefabs/table.tscn" id="4_0k3ma"]
 [ext_resource type="Script" uid="uid://bl0lr7p5pqe12" path="res://Scripts/kitchen_interaction.gd" id="4_ug16k"]
-[ext_resource type="PackedScene" uid="uid://h6uqvesj3b8s" path="res://Prefabs/Player.tscn" id="6_df3mn"]
+[ext_resource type="PackedScene" uid="uid://bvpvcj8gcr7un" path="res://Prefabs/Player.tscn" id="6_df3mn"]
 [ext_resource type="PackedScene" uid="uid://05y0ghmm4qsq" path="res://Prefabs/chair.tscn" id="7_wpc15"]
 [ext_resource type="PackedScene" uid="uid://cn1a17pxcn375" path="res://Prefabs/coffee_maker.tscn" id="8_wvnb4"]
 [ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/cozycaffe_bossa_consolidated_consolidated.ogg" id="9_j1s20"]

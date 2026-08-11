@@ -9,8 +9,7 @@
 [ext_resource type="Script" uid="uid://bcqylyib4yrvl" path="res://Scripts/order_object.gd" id="7_oadwp"]
 [ext_resource type="Script" uid="uid://d3285ev7ubckh" path="res://Scripts/directional_light_2d.gd" id="8_swy37"]
 [ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/date_time.gd" id="9_4t6ha"]
-[ext_resource type="PackedScene" uid="uid://bk2m0scr81vd2" path="res://Prefabs/NPC.tscn" id="10_o0k5q"]
-[ext_resource type="PackedScene" uid="uid://bhk2kle5imqhn" path="res://Prefabs/DialogueBubble.tscn" id="11_sh8if"]
+[ext_resource type="PackedScene" uid="uid://bk2m0scr81vd2" path="res://Prefabs/npc.tscn" id="10_o0k5q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kswvu"]
 texture = ExtResource("2_sh8if")
@@ -527,7 +526,7 @@ script = ExtResource("9_4t6ha")
 hours = 18
 metadata/_custom_type_script = "uid://cc3yiapgcu05y"
 
-[node name="CoffeeShop" type="Node2D" unique_id=152045886]
+[node name="CoffeeShop2" type="Node2D" unique_id=152045886]
 script = ExtResource("1_7fbxu")
 
 [node name="FloorLayer" type="TileMapLayer" parent="." unique_id=851991393]
@@ -578,13 +577,8 @@ night_start = SubResource("Resource_eatfk")
 [node name="NPC" parent="." unique_id=272031947 instance=ExtResource("10_o0k5q")]
 position = Vector2(178, 191)
 
-[node name="DialogueBubble" parent="." unique_id=2046258878 instance=ExtResource("11_sh8if")]
-layer = 2
-visible = false
-
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="child_entered_tree" from="OrderObject" to="OrderObject" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="OrderObject" to="OrderObject" method="_on_child_exiting_tree"]
 
 [editable path="Player"]
-[editable path="DialogueBubble"]

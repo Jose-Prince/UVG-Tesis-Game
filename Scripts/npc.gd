@@ -10,9 +10,4 @@ var player_in_range := false
 @export var portrait: Texture2D
 
 func talk() -> void:
-	print(npc_name, " está hablando...")
-	dialogue.show()
-	DialogueBubble.show_dialogue(dialogue_text, "portrait")
-	
-func untalk() -> void:
-	dialogue.hide()
+	DialogueBox.show_dialogue("Steve", "Hello", preload("uid://nxlljthxlqp5"))
