@@ -1,5 +1,11 @@
 extends Control
 
+signal shop_opened
+signal shop_closed
+
+var shop_was_open := false
+var shop_initialized: bool = false
+
 var start_month: int
 var start_day: int
 var day_index: int
@@ -73,6 +79,26 @@ func _on_time_system_updated(date_time: DateTime) -> void:
 	update_label(day, current_day_number)
 
 	actual_hour = date_time.hours
+		
+	var shop_is_open := GameData.is_shop_open(actual_hour)
+	
+	if not shop_initialized:
+		shop_was_open = shop_is_open
+		shop_initialized = true
+		
+		if shop_is_open:
+			shop_opened.emit()
+		else:
+			shop_closed.emit()
+	
+	elif shop_is_open != shop_was_open:
+		shop_was_open = shop_is_open
+		
+		if shop_is_open:
+			shop_opened.emit()
+		else:
+			shop_closed.emit()
+	
 	var display_hour := date_time.hours
 	var period := "AM"
 

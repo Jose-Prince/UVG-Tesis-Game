@@ -21,6 +21,8 @@ var player_pants_color: Color = Color(0.30, 0.30, 0.30)
 var shop_name := ""
 var menu_ids: Array = []
 var menu: Array[ArticleData]
+var open_hour := 7
+var closed_hour := 17
 
 # World variables
 var month := 0
@@ -40,6 +42,9 @@ var window_mode := 0
 var resolution := 0
 var hardware_cursor := true
 var max_fps := 60
+
+func is_shop_open(hour: int) -> bool:
+	return hour >= open_hour and hour < closed_hour
 
 func _notification(what: int) -> void:
 	if pause_game_inactive:

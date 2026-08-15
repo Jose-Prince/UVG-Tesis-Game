@@ -7,12 +7,13 @@ var tables: Array[Node]
 var coffee_name := ""
 var time_gui: Control
 
+var is_open := false
+
 @onready var customer_timer: Timer = $Timer
 @onready var spawn_point: Marker2D = $CustomerSpawn
 @onready var scene_transition: CanvasLayer = $SceneTransition
 
 func _ready() -> void:
-	print("RESTAURANT %d" % GameData.popularity)
 	for id in GameData.menu_ids:
 		restaurant_menu.append(ArticleDatabase.articles[int(id)])
 	GameData.menu = restaurant_menu
@@ -24,8 +25,16 @@ func _ready() -> void:
 	time_gui = find_child("TimeGui", true, false)
 	tables = get_tree().get_nodes_in_group("table")
 	
+	if time_gui:
+		time_gui.shop_opened.connect(_on_shop_opened)
+		time_gui.shop_closed.connect(_on_shop_closed)
+	
 	for table in tables:
 		table.order_completed.connect(time_gui.add_point)
+	
+	if is_open:
+		update_customer_rate()
+		customer_timer.start()
 	
 	#var popularity_ratio = GameData.popularity / 1000.0
 	var popularity_ratio = 1000.0 / 1000.0
@@ -37,9 +46,15 @@ func _ready() -> void:
 	customer_timer.start()
 
 func _on_timer_timeout() -> void:
+	if not is_open:
+		return
+	
 	call_deferred("customer_spawn")
 
 func customer_spawn():
+	if not is_open:
+		return
+	
 	update_customer_rate()
 	customer_timer.start()
 	
@@ -124,6 +139,15 @@ func update_customer_rate():
 		base_spawn_time /
 		get_hour_factor()
 	)
+
+func _on_shop_opened() -> void:
+	is_open = true
+	update_customer_rate()
+	customer_timer.start()
+	
+func _on_shop_closed() -> void:
+	is_open = false
+	customer_timer.stop()
 
 func _on_leaving_zone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("customer"):
