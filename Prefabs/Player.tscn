@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ce5bfs85ds2ea" path="res://Scenes/pause_menu.tscn" id="7_javds"]
 [ext_resource type="PackedScene" uid="uid://ciqhnxpcvejhp" path="res://Scenes/settings_menu.tscn" id="12_wuv02"]
 [ext_resource type="Texture2D" uid="uid://drkfohtbv1tbl" path="res://Sprites/Spritesheets/Spritesheet_UI_Flat_Animated.png" id="13_8afax"]
+[ext_resource type="PackedScene" uid="uid://dntgf4pto1u5s" path="res://Prefabs/ShopSign.tscn" id="13_t7w7j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ijov"]
 atlas = ExtResource("2_t8lmw")
@@ -2013,6 +2014,8 @@ z_index = 2
 
 [node name="SoundMenu" parent="CanvasLayer" unique_id=915478763 instance=ExtResource("12_wuv02")]
 
+[node name="ShopSign" parent="CanvasLayer" unique_id=2078464268 instance=ExtResource("13_t7w7j")]
+
 [node name="InteractionPoint" type="Marker2D" parent="." unique_id=2051005676]
 position = Vector2(0, -10.666667)
 
@@ -2030,5 +2033,7 @@ shape = SubResource("RectangleShape2D_8afax")
 position = Vector2(8, 0)
 
 [connection signal="updated" from="TimeSystem" to="CanvasLayer/TimeGui" method="_on_time_system_updated"]
+[connection signal="shop_closed" from="CanvasLayer/TimeGui" to="CanvasLayer/ShopSign" method="_on_time_gui_shop_closed"]
+[connection signal="shop_opened" from="CanvasLayer/TimeGui" to="CanvasLayer/ShopSign" method="_on_time_gui_shop_opened"]
 [connection signal="body_entered" from="InteractionPoint/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="InteractionPoint/Area2D" to="." method="_on_area_2d_body_exited"]
