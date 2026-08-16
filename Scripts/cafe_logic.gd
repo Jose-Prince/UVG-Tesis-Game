@@ -6,6 +6,7 @@ var restaurant_menu: Array[ArticleData]
 var tables: Array[Node]
 var coffee_name := ""
 var time_gui: Control
+var time_system: TimeSystem
 
 var is_open := false
 
@@ -23,6 +24,7 @@ func _ready() -> void:
 	#var placeholder = load("res://Sprites/daniel.PNG")  # any image you have
 	#DialogueBox.show_dialogue("Ana", "B¡Bienvenido al café! Me alegra mucho que hayas venido hoy. Tenemos café recién hecho, agua fresca, y algunos especiales del día. El ambiente es tranquilo por la mañana, pero a mediodía se llena bastante. Si necesitas algo, no dudes en pedirlo. ¡Esperamos que disfrutes tu visita!Me alegra mucho que hayas venido hoy. Tenemos café recién hecho, agua fresca, y algunos especiales del día. El ambiente es tranquilo por la mañana, pero a mediodía se llena bastante. Si necesitas algo, no dudes en pedirlo. ¡Esperamos que disfrutes tu visita!", placeholder)
 	time_gui = find_child("TimeGui", true, false)
+	time_system = find_child("TimeSystem", true, false)
 	tables = get_tree().get_nodes_in_group("table")
 	
 	if time_gui:
@@ -36,14 +38,12 @@ func _ready() -> void:
 		update_customer_rate()
 		customer_timer.start()
 	
-	#var popularity_ratio = GameData.popularity / 1000.0
-	var popularity_ratio = 1000.0 / 1000.0
+	var popularity_ratio = GameData.popularity / 1000.0
 	var popularity_factor = sqrt(popularity_ratio)
 	var base_spawn_time = lerp(50.0, 8.0, popularity_factor)
 	var final_spawn_time = base_spawn_time / get_hour_factor()
 	
 	customer_timer.wait_time = final_spawn_time
-	customer_timer.start()
 
 func _on_timer_timeout() -> void:
 	if not is_open:
@@ -125,8 +125,7 @@ func get_hour_factor() -> float:
 	return 0.7
 
 func update_customer_rate():
-	#var popularity_ratio = GameData.popularity / 1000.0
-	var popularity_ratio = 1000.0 / 1000.0
+	var popularity_ratio = GameData.popularity / 1000.0
 	var popularity_factor = sqrt(popularity_ratio)
 	
 	var base_spawn_time = lerp(
@@ -137,16 +136,23 @@ func update_customer_rate():
 	
 	customer_timer.wait_time = (
 		base_spawn_time /
-		get_hour_factor()
+		get_hour_factor() /
+		time_system.time_factor
 	)
 
 func _on_shop_opened() -> void:
 	is_open = true
+	
+	time_system.set_time_factor(2.0)
+	
 	update_customer_rate()
 	customer_timer.start()
 	
 func _on_shop_closed() -> void:
 	is_open = false
+	
+	time_system.set_time_factor(1.0)
+	
 	customer_timer.stop()
 
 func _on_leaving_zone_body_entered(body: Node2D) -> void:
