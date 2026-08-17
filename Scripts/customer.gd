@@ -40,19 +40,19 @@ const CLOTHES_COLORS: Array[Color] = [
 	Color(0.30, 0.30, 0.30),
 	Color(0.90, 0.90, 0.90),
 ]
-const SKIN_FRAMES: SpriteFrames = preload("res://Sprites/character/skin.tres")
+const SKIN_FRAMES: SpriteFrames = preload("res://Assets/Sprites/character/skin.tres")
 const SHIRT_FRAMES: Array = [
-	preload("res://Sprites/character/shirt_1.tres"),
-	preload("res://Sprites/character/shirt_2.tres"),
+	preload("res://Assets/Sprites/character/shirt_1.tres"),
+	preload("res://Assets/Sprites/character/shirt_2.tres"),
 ]
 const PANTS_FRAMES: Array = [
-	preload("res://Sprites/character/pants_1.tres"),
-	preload("res://Sprites/character/pants_2.tres"),
+	preload("res://Assets/Sprites/character/pants_1.tres"),
+	preload("res://Assets/Sprites/character/pants_2.tres"),
 ]
 const HAIR_FRAMES: Array = [
-	preload("res://Sprites/character/hair_1.tres"),
-	preload("res://Sprites/character/hair_2.tres"),
-	preload("res://Sprites/character/hair_3.tres"),
+	preload("res://Assets/Sprites/character/hair_1.tres"),
+	preload("res://Assets/Sprites/character/hair_2.tres"),
+	preload("res://Assets/Sprites/character/hair_3.tres"),
 ]
 
 @onready var skin_layer: AnimatedSprite2D = $skin

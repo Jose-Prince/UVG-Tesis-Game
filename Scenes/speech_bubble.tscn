@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://hytctloep3vg"]
 
 [ext_resource type="Script" uid="uid://cm2rnwurqljso" path="res://Scripts/speech_bubble.gd" id="1_joscm"]
-[ext_resource type="Texture2D" uid="uid://cf0tivs2bk34r" path="res://Sprites/Speech_bubble.PNG" id="2_anisj"]
+[ext_resource type="Texture2D" uid="uid://cf0tivs2bk34r" path="res://Assets/Sprites/Speech_bubble.PNG" id="2_anisj"]
 
 [node name="SpeechBubble" type="Node2D" unique_id=1244530394]
 script = ExtResource("1_joscm")

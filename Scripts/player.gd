@@ -24,19 +24,19 @@ var side_offset := Vector2(8, 0)
 @onready var interaction_point: Marker2D = $InteractionPoint
 @onready var pointer_sprite: AnimatedSprite2D = $InteractionPoint/PointerSprite
 
-const SKIN_FRAMES: SpriteFrames = preload("res://Sprites/character/player_skin.tres")
+const SKIN_FRAMES: SpriteFrames = preload("res://Assets/Sprites/character/player_skin.tres")
 const HAIR_FRAMES: Array = [
-	preload("res://Sprites/character/hair_1.tres"),
-	preload("res://Sprites/character/hair_2.tres"),
-	preload("res://Sprites/character/hair_3.tres"),
+	preload("res://Assets/Sprites/character/hair_1.tres"),
+	preload("res://Assets/Sprites/character/hair_2.tres"),
+	preload("res://Assets/Sprites/character/hair_3.tres"),
 ]
 const SHIRT_FRAMES: Array = [
-	preload("res://Sprites/character/shirt_1.tres"),
-	preload("res://Sprites/character/shirt_2.tres"),
+	preload("res://Assets/Sprites/character/shirt_1.tres"),
+	preload("res://Assets/Sprites/character/shirt_2.tres"),
 ]
 const PANTS_FRAMES: Array = [
-	preload("res://Sprites/character/pants_1.tres"),
-	preload("res://Sprites/character/pants_2.tres"),
+	preload("res://Assets/Sprites/character/pants_1.tres"),
+	preload("res://Assets/Sprites/character/pants_2.tres"),
 ]
 
 func play_layers(anim_name: String):

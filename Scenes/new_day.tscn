@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://fts6ubs0ghnf"]
 
 [ext_resource type="Script" uid="uid://3f8155uphsfu" path="res://Scripts/new_day.gd" id="1_640v5"]
-[ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Fonts/static/PixelifySans-Bold.ttf" id="2_rmkb3"]
+[ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Assets/Fonts/static/PixelifySans-Bold.ttf" id="2_rmkb3"]
 [ext_resource type="Script" uid="uid://cxfpqyib17r24" path="res://Scripts/animated_dots.gd" id="3_rmkb3"]
-[ext_resource type="AudioStream" uid="uid://bq6qcyxxs2w16" path="res://Audios/typewriter_sound.wav" id="4_1fu1n"]
-[ext_resource type="AudioStream" uid="uid://ebctnjjdpchb" path="res://Audios/clip_sound.wav" id="5_mm26e"]
+[ext_resource type="AudioStream" uid="uid://bq6qcyxxs2w16" path="res://Assets/Audios/typewriter_sound.wav" id="4_1fu1n"]
+[ext_resource type="AudioStream" uid="uid://ebctnjjdpchb" path="res://Assets/Audios/clip_sound.wav" id="5_mm26e"]
 [ext_resource type="PackedScene" uid="uid://chcl2gv8i2851" path="res://Scenes/scene_transition.tscn" id="6_3smw6"]
 
 [node name="NewDay" type="Control" unique_id=1569627897]

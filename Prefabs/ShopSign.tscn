@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dntgf4pto1u5s"]
 
-[ext_resource type="Texture2D" uid="uid://bfo3p3t80q4i2" path="res://Sprites/Sign.png" id="1_g0mbb"]
+[ext_resource type="Texture2D" uid="uid://bfo3p3t80q4i2" path="res://Assets/Sprites/Sign.png" id="1_g0mbb"]
 [ext_resource type="Script" uid="uid://du187wruo3pgw" path="res://Scripts/shop_sign.gd" id="1_j76gr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_igq0s"]

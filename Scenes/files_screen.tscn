@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dclatuh7yvi5x"]
 
 [ext_resource type="Script" uid="uid://bpqk0y7rn4qsr" path="res://Scripts/filebutton_container.gd" id="1_aa0qy"]
-[ext_resource type="Texture2D" uid="uid://cx1nyacr2yebd" path="res://Sprites/gingham.PNG" id="1_bmwgd"]
+[ext_resource type="Texture2D" uid="uid://cx1nyacr2yebd" path="res://Assets/Sprites/gingham.PNG" id="1_bmwgd"]
 [ext_resource type="Texture2D" uid="uid://r45ksajhucw5" path="res://Sprites/menu.PNG" id="2_82ox4"]
-[ext_resource type="FontFile" uid="uid://c0rmb6tjydgnl" path="res://Fonts/FascinateInline-Regular.ttf" id="3_0463p"]
+[ext_resource type="FontFile" uid="uid://c0rmb6tjydgnl" path="res://Assets/Fonts/FascinateInline-Regular.ttf" id="3_0463p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_82ox4"]
 border_width_left = 1
