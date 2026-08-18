@@ -55,24 +55,36 @@ func _process(_delta: float) -> void:
 	_set_labels_color(color)
 
 func apply_appearance(appearance: Dictionary) -> void:
+	if appearance.is_empty():
+		return
+
+	var hair_style := int(appearance.get("hair_style", 0))
+	var shirt_style := int(appearance.get("shirt_style", 0))
+	var pants_style := int(appearance.get("pants_style", 0))
+
 	# Skin
 	skin.texture = SKIN_FRAMES.get_frame_texture("walk_down", 0)
-	skin.modulate = Color(appearance["skin_color"])
-	
+	skin.modulate = _parse_color(
+		appearance.get("skin_color", "(1.0, 1.0, 1.0, 1.0)")
+	)
+
 	# Hair
-	var hair_style := int(appearance["hair_style"])
 	hair.texture = HAIR_FRAMES[hair_style].get_frame_texture("walk_down", 0)
-	hair.modulate = Color(appearance["hair_color"])
-	
+	hair.modulate = _parse_color(
+		appearance.get("hair_color", "(1.0, 1.0, 1.0, 1.0)")
+	)
+
 	# Shirt
-	var shirt_style := int(appearance["shirt_style"])
 	clothes_top.texture = SHIRT_FRAMES[shirt_style].get_frame_texture("walk_down", 0)
-	clothes_top.modulate = Color(appearance["shirt_color"])
-	
+	clothes_top.modulate = _parse_color(
+		appearance.get("shirt_color", "(1.0, 1.0, 1.0, 1.0)")
+	)
+
 	# Pants
-	var pants_style := int(appearance["pants_style"])
 	clothes_bottom.texture = PANTS_FRAMES[pants_style].get_frame_texture("walk_down", 0)
-	clothes_bottom.modulate = Color(appearance["pants_color"])
+	clothes_bottom.modulate = _parse_color(
+		appearance.get("pants_color", "(1.0, 1.0, 1.0, 1.0)")
+	)
 
 func _set_labels_color(color: Color) -> void:
 	player_label.add_theme_color_override("font_color", color)
@@ -107,6 +119,24 @@ func setup(
 	]
 	
 	apply_appearance(appearance)
+
+func _parse_color(value: String) -> Color:
+	var clean_value := value.strip_edges()
+
+	# Quitar los paréntesis
+	clean_value = clean_value.trim_prefix("(").trim_suffix(")")
+
+	var values := clean_value.split(",")
+
+	if values.size() != 4:
+		return Color.WHITE
+
+	return Color(
+		float(values[0]),
+		float(values[1]),
+		float(values[2]),
+		float(values[3])
+	)
 
 func _on_delete_file_button_pressed() -> void:
 	SfxManager.play_click()
