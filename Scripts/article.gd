@@ -57,6 +57,7 @@ func get_article_name():
 	return article_data.name
 
 func pickup(new_holder: Node2D):
+	print(self.scale)
 	holder = new_holder
 	if new_holder.has_method("set_held_item"):
 		new_holder.set_held_item(self)

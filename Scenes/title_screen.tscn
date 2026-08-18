@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dkeudwm12bgvk" path="res://Scripts/menu.gd" id="1_klylv"]
 [ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Assets/Audios/cozycaffe_bossa_consolidated_consolidated.ogg" id="2_p3fck"]
 [ext_resource type="Texture2D" uid="uid://cx1nyacr2yebd" path="res://Assets/Sprites/gingham.PNG" id="2_twnyg"]
-[ext_resource type="Texture2D" uid="uid://r45ksajhucw5" path="res://Sprites/menu.PNG" id="3_55kwv"]
+[ext_resource type="Texture2D" uid="uid://r45ksajhucw5" path="res://Placeholders/menu.PNG" id="3_55kwv"]
 [ext_resource type="Texture2D" uid="uid://cgeaitckg5fnk" path="res://Assets/Sprites/Coffee_noB.PNG" id="4_6vd4x"]
 [ext_resource type="FontFile" uid="uid://c0rmb6tjydgnl" path="res://Assets/Fonts/FascinateInline-Regular.ttf" id="4_12m1t"]
 [ext_resource type="Script" uid="uid://dyjktga4k8yto" path="res://Scripts/responsive_label.gd" id="5_0061g"]

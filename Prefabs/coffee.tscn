@@ -2,30 +2,33 @@
 
 [ext_resource type="Script" uid="uid://dgq50m38rejiv" path="res://Scripts/article.gd" id="1_2lmin"]
 [ext_resource type="Resource" uid="uid://d0riswjm5jcyk" path="res://Resources/coffee.tres" id="2_snflx"]
-[ext_resource type="Texture2D" uid="uid://be3soh77w8lvw" path="res://Sprites/coffee_sprite.png" id="3_snflx"]
+[ext_resource type="Texture2D" uid="uid://ura514lpluut" path="res://Assets/Sprites/coffee-sprite_8x8.png" id="3_snflx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_snflx"]
 size = Vector2(6, 4)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_snflx"]
+atlas = ExtResource("3_snflx")
+region = Rect2(0, 0, 8, 8)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xequo"]
 atlas = ExtResource("3_snflx")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(8, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_swa78"]
 atlas = ExtResource("3_snflx")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(16, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c04pl"]
 atlas = ExtResource("3_snflx")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xt85k"]
-atlas = ExtResource("3_snflx")
-region = Rect2(48, 0, 16, 16)
+region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u33qs"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snflx")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xequo")
 }, {
@@ -34,9 +37,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c04pl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xt85k")
 }],
 "loop": 1,
 "name": &"default",
@@ -44,7 +44,6 @@ animations = [{
 }]
 
 [node name="Coffee" type="StaticBody2D" unique_id=2131141647]
-scale = Vector2(0.5, 0.5)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_2lmin")

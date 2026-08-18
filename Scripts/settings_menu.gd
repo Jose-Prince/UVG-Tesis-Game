@@ -27,7 +27,7 @@ var INPUT_MENU_SCENE := preload("res://Scenes/input_menu.tscn")
 
 const SCROLL_MARGIN := 46
 
-var cursor_texture := preload("res://Sprites/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
+var cursor_texture := preload("res://Placeholders/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
 var title_music: AudioStreamPlayer 
 
 # Called when the node enters the scene tree for the first time.

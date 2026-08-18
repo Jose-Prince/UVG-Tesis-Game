@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://blovw2d2eyrm7"]
 
-[ext_resource type="Texture2D" uid="uid://crttdqpbnjv3e" path="res://Sprites/TopDownHouse_FloorsAndWalls.png" id="1_kswvu"]
+[ext_resource type="Texture2D" uid="uid://crttdqpbnjv3e" path="res://Placeholders/TopDownHouse_FloorsAndWalls.png" id="1_kswvu"]
 [ext_resource type="Script" uid="uid://d315dg6v264o8" path="res://Scripts/cafe_logic.gd" id="1_wemkf"]
 [ext_resource type="Script" uid="uid://cgpmptmi7io6m" path="res://Scripts/grid_manager.gd" id="2_bxugb"]
-[ext_resource type="Texture2D" uid="uid://bj1uha56tsqxm" path="res://Sprites/kitchen16_blue.png" id="3_k3to3"]
+[ext_resource type="Texture2D" uid="uid://bj1uha56tsqxm" path="res://Placeholders/kitchen16_blue.png" id="3_k3to3"]
 [ext_resource type="PackedScene" uid="uid://d3hb3h1ih8e8w" path="res://Prefabs/table.tscn" id="4_0k3ma"]
 [ext_resource type="Script" uid="uid://bl0lr7p5pqe12" path="res://Scripts/kitchen_interaction.gd" id="4_ug16k"]
 [ext_resource type="PackedScene" uid="uid://bvpvcj8gcr7un" path="res://Prefabs/Player.tscn" id="6_df3mn"]

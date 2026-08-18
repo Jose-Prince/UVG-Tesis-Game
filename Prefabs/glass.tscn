@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bgduyi5wcuj0c"]
 
 [ext_resource type="Script" uid="uid://dgq50m38rejiv" path="res://Scripts/article.gd" id="1_bxs27"]
-[ext_resource type="Texture2D" uid="uid://dnkc6aqwcragx" path="res://Sprites/water_sprite.png" id="2_bxs27"]
+[ext_resource type="Texture2D" uid="uid://c8g03kcif0l4f" path="res://Assets/Sprites/watter-sprite_8x8.png" id="2_bxs27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ko86c"]
 size = Vector2(6, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1w0hm"]
 atlas = ExtResource("2_bxs27")
-region = Rect2(80, 0, 16, 16)
+region = Rect2(40, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u33qs"]
 animations = [{
@@ -29,4 +29,5 @@ script = ExtResource("1_bxs27")
 shape = SubResource("RectangleShape2D_ko86c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1068378361]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_u33qs")

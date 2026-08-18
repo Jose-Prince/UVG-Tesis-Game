@@ -38,6 +38,17 @@ func _ready() -> void:
 	for table in tables:
 		table.order_completed.connect(time_gui.add_point)
 
+func _process(delta: float) -> void:
+	find_scaled_nodes(self)
+
+func find_scaled_nodes(node: Node):
+	for child in node.get_children():
+		if child is Node2D:
+			if child.scale == Vector2(0.5, 0.5):
+				print("Encontrado: ", child.get_path())
+
+		find_scaled_nodes(child)
+
 func _on_timer_timeout() -> void:
 	if not is_open:
 		return

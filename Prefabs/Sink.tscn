@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5pgj7btnpwub"]
 
 [ext_resource type="Script" uid="uid://n5vu4ib708g8" path="res://Scripts/exchanger.gd" id="1_4a48a"]
-[ext_resource type="Texture2D" uid="uid://bj1uha56tsqxm" path="res://Sprites/kitchen16_blue.png" id="1_tvt42"]
+[ext_resource type="Texture2D" uid="uid://bj1uha56tsqxm" path="res://Placeholders/kitchen16_blue.png" id="1_tvt42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4a48a"]
 

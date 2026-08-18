@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhk2kle5imqhn"]
 
-[ext_resource type="Texture2D" uid="uid://nxlljthxlqp5" path="res://Sprites/NPC_PLACEHOLDER.png" id="1_3pb08"]
-[ext_resource type="Script" uid="uid://ekk16wju7cjv" path="res://Scripts/dialogue_bubble.gd" id="1_s3r8s"]
+[ext_resource type="Texture2D" uid="uid://nxlljthxlqp5" path="res://Placeholders/NPC_PLACEHOLDER.png" id="1_3pb08"]
+[ext_resource type="Script" path="res://Scripts/dialogue_bubble.gd" id="1_s3r8s"]
 
 [node name="DialogueBubble" type="CanvasLayer" unique_id=2046258878]
 layer = 5

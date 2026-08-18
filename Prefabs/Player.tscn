@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cgejjdvlywiw" path="res://Prefabs/object_ui.tscn" id="7_3ygst"]
 [ext_resource type="PackedScene" uid="uid://ce5bfs85ds2ea" path="res://Scenes/pause_menu.tscn" id="7_javds"]
 [ext_resource type="PackedScene" uid="uid://ciqhnxpcvejhp" path="res://Scenes/settings_menu.tscn" id="12_wuv02"]
-[ext_resource type="Texture2D" uid="uid://drkfohtbv1tbl" path="res://Sprites/Spritesheets/Spritesheet_UI_Flat_Animated.png" id="13_8afax"]
+[ext_resource type="Texture2D" uid="uid://drkfohtbv1tbl" path="res://Placeholders/Spritesheets/Spritesheet_UI_Flat_Animated.png" id="13_8afax"]
 [ext_resource type="PackedScene" uid="uid://dntgf4pto1u5s" path="res://Prefabs/ShopSign.tscn" id="13_t7w7j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ijov"]

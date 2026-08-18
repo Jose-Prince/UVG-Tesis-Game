@@ -1,6 +1,6 @@
 extends Node
 
-var cursor_texture := preload("res://Sprites/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
+var cursor_texture := preload("res://Placeholders/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
 var game_slot := 0
 
 # Player variables
