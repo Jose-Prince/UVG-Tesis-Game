@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://b24de4nmx7pop"]
 
 [ext_resource type="Script" uid="uid://d315dg6v264o8" path="res://Scripts/cafe_logic.gd" id="1_7fbxu"]
-[ext_resource type="Texture2D" uid="uid://crttdqpbnjv3e" path="res://Sprites/TopDownHouse_FloorsAndWalls.png" id="2_sh8if"]
+[ext_resource type="Texture2D" uid="uid://crttdqpbnjv3e" path="res://Placeholders/TopDownHouse_FloorsAndWalls.png" id="2_sh8if"]
 [ext_resource type="Script" uid="uid://cgpmptmi7io6m" path="res://Scripts/grid_manager.gd" id="3_bo86s"]
 [ext_resource type="PackedScene" uid="uid://bvpvcj8gcr7un" path="res://Prefabs/Player.tscn" id="4_pa6yj"]
 [ext_resource type="PackedScene" uid="uid://chcl2gv8i2851" path="res://Scenes/scene_transition.tscn" id="5_0ltt6"]
-[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Audios/cozycaffe_bossa_consolidated_consolidated.ogg" id="6_tuvhp"]
+[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Assets/Audios/cozycaffe_bossa_consolidated_consolidated.ogg" id="6_tuvhp"]
 [ext_resource type="Script" uid="uid://bcqylyib4yrvl" path="res://Scripts/order_object.gd" id="7_oadwp"]
 [ext_resource type="Script" uid="uid://d3285ev7ubckh" path="res://Scripts/directional_light_2d.gd" id="8_swy37"]
 [ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/date_time.gd" id="9_4t6ha"]

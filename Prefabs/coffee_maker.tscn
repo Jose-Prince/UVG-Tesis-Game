@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cn1a17pxcn375"]
 
 [ext_resource type="Script" uid="uid://5qbl1i2iod2k" path="res://Scripts/clickable_object.gd" id="1_7mtde"]
-[ext_resource type="Texture2D" uid="uid://cb8adcjn4dat0" path="res://Sprites/cafe_items/Coffe Pot Machine 1.png" id="1_8dl7a"]
+[ext_resource type="Texture2D" uid="uid://cb8adcjn4dat0" path="res://Placeholders/cafe_items/Coffe Pot Machine 1.png" id="1_8dl7a"]
 [ext_resource type="PackedScene" uid="uid://btnjeyby10uxk" path="res://Prefabs/coffee.tscn" id="2_frtu7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8dl7a"]

@@ -1,21 +1,33 @@
 [gd_scene format=3 uid="uid://bgduyi5wcuj0c"]
 
 [ext_resource type="Script" uid="uid://dgq50m38rejiv" path="res://Scripts/article.gd" id="1_bxs27"]
-[ext_resource type="Texture2D" uid="uid://ivufxjdlav1s" path="res://Sprites/TopDownHouse_SmallItems.png" id="1_ypf2s"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k554i"]
-atlas = ExtResource("1_ypf2s")
-region = Rect2(4.860305, 84.092094, 7.1062565, 11.605087)
+[ext_resource type="Texture2D" uid="uid://c8g03kcif0l4f" path="res://Assets/Sprites/watter-sprite_8x8.png" id="2_bxs27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ko86c"]
 size = Vector2(6, 10)
 
-[node name="Glass" type="StaticBody2D" unique_id=1691044326]
-script = ExtResource("1_bxs27")
-price = 0
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w0hm"]
+atlas = ExtResource("2_bxs27")
+region = Rect2(40, 0, 8, 8)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=177862425]
-texture = SubResource("AtlasTexture_k554i")
+[sub_resource type="SpriteFrames" id="SpriteFrames_u33qs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1w0hm")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Glass" type="StaticBody2D" unique_id=1691044326]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_bxs27")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1829573626]
 shape = SubResource("RectangleShape2D_ko86c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1068378361]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_u33qs")

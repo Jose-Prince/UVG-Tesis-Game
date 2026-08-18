@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cpoodtd07o4h"]
 
-[ext_resource type="FontFile" uid="uid://cydo42c7pcqn2" path="res://Fonts/static/PixelifySans-Medium.ttf" id="1_eu6ci"]
-[ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Fonts/static/PixelifySans-Bold.ttf" id="2_s1xu4"]
+[ext_resource type="FontFile" uid="uid://cydo42c7pcqn2" path="res://Assets/Fonts/static/PixelifySans-Medium.ttf" id="1_eu6ci"]
+[ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Assets/Fonts/static/PixelifySans-Bold.ttf" id="2_s1xu4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4s8d"]
 bg_color = Color(0.81960785, 0.7372549, 0.627451, 1)

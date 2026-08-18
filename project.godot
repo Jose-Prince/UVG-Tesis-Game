@@ -17,10 +17,10 @@ config/icon="uid://cgeaitckg5fnk"
 
 [autoload]
 
-GameData="*res://Scripts/game_data.gd"
-SaveManager="*res://Scripts/save_manager.gd"
-SfxManager="*res://Scenes/sfx_manager.tscn"
-ArticleDatabase="*res://Scripts/article_database.gd"
+GameData="*res://Autoloads/game_data.gd"
+SaveManager="*res://Autoloads/save_manager.gd"
+SfxManager="*res://Autoloads/sfx_manager.tscn"
+ArticleDatabase="*res://Autoloads/article_database.gd"
 DialogueBox="*uid://bdl4a5uql2vjg"
 
 [display]

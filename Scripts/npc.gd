@@ -3,8 +3,6 @@ extends CharacterBody2D
 
 var player_in_range := false
 
-@onready var dialogue: CanvasLayer = $"../DialogueBubble"
-
 @export var npc_name := "Cliente"
 @export var dialogue_text := "¡Este lugar está que flipas, manin!."
 @export var portrait: Texture2D

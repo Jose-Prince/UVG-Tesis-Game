@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dy7unp36ghucf"]
 
-[ext_resource type="Texture2D" uid="uid://ivufxjdlav1s" path="res://Sprites/TopDownHouse_SmallItems.png" id="1_i7w7y"]
 [ext_resource type="Script" uid="uid://5qbl1i2iod2k" path="res://Scripts/clickable_object.gd" id="1_ko86c"]
 [ext_resource type="PackedScene" uid="uid://bgduyi5wcuj0c" path="res://Prefabs/glass.tscn" id="2_0vp62"]
+[ext_resource type="Texture2D" uid="uid://c8g03kcif0l4f" path="res://Assets/Sprites/watter-sprite_8x8.png" id="3_ko86c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k554i"]
-atlas = ExtResource("1_i7w7y")
-region = Rect2(4.860305, 84.092094, 7.1062565, 11.605087)
+atlas = ExtResource("3_ko86c")
+region = Rect2(40, 0, 8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ko86c"]
 size = Vector2(6, 10)

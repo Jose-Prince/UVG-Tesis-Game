@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dq03ralao18ys"]
+
+[ext_resource type="AudioStream" uid="uid://bgcgsagmr3pdp" path="res://Assets/Audios/buton1.ogg" id="1_4xxgw"]
+[ext_resource type="Script" uid="uid://mufslw6ip3sv" path="res://Scripts/sfx_manager.gd" id="1_8ebee"]
+[ext_resource type="AudioStream" uid="uid://cmls7jty460k6" path="res://Assets/Audios/campana1.ogg" id="3_oxhci"]
+[ext_resource type="AudioStream" uid="uid://de40pgcigvxev" path="res://Assets/Audios/líquido.mp3" id="4_7g7du"]
+[ext_resource type="AudioStream" uid="uid://hrkbygn7puk2" path="res://Assets/Audios/chiklin.mp3" id="5_trne8"]
+[ext_resource type="AudioStream" uid="uid://c4y350nvpvbyq" path="res://Assets/Audios/pick.mp3" id="6_trne8"]
+
+[node name="SFXManager" type="Node" unique_id=647255754]
+script = ExtResource("1_8ebee")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="." unique_id=568104829]
+stream = ExtResource("1_4xxgw")
+volume_db = 14.345
+
+[node name="BellSound" type="AudioStreamPlayer" parent="." unique_id=1579459960]
+stream = ExtResource("3_oxhci")
+
+[node name="LiquidFillingSound" type="AudioStreamPlayer" parent="." unique_id=1221606826]
+stream = ExtResource("4_7g7du")
+
+[node name="MoneySound" type="AudioStreamPlayer" parent="." unique_id=79683188]
+stream = ExtResource("5_trne8")
+
+[node name="PickSound" type="AudioStreamPlayer" parent="." unique_id=2014172215]
+stream = ExtResource("6_trne8")

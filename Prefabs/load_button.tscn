@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dppufbgfp1bej"]
 
 [ext_resource type="Script" uid="uid://dmk14hw4mroav" path="res://Scripts/load_button.gd" id="1_rs1dc"]
-[ext_resource type="Texture2D" uid="uid://din3urf5gah2f" path="res://Sprites/trash-can.png" id="2_m5ikh"]
+[ext_resource type="Texture2D" uid="uid://din3urf5gah2f" path="res://Assets/Sprites/trash-can.png" id="2_m5ikh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5ikh"]
 bg_color = Color(0.9443732, 0.9011045, 0.7766644, 1)

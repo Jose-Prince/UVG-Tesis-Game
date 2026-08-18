@@ -1,5 +1,11 @@
 extends Control
 
+signal shop_opened
+signal shop_closed
+
+var shop_was_open := false
+var shop_initialized: bool = false
+
 var start_month: int
 var start_day: int
 var day_index: int
@@ -24,6 +30,9 @@ var days = [
 var actual_month: int
 
 var scene_transition: Node
+
+var displayed_money: float = 0.0
+var money_tween: Tween
 
 @onready var month: Label = $Panel/MarginContainer/VBoxContainer/MonthContainer/MarginContainer/PanelContainer/Month
 @onready var day_name: Label = $Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer/dayName
@@ -50,7 +59,8 @@ func _ready() -> void:
 	current_day_index = day_index
 	current_day_number = start_day
 	
-	update_money_display()
+	displayed_money = GameData.money
+	update_money_display(displayed_money)
 	
 	SaveManager.day_ended.connect(_on_day_ended)
 	
@@ -59,7 +69,8 @@ func _ready() -> void:
 func add_point(money_received: float) -> void:
 	GameData.money += money_received
 	SfxManager.play_money()
-	update_money_display()
+	
+	animate_money()
 
 func _on_time_system_updated(date_time: DateTime) -> void:
 	var total_days := start_day + (date_time.days - 1)
@@ -68,6 +79,26 @@ func _on_time_system_updated(date_time: DateTime) -> void:
 	update_label(day, current_day_number)
 
 	actual_hour = date_time.hours
+		
+	var shop_is_open := GameData.is_shop_open(actual_hour)
+	
+	if not shop_initialized:
+		shop_was_open = shop_is_open
+		shop_initialized = true
+		
+		if shop_is_open:
+			shop_opened.emit()
+		else:
+			shop_closed.emit()
+	
+	elif shop_is_open != shop_was_open:
+		shop_was_open = shop_is_open
+		
+		if shop_is_open:
+			shop_opened.emit()
+		else:
+			shop_closed.emit()
+	
 	var display_hour := date_time.hours
 	var period := "AM"
 
@@ -102,8 +133,10 @@ func update_label(label: Label, value: int, should_have_zero: bool = true) -> vo
 
 	label.text += str(value)
 
-func update_money_display():
-	var money_string := "%.2f" % GameData.money
+func update_money_display(money: float) -> void:
+	displayed_money = money
+	
+	var money_string := "%.2f" % money
 
 	money_string = money_string.replace(".", "")
 
@@ -117,6 +150,19 @@ func update_money_display():
 	decimal_1.text = money_string[5]
 	decimal_2.text = money_string[6]
 	
+
+func animate_money() -> void:
+	if money_tween:
+		money_tween.kill()
+		
+	money_tween = create_tween()
+	
+	money_tween.tween_method(
+		update_money_display,
+		displayed_money,
+		GameData.money,
+		0.8
+	)
 
 func _on_day_ended() -> void:
 	SaveManager.save_especific_data(

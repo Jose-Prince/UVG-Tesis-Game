@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="ArticleData" format=3 uid="uid://bg56uibnmcyir"]
 
-[ext_resource type="Texture2D" uid="uid://ivufxjdlav1s" path="res://Sprites/TopDownHouse_SmallItems.png" id="1_0332a"]
+[ext_resource type="Texture2D" uid="uid://c8g03kcif0l4f" path="res://Assets/Sprites/watter-sprite_8x8.png" id="1_0332a"]
 [ext_resource type="Script" uid="uid://6t4couakeorm" path="res://Scripts/article_data.gd" id="1_n55gu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2o78e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_iecrr"]
 atlas = ExtResource("1_0332a")
-region = Rect2(20.332474, 83.58122, 8.689926, 12.009262)
+region = Rect2(0, 0, 8, 8)
 
 [resource]
 script = ExtResource("1_n55gu")
@@ -13,5 +13,5 @@ id = 1
 name = "water"
 price = 0.5
 prep_time = 5
-image = SubResource("AtlasTexture_2o78e")
+image = SubResource("AtlasTexture_iecrr")
 metadata/_custom_type_script = "uid://6t4couakeorm"

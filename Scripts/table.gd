@@ -2,14 +2,16 @@ extends StaticBody2D
 
 signal order_completed
 
+enum States { AVAILABLE, UNAVAILABLE, BILLING }
+
 var chairs: Array[Node2D]
 var customers: Array[Node2D]
 var orders := []
-var isAvailable: bool = true
 var check: float = 0
 var placed_food: Array[Node2D]
 var table_popularity := 0
 var base_wait_time: float
+var actual_state := States.AVAILABLE
 
 @onready var timer: Timer = $Timer
 @onready var progress_bar: ProgressBar = $ProgressBar
@@ -19,6 +21,7 @@ var base_wait_time: float
 @onready var order_object: Node2D = $"../OrderObject"
 @onready var waiting_timer: Timer = $WaitingTimer
 @onready var circular_bar: TextureProgressBar = $CircularBar
+@onready var money: Sprite2D = $money
 
 func _ready():
 	await get_tree().physics_frame
@@ -33,10 +36,13 @@ func _ready():
 	var rect = Rect2(global_position - shape.size/2, shape.size)
 	grid_manager.set_obstacle_rect(rect, true)
 	
+	set_state(States.AVAILABLE)
+
 func _process(delta: float) -> void:
 	z_index = int(global_position.y)
 	if timer.time_left > 0:
 		progress_bar.value = timer.wait_time - timer.time_left
+		_update_food_progress()
 	
 	if waiting_timer.time_left > 0:
 		circular_bar.value = waiting_timer.wait_time - waiting_timer.time_left
@@ -53,13 +59,13 @@ func get_free_chairs():
 
 	return free_chairs
 
-func update_availability():
-	isAvailable = get_free_chairs() != null
-	
 func interact(player):
-	print(customers)
-	print("POPULARITY: " + str(table_popularity))
-	print("TIME: %s" % waiting_timer.wait_time)
+	if actual_state == States.BILLING:
+		order_completed.emit(check)
+		check = 0
+		set_state(States.AVAILABLE)
+		return
+	
 	var delivered := false
 	
 	for child in order_object.get_children():
@@ -85,17 +91,20 @@ func interact(player):
 					
 					orders.erase(order_data)
 					delivered = true
-					waiting_timer.stop()
 					
 					if orders.is_empty():
+						var tip := calculate_tip()
+						var popularity_bonus := calculate_popularity_bonus()
+						
+						waiting_timer.stop()
+						
 						start_eating()
-						check += calculate_tip()
-						table_popularity += calculate_popularity_bonus()
-						progress_bar.visible = true
+						
+						check += tip
+						table_popularity += popularity_bonus
+						
 						progress_bar.value = 0
 						timer.start()
-						order_completed.emit(check)
-						check = 0
 						
 					return
 			
@@ -162,21 +171,25 @@ func start_eating():
 	for customer in customers:
 		if is_instance_valid(customer):
 			customer.currentState = customer.States.Eat
+	
+	for food in placed_food:
+		if is_instance_valid(food):
+			food.animated_sprite_2d.frame = 0
+	
+	_update_food_progress()
 
 func send_customers_home():
 	orders.clear()
 	
 	waiting_timer.wait_time = base_wait_time
 	circular_bar.value = 0
-	
 	circular_bar.visible = false
 	
 	for customer in customers:
 		if is_instance_valid(customer):
 			customer.currentState = customer.States.Leave
 			
-	isAvailable = true
-	
+
 	for chair in chairs:
 		chair.isFree = true
 		
@@ -186,8 +199,6 @@ func send_customers_home():
 	if GameData.popularity < 0:
 		GameData.popularity = 0
 	table_popularity = 0
-	
-	print("ACTUAL POPULARITY: " + str(GameData.popularity))
 
 func assign_customer(customer):
 	if customer not in customers:
@@ -200,6 +211,9 @@ func assign_customer(customer):
 		
 		waiting_timer.wait_time += customer.foodWanted.prep_time
 		circular_bar.max_value = waiting_timer.wait_time
+		
+		if actual_state == States.AVAILABLE:
+			set_state(States.UNAVAILABLE)
 
 func check_all_customers_seated():
 	if customers.is_empty():
@@ -228,11 +242,49 @@ func calculate_tip() -> float:
 func calculate_popularity_bonus() -> int:
 	if waiting_timer.wait_time <= 0:
 		return 0
-
+	
 	var time_ratio := waiting_timer.time_left / waiting_timer.wait_time
 	time_ratio = clamp(time_ratio, 0.0, 1.0)
-
+	
 	return round(time_ratio * customers.size())
+
+func set_state(state: States) -> void:
+	actual_state = state
+	
+	match state:
+		States.AVAILABLE:
+			money.visible = false
+			
+		States.UNAVAILABLE:
+			money.visible = false
+		
+		States.BILLING:
+			money.visible = true
+	
+func _update_food_progress() -> void:
+	if progress_bar.max_value <= 0:
+		return
+		
+	var progress_time := progress_bar.value
+	
+	for food in placed_food:
+		if !is_instance_valid(food):
+			continue
+		
+		var sprite: AnimatedSprite2D = food.animated_sprite_2d
+		var total_frames := sprite.sprite_frames.get_frame_count("default")
+		
+		if total_frames <= 1:
+			continue
+		
+		var frame_duration := progress_bar.max_value / float(total_frames)
+		
+		var frame := mini(
+			int(progress_time / frame_duration),
+			total_frames - 1
+		)
+		
+		sprite.frame = frame
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("chair"):
@@ -240,10 +292,10 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 		body.assign_table(self)
 
 func _on_timer_timeout() -> void:
-	progress_bar.visible = false
 	clear_food()
 	send_customers_home()
-	
+	set_state(States.BILLING)
+
 func _on_mouse_entered():
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
@@ -253,3 +305,4 @@ func _on_mouse_exited():
 func _on_waiting_timer_timeout() -> void:
 	table_popularity += customers.size() * -3
 	send_customers_home()
+	set_state(States.AVAILABLE)
