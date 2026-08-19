@@ -1346,6 +1346,9 @@ script = ExtResource("17_vffnu")
 hours = 18
 metadata/_custom_type_script = "uid://cc3yiapgcu05y"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u33qs"]
+size = Vector2(13, 26)
+
 [node name="CoffeeShop2" type="Node2D" unique_id=152045886]
 script = ExtResource("1_wemkf")
 
@@ -1384,7 +1387,7 @@ one_shot = true
 autostart = true
 
 [node name="Player" parent="." unique_id=1461023337 instance=ExtResource("6_df3mn")]
-position = Vector2(336, 168)
+position = Vector2(128, 168)
 scale = Vector2(1, 1)
 
 [node name="CustomerSpawn" type="Marker2D" parent="." unique_id=1376856490]
@@ -1451,6 +1454,15 @@ day_color = Color(1, 1, 1, 1)
 night_color = Color(0.17254902, 0.078431375, 0.43529412, 1)
 day_start = SubResource("Resource_2o2p7")
 night_start = SubResource("Resource_eatfk")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1333057433]
+position = Vector2(-8, 160)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=336789233]
+position = Vector2(22.5, 0)
+shape = SubResource("RectangleShape2D_u33qs")
+metadata/_edit_group_ = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="LeavingZone" to="." method="_on_leaving_zone_body_entered"]

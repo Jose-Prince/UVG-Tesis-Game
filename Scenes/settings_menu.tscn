@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ciqhnxpcvejhp"]
 
 [ext_resource type="Script" uid="uid://cr7xd8y2pehh4" path="res://Scripts/settings_menu.gd" id="1_h2y1r"]
-[ext_resource type="Texture2D" uid="uid://djmg2wkx2yige" path="res://Placeholders/notebook.png" id="2_3etfd"]
+[ext_resource type="Texture2D" uid="uid://dy1i5ghkyqu4n" path="res://Assets/Sprites/Notebook.PNG" id="2_rahb6"]
 [ext_resource type="Script" uid="uid://bytdb7qrxipfh" path="res://Scripts/notebook_anim.gd" id="3_rahb6"]
 [ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Assets/Fonts/static/PixelifySans-Bold.ttf" id="4_fe37x"]
 [ext_resource type="PackedScene" uid="uid://buu71e7lwp8u2" path="res://Scenes/input_menu.tscn" id="4_rahb6"]
@@ -86,7 +86,7 @@ offset_left = 88.0
 offset_top = 12.0
 offset_right = -248.0
 offset_bottom = 188.0
-texture = ExtResource("2_3etfd")
+texture = ExtResource("2_rahb6")
 script = ExtResource("3_rahb6")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=761894875]
