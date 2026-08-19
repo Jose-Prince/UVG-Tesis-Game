@@ -15,7 +15,6 @@ var close_hour := 0
 var is_close := false
 
 @onready var title: Label = $MarginContainer2/MarginContainer/VBoxContainer/Title
-@onready var time: Label = $MarginContainer2/MarginContainer/VBoxContainer/Time
 @onready var texture_rect: TextureRect = $MarginContainer2/TextureRect
 
 # Called when the node enters the scene tree for the first time.
@@ -24,19 +23,10 @@ func _ready() -> void:
 	close_hour = GameData.closed_hour
 	
 	texture_rect.texture = frame1
-	
-	update_time()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-func update_time() -> void:
-	time.text = "%s - %s" % [
-		format_hour(open_hour),
-		format_hour(close_hour)
-	]
 
 func format_hour(hour: int) -> String:
 	var period := "AM"
@@ -52,7 +42,6 @@ func format_hour(hour: int) -> String:
 
 func play_animation() -> void:
 	title.visible = false
-	time.visible = false
 	
 	var frames: Array[AtlasTexture] = [
 		frame1,
@@ -89,7 +78,6 @@ func play_animation_backwards() -> void:
 	texture_rect.flip_h = false
 	
 	title.visible = true
-	time.visible = true
 
 func _on_time_gui_shop_closed() -> void:
 	if is_close:

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cpoodtd07o4h"]
 
-[ext_resource type="Theme" uid="uid://da0xyab7qjklt" path="res://Assets/Themes/panel_theme.tres" id="1_3s2e7"]
+[ext_resource type="Theme" uid="uid://da0xyab7qjklt" path="res://Resources/Themes/panel_theme.tres" id="1_3s2e7"]
 [ext_resource type="FontFile" uid="uid://cydo42c7pcqn2" path="res://Assets/Fonts/static/PixelifySans-Medium.ttf" id="1_eu6ci"]
 [ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Assets/Fonts/static/PixelifySans-Bold.ttf" id="2_s1xu4"]
-[ext_resource type="Theme" uid="uid://wr30fwhfd2ok" path="res://Assets/Themes/button_theme.tres" id="4_ibm6u"]
+[ext_resource type="Theme" uid="uid://wr30fwhfd2ok" path="res://Resources/Themes/button_theme.tres" id="4_ibm6u"]
 [ext_resource type="Script" uid="uid://bjnc3u5htejs0" path="res://Scripts/time_buttons.gd" id="4_tew1x"]
 [ext_resource type="Texture2D" uid="uid://dsi10327gegg" path="res://Assets/Sprites/play-icons.png" id="5_4wooe"]
 
