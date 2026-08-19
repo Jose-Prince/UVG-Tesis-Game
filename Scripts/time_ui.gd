@@ -34,21 +34,21 @@ var scene_transition: Node
 var displayed_money: float = 0.0
 var money_tween: Tween
 
-@onready var month: Label = $Panel/MarginContainer/VBoxContainer/MonthContainer/MarginContainer/PanelContainer/Month
-@onready var day_name: Label = $Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer/dayName
-@onready var day: Label = $Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer2/day
-@onready var hours: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/hours
-@onready var space: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/space
-@onready var minutes: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/minutes
-@onready var period_label: Label = $Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/period
+@onready var month: Label = $VBoxContainer/Panel/MarginContainer/VBoxContainer/MonthContainer/MarginContainer/PanelContainer/Month
+@onready var day_name: Label = $VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer/dayName
+@onready var day: Label = $VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer2/day
+@onready var hours: Label = $VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/hours
+@onready var space: Label = $VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/space
+@onready var minutes: Label = $VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/minutes
 
-@onready var tens_of_thousand: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/TensOfThousand
-@onready var thousand_unit: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/ThousandUnit
-@onready var hundred: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Hundred
-@onready var ten: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Ten
-@onready var unit: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Unit
-@onready var decimal_1: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Decimal1
-@onready var decimal_2: Label = $Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Decimal2
+@onready var period_label: Label = $VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer/period
+@onready var tens_of_thousand: Label = $VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/TensOfThousand
+@onready var thousand_unit: Label = $VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/ThousandUnit
+@onready var hundred: Label = $VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Hundred
+@onready var ten: Label = $VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Ten
+@onready var unit: Label = $VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Unit
+@onready var decimal_1: Label = $VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Decimal1
+@onready var decimal_2: Label = $VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer/Decimal2
 
 func _ready() -> void:
 	start_month = GameData.month

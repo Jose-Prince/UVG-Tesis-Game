@@ -38,17 +38,6 @@ func _ready() -> void:
 	for table in tables:
 		table.order_completed.connect(time_gui.add_point)
 
-func _process(delta: float) -> void:
-	find_scaled_nodes(self)
-
-func find_scaled_nodes(node: Node):
-	for child in node.get_children():
-		if child is Node2D:
-			if child.scale == Vector2(0.5, 0.5):
-				print("Encontrado: ", child.get_path())
-
-		find_scaled_nodes(child)
-
 func _on_timer_timeout() -> void:
 	if not is_open:
 		return
@@ -152,15 +141,6 @@ func get_popularity_ratio() -> float:
 		1.0
 	)
 
-
-func get_time_factor() -> float:
-	return lerp(
-		2.5,
-		1.0,
-		get_popularity_ratio()
-	)
-
-
 func update_customer_rate() -> void:
 	var popularity_ratio = get_popularity_ratio()
 	var popularity_factor = sqrt(popularity_ratio)
@@ -174,16 +154,11 @@ func update_customer_rate() -> void:
 	customer_timer.wait_time = (
 		base_spawn_time
 		/ get_hour_factor()
-		/ time_system.time_factor
 	)
 
 
 func _on_shop_opened() -> void:
 	is_open = true
-	print(get_time_factor())
-	time_system.set_time_factor(
-		get_time_factor()
-	)
 	
 	update_customer_rate()
 	customer_timer.start()
@@ -192,10 +167,7 @@ func _on_shop_opened() -> void:
 func _on_shop_closed() -> void:
 	is_open = false
 	
-	time_system.set_time_factor(1.0)
-	
 	customer_timer.stop()
-
 
 func _on_leaving_zone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("customer"):
