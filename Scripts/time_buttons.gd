@@ -17,12 +17,15 @@ func _process(delta: float) -> void:
 func _on_play_button_pressed() -> void:
 	play_button.grab_focus()
 	Engine.time_scale = 1.0
+	SfxManager.click_sound.play()
 
 
 func _on_x_2_button_pressed() -> void:
 	x_2_button.grab_focus()
 	Engine.time_scale = 2.0
+	SfxManager.click_sound.play()
 
 func _on_x_3_button_pressed() -> void:
 	x_3_button.grab_focus()
 	Engine.time_scale = 3.0
+	SfxManager.click_sound.play()
