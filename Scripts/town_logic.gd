@@ -1,6 +1,6 @@
 extends Node2D
 
-const  PLAYER = preload("res://Prefabs/Player.tscn")
+const  PLAYER = preload("res://Prefabs/player.tscn")
 
 @onready var spawn_points: Node = $SpawnPoints
 

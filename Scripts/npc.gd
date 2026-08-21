@@ -8,4 +8,5 @@ var player_in_range := false
 @export var portrait: Texture2D
 
 func talk() -> void:
-	DialogueBox.show_dialogue("Steve", "Hello", preload("uid://nxlljthxlqp5"))
+	Dialogic.start("example_timeline")
+	#DialogueBox.show_dialogue("Steve", "Hello", preload("uid://nxlljthxlqp5"))

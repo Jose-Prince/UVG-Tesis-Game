@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://b2rqw43vkg1un" path="res://Placeholders/town free/free version.png" id="3_poxg2"]
 [ext_resource type="PackedScene" uid="uid://ded571vyn71rt" path="res://Prefabs/TeleportSystem/spawn.tscn" id="4_ckvn4"]
 [ext_resource type="PackedScene" uid="uid://dwc1eus3nja55" path="res://Prefabs/TeleportSystem/teleport.tscn" id="5_poxg2"]
+[ext_resource type="PackedScene" uid="uid://bk2m0scr81vd2" path="res://Prefabs/NPCs/npc.tscn" id="6_7kgdu"]
+[ext_resource type="PackedScene" uid="uid://tg3yd48ox0b3" path="res://Prefabs/NPCs/npc2.tscn" id="7_gflae"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7yjef"]
 texture = ExtResource("1_7yjef")
@@ -204,3 +206,9 @@ spawn_id = "cafe_entrance"
 [node name="ShopEntrance" parent="SpawnPoints" unique_id=1160367629 instance=ExtResource("4_ckvn4")]
 position = Vector2(224, 16)
 spawn_id = "shop_entrance"
+
+[node name="Customer" parent="SpawnPoints" unique_id=272031947 instance=ExtResource("6_7kgdu")]
+position = Vector2(96, 128)
+
+[node name="Customer2" parent="SpawnPoints" unique_id=488625023 instance=ExtResource("7_gflae")]
+position = Vector2(144, 128)

@@ -1,7 +1,7 @@
 extends Node2D
 
 const CUSTOMER_SCENE = preload("res://Prefabs/customer.tscn")
-const PLAYER_SCENE = preload("res://Prefabs/Player.tscn")
+const PLAYER_SCENE = preload("res://Prefabs/player.tscn")
 
 var restaurant_menu: Array[ArticleData]
 
