@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bj1uha56tsqxm" path="res://Placeholders/kitchen16_blue.png" id="3_k3to3"]
 [ext_resource type="PackedScene" uid="uid://d3hb3h1ih8e8w" path="res://Prefabs/table.tscn" id="4_0k3ma"]
 [ext_resource type="Script" uid="uid://bl0lr7p5pqe12" path="res://Scripts/kitchen_interaction.gd" id="4_ug16k"]
-[ext_resource type="PackedScene" uid="uid://bvpvcj8gcr7un" path="res://Prefabs/Player.tscn" id="6_df3mn"]
 [ext_resource type="PackedScene" uid="uid://05y0ghmm4qsq" path="res://Prefabs/chair.tscn" id="7_wpc15"]
 [ext_resource type="PackedScene" uid="uid://cn1a17pxcn375" path="res://Prefabs/coffee_maker.tscn" id="8_wvnb4"]
 [ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Assets/Audios/cozycaffe_bossa_consolidated_consolidated.ogg" id="9_j1s20"]
@@ -18,7 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://cyeftfpjy6lld" path="res://Prefabs/water.tscn" id="15_2i3s5"]
 [ext_resource type="Script" uid="uid://d3285ev7ubckh" path="res://Scripts/directional_light_2d.gd" id="16_2i3s5"]
 [ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/date_time.gd" id="17_vffnu"]
-[ext_resource type="Script" uid="uid://cvdu71ex0m365" path="res://Scripts/TeleportSystem/teleport.gd" id="19_eatfk"]
+[ext_resource type="PackedScene" uid="uid://dwc1eus3nja55" path="res://Prefabs/TeleportSystem/teleport.tscn" id="20_ibwl0"]
+[ext_resource type="PackedScene" uid="uid://ded571vyn71rt" path="res://Prefabs/TeleportSystem/spawn.tscn" id="20_qc307"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kswvu"]
 texture = ExtResource("1_kswvu")
@@ -1346,9 +1346,6 @@ script = ExtResource("17_vffnu")
 hours = 18
 metadata/_custom_type_script = "uid://cc3yiapgcu05y"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u33qs"]
-size = Vector2(13, 26)
-
 [node name="CoffeeShop2" type="Node2D" unique_id=152045886]
 script = ExtResource("1_wemkf")
 
@@ -1385,9 +1382,6 @@ position = Vector2(112, 96)
 [node name="Timer" type="Timer" parent="." unique_id=1369650397]
 one_shot = true
 autostart = true
-
-[node name="Player" parent="." unique_id=1461023337 instance=ExtResource("6_df3mn")]
-position = Vector2(128, 168)
 
 [node name="CustomerSpawn" type="Marker2D" parent="." unique_id=1376856490]
 position = Vector2(64, 160)
@@ -1454,20 +1448,17 @@ night_color = Color(0.17254902, 0.078431375, 0.43529412, 1)
 day_start = SubResource("Resource_2o2p7")
 night_start = SubResource("Resource_eatfk")
 
-[node name="ExitZone" type="Area2D" parent="." unique_id=1333057433]
-position = Vector2(-8, 160)
-collision_mask = 2
-script = ExtResource("19_eatfk")
+[node name="Teleport" parent="." unique_id=28215377 instance=ExtResource("20_ibwl0")]
+position = Vector2(8, 160)
 teleport_id = "cafe_exit"
-metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone" unique_id=336789233]
-position = Vector2(22.5, 0)
-shape = SubResource("RectangleShape2D_u33qs")
-metadata/_edit_group_ = true
+[node name="SpawnPoints" type="Node" parent="." unique_id=1549050992]
+
+[node name="CafeExit" parent="SpawnPoints" unique_id=1221738028 instance=ExtResource("20_qc307")]
+position = Vector2(64, 160)
+spawn_id = "cafe_exit"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="LeavingZone" to="." method="_on_leaving_zone_body_entered"]
 [connection signal="child_entered_tree" from="OrderObject" to="OrderObject" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="OrderObject" to="OrderObject" method="_on_child_exiting_tree"]
-[connection signal="body_entered" from="ExitZone" to="ExitZone" method="_on_body_entered"]

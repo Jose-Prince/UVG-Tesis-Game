@@ -1,6 +1,7 @@
 extends Node2D
 
 const CUSTOMER_SCENE = preload("res://Prefabs/customer.tscn")
+const PLAYER_SCENE = preload("res://Prefabs/Player.tscn")
 
 var restaurant_menu: Array[ArticleData]
 
@@ -15,9 +16,24 @@ var is_open := false
 @onready var customer_timer: Timer = $Timer
 @onready var spawn_point: Marker2D = $CustomerSpawn
 @onready var scene_transition: CanvasLayer = $SceneTransition
-
+@onready var spawn_points: Node = $SpawnPoints
+@onready var cafe_exit: SpawnPoint = $SpawnPoints/CafeExit
 
 func _ready() -> void:
+	var player = PLAYER_SCENE.instantiate() as Player
+	add_child(player)
+	
+	var spawn_id := TeleportManager.pending_spawn
+	
+	for spawn in spawn_points.get_children():
+		if spawn_id == "":
+			player.global_position = cafe_exit.global_position
+			break
+		if spawn.spawn_id == spawn_id:
+			player.global_position = spawn.global_position
+	
+	TeleportManager.pending_spawn = ""
+	
 	for id in GameData.menu_ids:
 		restaurant_menu.append(
 			ArticleDatabase.articles[int(id)]
