@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cyeftfpjy6lld" path="res://Prefabs/water.tscn" id="15_2i3s5"]
 [ext_resource type="Script" uid="uid://d3285ev7ubckh" path="res://Scripts/directional_light_2d.gd" id="16_2i3s5"]
 [ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/date_time.gd" id="17_vffnu"]
+[ext_resource type="Script" uid="uid://cvdu71ex0m365" path="res://Scripts/TeleportSystem/teleport.gd" id="19_eatfk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kswvu"]
 texture = ExtResource("1_kswvu")
@@ -518,7 +519,6 @@ texture = SubResource("CompressedTexture2D_k3to3")
 17:8/0 = 0
 17:8/0/custom_data_0 = true
 0:6/0 = 0
-0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.9336376, -8, 5.1360455, 8, 8, 8, 8, -8)
 0:6/0/custom_data_0 = true
 
 [sub_resource type="TileSet" id="TileSet_kswvu"]
@@ -1388,7 +1388,6 @@ autostart = true
 
 [node name="Player" parent="." unique_id=1461023337 instance=ExtResource("6_df3mn")]
 position = Vector2(128, 168)
-scale = Vector2(1, 1)
 
 [node name="CustomerSpawn" type="Marker2D" parent="." unique_id=1376856490]
 position = Vector2(64, 160)
@@ -1455,11 +1454,14 @@ night_color = Color(0.17254902, 0.078431375, 0.43529412, 1)
 day_start = SubResource("Resource_2o2p7")
 night_start = SubResource("Resource_eatfk")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1333057433]
+[node name="ExitZone" type="Area2D" parent="." unique_id=1333057433]
 position = Vector2(-8, 160)
+collision_mask = 2
+script = ExtResource("19_eatfk")
+teleport_id = "cafe_exit"
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=336789233]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone" unique_id=336789233]
 position = Vector2(22.5, 0)
 shape = SubResource("RectangleShape2D_u33qs")
 metadata/_edit_group_ = true
@@ -1468,3 +1470,4 @@ metadata/_edit_group_ = true
 [connection signal="body_entered" from="LeavingZone" to="." method="_on_leaving_zone_body_entered"]
 [connection signal="child_entered_tree" from="OrderObject" to="OrderObject" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="OrderObject" to="OrderObject" method="_on_child_exiting_tree"]
+[connection signal="body_entered" from="ExitZone" to="ExitZone" method="_on_body_entered"]

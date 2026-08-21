@@ -163,7 +163,6 @@ func _on_shop_opened() -> void:
 	update_customer_rate()
 	customer_timer.start()
 
-
 func _on_shop_closed() -> void:
 	is_open = false
 	
