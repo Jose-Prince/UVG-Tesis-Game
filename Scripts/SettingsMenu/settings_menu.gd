@@ -1,14 +1,34 @@
 extends Control
 
 const GENERAL_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/general_settings.tscn")
+const AUDIO_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/audio_settings.tscn")
+const VISUAL_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/visual_settings.tscn")
+const INPUT_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/input_settings.tscn")
+
+var general_settings
+var audio_settings
+var visual_settings
+var input_settings
 
 @onready var notebook: TextureRect = $"../Notebook"
 @onready var notebook_sprite: AnimatedTextureRect = $NotebookSprite
 @onready var v_box_container: VBoxContainer = $MarginContainer/VBoxContainer
 
 func _ready() -> void:
-	var general_settings := GENERAL_SETTINGS_SCENE.instantiate()
+	general_settings = GENERAL_SETTINGS_SCENE.instantiate()
 	v_box_container.add_child(general_settings)
+	
+	audio_settings = AUDIO_SETTINGS_SCENE.instantiate()
+	v_box_container.add_child(audio_settings)
+	audio_settings.hide()
+	
+	visual_settings = VISUAL_SETTINGS_SCENE.instantiate()
+	v_box_container.add_child(visual_settings)
+	visual_settings.hide()
+	
+	input_settings = INPUT_SETTINGS_SCENE.instantiate()
+	v_box_container.add_child(input_settings)
+	input_settings.hide()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Pause") and self.visible:
@@ -241,3 +261,28 @@ func _process(delta: float) -> void:
 func _on_visibility_changed() -> void:
 	if self.visible and notebook_sprite:
 		notebook_sprite.play_animation()
+
+
+func _on_general_button_pressed() -> void:
+	general_settings.show()
+	audio_settings.hide()
+	visual_settings.hide()
+	input_settings.hide()
+
+func _on_audio_button_pressed() -> void:
+	general_settings.hide()
+	audio_settings.show()
+	visual_settings.hide()
+	input_settings.hide()
+
+func _on_visual_button_pressed() -> void:
+	general_settings.hide()
+	audio_settings.hide()
+	visual_settings.show()
+	input_settings.hide()
+
+func _on_input_button_pressed() -> void:
+	general_settings.hide()
+	audio_settings.hide()
+	visual_settings.hide()
+	input_settings.show()
