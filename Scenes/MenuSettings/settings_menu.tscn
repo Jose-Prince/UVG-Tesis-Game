@@ -832,6 +832,7 @@ text = "Inputs"
 [connection signal="pressed" from="Borrable/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="Borrable/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay/DefaultSettingsButton" to="." method="_on_default_settings_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/HBoxContainer/DefaultButton" to="." method="_on_default_button_pressed"]
 [connection signal="pressed" from="ButtonsContainer/GeneralButton" to="." method="_on_general_button_pressed"]
 [connection signal="pressed" from="ButtonsContainer/AudioButton" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="ButtonsContainer/VisualButton" to="." method="_on_visual_button_pressed"]

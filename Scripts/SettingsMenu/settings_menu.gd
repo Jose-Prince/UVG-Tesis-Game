@@ -46,6 +46,12 @@ func _process(delta: float) -> void:
 		notebook.show()
 		self.hide()
 
+func update_ui() -> void:
+	general_settings._update_ui()
+	audio_settings._update_ui()
+	visual_settings._update_ui()
+	#input_settings._upadte_ui()
+
 #@onready var input_container: MarginContainer = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HSeparator2/ScrollContainer/MarginContainer
 #
 #@onready var ar_check_box: CheckBox = $MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/AutoRun/GridContainer/HBoxContainer/ARCheckBox
@@ -309,3 +315,7 @@ func _on_back_button_pressed() -> void:
 	
 	notebook.show()
 	self.hide()
+
+func _on_default_button_pressed() -> void:
+	GameData.set_default()
+	update_ui()
