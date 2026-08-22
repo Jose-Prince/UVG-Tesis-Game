@@ -1,3 +1,172 @@
 [gd_scene format=3 uid="uid://cp584lar6x27i"]
 
+[ext_resource type="PackedScene" uid="uid://b5o0i2tfyc4jy" path="res://Prefabs/min_max_button.tscn" id="1_ggteg"]
+
 [node name="VisualSettings" type="VBoxContainer" unique_id=1192162663]
+
+[node name="WindowMode" type="VBoxContainer" parent="." unique_id=1070916156]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="WindowMode" unique_id=1322852391]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="WindowMode/GridContainer" unique_id=952381751]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Window Mode"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowMode/GridContainer" unique_id=2027044995]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="WindowOptionButton" type="OptionButton" parent="WindowMode/GridContainer/HBoxContainer" unique_id=2019213523]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_top = NodePath("../../../../Sounds/GridContainer/HBoxContainer/SoundsSlider")
+focus_neighbor_right = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_bottom = NodePath("../../../../Resolution/GridContainer/HBoxContainer/ResolutionOptionButton")
+selected = 1
+item_count = 3
+popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+popup/item_2/text = "Windowed Borderless"
+popup/item_2/id = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="WindowMode" unique_id=1301738958]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="WindowMode/MarginContainer" unique_id=1129143102]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Changes how the game is displayed, such as fullscreen, borderless, or windowed mode."
+autowrap_mode = 2
+
+[node name="Resolution" type="VBoxContainer" parent="." unique_id=710986132]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Resolution" unique_id=1188563470]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="Resolution/GridContainer" unique_id=1795457636]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Resolution"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Resolution/GridContainer" unique_id=1590447679]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="ResolutionOptionButton" type="OptionButton" parent="Resolution/GridContainer/HBoxContainer" unique_id=798085710]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_top = NodePath("../../../../WindowMode/GridContainer/HBoxContainer/WindowOptionButton")
+focus_neighbor_right = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_bottom = NodePath("../../../../HardwareCursor/GridContainer/HBoxContainer/CursorCheckBox")
+selected = 1
+item_count = 6
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1680x1050"
+popup/item_1/id = 1
+popup/item_2/text = "1280x1024"
+popup/item_2/id = 2
+popup/item_3/text = "1600x900"
+popup/item_3/id = 3
+popup/item_4/text = "1366x768"
+popup/item_4/id = 4
+popup/item_5/text = "1280x720"
+popup/item_5/id = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Resolution" unique_id=1706955790]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="Resolution/MarginContainer" unique_id=29021624]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Changes the game rendering resolution."
+autowrap_mode = 2
+
+[node name="HardwareCursor" type="VBoxContainer" parent="." unique_id=1671873741]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HardwareCursor" unique_id=1435648752]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="HardwareCursor/GridContainer" unique_id=76066767]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Hardware Cursor"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HardwareCursor/GridContainer" unique_id=1583837254]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="CursorCheckBox" type="CheckBox" parent="HardwareCursor/GridContainer/HBoxContainer" unique_id=547327988]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_top = NodePath("../../../../Resolution/GridContainer/HBoxContainer/ResolutionOptionButton")
+focus_neighbor_right = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_bottom = NodePath("../../../../MaxFPS/GridContainer/HBoxContainer/FpsMinMaxButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="HardwareCursor" unique_id=608820403]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="HardwareCursor/MarginContainer" unique_id=386756433]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Uses your operating system's native mouse cursor, instead of the game's cursor."
+autowrap_mode = 2
+
+[node name="MaxFPS" type="VBoxContainer" parent="." unique_id=1789252504]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MaxFPS" unique_id=574270978]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MaxFPS/GridContainer" unique_id=1595712354]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Max FPS"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MaxFPS/GridContainer" unique_id=120409684]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="FpsMinMaxButton" parent="MaxFPS/GridContainer/HBoxContainer" unique_id=1503408069 instance=ExtResource("1_ggteg")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_top = NodePath("../../../../HardwareCursor/GridContainer/HBoxContainer/CursorCheckBox")
+focus_neighbor_right = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+focus_neighbor_bottom = NodePath("../../../../../../../../ButtonsDisplay/DefaultSettingsButton")
+text = "60"
+
+[node name="MarginContainer" type="MarginContainer" parent="MaxFPS" unique_id=18377262]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="MaxFPS/MarginContainer" unique_id=736434439]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Set the maximun the maximun frames per second for the game. "
+autowrap_mode = 2

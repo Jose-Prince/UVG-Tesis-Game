@@ -14,7 +14,14 @@ var input_settings
 @onready var notebook_sprite: AnimatedTextureRect = $NotebookSprite
 @onready var v_box_container: VBoxContainer = $MarginContainer/VBoxContainer
 
+@onready var general_button: Button = $ButtonsContainer/GeneralButton
+@onready var audio_button: Button = $ButtonsContainer/AudioButton
+@onready var visual_button: Button = $ButtonsContainer/VisualButton
+@onready var input_button: Button = $ButtonsContainer/InputButton
+
 func _ready() -> void:
+	general_button.grab_focus()
+	
 	general_settings = GENERAL_SETTINGS_SCENE.instantiate()
 	v_box_container.add_child(general_settings)
 	
@@ -264,24 +271,32 @@ func _on_visibility_changed() -> void:
 
 
 func _on_general_button_pressed() -> void:
+	general_button.grab_focus()
+	
 	general_settings.show()
 	audio_settings.hide()
 	visual_settings.hide()
 	input_settings.hide()
 
 func _on_audio_button_pressed() -> void:
+	audio_button.grab_focus()
+	
 	general_settings.hide()
 	audio_settings.show()
 	visual_settings.hide()
 	input_settings.hide()
 
 func _on_visual_button_pressed() -> void:
+	visual_button.grab_focus()
+	
 	general_settings.hide()
 	audio_settings.hide()
 	visual_settings.show()
 	input_settings.hide()
 
 func _on_input_button_pressed() -> void:
+	input_button.grab_focus()
+	
 	general_settings.hide()
 	audio_settings.hide()
 	visual_settings.hide()

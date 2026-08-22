@@ -1,3 +1,124 @@
 [gd_scene format=3 uid="uid://cqiggsdy0ppcg"]
 
 [node name="AudioSettings" type="VBoxContainer" unique_id=830742468]
+
+[node name="Master" type="VBoxContainer" parent="." unique_id=208614816]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Master" unique_id=374993799]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="Master/GridContainer" unique_id=1744828938]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Master"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Master/GridContainer" unique_id=1343741363]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="MasterSlider" type="HSlider" parent="Master/GridContainer/HBoxContainer" unique_id=1804865721]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../../../../../../ButtonsDisplay/DefaultSettingsButton")
+focus_neighbor_bottom = NodePath("../../../../Music/GridContainer/HBoxContainer/MusicSlider")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Master" unique_id=792580459]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="Master/MarginContainer" unique_id=1534577028]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Adjusts the overall volume of all game audio."
+autowrap_mode = 2
+
+[node name="Music" type="VBoxContainer" parent="." unique_id=1173161386]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Music" unique_id=343033614]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="Music/GridContainer" unique_id=1256939504]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Music"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Music/GridContainer" unique_id=1519768167]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="MusicSlider" type="HSlider" parent="Music/GridContainer/HBoxContainer" unique_id=771774198]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox")
+focus_neighbor_top = NodePath("../../../../Master/GridContainer/HBoxContainer/MasterSlider")
+focus_neighbor_right = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox")
+focus_neighbor_bottom = NodePath("../../../../Sounds/GridContainer/HBoxContainer/SoundsSlider")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Music" unique_id=957946254]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="Music/MarginContainer" unique_id=454192495]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Adjusts the volume of background music."
+autowrap_mode = 2
+
+[node name="Sounds" type="VBoxContainer" parent="." unique_id=43742302]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Sounds" unique_id=1688793148]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="Sounds/GridContainer" unique_id=1804575399]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Sounds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Sounds/GridContainer" unique_id=527964578]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="SoundsSlider" type="HSlider" parent="Sounds/GridContainer/HBoxContainer" unique_id=1884213635]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox")
+focus_neighbor_top = NodePath("../../../../Music/GridContainer/HBoxContainer/MusicSlider")
+focus_neighbor_right = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox")
+focus_neighbor_bottom = NodePath("../../../../WindowMode/GridContainer/HBoxContainer/WindowOptionButton")
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Sounds" unique_id=1275929535]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="Sounds/MarginContainer" unique_id=1974476702]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Adjusts the volume of sound effects, including interactions and ambient sounds."
+autowrap_mode = 2

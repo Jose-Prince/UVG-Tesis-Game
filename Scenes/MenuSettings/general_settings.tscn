@@ -24,7 +24,7 @@ columns = 2
 
 [node name="Label" type="Label" parent="AutoRun/GridContainer" unique_id=1493861427]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Auto Run"
 
