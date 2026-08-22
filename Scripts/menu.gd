@@ -89,5 +89,8 @@ func _on_quit_mouse_entered() -> void:
 	quit.grab_focus()
 
 func _on_settings_menu_visibility_changed() -> void:
+	if !settings_menu:
+		return
+	
 	if !settings_menu.visible and button_selected:
 		button_selected.grab_focus()

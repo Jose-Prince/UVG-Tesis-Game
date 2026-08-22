@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+signal settings_changed
+
 @onready var ar_check_box: CheckBox = $AutoRun/GridContainer/HBoxContainer/ARCheckBox
 @onready var location_check_box: CheckBox = $ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox
 @onready var hide_check_box: CheckBox = $HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox
@@ -22,12 +24,16 @@ func _process(delta: float) -> void:
 
 func _on_ar_check_box_toggled(toggled_on: bool) -> void:
 	GameData.auto_run = toggled_on
+	settings_changed.emit()
 
 func _on_location_check_box_toggled(toggled_on: bool) -> void:
 	GameData.show_interaction = toggled_on
+	settings_changed.emit()
 
 func _on_hide_check_box_toggled(toggled_on: bool) -> void:
-	GameData.show_interaction = toggled_on
+	GameData.hide_interaction_moving = toggled_on
+	settings_changed.emit()
 
 func _on_pause_check_box_toggled(toggled_on: bool) -> void:
 	GameData.pause_game_inactive = toggled_on
+	settings_changed.emit()
