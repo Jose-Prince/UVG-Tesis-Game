@@ -1,5 +1,7 @@
 extends Node
 
+signal settings_changed
+
 @onready var master_slider: HSlider = $Master/GridContainer/HBoxContainer/MasterSlider
 @onready var music_slider: HSlider = $Music/GridContainer/HBoxContainer/MusicSlider
 @onready var sounds_slider: HSlider = $Sounds/GridContainer/HBoxContainer/SoundsSlider
@@ -20,9 +22,12 @@ func _update_ui() -> void:
 
 func _on_master_slider_value_changed(value: float) -> void:
 	GameData.master = value
+	settings_changed.emit()
 
 func _on_music_slider_value_changed(value: float) -> void:
 	GameData.music = value
+	settings_changed.emit()
 
 func _on_sounds_slider_value_changed(value: float) -> void:
 	GameData.sounds = value
+	settings_changed.emit()

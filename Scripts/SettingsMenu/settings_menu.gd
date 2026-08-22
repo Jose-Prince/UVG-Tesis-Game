@@ -109,3 +109,19 @@ func _on_default_button_pressed() -> void:
 
 func _on_save_button_pressed() -> void:
 	save_button.disabled = true
+	
+	var settings_dictionary: Dictionary = {
+		"auto_run": GameData.auto_run,
+		"hardware_cursor": GameData.hardware_cursor,
+		"hide_interaction_moving": GameData.hide_interaction_moving,
+		"master": GameData.master,
+		"max_fps": GameData.max_fps,
+		"music": GameData.music,
+		"pause_game_inactive": GameData.pause_game_inactive,
+		"resolution": GameData.resolution,
+		"show_interaction": GameData.show_interaction,
+		"sounds": GameData.sounds,
+		"window_mode": GameData.window_mode
+	}
+	
+	SaveManager.save_settings(settings_dictionary)

@@ -1,5 +1,7 @@
 extends Node
 
+signal settings_changed
+
 const CURSOR_TEXTURE := preload("res://Placeholders/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
 
 @onready var window_option_button: OptionButton = $WindowMode/GridContainer/HBoxContainer/WindowOptionButton
@@ -35,6 +37,7 @@ func _on_window_option_button_item_selected(index: int) -> void:
 		2: #Windowed Borderless
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	settings_changed.emit()
 
 func _on_resolution_option_button_item_selected(index: int) -> void:
 	GameData.resolution = index
@@ -59,13 +62,16 @@ func _on_resolution_option_button_item_selected(index: int) -> void:
 	var screen = DisplayServer.screen_get_usable_rect()
 	var position = (screen.size - resolution) / 2
 	DisplayServer.window_set_position(Vector2i(position))
+	settings_changed.emit()
 
 func _on_cursor_check_box_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		Input.set_custom_mouse_cursor(CURSOR_TEXTURE)
 	else:
 		Input.set_custom_mouse_cursor(null)
+	settings_changed.emit()
 
 func _on_fps_min_max_button_pressed(value: int) -> void:
 	GameData.max_fps
 	Engine.max_fps = value
+	settings_changed.emit()
