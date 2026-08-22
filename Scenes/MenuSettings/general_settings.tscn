@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bupp027jeswwg"]
 
+[ext_resource type="Script" uid="uid://bafasfkh8o0n" path="res://Scripts/SettingsMenu/general_menu.gd" id="1_gfrjp"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66hv6"]
 bg_color = Color(0.78431374, 0.60784316, 0.3882353, 1)
 border_color = Color(0.3529412, 0.21960784, 0.14117648, 1)
@@ -14,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gfrjp")
 
 [node name="AutoRun" type="VBoxContainer" parent="." unique_id=731179725]
 layout_mode = 2
@@ -169,3 +172,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "Automatically pauses the game when the game window loses focus."
 autowrap_mode = 2
+
+[connection signal="toggled" from="AutoRun/GridContainer/HBoxContainer/ARCheckBox" to="." method="_on_ar_check_box_toggled"]
+[connection signal="toggled" from="ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox" to="." method="_on_location_check_box_toggled"]
+[connection signal="toggled" from="HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox" to="." method="_on_hide_check_box_toggled"]
+[connection signal="toggled" from="PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox" to="." method="_on_pause_check_box_toggled"]

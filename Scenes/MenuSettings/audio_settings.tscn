@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://cqiggsdy0ppcg"]
 
+[ext_resource type="Script" uid="uid://crs7b6koaph0q" path="res://Scripts/SettingsMenu/audio_menu.gd" id="1_ome6k"]
+
 [node name="AudioSettings" type="VBoxContainer" unique_id=830742468]
+script = ExtResource("1_ome6k")
 
 [node name="Master" type="VBoxContainer" parent="." unique_id=208614816]
 layout_mode = 2
@@ -122,3 +125,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "Adjusts the volume of sound effects, including interactions and ambient sounds."
 autowrap_mode = 2
+
+[connection signal="value_changed" from="Master/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Music/GridContainer/HBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Sounds/GridContainer/HBoxContainer/SoundsSlider" to="." method="_on_sounds_slider_value_changed"]
