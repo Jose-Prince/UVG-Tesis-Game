@@ -85,6 +85,7 @@ border_width_bottom = 1
 border_color = Color(0.34117648, 0.2, 0.101960786, 1)
 
 [node name="SettingsMenu" type="Control" unique_id=915478763]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
