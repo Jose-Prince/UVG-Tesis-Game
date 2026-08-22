@@ -19,22 +19,24 @@ var input_settings
 @onready var visual_button: Button = $ButtonsContainer/VisualButton
 @onready var input_button: Button = $ButtonsContainer/InputButton
 
+@onready var settings_container: MarginContainer = $MarginContainer/VBoxContainer/SettingsContainer
+
 func _ready() -> void:
 	general_button.grab_focus()
 	
 	general_settings = GENERAL_SETTINGS_SCENE.instantiate()
-	v_box_container.add_child(general_settings)
+	settings_container.add_child(general_settings)
 	
 	audio_settings = AUDIO_SETTINGS_SCENE.instantiate()
-	v_box_container.add_child(audio_settings)
+	settings_container.add_child(audio_settings)
 	audio_settings.hide()
 	
 	visual_settings = VISUAL_SETTINGS_SCENE.instantiate()
-	v_box_container.add_child(visual_settings)
+	settings_container.add_child(visual_settings)
 	visual_settings.hide()
 	
 	input_settings = INPUT_SETTINGS_SCENE.instantiate()
-	v_box_container.add_child(input_settings)
+	settings_container.add_child(input_settings)
 	input_settings.hide()
 
 func _process(delta: float) -> void:
@@ -301,3 +303,9 @@ func _on_input_button_pressed() -> void:
 	audio_settings.hide()
 	visual_settings.hide()
 	input_settings.show()
+
+func _on_back_button_pressed() -> void:
+	await notebook_sprite.play_animation_backwards()
+	
+	notebook.show()
+	self.hide()

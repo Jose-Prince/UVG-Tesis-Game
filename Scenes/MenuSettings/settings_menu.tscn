@@ -84,8 +84,46 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.34117648, 0.2, 0.101960786, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkd5x"]
+bg_color = Color(0.91764706, 0.8784314, 0.78039217, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rvfb"]
+bg_color = Color(0.91764706, 0.8784314, 0.78039217, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dl6cc"]
+bg_color = Color(0.91764706, 0.8784314, 0.78039217, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 2
+
 [node name="SettingsMenu" type="Control" unique_id=915478763]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -706,6 +744,43 @@ uppercase = true
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=687185949]
 layout_mode = 2
 
+[node name="SettingsContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=870082669]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=477071060]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer" unique_id=1596548277]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("7_yyxvr")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_xkd5x")
+text = "Back"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ButtonsContainer" unique_id=1148682265]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="DefaultButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer/HBoxContainer" unique_id=271792729]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = ExtResource("7_yyxvr")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_6rvfb")
+text = "Default Settings"
+
+[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer/HBoxContainer" unique_id=900825993]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("7_yyxvr")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_dl6cc")
+text = "Save"
+
 [node name="ButtonsContainer" type="HBoxContainer" parent="." unique_id=899026081]
 layout_mode = 0
 offset_left = 790.0
@@ -746,8 +821,8 @@ text = "Inputs"
 [connection signal="toggled" from="Borrable/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox" to="." method="_on_location_check_box_toggled"]
 [connection signal="toggled" from="Borrable/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox" to="." method="_on_hide_check_box_toggled"]
 [connection signal="toggled" from="Borrable/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox" to="." method="_on_pause_check_box_toggled"]
-[connection signal="value_changed" from="Borrable/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="Borrable/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_h_slider_value_changed"]
+[connection signal="value_changed" from="Borrable/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="Borrable/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer/MusicSlider" to="." method="_on_music_h_slider_value_changed"]
 [connection signal="value_changed" from="Borrable/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer/SoundsSlider" to="." method="_on_sounds_h_slider_value_changed"]
 [connection signal="item_selected" from="Borrable/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer/HBoxContainer/WindowOptionButton" to="." method="_on_window_option_button_item_selected"]
@@ -756,6 +831,7 @@ text = "Inputs"
 [connection signal="pressed" from="Borrable/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer/HBoxContainer/FpsMinMaxButton" to="." method="_on_fps_min_max_button_pressed"]
 [connection signal="pressed" from="Borrable/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay/ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="Borrable/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay/DefaultSettingsButton" to="." method="_on_default_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="ButtonsContainer/GeneralButton" to="." method="_on_general_button_pressed"]
 [connection signal="pressed" from="ButtonsContainer/AudioButton" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="ButtonsContainer/VisualButton" to="." method="_on_visual_button_pressed"]
