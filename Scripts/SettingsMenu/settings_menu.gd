@@ -1,7 +1,14 @@
 extends Control
 
+const GENERAL_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/general_settings.tscn")
+
 @onready var notebook: TextureRect = $"../Notebook"
 @onready var notebook_sprite: AnimatedTextureRect = $NotebookSprite
+@onready var v_box_container: VBoxContainer = $MarginContainer/VBoxContainer
+
+func _ready() -> void:
+	var general_settings := GENERAL_SETTINGS_SCENE.instantiate()
+	v_box_container.add_child(general_settings)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Pause") and self.visible:
@@ -232,5 +239,5 @@ func _process(delta: float) -> void:
 
 
 func _on_visibility_changed() -> void:
-	if self.visible:
+	if self.visible and notebook_sprite:
 		notebook_sprite.play_animation()
