@@ -1,5 +1,7 @@
 extends Control
 
+@onready var notebook: TextureRect = $Notebook
+
 # Buttons
 @onready var continue_button: UIButton = $Buttons/ContinueButton
 @onready var settings_button: UIButton = $Buttons/SettingsButton
@@ -30,7 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			continue_button.grab_focus()
 
 func toggle_pause():
-	if get_tree().paused:
+	if get_tree().paused and !settings_menu.visible:
 		var focus := get_viewport().gui_get_focus_owner()
 		if focus:
 			focus.release_focus()
@@ -52,7 +54,8 @@ func _on_return_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
 
 func _on_settings_button_pressed() -> void:
-	settings_menu.visible = true
+	notebook.hide()
+	settings_menu.show()
 
 func _on_continue_button_mouse_entered() -> void:
 	continue_button.grab_focus()

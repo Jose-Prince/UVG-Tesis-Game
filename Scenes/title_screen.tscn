@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://dyjktga4k8yto" path="res://Scripts/responsive_label.gd" id="5_0061g"]
 [ext_resource type="Script" uid="uid://dcxaa76iw32mu" path="res://Scripts/responsive_button.gd" id="8_8mikk"]
 [ext_resource type="FontFile" uid="uid://c6m8rdtvxahbg" path="res://Assets/Fonts/static/PixelifySans-Regular.ttf" id="8_0061g"]
-[ext_resource type="PackedScene" uid="uid://ciqhnxpcvejhp" path="res://Scenes/settings_menu.tscn" id="9_0061g"]
+[ext_resource type="PackedScene" uid="uid://ciqhnxpcvejhp" path="res://Scenes/MenuSettings/settings_menu.tscn" id="9_0061g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n82rj"]
 bg_color = Color(0.76862746, 0.49803922, 0.30980393, 1)

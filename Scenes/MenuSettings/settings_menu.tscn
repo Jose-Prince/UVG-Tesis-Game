@@ -1,11 +1,40 @@
 [gd_scene format=3 uid="uid://ciqhnxpcvejhp"]
 
-[ext_resource type="Script" uid="uid://cr7xd8y2pehh4" path="res://Scripts/settings_menu.gd" id="1_h2y1r"]
-[ext_resource type="Texture2D" uid="uid://dy1i5ghkyqu4n" path="res://Assets/Sprites/Notebook.PNG" id="2_rahb6"]
-[ext_resource type="Script" uid="uid://bytdb7qrxipfh" path="res://Scripts/notebook_anim.gd" id="3_rahb6"]
-[ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Assets/Fonts/static/PixelifySans-Bold.ttf" id="4_fe37x"]
-[ext_resource type="PackedScene" uid="uid://buu71e7lwp8u2" path="res://Scenes/input_menu.tscn" id="4_rahb6"]
-[ext_resource type="PackedScene" uid="uid://b5o0i2tfyc4jy" path="res://Prefabs/min_max_button.tscn" id="5_3etfd"]
+[ext_resource type="Script" uid="uid://cr7xd8y2pehh4" path="res://Scripts/SettingsMenu/settings_menu.gd" id="1_yyxvr"]
+[ext_resource type="Texture2D" uid="uid://dy1i5ghkyqu4n" path="res://Assets/Sprites/Notebook.PNG" id="2_5ilaj"]
+[ext_resource type="Script" uid="uid://dgkhhcqfqjbl1" path="res://Scripts/animated_texture_rect.gd" id="2_vxpks"]
+[ext_resource type="Texture2D" uid="uid://0efckay8br1t" path="res://Assets/Sprites/Notebook-sheet.png" id="3_5ilaj"]
+[ext_resource type="PackedScene" uid="uid://buu71e7lwp8u2" path="res://Scenes/MenuSettings/input_menu.tscn" id="3_yyxvr"]
+[ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Assets/Fonts/static/PixelifySans-Bold.ttf" id="4_dl6cc"]
+[ext_resource type="PackedScene" uid="uid://b5o0i2tfyc4jy" path="res://Prefabs/min_max_button.tscn" id="5_6rvfb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ilaj"]
+atlas = ExtResource("3_5ilaj")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyxvr"]
+atlas = ExtResource("3_5ilaj")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl6cc"]
+atlas = ExtResource("3_5ilaj")
+region = Rect2(600, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rvfb"]
+atlas = ExtResource("3_5ilaj")
+region = Rect2(900, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wii03"]
+atlas = ExtResource("3_5ilaj")
+region = Rect2(1200, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxhtd"]
+atlas = ExtResource("3_5ilaj")
+region = Rect2(1500, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7meqa"]
+atlas = ExtResource("3_5ilaj")
+region = Rect2(1800, 0, 300, 300)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6771"]
 bg_color = Color(0.81960785, 0.7372549, 0.627451, 0)
@@ -67,7 +96,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_h2y1r")
+script = ExtResource("1_yyxvr")
 
 [node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1894712450]
 layout_mode = 1
@@ -77,17 +106,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=629685519]
+[node name="NotebookSprite" type="TextureRect" parent="." unique_id=629685519]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 88.0
-offset_top = 12.0
-offset_right = -248.0
-offset_bottom = 188.0
-texture = ExtResource("2_rahb6")
-script = ExtResource("3_rahb6")
+offset_left = 93.0
+offset_top = 4.0
+offset_right = -251.0
+offset_bottom = 164.0
+texture = ExtResource("2_5ilaj")
+script = ExtResource("2_vxpks")
+sprite_list = Array[AtlasTexture]([SubResource("AtlasTexture_5ilaj"), SubResource("AtlasTexture_yyxvr"), SubResource("AtlasTexture_dl6cc"), SubResource("AtlasTexture_6rvfb"), SubResource("AtlasTexture_wii03"), SubResource("AtlasTexture_lxhtd"), SubResource("AtlasTexture_7meqa")])
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=761894875]
 visible = false
@@ -122,13 +152,14 @@ theme_override_constants/margin_bottom = 10
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer" unique_id=1364177422]
 layout_mode = 2
 
-[node name="SettingsMenu" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=205128339 instance=ExtResource("4_rahb6")]
+[node name="SettingsMenu" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=205128339 instance=ExtResource("3_yyxvr")]
 layout_mode = 2
+script = null
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=789632845]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_fe37x")
+theme_override_fonts/font = ExtResource("4_dl6cc")
 theme_override_font_sizes/font_size = 40
 text = "Configuration Menu"
 horizontal_alignment = 1
@@ -654,7 +685,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="FpsMinMaxButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer/HBoxContainer" unique_id=521250400 instance=ExtResource("5_3etfd")]
+[node name="FpsMinMaxButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/MaxFPS/GridContainer/HBoxContainer" unique_id=521250400 instance=ExtResource("5_6rvfb")]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../../../../LeftScrollContainer/MarginContainer/LeftColumn/PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
 focus_neighbor_top = NodePath("../../../../HardwareCursor/GridContainer/HBoxContainer/CursorCheckBox")
