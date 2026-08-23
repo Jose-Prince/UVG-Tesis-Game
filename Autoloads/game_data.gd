@@ -43,6 +43,14 @@ var resolution := 0
 var hardware_cursor := true
 var max_fps := 60
 
+# Interaction systems
+enum InteractionMode {
+	KEYBOARD,
+	MOUSE
+}
+
+var interaction_mode := InteractionMode.MOUSE
+
 func is_shop_open(hour: int) -> bool:
 	return hour >= open_hour and hour < closed_hour
 
