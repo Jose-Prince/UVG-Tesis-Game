@@ -3,7 +3,7 @@ extends Control
 const GENERAL_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/general_settings.tscn")
 const AUDIO_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/audio_settings.tscn")
 const VISUAL_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/visual_settings.tscn")
-const INPUT_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/input_settings.tscn")
+const INPUT_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/input_settings2.tscn")
 
 var general_settings
 var audio_settings
@@ -49,6 +49,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Pause") and self.visible:
+		content.hide()
+		buttons_container.hide()
+
 		await notebook_sprite.play_animation_backwards()
 		
 		if notebook:
