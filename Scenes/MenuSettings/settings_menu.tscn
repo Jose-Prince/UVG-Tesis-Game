@@ -100,7 +100,7 @@ script = ExtResource("2_vxpks")
 sprite_list = Array[AtlasTexture]([SubResource("AtlasTexture_5ilaj"), SubResource("AtlasTexture_yyxvr"), SubResource("AtlasTexture_dl6cc"), SubResource("AtlasTexture_6rvfb"), SubResource("AtlasTexture_wii03"), SubResource("AtlasTexture_lxhtd"), SubResource("AtlasTexture_7meqa")])
 frame_duration = 0.05
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1975203867]
+[node name="Content" type="MarginContainer" parent="." unique_id=1975203867]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 405.0
@@ -112,10 +112,10 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=165809259]
+[node name="VBoxContainer" type="VBoxContainer" parent="Content" unique_id=165809259]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=58361295]
+[node name="Label" type="Label" parent="Content/VBoxContainer" unique_id=58361295]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Configuration Menu"
@@ -123,17 +123,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=687185949]
+[node name="HSeparator" type="HSeparator" parent="Content/VBoxContainer" unique_id=687185949]
 layout_mode = 2
 
-[node name="SettingsContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=870082669]
+[node name="SettingsContainer" type="MarginContainer" parent="Content/VBoxContainer" unique_id=870082669]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=477071060]
+[node name="ButtonsContainer" type="HBoxContainer" parent="Content/VBoxContainer" unique_id=477071060]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer" unique_id=1596548277]
+[node name="BackButton" type="Button" parent="Content/VBoxContainer/ButtonsContainer" unique_id=1596548277]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme = ExtResource("7_yyxvr")
@@ -141,13 +141,13 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_xkd5x")
 text = "Back"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ButtonsContainer" unique_id=1148682265]
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/VBoxContainer/ButtonsContainer" unique_id=1148682265]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 15
 alignment = 2
 
-[node name="DefaultButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer/HBoxContainer" unique_id=271792729]
+[node name="DefaultButton" type="Button" parent="Content/VBoxContainer/ButtonsContainer/HBoxContainer" unique_id=271792729]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme = ExtResource("7_yyxvr")
@@ -155,7 +155,7 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_6rvfb")
 text = "Default Settings"
 
-[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer/HBoxContainer" unique_id=900825993]
+[node name="SaveButton" type="Button" parent="Content/VBoxContainer/ButtonsContainer/HBoxContainer" unique_id=900825993]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme = ExtResource("7_yyxvr")
@@ -201,9 +201,9 @@ theme_override_font_sizes/font_size = 20
 text = "Inputs"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/HBoxContainer/DefaultButton" to="." method="_on_default_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Content/VBoxContainer/ButtonsContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Content/VBoxContainer/ButtonsContainer/HBoxContainer/DefaultButton" to="." method="_on_default_button_pressed"]
+[connection signal="pressed" from="Content/VBoxContainer/ButtonsContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="ButtonsContainer/GeneralButton" to="." method="_on_general_button_pressed"]
 [connection signal="pressed" from="ButtonsContainer/AudioButton" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="ButtonsContainer/VisualButton" to="." method="_on_visual_button_pressed"]

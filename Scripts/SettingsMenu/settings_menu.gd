@@ -19,8 +19,11 @@ var input_settings
 @onready var visual_button: Button = $ButtonsContainer/VisualButton
 @onready var input_button: Button = $ButtonsContainer/InputButton
 
-@onready var settings_container: MarginContainer = $MarginContainer/VBoxContainer/SettingsContainer
-@onready var save_button: Button = $MarginContainer/VBoxContainer/ButtonsContainer/HBoxContainer/SaveButton
+@onready var settings_container: MarginContainer = $Content/VBoxContainer/SettingsContainer
+@onready var save_button: Button = $Content/VBoxContainer/ButtonsContainer/HBoxContainer/SaveButton
+
+@onready var content: MarginContainer = $Content
+@onready var buttons_container: HBoxContainer = $ButtonsContainer
 
 func _ready() -> void:
 	general_button.grab_focus()
@@ -40,6 +43,9 @@ func _ready() -> void:
 	input_settings = INPUT_SETTINGS_SCENE.instantiate()
 	settings_container.add_child(input_settings)
 	input_settings.hide()
+	
+	content.hide()
+	buttons_container.hide()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Pause") and self.visible:
@@ -60,8 +66,10 @@ func _on_settings_changed() -> void:
 
 func _on_visibility_changed() -> void:
 	if self.visible and notebook_sprite:
-		notebook_sprite.play_animation()
-
+		await notebook_sprite.play_animation()
+		
+		content.show()
+		buttons_container.show()
 
 func _on_general_button_pressed() -> void:
 	general_button.grab_focus()
@@ -96,6 +104,8 @@ func _on_input_button_pressed() -> void:
 	input_settings.show()
 
 func _on_back_button_pressed() -> void:
+	content.hide()
+	buttons_container.hide()
 	await notebook_sprite.play_animation_backwards()
 	
 	if notebook:
