@@ -2,9 +2,11 @@ extends Control
 
 const INPUT_ROW_SCENE = preload("res://Prefabs/InputRow.tscn")
 
+var waiting_row
+var waiting_action: String = ""
+
 @onready var input_container: VBoxContainer = $VBoxContainer/ScrollContainer/InputContainer
 
-var waiting_action: String = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +18,10 @@ func _ready() -> void:
 		
 		input_container.add_child(input_row)
 		input_row.setup(action)
+		
+		input_row.change_button.pressed.connect(
+			_on_change_button.bind(input_row)
+		)
 		#var button: Button = actions[action][2]
 		#button.set_meta("action", action)
 		#button.pressed.connect(_on_change_button.bind(button))
@@ -24,6 +30,12 @@ func _ready() -> void:
 		#current_label_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		
 		#update_button_map(action)
+
+func _on_change_button(row) -> void:
+	waiting_action = row.action
+	waiting_row = row
+	
+	row.change_button.text = "..."
 
 #func update_button_map(action: String) -> void:
 	#var action_label: Label = actions[action][0]
@@ -48,14 +60,16 @@ func _ready() -> void:
 	#waiting_action = button.get_meta("action")
 	#button.text = "..."
 #
-#func _input(event: InputEvent) -> void:
-	#if waiting_action == "":
-		#return
-		#
-	#if event is InputEventKey and event.is_pressed():
-		#InputMap.action_erase_events(waiting_action)
-		#InputMap.action_add_event(waiting_action, event)
-		#
-		#update_button_map(waiting_action)
-		#
-		#waiting_action = ""
+func _input(event: InputEvent) -> void:
+	if waiting_action == "":
+		return
+		
+	if event is InputEventKey and event.is_pressed():
+		InputMap.action_erase_events(waiting_action)
+		InputMap.action_add_event(waiting_action, event)
+		
+		waiting_row.update_key()
+		waiting_row.change_button.text = "Change"
+		
+		waiting_action = ""
+		waiting_row = null
