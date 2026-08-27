@@ -22,14 +22,6 @@ func _ready() -> void:
 		input_row.change_button.pressed.connect(
 			_on_change_button.bind(input_row)
 		)
-		#var button: Button = actions[action][2]
-		#button.set_meta("action", action)
-		#button.pressed.connect(_on_change_button.bind(button))
-		#
-		#action_label_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		#current_label_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		
-		#update_button_map(action)
 
 func _on_change_button(row) -> void:
 	waiting_action = row.action
@@ -37,29 +29,6 @@ func _on_change_button(row) -> void:
 	
 	row.change_button.text = "..."
 
-#func update_button_map(action: String) -> void:
-	#var action_label: Label = actions[action][0]
-	#var current_label: Label = actions[action][1]
-	#var change_button: Button = actions[action][2]
-	#
-	#action_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	#current_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	#
-	#change_button.set_meta("action", action)
-	#change_button.text = "Cambiar"
-	#
-	#var events = InputMap.action_get_events(action)
-	#
-	#if events.is_empty():
-		#action_label.text = "-"
-		#current_label.text = "-"
-	#else:
-		#current_label.text = events[0].as_text()
-#
-#func _on_change_button(button: Button):
-	#waiting_action = button.get_meta("action")
-	#button.text = "..."
-#
 func _input(event: InputEvent) -> void:
 	if waiting_action == "":
 		return

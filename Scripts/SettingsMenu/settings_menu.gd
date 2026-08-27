@@ -134,7 +134,8 @@ func _on_save_button_pressed() -> void:
 		"resolution": GameData.resolution,
 		"show_interaction": GameData.show_interaction,
 		"sounds": GameData.sounds,
-		"window_mode": GameData.window_mode
+		"window_mode": GameData.window_mode,
+		"inputs": GameData.get_input_settings()
 	}
 	
 	SaveManager.save_settings(settings_dictionary)

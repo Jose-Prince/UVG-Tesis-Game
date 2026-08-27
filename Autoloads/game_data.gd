@@ -43,6 +43,8 @@ var resolution := 0
 var hardware_cursor := true
 var max_fps := 60
 
+var inputs: Dictionary = {}
+
 # Interaction systems
 enum InteractionMode {
 	KEYBOARD,
@@ -128,6 +130,9 @@ func load_settings(data: Dictionary) -> void:
 	resolution = data["resolution"]
 	max_fps = data["max_fps"]
 	hardware_cursor = data["hardware_cursor"]
+	
+	if data.has("inputs"):
+		load_input_settings(data["inputs"])
 	apply_settings()
 
 func apply_settings() -> void:
@@ -168,6 +173,41 @@ func apply_settings() -> void:
 	else:
 		Input.set_custom_mouse_cursor(null)
 	Engine.max_fps = max_fps
+
+func get_input_settings() -> Dictionary:
+	var data: Dictionary = {}
+	
+	for action in InputMap.get_actions():
+		if action.begins_with("ui_") or action.begins_with("dialogic_"):
+			continue
+		
+		var events := InputMap.action_get_events(action)
+		
+		if events.is_empty():
+			continue
+		
+		var event = events[0]
+		
+		if event is InputEventKey:
+			data[action] = {
+				"type": "key",
+				"keycode": event.keycode
+			}
+	return data
+
+func load_input_settings(data: Dictionary) -> void:
+	for action in data:
+		if not InputMap.has_action(action):
+			continue
+		
+		var input_data: Dictionary = data[action]
+		
+		if input_data.get("type") == "key":
+			var event := InputEventKey.new()
+			event.keycode = input_data.get("keycode", 0)
+			
+			InputMap.action_erase_events(action)
+			InputMap.action_add_event(action, event)
 
 func set_default():
 	auto_run = true
