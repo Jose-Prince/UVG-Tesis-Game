@@ -102,6 +102,15 @@ func _get_current_speed() -> float:
 # ============================================================
 
 func _process_interaction_input() -> void:
+	match GameData.interaction_mode:
+		GameData.InteractionMode.KEYBOARD:
+			_process_keyboard_interaction()
+		
+		GameData.InteractionMode.MOUSE:
+			_process_mouse_interaction()
+			
+
+func _process_keyboard_interaction() -> void:
 	var interaction_direction := Input.get_vector(
 		"ui_left",
 		"ui_right",
@@ -123,6 +132,25 @@ func _process_interaction_input() -> void:
 
 	if Input.is_action_just_pressed("Action"):
 		_interact()
+
+func _process_mouse_interaction() -> void:
+	update_mouse_interaction_point()
+	
+	if Input.is_action_just_pressed("mouse_action"):
+		_interact()
+
+func update_mouse_interaction_point() -> void:
+	var mouse_position := get_global_mouse_position()
+	var direction := mouse_position - global_position
+	
+	if direction == Vector2.ZERO:
+		return
+	
+	direction = direction.normalized()
+	
+	var target_position := global_position + direction * TILE_SIZE
+	
+	interaction_point.global_position = snap_to_tile_center(target_position)
 
 func update_interaction_point() -> void:
 	if show_interaction != GameData.show_interaction:
