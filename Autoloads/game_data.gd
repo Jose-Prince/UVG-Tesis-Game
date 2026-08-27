@@ -48,8 +48,8 @@ var input_overrides: Dictionary = {}
 
 # Interaction systems
 enum InteractionMode {
-	KEYBOARD,
-	MOUSE
+	MOUSE,
+	KEYBOARD
 }
 
 var interaction_mode := InteractionMode.MOUSE
@@ -131,6 +131,7 @@ func load_settings(data: Dictionary) -> void:
 	resolution = data["resolution"]
 	max_fps = data["max_fps"]
 	hardware_cursor = data["hardware_cursor"]
+	interaction_mode = data["interaction_mode"]
 	
 	if data.has("inputs"):
 		load_input_settings(data["inputs"])
@@ -234,6 +235,7 @@ func set_default():
 	resolution = 0
 	max_fps = 60
 	hardware_cursor = false
+	interaction_mode = InteractionMode.MOUSE
 	
 	reset_inputs_to_default()
 	

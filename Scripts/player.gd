@@ -57,14 +57,9 @@ func _process(_delta: float) -> void:
 	queue_redraw()
 	z_index = int(global_position.y)
 
-	_process_dialogue_input()
-
 func _physics_process(_delta: float) -> void:
-	if DialogueBox.visible:
-		velocity = Vector2.ZERO
-	else:
-		_process_movement_input()
-		_process_interaction_input()
+	_process_movement_input()
+	_process_interaction_input()
 
 	update_animation()
 
@@ -187,16 +182,6 @@ func _interact() -> void:
 
 	if current_npc:
 		current_npc.talk()
-
-# ============================================================
-# DIALOGUE
-# ============================================================
-
-func _process_dialogue_input() -> void:
-	if Input.is_action_just_pressed("ui_accept") \
-	and DialogueBox.visible \
-	and !DialogueBox.is_typing:
-		DialogueBox.hide_dialogue()
 
 # ============================================================
 # ANIMATION

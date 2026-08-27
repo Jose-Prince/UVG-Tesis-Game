@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://df3u1g4m5dini"]
 
-[ext_resource type="Script" uid="uid://dkeklnrip20in" path="res://Scripts/input_row.gd" id="1_w7dy2"]
+[ext_resource type="Script" uid="uid://dkeklnrip20in" path="res://Scripts/SettingsMenu/input_row.gd" id="1_w7dy2"]
 
 [node name="InputRow" type="HBoxContainer" unique_id=1421191211]
 anchors_preset = 15

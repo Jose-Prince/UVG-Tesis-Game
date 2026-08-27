@@ -21,7 +21,6 @@ GameData="*res://Autoloads/game_data.gd"
 SaveManager="*res://Autoloads/save_manager.gd"
 SfxManager="*res://Autoloads/sfx_manager.tscn"
 ArticleDatabase="*res://Autoloads/article_database.gd"
-DialogueBox="*uid://bdl4a5uql2vjg"
 TeleportManager="*uid://dyr0ikgyv354r"
 Dialogic="*uid://ds2q0uclmolvu"
 

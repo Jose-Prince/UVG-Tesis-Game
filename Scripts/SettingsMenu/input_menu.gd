@@ -8,7 +8,7 @@ var waiting_row
 var waiting_action: String = ""
 
 @onready var input_container: VBoxContainer = $VBoxContainer/ScrollContainer/InputContainer
-
+@onready var option_button: OptionButton = $VBoxContainer/VBoxContainer/HBoxContainer/OptionButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -61,3 +61,12 @@ func update_input_rows() -> void:
 		
 		if row:
 			row.update_key()
+
+func _on_option_button_item_selected(index: int) -> void:
+	match index:
+		0:
+			GameData.interaction_mode = GameData.InteractionMode.MOUSE
+		1:
+			GameData.interaction_mode = GameData.InteractionMode.KEYBOARD
+			
+	settings_changed.emit()

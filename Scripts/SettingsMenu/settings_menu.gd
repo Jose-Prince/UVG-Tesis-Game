@@ -137,7 +137,8 @@ func _on_default_button_pressed() -> void:
 		"show_interaction": GameData.show_interaction,
 		"sounds": GameData.sounds,
 		"window_mode": GameData.window_mode,
-		"inputs": GameData.input_overrides
+		"inputs": GameData.input_overrides,
+		"interaction_mode": GameData.interaction_mode
 	}
 	
 	SaveManager.save_settings(settings_dictionary)
@@ -157,7 +158,8 @@ func _on_save_button_pressed() -> void:
 		"show_interaction": GameData.show_interaction,
 		"sounds": GameData.sounds,
 		"window_mode": GameData.window_mode,
-		"inputs": GameData.input_overrides
+		"inputs": GameData.input_overrides,
+		"interaction_mode": GameData.interaction_mode
 	}
 	
 	SaveManager.save_settings(settings_dictionary)
