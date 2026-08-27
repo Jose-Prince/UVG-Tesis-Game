@@ -3,7 +3,7 @@ extends Control
 const GENERAL_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/general_settings.tscn")
 const AUDIO_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/audio_settings.tscn")
 const VISUAL_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/visual_settings.tscn")
-const INPUT_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/input_settings2.tscn")
+const INPUT_SETTINGS_SCENE = preload("res://Scenes/MenuSettings/input_settings.tscn")
 
 var general_settings
 var audio_settings
@@ -12,7 +12,7 @@ var input_settings
 
 @onready var notebook: TextureRect = $"../Notebook"
 @onready var notebook_sprite: AnimatedTextureRect = $NotebookSprite
-@onready var v_box_container: VBoxContainer = $MarginContainer/VBoxContainer
+@onready var v_box_container: VBoxContainer = $Content/VBoxContainer
 
 @onready var general_button: Button = $ButtonsContainer/GeneralButton
 @onready var audio_button: Button = $ButtonsContainer/AudioButton
