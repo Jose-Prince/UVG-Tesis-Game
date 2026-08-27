@@ -54,3 +54,10 @@ func _input(event: InputEvent) -> void:
 		waiting_action = ""
 		waiting_row = null
 		settings_changed.emit()
+
+func update_input_rows() -> void:
+	for child in input_container.get_children():
+		var row := child as InputRow
+		
+		if row:
+			row.update_key()

@@ -207,6 +207,21 @@ func set_input_override(action: String, event: InputEvent) -> void:
 			"keycode": event.keycode
 		}
 
+func reset_inputs_to_default() -> void:
+	input_overrides.clear()
+	
+	for action in default_input_events:
+		if not InputMap.has_action(action):
+			continue
+		
+		InputMap.action_erase_events(action)
+		
+		for event in default_input_events[action]:
+			InputMap.action_add_event(
+				action,
+				event.duplicate(true)
+			)
+
 func set_default():
 	auto_run = true
 	show_interaction = true
@@ -220,11 +235,6 @@ func set_default():
 	max_fps = 60
 	hardware_cursor = false
 	
-	input_overrides.clear()
-
-	# Restaurar los inputs originales del proyecto.
-	for action in default_input_events:
-		if action.begins_with("ui_") or action.begins_with("dialogic_"):
-			continue
+	reset_inputs_to_default()
 	
 	apply_settings()

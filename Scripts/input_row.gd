@@ -1,3 +1,4 @@
+class_name InputRow
 extends HBoxContainer
 
 @onready var action_label: Label = $ActionLabel
