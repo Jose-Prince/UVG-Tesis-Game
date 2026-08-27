@@ -43,7 +43,8 @@ var resolution := 0
 var hardware_cursor := true
 var max_fps := 60
 
-var inputs: Dictionary = {}
+var default_input_events: Dictionary = {}
+var input_overrides: Dictionary = {}
 
 # Interaction systems
 enum InteractionMode {
@@ -174,8 +175,8 @@ func apply_settings() -> void:
 		Input.set_custom_mouse_cursor(null)
 	Engine.max_fps = max_fps
 
-func get_input_settings() -> Dictionary:
-	var data: Dictionary = {}
+func cache_default_inputs() -> void:
+	default_input_events.clear()
 	
 	for action in InputMap.get_actions():
 		if action.begins_with("ui_") or action.begins_with("dialogic_"):
@@ -183,17 +184,7 @@ func get_input_settings() -> Dictionary:
 		
 		var events := InputMap.action_get_events(action)
 		
-		if events.is_empty():
-			continue
-		
-		var event = events[0]
-		
-		if event is InputEventKey:
-			data[action] = {
-				"type": "key",
-				"keycode": event.keycode
-			}
-	return data
+		default_input_events[action] = events.duplicate()
 
 func load_input_settings(data: Dictionary) -> void:
 	for action in data:
@@ -204,10 +195,17 @@ func load_input_settings(data: Dictionary) -> void:
 		
 		if input_data.get("type") == "key":
 			var event := InputEventKey.new()
-			event.keycode = input_data.get("keycode", 0)
+			event.keycode = int(input_data.get("keycode", 0))
 			
 			InputMap.action_erase_events(action)
 			InputMap.action_add_event(action, event)
+
+func set_input_override(action: String, event: InputEvent) -> void:
+	if event is InputEventKey:
+		input_overrides[action] = {
+			"type": "key",
+			"keycode": event.keycode
+		}
 
 func set_default():
 	auto_run = true
@@ -221,4 +219,12 @@ func set_default():
 	resolution = 0
 	max_fps = 60
 	hardware_cursor = false
+	
+	input_overrides.clear()
+
+	# Restaurar los inputs originales del proyecto.
+	for action in default_input_events:
+		if action.begins_with("ui_") or action.begins_with("dialogic_"):
+			continue
+	
 	apply_settings()

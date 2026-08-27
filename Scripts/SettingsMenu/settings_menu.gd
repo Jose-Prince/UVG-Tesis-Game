@@ -34,14 +34,17 @@ func _ready() -> void:
 	
 	audio_settings = AUDIO_SETTINGS_SCENE.instantiate()
 	settings_container.add_child(audio_settings)
+	audio_settings.settings_changed.connect(_on_settings_changed)
 	audio_settings.hide()
 	
 	visual_settings = VISUAL_SETTINGS_SCENE.instantiate()
 	settings_container.add_child(visual_settings)
+	visual_settings.settings_changed.connect(_on_settings_changed)
 	visual_settings.hide()
 	
 	input_settings = INPUT_SETTINGS_SCENE.instantiate()
 	settings_container.add_child(input_settings)
+	input_settings.settings_changed.connect(_on_settings_changed)
 	input_settings.hide()
 	
 	content.hide()
@@ -135,7 +138,7 @@ func _on_save_button_pressed() -> void:
 		"show_interaction": GameData.show_interaction,
 		"sounds": GameData.sounds,
 		"window_mode": GameData.window_mode,
-		"inputs": GameData.get_input_settings()
+		"inputs": GameData.input_overrides
 	}
 	
 	SaveManager.save_settings(settings_dictionary)
