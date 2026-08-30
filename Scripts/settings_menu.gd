@@ -33,7 +33,6 @@ var title_music: AudioStreamPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ar_check_box.grab_focus()
-	title_music = get_tree().current_scene.find_child("AudioStreamPlayer", true, false)
 	var input_menu_instance = INPUT_MENU_SCENE.instantiate()
 	input_container.add_child(input_menu_instance)
 	
@@ -110,9 +109,6 @@ func _scroll_to_control(scroll: ScrollContainer, control: Control) -> void:
 			scroll.get_v_scroll_bar().max_value
 		)
 
-func _on_master_slider_value_changed(value: float) -> void:
-	title_music.volume_db = linear_to_db(value) # To-Do: implementar un control maestro de música bg
-
 func _on_visibility_changed() -> void:
 	if visible:
 		update_ui()
@@ -166,12 +162,18 @@ func _on_pause_check_box_toggled(toggled_on: bool) -> void:
 
 func _on_master_h_slider_value_changed(value: float) -> void:
 	GameData.master = value
+	AudioServer.set_bus_volume_db(
+		AudioServer.get_bus_index("Master"),
+		linear_to_db(value)
+	)
 
 func _on_music_h_slider_value_changed(value: float) -> void:
 	GameData.music = value
+	MusicManager.adjust_volume(linear_to_db(value))
 
 func _on_sounds_h_slider_value_changed(value: float) -> void:
 	GameData.sounds = value
+	SfxManager.adjust_volume(linear_to_db(value))
 
 func _on_window_option_button_item_selected(index: int) -> void:
 	GameData.window_mode = index

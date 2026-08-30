@@ -1,6 +1,7 @@
 extends Node2D
 
 const CUSTOMER_SCENE = preload("res://Prefabs/customer.tscn")
+const loop: AudioStream = preload("res://Music/Dream_Cafe.ogg")
 
 var restaurant_menu: Array[ArticleData]
 
@@ -24,6 +25,7 @@ func _ready() -> void:
 		)
 	
 	GameData.menu = restaurant_menu
+	MusicManager.play_song(null, loop)
 	
 	await scene_transition.pixelate_out(0.6).finished
 	

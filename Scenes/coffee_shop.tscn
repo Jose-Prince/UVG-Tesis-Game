@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bvpvcj8gcr7un" path="res://Prefabs/Player.tscn" id="6_df3mn"]
 [ext_resource type="PackedScene" uid="uid://05y0ghmm4qsq" path="res://Prefabs/chair.tscn" id="7_wpc15"]
 [ext_resource type="PackedScene" uid="uid://cn1a17pxcn375" path="res://Prefabs/coffee_maker.tscn" id="8_wvnb4"]
-[ext_resource type="AudioStream" uid="uid://3khc0dumeq4w" path="res://Assets/Audios/cozycaffe_bossa_consolidated_consolidated.ogg" id="9_j1s20"]
 [ext_resource type="PackedScene" uid="uid://chcl2gv8i2851" path="res://Scenes/scene_transition.tscn" id="9_vffnu"]
 [ext_resource type="Script" uid="uid://bcqylyib4yrvl" path="res://Scripts/order_object.gd" id="12_2o2p7"]
 [ext_resource type="PackedScene" uid="uid://dy7unp36ghucf" path="res://Prefabs/glass_giver.tscn" id="12_4hl37"]
@@ -1418,12 +1417,6 @@ isRotated = true
 
 [node name="CoffeeMaker" parent="." unique_id=1701230900 instance=ExtResource("8_wvnb4")]
 position = Vector2(344, 112)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=865978164]
-stream = ExtResource("9_j1s20")
-volume_db = -17.034
-autoplay = true
-parameters/looping = true
 
 [node name="OrderObject" type="Node2D" parent="." unique_id=1752300990]
 script = ExtResource("12_2o2p7")
