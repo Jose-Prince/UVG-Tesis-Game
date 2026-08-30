@@ -162,10 +162,7 @@ func _on_pause_check_box_toggled(toggled_on: bool) -> void:
 
 func _on_master_h_slider_value_changed(value: float) -> void:
 	GameData.master = value
-	AudioServer.set_bus_volume_db(
-		AudioServer.get_bus_index("Master"),
-		linear_to_db(value)
-	)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(value))
 
 func _on_music_h_slider_value_changed(value: float) -> void:
 	GameData.music = value
