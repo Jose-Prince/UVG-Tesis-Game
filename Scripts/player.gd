@@ -351,12 +351,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 	if body is NPC:
 		current_npc = body
-		body.player_in_range = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == current_object:
 		current_object = null
 
 	if body == current_npc:
-		current_npc.player_in_range = false
 		current_npc = null

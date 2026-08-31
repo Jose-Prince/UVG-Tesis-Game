@@ -206,9 +206,8 @@ spawn_id = "cafe_entrance"
 position = Vector2(224, 16)
 spawn_id = "shop_entrance"
 
-[node name="Customer" parent="SpawnPoints" unique_id=272031947 instance=ExtResource("6_7kgdu")]
-position = Vector2(96, 128)
-dialogic = false
-
 [node name="Customer" parent="." unique_id=1905091446 instance=ExtResource("6_7kgdu")]
 position = Vector2(144, 128)
+
+[node name="Customer2" parent="." unique_id=272031947 instance=ExtResource("6_7kgdu")]
+position = Vector2(96, 128)
