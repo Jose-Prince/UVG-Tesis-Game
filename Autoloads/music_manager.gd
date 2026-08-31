@@ -5,6 +5,9 @@ extends Node
 var current_loop: AudioStream
 var loop_finished: bool = false
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 ## Indica al reproductor de música que debe reproducir una pista seleccionada
 func play_song(intro_file: AudioStream, loop_file: AudioStream) -> void:
 	current_loop = loop_file

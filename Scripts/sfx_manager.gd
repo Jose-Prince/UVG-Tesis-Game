@@ -8,6 +8,9 @@ const liquid_sound: AudioStream = preload("res://Assets/Audios/liquid.mp3")
 const money_sound: AudioStream = preload("res://Assets/Audios/chiklin.mp3")
 const pick_sound: AudioStream = preload("res://Assets/Audios/pick.mp3")
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 func play_click() -> void:
 	sfx_player.pitch_scale = randf_range(0.95, 1.05)
 	sfx_player.stream = click_sound
