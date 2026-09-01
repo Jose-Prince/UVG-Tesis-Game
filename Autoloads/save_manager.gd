@@ -28,7 +28,9 @@ const DEFAULT_SETTINGS = {
 	"resolution": 0,
 	"show_interaction": true,
 	"sounds": 1.0,
-	"window_mode": 0
+	"window_mode": 0,
+	"inputs": {},
+	"interaction_mode": 0
 }
 
 const SETTINGS_FILE := SAVE_FOLDER + "settings.json"

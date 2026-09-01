@@ -43,6 +43,17 @@ var resolution := 0
 var hardware_cursor := true
 var max_fps := 60
 
+var default_input_events: Dictionary = {}
+var input_overrides: Dictionary = {}
+
+# Interaction systems
+enum InteractionMode {
+	MOUSE,
+	KEYBOARD
+}
+
+var interaction_mode := InteractionMode.MOUSE
+
 func is_shop_open(hour: int) -> bool:
 	return hour >= open_hour and hour < closed_hour
 
@@ -120,6 +131,10 @@ func load_settings(data: Dictionary) -> void:
 	resolution = data["resolution"]
 	max_fps = data["max_fps"]
 	hardware_cursor = data["hardware_cursor"]
+	interaction_mode = data["interaction_mode"]
+	
+	if data.has("inputs"):
+		load_input_settings(data["inputs"])
 	apply_settings()
 
 func apply_settings() -> void:
@@ -161,6 +176,53 @@ func apply_settings() -> void:
 		Input.set_custom_mouse_cursor(null)
 	Engine.max_fps = max_fps
 
+func cache_default_inputs() -> void:
+	default_input_events.clear()
+	
+	for action in InputMap.get_actions():
+		if action.begins_with("ui_") or action.begins_with("dialogic_"):
+			continue
+		
+		var events := InputMap.action_get_events(action)
+		
+		default_input_events[action] = events.duplicate()
+
+func load_input_settings(data: Dictionary) -> void:
+	for action in data:
+		if not InputMap.has_action(action):
+			continue
+		
+		var input_data: Dictionary = data[action]
+		
+		if input_data.get("type") == "key":
+			var event := InputEventKey.new()
+			event.keycode = int(input_data.get("keycode", 0))
+			
+			InputMap.action_erase_events(action)
+			InputMap.action_add_event(action, event)
+
+func set_input_override(action: String, event: InputEvent) -> void:
+	if event is InputEventKey:
+		input_overrides[action] = {
+			"type": "key",
+			"keycode": event.keycode
+		}
+
+func reset_inputs_to_default() -> void:
+	input_overrides.clear()
+	
+	for action in default_input_events:
+		if not InputMap.has_action(action):
+			continue
+		
+		InputMap.action_erase_events(action)
+		
+		for event in default_input_events[action]:
+			InputMap.action_add_event(
+				action,
+				event.duplicate(true)
+			)
+
 func set_default():
 	auto_run = true
 	show_interaction = true
@@ -173,4 +235,8 @@ func set_default():
 	resolution = 0
 	max_fps = 60
 	hardware_cursor = false
+	interaction_mode = InteractionMode.MOUSE
+	
+	reset_inputs_to_default()
+	
 	apply_settings()

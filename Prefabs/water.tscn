@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cyeftfpjy6lld"]
 
 [ext_resource type="Script" uid="uid://dgq50m38rejiv" path="res://Scripts/article.gd" id="1_pwbcw"]
-[ext_resource type="Resource" uid="uid://bg56uibnmcyir" path="res://Resources/water.tres" id="2_wntym"]
+[ext_resource type="Resource" uid="uid://bg56uibnmcyir" path="res://Resources/Article Data/water.tres" id="2_wntym"]
 [ext_resource type="Texture2D" uid="uid://c8g03kcif0l4f" path="res://Assets/Sprites/watter-sprite_8x8.png" id="3_wntym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxs27"]

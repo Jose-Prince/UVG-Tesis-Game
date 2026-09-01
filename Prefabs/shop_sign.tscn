@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://dntgf4pto1u5s"]
+
+[ext_resource type="Texture2D" uid="uid://bfo3p3t80q4i2" path="res://Assets/Sprites/Sign.png" id="1_g0mbb"]
+[ext_resource type="Script" uid="uid://du187wruo3pgw" path="res://Scripts/shop_sign.gd" id="1_j76gr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igq0s"]
+atlas = ExtResource("1_g0mbb")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfru3"]
+atlas = ExtResource("1_g0mbb")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dicc"]
+atlas = ExtResource("1_g0mbb")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll1uj"]
+atlas = ExtResource("1_g0mbb")
+region = Rect2(384, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvdhv"]
+atlas = ExtResource("1_g0mbb")
+region = Rect2(512, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c8le"]
+atlas = ExtResource("1_g0mbb")
+region = Rect2(640, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u33qs"]
+atlas = ExtResource("1_g0mbb")
+region = Rect2(0, 0, 128.31427, 64)
+
+[node name="ShopSign" type="Control" unique_id=2078464268]
+custom_minimum_size = Vector2(128, 64)
+custom_maximum_size = Vector2(128, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 64.0
+script = ExtResource("1_j76gr")
+frame1 = SubResource("AtlasTexture_igq0s")
+frame2 = SubResource("AtlasTexture_tfru3")
+frame3 = SubResource("AtlasTexture_7dicc")
+frame4 = SubResource("AtlasTexture_ll1uj")
+frame5 = SubResource("AtlasTexture_uvdhv")
+frame6 = SubResource("AtlasTexture_5c8le")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=2042096967]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2" unique_id=1540408045]
+layout_mode = 2
+texture = SubResource("AtlasTexture_u33qs")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2" unique_id=1425165254]
+custom_minimum_size = Vector2(118, 54)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/MarginContainer" unique_id=931715744]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer2/MarginContainer/VBoxContainer" unique_id=1684073556]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "CLOSED"
+horizontal_alignment = 1
+vertical_alignment = 1

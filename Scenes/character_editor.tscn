@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cx1nyacr2yebd" path="res://Assets/Sprites/gingham.PNG" id="2_1vb4o"]
 [ext_resource type="FontFile" uid="uid://bm4e365ecirdj" path="res://Assets/Fonts/Chalk.otf" id="2_7wrfq"]
 [ext_resource type="Script" uid="uid://6t4couakeorm" path="res://Scripts/article_data.gd" id="2_x5tlh"]
-[ext_resource type="Resource" uid="uid://d0riswjm5jcyk" path="res://Resources/coffee.tres" id="3_xj74l"]
-[ext_resource type="Resource" uid="uid://bg56uibnmcyir" path="res://Resources/water.tres" id="4_7igea"]
+[ext_resource type="Resource" uid="uid://d0riswjm5jcyk" path="res://Resources/Article Data/coffee.tres" id="3_xj74l"]
+[ext_resource type="Resource" uid="uid://bg56uibnmcyir" path="res://Resources/Article Data/water.tres" id="4_7igea"]
 [ext_resource type="Script" uid="uid://cpnugcuyb5456" path="res://Scripts/button_ui.gd" id="4_uvaie"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vb4o"]

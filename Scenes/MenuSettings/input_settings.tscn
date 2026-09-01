@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://buu71e7lwp8u2"]
+
+[ext_resource type="Script" uid="uid://ce3e2hqkljw1m" path="res://Scripts/SettingsMenu/input_menu.gd" id="1_j5iht"]
+
+[node name="InputSettings" type="MarginContainer" unique_id=205128339]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_j5iht")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1504257719]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1510623959]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer" unique_id=1952360210]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/MarginContainer" unique_id=1128411714]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1904630291]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Controller configuration:"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1929504583]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Keyboard and mouse"
+popup/item_0/id = 0
+popup/item_1/text = "Keybord only"
+popup/item_1/id = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1839556892]
+layout_mode = 2
+offset_transform_position = Vector2(0, 20)
+alignment = 1
+
+[node name="ActionLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=2125757354]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Action"
+horizontal_alignment = 1
+
+[node name="CurrentLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1515384874]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Current Key"
+horizontal_alignment = 1
+
+[node name="ChangeLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=228876783]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Change"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=998400402]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer" unique_id=1883210223]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 20
+
+[node name="InputContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer" unique_id=523706664]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+offset_transform_position = Vector2(0, 100)
+
+[connection signal="item_selected" from="VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
