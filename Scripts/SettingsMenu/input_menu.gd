@@ -12,6 +12,12 @@ var waiting_action: String = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	refresh_input_rows()
+
+func refresh_input_rows() -> void:
+	for child in input_container.get_children():
+		child.queue_free()
+	
 	for action in InputMap.get_actions():
 		if action.begins_with("ui_") or action.begins_with("dialogic_") or action.begins_with("pause"):
 			continue
@@ -29,7 +35,6 @@ func _ready() -> void:
 		input_row.change_button.pressed.connect(
 			_on_change_button.bind(input_row)
 		)
-
 func _on_change_button(row) -> void:
 	if waiting_row != null:
 		waiting_row.change_button.text = "Change"
@@ -79,5 +84,5 @@ func _on_option_button_item_selected(index: int) -> void:
 			GameData.interaction_mode = GameData.InteractionMode.MOUSE
 		1:
 			GameData.interaction_mode = GameData.InteractionMode.KEYBOARD
-			
+	refresh_input_rows()
 	settings_changed.emit()
