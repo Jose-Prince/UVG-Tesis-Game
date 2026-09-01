@@ -43,23 +43,29 @@ func _on_change_button(row) -> void:
 func _input(event: InputEvent) -> void:
 	if waiting_action == "":
 		return
-		
+	
 	if event is InputEventKey and event.is_pressed() and not event.is_echo():
-		InputMap.action_erase_events(waiting_action)
-		InputMap.action_add_event(waiting_action, event)
-		
-		GameData.set_input_override(
-			waiting_action,
-			event
-		)
-		
-		waiting_row.update_key()
-		waiting_row.change_button.text = "Change"
-		
-		waiting_action = ""
-		waiting_row = null
-		settings_changed.emit()
+		_set_input(event)
+	
+	if event is InputEventMouse and event.is_pressed() and not event.is_echo():
+		_set_input(event)
 
+func _set_input(event: InputEvent) -> void:
+	InputMap.action_erase_events(waiting_action)
+	InputMap.action_add_event(waiting_action, event)
+		
+	GameData.set_input_override(
+		waiting_action,
+		event
+	)
+		
+	waiting_row.update_key()
+	waiting_row.change_button.text = "Change"
+		
+	waiting_action = ""
+	waiting_row = null
+	settings_changed.emit()
+	
 func update_input_rows() -> void:
 	for child in input_container.get_children():
 		var row := child as InputRow
