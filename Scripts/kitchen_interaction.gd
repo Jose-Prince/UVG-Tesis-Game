@@ -14,7 +14,7 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if _is_interaction_event(event) == event.is_action_pressed("Action"):
-		pass
+		_interact_at_point_position()
 	
 	if _is_interaction_event(event) == event.is_action_pressed("mouse_action"):
 		_interact_at_mouse_position()
