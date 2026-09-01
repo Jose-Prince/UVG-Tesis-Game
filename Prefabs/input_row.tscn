@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://df3u1g4m5dini"]
 
-[ext_resource type="Script" uid="uid://dkeklnrip20in" path="res://Scripts/SettingsMenu/input_row.gd" id="1_w7dy2"]
+[ext_resource type="Script" uid="uid://dkeklnrip20in" path="res://Scripts/SettingsMenu/input_row.gd" id="1_xlet0"]
 
 [node name="InputRow" type="HBoxContainer" unique_id=1421191211]
 anchors_preset = 15
@@ -9,7 +9,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-script = ExtResource("1_w7dy2")
+alignment = 1
+script = ExtResource("1_xlet0")
 
 [node name="ActionLabel" type="Label" parent="." unique_id=1345211865]
 layout_mode = 2
@@ -26,7 +27,7 @@ text = "Key"
 horizontal_alignment = 1
 
 [node name="ChangeButton" type="Button" parent="." unique_id=1629671480]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Change"

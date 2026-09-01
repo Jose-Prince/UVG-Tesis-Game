@@ -23,6 +23,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1904630291]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Controller configuration:"
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1929504583]
@@ -59,8 +60,8 @@ text = "Current Key"
 horizontal_alignment = 1
 
 [node name="ChangeLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=228876783]
+custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Change"
@@ -75,148 +76,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 offset_transform_position = Vector2(0, 100)
-
-[node name="UpContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/InputContainer" unique_id=906468775]
-visible = false
-layout_mode = 2
-alignment = 1
-
-[node name="UpLabel" type="Label" parent="VBoxContainer/ScrollContainer/InputContainer/UpContainer" unique_id=539740933]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Up"
-
-[node name="UpCurrentLabel" type="Label" parent="VBoxContainer/ScrollContainer/InputContainer/UpContainer" unique_id=1243213128]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Current"
-
-[node name="UpButton" type="Button" parent="VBoxContainer/ScrollContainer/InputContainer/UpContainer" unique_id=1560006881]
-custom_minimum_size = Vector2(130, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Change"
-
-[node name="DownContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/InputContainer" unique_id=246418332]
-visible = false
-layout_mode = 2
-alignment = 1
-
-[node name="DownLabel" type="Label" parent="VBoxContainer/ScrollContainer/InputContainer/DownContainer" unique_id=401745914]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Down"
-
-[node name="DownCurrentLabel" type="Label" parent="VBoxContainer/ScrollContainer/InputContainer/DownContainer" unique_id=1776164182]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Current"
-
-[node name="DownButton" type="Button" parent="VBoxContainer/ScrollContainer/InputContainer/DownContainer" unique_id=393301192]
-custom_minimum_size = Vector2(130, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Change"
-
-[node name="RightContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/InputContainer" unique_id=266894145]
-visible = false
-layout_mode = 2
-alignment = 1
-
-[node name="RightLabel" type="Label" parent="VBoxContainer/ScrollContainer/InputContainer/RightContainer" unique_id=608635101]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Right"
-
-[node name="RightCurrentLabel" type="Label" parent="VBoxContainer/ScrollContainer/InputContainer/RightContainer" unique_id=561792914]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Current"
-
-[node name="RightButton" type="Button" parent="VBoxContainer/ScrollContainer/InputContainer/RightContainer" unique_id=1754829937]
-custom_minimum_size = Vector2(130, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Change"
-
-[node name="LeftContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/InputContainer" unique_id=967659972]
-visible = false
-layout_mode = 2
-alignment = 1
-
-[node name="LeftLabel" type="Label" parent="VBoxContainer/ScrollContainer/InputContainer/LeftContainer" unique_id=990340788]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Left"
-
-[node name="LeftCurrentLabel" type="Label" parent="VBoxContainer/ScrollContainer/InputContainer/LeftContainer" unique_id=1898690195]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Current"
-
-[node name="LeftButton" type="Button" parent="VBoxContainer/ScrollContainer/InputContainer/LeftContainer" unique_id=2130694219]
-custom_minimum_size = Vector2(130, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Change"
-
-[node name="RunContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/InputContainer" unique_id=314464914]
-visible = false
-layout_mode = 2
-alignment = 1
-
-[node name="RunLabel" type="Label" parent="VBoxContainer/ScrollContainer/InputContainer/RunContainer" unique_id=26306901]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Run"
-
-[node name="RunCurrentLabel" type="Label" parent="VBoxContainer/ScrollContainer/InputContainer/RunContainer" unique_id=1956204396]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Current"
-
-[node name="RunButton" type="Button" parent="VBoxContainer/ScrollContainer/InputContainer/RunContainer" unique_id=1843433733]
-custom_minimum_size = Vector2(130, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Change"
-
-[node name="ActionContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/InputContainer" unique_id=154260560]
-visible = false
-layout_mode = 2
-alignment = 1
-
-[node name="ActionLabel" type="Label" parent="VBoxContainer/ScrollContainer/InputContainer/ActionContainer" unique_id=697520466]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Acción"
-
-[node name="ActionCurrentLabel" type="Label" parent="VBoxContainer/ScrollContainer/InputContainer/ActionContainer" unique_id=1755870108]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Current"
-
-[node name="ActionButton" type="Button" parent="VBoxContainer/ScrollContainer/InputContainer/ActionContainer" unique_id=248144090]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Cambiar"
 
 [connection signal="item_selected" from="VBoxContainer/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]

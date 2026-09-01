@@ -51,7 +51,7 @@ func _ready() -> void:
 	buttons_container.hide()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Pause") and self.visible:
+	if Input.is_action_just_pressed("pause") and self.visible:
 		content.hide()
 		buttons_container.hide()
 

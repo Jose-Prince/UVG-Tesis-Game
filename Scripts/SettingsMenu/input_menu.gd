@@ -2,7 +2,7 @@ extends Control
 
 signal settings_changed
 
-const INPUT_ROW_SCENE = preload("res://Prefabs/InputRow.tscn")
+const INPUT_ROW_SCENE = preload("res://Prefabs/input_row.tscn")
 
 var waiting_row
 var waiting_action: String = ""
@@ -13,9 +13,14 @@ var waiting_action: String = ""
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for action in InputMap.get_actions():
-		if action.begins_with("ui_") or action.begins_with("dialogic_"):
+		if action.begins_with("ui_") or action.begins_with("dialogic_") or action.begins_with("pause"):
 			continue
-
+		
+		if action.begins_with("key_") and GameData.interaction_mode == GameData.InteractionMode.MOUSE:
+			continue
+		if action.begins_with("mouse_") and GameData.interaction_mode == GameData.InteractionMode.KEYBOARD:
+			continue
+		
 		var input_row = INPUT_ROW_SCENE.instantiate()
 		
 		input_container.add_child(input_row)
