@@ -8,8 +8,11 @@ extends HBoxContainer
 var action: String = ""
 
 func setup(input_action: String) -> void:	
+	action = input_action
+	
 	var label_name := input_action.trim_prefix("key_").trim_prefix("mouse_")
 	action_label.text = label_name.capitalize()
+	
 	update_key()
 	
 func update_key() -> void:
