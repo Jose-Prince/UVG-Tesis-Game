@@ -8,7 +8,7 @@ var waiting_row
 var waiting_action: String = ""
 
 @onready var input_container: VBoxContainer = $VBoxContainer/ScrollContainer/MarginContainer/InputContainer
-@onready var option_button: OptionButton = $VBoxContainer/VBoxContainer/HBoxContainer/OptionButton
+@onready var option_button: OptionButton = $VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/OptionButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

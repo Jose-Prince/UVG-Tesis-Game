@@ -22,12 +22,15 @@ func _update_ui() -> void:
 
 func _on_master_slider_value_changed(value: float) -> void:
 	GameData.master = value
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(value))
 	settings_changed.emit()
 
 func _on_music_slider_value_changed(value: float) -> void:
 	GameData.music = value
+	MusicManager.adjust_volume(linear_to_db(value))
 	settings_changed.emit()
 
 func _on_sounds_slider_value_changed(value: float) -> void:
 	GameData.sounds = value
+	SfxManager.adjust_volume(linear_to_db(value))
 	settings_changed.emit()
