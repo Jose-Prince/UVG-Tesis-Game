@@ -125,7 +125,7 @@ func _process_keyboard_interaction() -> void:
 
 	update_interaction_point()
 
-	if Input.is_action_just_pressed("Action"):
+	if Input.is_action_just_pressed("key_action"):
 		_interact()
 
 func _process_mouse_interaction() -> void:

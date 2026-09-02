@@ -13,7 +13,7 @@ func _input(event: InputEvent) -> void:
 	if !_is_interaction_event(event):
 		return
 	
-	if _is_interaction_event(event) == event.is_action_pressed("Action"):
+	if _is_interaction_event(event) == event.is_action_pressed("key_action"):
 		_interact_at_point_position()
 	
 	if _is_interaction_event(event) == event.is_action_pressed("mouse_action"):
@@ -23,7 +23,7 @@ func _input(event: InputEvent) -> void:
 func _is_interaction_event(event: InputEvent) -> bool:
 	match GameData.interaction_mode:
 		GameData.InteractionMode.KEYBOARD:
-			return event.is_action_pressed("Action")
+			return event.is_action_pressed("key_action")
 
 		GameData.InteractionMode.MOUSE:
 			return event.is_action_pressed("mouse_action")
