@@ -5,6 +5,7 @@ const loop: AudioStream = preload("res://Music/Dream_Cafe.ogg")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameData.cache_default_inputs()
 	var settings = SaveManager.load_settings()
 	
 	GameData.load_settings(settings)

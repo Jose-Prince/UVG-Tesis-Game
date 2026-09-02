@@ -1,0 +1,59 @@
+[gd_resource type="Theme" format=3 uid="uid://wr30fwhfd2ok"]
+
+[ext_resource type="FontFile" uid="uid://cydo42c7pcqn2" path="res://Assets/Fonts/static/PixelifySans-Medium.ttf" id="1_ykl08"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31csv"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcsec"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykl08"]
+bg_color = Color(0.76862746, 0.49803922, 0.3137255, 1)
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gigjq"]
+bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ykl08"]
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+Button/colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_ykl08")
+Button/styles/disabled = SubResource("StyleBoxFlat_31csv")
+Button/styles/focus = SubResource("StyleBoxFlat_fcsec")
+Button/styles/hover = SubResource("StyleBoxFlat_ykl08")
+Button/styles/normal = SubResource("StyleBoxFlat_gigjq")
+Button/styles/pressed = SubResource("StyleBoxEmpty_ykl08")

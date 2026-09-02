@@ -1,19 +1,11 @@
 [gd_scene format=3 uid="uid://cpoodtd07o4h"]
 
+[ext_resource type="Theme" uid="uid://da0xyab7qjklt" path="res://Resources/Themes/panel_theme.tres" id="1_3s2e7"]
 [ext_resource type="FontFile" uid="uid://cydo42c7pcqn2" path="res://Assets/Fonts/static/PixelifySans-Medium.ttf" id="1_eu6ci"]
 [ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Assets/Fonts/static/PixelifySans-Bold.ttf" id="2_s1xu4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4s8d"]
-bg_color = Color(0.81960785, 0.7372549, 0.627451, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.34674126, 0.22390294, 0.1318292, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[ext_resource type="Theme" uid="uid://wr30fwhfd2ok" path="res://Resources/Themes/button_theme.tres" id="4_ibm6u"]
+[ext_resource type="Script" uid="uid://bjnc3u5htejs0" path="res://Scripts/time_buttons.gd" id="4_tew1x"]
+[ext_resource type="Texture2D" uid="uid://dsi10327gegg" path="res://Assets/Sprites/play-icons.png" id="5_4wooe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu6ci"]
 bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
@@ -94,24 +86,41 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7axdo"]
+atlas = ExtResource("5_4wooe")
+region = Rect2(0, 0, 18, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob2e6"]
+atlas = ExtResource("5_4wooe")
+region = Rect2(54, 0, 36, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxsiw"]
+atlas = ExtResource("5_4wooe")
+region = Rect2(108, 0, 54, 27)
+
 [node name="Control" type="Control" unique_id=2113710388]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -365.0
-offset_right = -365.0
 grow_horizontal = 0
 
-[node name="Panel" type="Panel" parent="." unique_id=682123693]
-custom_minimum_size = Vector2(220, 205)
-layout_mode = 0
-offset_left = 146.0
-offset_right = 203.0
-offset_bottom = 72.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_k4s8d")
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=518651491]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_bottom = 209.0
+grow_horizontal = 0
+theme_override_constants/separation = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=2117874285]
+[node name="Panel" type="Panel" parent="VBoxContainer" unique_id=682123693]
+custom_minimum_size = Vector2(220, 205)
+layout_mode = 2
+theme = ExtResource("1_3s2e7")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel" unique_id=2117874285]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,26 +132,26 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1920286759]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/MarginContainer" unique_id=1920286759]
 layout_mode = 2
 
-[node name="MonthContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1714196666]
+[node name="MonthContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1714196666]
 layout_mode = 2
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MonthContainer" unique_id=385722807]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MonthContainer" unique_id=385722807]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 
-[node name="PanelContainer" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/MonthContainer/MarginContainer" unique_id=504807391]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MonthContainer/MarginContainer" unique_id=504807391]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_eu6ci")
 
-[node name="Month" type="Label" parent="Panel/MarginContainer/VBoxContainer/MonthContainer/MarginContainer/PanelContainer" unique_id=322095619]
+[node name="Month" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MonthContainer/MarginContainer/PanelContainer" unique_id=322095619]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_eu6ci")
@@ -150,24 +159,24 @@ theme_override_font_sizes/font_size = 30
 text = "January"
 horizontal_alignment = 1
 
-[node name="DayContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=803739870]
+[node name="DayContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=803739870]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/DayContainer" unique_id=576655718]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer" unique_id=576655718]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer" unique_id=1113966188]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer" unique_id=1113966188]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer" unique_id=762146654]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer" unique_id=762146654]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_s1xu4")
 
-[node name="dayName" type="Label" parent="Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1714055837]
+[node name="dayName" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1714055837]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_eu6ci")
@@ -175,82 +184,82 @@ theme_override_font_sizes/font_size = 30
 text = "Mon."
 horizontal_alignment = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer" unique_id=1881567959]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer" unique_id=1881567959]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3s2e7")
 
-[node name="day" type="Label" parent="Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer2" unique_id=1726738949]
+[node name="day" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer2" unique_id=1726738949]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_eu6ci")
 theme_override_font_sizes/font_size = 30
 text = "99"
 
-[node name="HourContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1400370157]
+[node name="HourContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1400370157]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/HourContainer" unique_id=680168421]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer" unique_id=680168421]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="PanelContainer" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer" unique_id=1999750533]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer" unique_id=1999750533]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ibm6u")
 
-[node name="CenterContainer" type="CenterContainer" parent="Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer" unique_id=1251792277]
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer" unique_id=1251792277]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer" unique_id=302425747]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer" unique_id=302425747]
 layout_mode = 2
 
-[node name="hours" type="Label" parent="Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=1567953488]
+[node name="hours" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=1567953488]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_eu6ci")
 theme_override_font_sizes/font_size = 30
 text = "06"
 
-[node name="space" type="Label" parent="Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=159799248]
+[node name="space" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=159799248]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_eu6ci")
 theme_override_font_sizes/font_size = 30
 text = ":"
 
-[node name="minutes" type="Label" parent="Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=1498722604]
+[node name="minutes" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=1498722604]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_eu6ci")
 theme_override_font_sizes/font_size = 30
 text = "59"
 
-[node name="period" type="Label" parent="Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=1871939184]
+[node name="period" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=1871939184]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_eu6ci")
 theme_override_font_sizes/font_size = 30
 text = "AM"
 
-[node name="MoneyContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1808751785]
+[node name="MoneyContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1808751785]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer" unique_id=2014347482]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer" unique_id=2014347482]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer" unique_id=487251284]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer" unique_id=487251284]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer" unique_id=648261595]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer" unique_id=648261595]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4wooe")
 
-[node name="MoneySign" type="Label" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1068901594]
+[node name="MoneySign" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1068901594]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_s1xu4")
@@ -259,17 +268,17 @@ text = "$"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer" unique_id=1947474328]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer" unique_id=1947474328]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tew1x")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2" unique_id=170402418]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2" unique_id=170402418]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="TensOfThousand" type="Label" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=2131843403]
+[node name="TensOfThousand" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=2131843403]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_s1xu4")
@@ -278,12 +287,12 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1009035656]
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1009035656]
 layout_mode = 2
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
 
-[node name="ThousandUnit" type="Label" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1924815821]
+[node name="ThousandUnit" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1924815821]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_s1xu4")
@@ -292,12 +301,12 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator2" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=551800841]
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=551800841]
 layout_mode = 2
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
 
-[node name="Hundred" type="Label" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1554561065]
+[node name="Hundred" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1554561065]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_s1xu4")
@@ -306,12 +315,12 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator3" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=2013304773]
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=2013304773]
 layout_mode = 2
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
 
-[node name="Ten" type="Label" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=319384442]
+[node name="Ten" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=319384442]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_s1xu4")
@@ -320,12 +329,12 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator4" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1213375157]
+[node name="VSeparator4" type="VSeparator" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1213375157]
 layout_mode = 2
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
 
-[node name="Unit" type="Label" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=196703408]
+[node name="Unit" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=196703408]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_s1xu4")
@@ -334,12 +343,12 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator5" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1631332607]
+[node name="VSeparator5" type="VSeparator" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1631332607]
 layout_mode = 2
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
 
-[node name="PointSeparator" type="Label" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=977066877]
+[node name="PointSeparator" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=977066877]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_s1xu4")
@@ -348,12 +357,12 @@ text = "."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator6" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1942800968]
+[node name="VSeparator6" type="VSeparator" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1942800968]
 layout_mode = 2
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
 
-[node name="Decimal1" type="Label" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=850655715]
+[node name="Decimal1" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=850655715]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_s1xu4")
@@ -362,12 +371,12 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VSeparator7" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=267455188]
+[node name="VSeparator7" type="VSeparator" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=267455188]
 layout_mode = 2
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
 
-[node name="Decimal2" type="Label" parent="Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1001493988]
+[node name="Decimal2" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1001493988]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_s1xu4")
@@ -375,3 +384,50 @@ theme_override_font_sizes/font_size = 35
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TimeButtons" type="Panel" parent="VBoxContainer" unique_id=1309980291]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+theme = ExtResource("1_3s2e7")
+script = ExtResource("4_tew1x")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TimeButtons" unique_id=1754860905]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeButtons/MarginContainer" unique_id=582567907]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/TimeButtons/MarginContainer/HBoxContainer" unique_id=201192686]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme = ExtResource("4_ibm6u")
+icon = SubResource("AtlasTexture_7axdo")
+icon_alignment = 1
+
+[node name="x2Button" type="Button" parent="VBoxContainer/TimeButtons/MarginContainer/HBoxContainer" unique_id=495379493]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme = ExtResource("4_ibm6u")
+icon = SubResource("AtlasTexture_ob2e6")
+icon_alignment = 1
+
+[node name="x3Button" type="Button" parent="VBoxContainer/TimeButtons/MarginContainer/HBoxContainer" unique_id=1582193743]
+custom_minimum_size = Vector2(67, 0)
+layout_mode = 2
+theme = ExtResource("4_ibm6u")
+icon = SubResource("AtlasTexture_uxsiw")
+icon_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/TimeButtons/MarginContainer/HBoxContainer/PlayButton" to="VBoxContainer/TimeButtons" method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TimeButtons/MarginContainer/HBoxContainer/x2Button" to="VBoxContainer/TimeButtons" method="_on_x_2_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TimeButtons/MarginContainer/HBoxContainer/x3Button" to="VBoxContainer/TimeButtons" method="_on_x_3_button_pressed"]

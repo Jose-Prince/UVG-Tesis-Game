@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://btnjeyby10uxk"]
 
 [ext_resource type="Script" uid="uid://dgq50m38rejiv" path="res://Scripts/article.gd" id="1_2lmin"]
-[ext_resource type="Resource" uid="uid://d0riswjm5jcyk" path="res://Resources/coffee.tres" id="2_snflx"]
+[ext_resource type="Resource" uid="uid://d0riswjm5jcyk" path="res://Resources/Article Data/coffee.tres" id="2_snflx"]
 [ext_resource type="Texture2D" uid="uid://ura514lpluut" path="res://Assets/Sprites/coffee-sprite_8x8.png" id="3_snflx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_snflx"]

@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://bupp027jeswwg"]
+
+[ext_resource type="Script" uid="uid://bafasfkh8o0n" path="res://Scripts/SettingsMenu/general_menu.gd" id="1_gfrjp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66hv6"]
+bg_color = Color(0.78431374, 0.60784316, 0.3882353, 1)
+border_color = Color(0.3529412, 0.21960784, 0.14117648, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="GeneralSettings" type="VBoxContainer" unique_id=198904855]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_gfrjp")
+
+[node name="AutoRun" type="VBoxContainer" parent="." unique_id=731179725]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="AutoRun" unique_id=583779961]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="AutoRun/GridContainer" unique_id=1493861427]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Auto Run"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AutoRun/GridContainer" unique_id=1155482476]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="ARCheckBox" type="CheckBox" parent="AutoRun/GridContainer/HBoxContainer" unique_id=984475828]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../Borrable/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider")
+focus_neighbor_top = NodePath("../../../../../../Borrable/Panel/MarginContainer/VBoxContainer2/ButtonsDisplay/ReturnButton")
+focus_neighbor_right = NodePath("../../../../../../Borrable/Panel/MarginContainer/VBoxContainer2/HBoxContainer/RightScrollContainer/MarginContainer/RightColumn/Master/GridContainer/HBoxContainer/MasterSlider")
+focus_neighbor_bottom = NodePath("../../../../../../Borrable/Panel/MarginContainer/VBoxContainer2/HBoxContainer/LeftScrollContainer/MarginContainer/LeftColumn/ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox")
+theme_override_colors/font_color = Color(0.9490196, 0.9098039, 0.8352941, 1)
+theme_override_colors/font_focus_color = Color(1, 0.9607843, 0.9098039, 1)
+theme_override_colors/font_pressed_color = Color(0.8509804, 0.7764706, 0.64705884, 1)
+theme_override_colors/font_hover_color = Color(1, 0.9607843, 0.9098039, 1)
+theme_override_colors/font_disabled_color = Color(0.56078434, 0.50980395, 0.44705883, 1)
+theme_override_constants/h_separation = 12
+theme_override_styles/focus = SubResource("StyleBoxFlat_66hv6")
+icon_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="AutoRun" unique_id=1262289771]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="AutoRun/MarginContainer" unique_id=862684743]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Automatically runs while moving without needing to hold the run button."
+autowrap_mode = 2
+
+[node name="ShowInteractionLocation" type="VBoxContainer" parent="." unique_id=1164290172]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="ShowInteractionLocation" unique_id=1880561572]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="ShowInteractionLocation/GridContainer" unique_id=938603294]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Show Interaction Location"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShowInteractionLocation/GridContainer" unique_id=1538683924]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="LocationCheckBox" type="CheckBox" parent="ShowInteractionLocation/GridContainer/HBoxContainer" unique_id=1017817652]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer/MusicSlider")
+focus_neighbor_right = NodePath("../../../../../../../RightScrollContainer/MarginContainer/RightColumn/Music/GridContainer/HBoxContainer/MusicSlider")
+focus_neighbor_bottom = NodePath("../../../../HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox")
+
+[node name="MarginContainer" type="MarginContainer" parent="ShowInteractionLocation" unique_id=1754630005]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="ShowInteractionLocation/MarginContainer" unique_id=2105353421]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Displays a marker indicating where interactions with objects or characters can occur."
+autowrap_mode = 2
+
+[node name="HideInteractionWhenMoving" type="VBoxContainer" parent="." unique_id=1398270903]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HideInteractionWhenMoving" unique_id=1550002179]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="HideInteractionWhenMoving/GridContainer" unique_id=165048972]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Hide Interaction When Moving"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HideInteractionWhenMoving/GridContainer" unique_id=838884837]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="HideCheckBox" type="CheckBox" parent="HideInteractionWhenMoving/GridContainer/HBoxContainer" unique_id=1549796587]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer/SoundsSlider")
+focus_neighbor_top = NodePath("../../../../ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox")
+focus_neighbor_right = NodePath("../../../../../../../RightScrollContainer/MarginContainer/RightColumn/Sounds/GridContainer/HBoxContainer/SoundsSlider")
+focus_neighbor_bottom = NodePath("../../../../PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox")
+
+[node name="MarginContainer" type="MarginContainer" parent="HideInteractionWhenMoving" unique_id=958129631]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="HideInteractionWhenMoving/MarginContainer" unique_id=661440262]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Hides interaction markers while the player is moving."
+autowrap_mode = 2
+
+[node name="PauseWhenGameInactive" type="VBoxContainer" parent="." unique_id=100363915]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="PauseWhenGameInactive" unique_id=1645756138]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="PauseWhenGameInactive/GridContainer" unique_id=756800366]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Pause When Game Is Inactive"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseWhenGameInactive/GridContainer" unique_id=460327181]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="PauseCheckBox" type="CheckBox" parent="PauseWhenGameInactive/GridContainer/HBoxContainer" unique_id=649954354]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../../RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer/HBoxContainer/WindowOptionButton")
+focus_neighbor_top = NodePath("../../../../HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox")
+focus_neighbor_right = NodePath("../../../../../../../RightScrollContainer/MarginContainer/RightColumn/WindowMode/GridContainer/HBoxContainer/WindowOptionButton")
+focus_neighbor_bottom = NodePath("../../../../../../../../ButtonsDisplay/ReturnButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseWhenGameInactive" unique_id=1844274424]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="Label" type="Label" parent="PauseWhenGameInactive/MarginContainer" unique_id=658545868]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Automatically pauses the game when the game window loses focus."
+autowrap_mode = 2
+
+[connection signal="toggled" from="AutoRun/GridContainer/HBoxContainer/ARCheckBox" to="." method="_on_ar_check_box_toggled"]
+[connection signal="toggled" from="ShowInteractionLocation/GridContainer/HBoxContainer/LocationCheckBox" to="." method="_on_location_check_box_toggled"]
+[connection signal="toggled" from="HideInteractionWhenMoving/GridContainer/HBoxContainer/HideCheckBox" to="." method="_on_hide_check_box_toggled"]
+[connection signal="toggled" from="PauseWhenGameInactive/GridContainer/HBoxContainer/PauseCheckBox" to="." method="_on_pause_check_box_toggled"]

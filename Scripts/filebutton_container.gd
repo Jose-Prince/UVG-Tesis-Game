@@ -26,6 +26,8 @@ func _ready() -> void:
 		var month = save_data["world"]["month"]
 		var year = save_data["world"]["year"]
 		
+		var appearance = save_data["player"]["appearance"]
+		
 		var button := LOAD_BUTTON_PREFAB.instantiate()
 		add_child(button)
 		
@@ -39,7 +41,8 @@ func _ready() -> void:
 			int(day_index),
 			int(num_day),
 			int(month),
-			int(year)
+			int(year),
+			appearance
 		)
 		
 		button.pressed.connect(

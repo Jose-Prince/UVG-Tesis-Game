@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ded571vyn71rt"]
+
+[ext_resource type="Script" uid="uid://dbcegnriq2i20" path="res://Scripts/TeleportSystem/spawnpoint.gd" id="1_ma3jm"]
+
+[node name="Spawn" type="Marker2D" unique_id=1221738028]
+gizmo_extents = 50.0
+script = ExtResource("1_ma3jm")

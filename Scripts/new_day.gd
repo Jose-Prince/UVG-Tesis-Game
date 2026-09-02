@@ -14,6 +14,7 @@ var days = [
 var dots := 0
 var full_text := "%s %d, %s, Year %d" % [days[GameData.day_index], GameData.num_day, months[GameData.month], GameData.year] 
 
+@onready var texture_rect: AnimatedTextureRect = $VBoxContainer/HBoxContainer2/TextureRect
 @onready var save_label: Label = $VBoxContainer/HBoxContainer2/SaveLabel
 @onready var date_label: Label = $VBoxContainer/HBoxContainer/DateLabel
 @onready var write_sound: AudioStreamPlayer = $WriteSound
@@ -22,6 +23,7 @@ var full_text := "%s %d, %s, Year %d" % [days[GameData.day_index], GameData.num_
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	texture_rect.play_animation(true)
 	await scene_transition.pixelate_out(0.6).finished
 	await write_text()
 	clic_sound.play()

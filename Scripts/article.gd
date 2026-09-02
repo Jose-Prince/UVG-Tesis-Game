@@ -57,7 +57,6 @@ func get_article_name():
 	return article_data.name
 
 func pickup(new_holder: Node2D):
-	print(self.scale)
 	holder = new_holder
 	if new_holder.has_method("set_held_item"):
 		new_holder.set_held_item(self)
@@ -71,9 +70,6 @@ func drop():
 	
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
-	
-	if kitchen_layer:
-		kitchen_layer.set_tile_occupied(global_position, true)
 
 func update_bob(anim_name: String, frame: int):
 	if !anim_name.contains("walk") and !anim_name.contains("run"):

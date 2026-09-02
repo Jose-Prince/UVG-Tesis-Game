@@ -4,8 +4,30 @@
 [ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Assets/Fonts/static/PixelifySans-Bold.ttf" id="2_rmkb3"]
 [ext_resource type="Script" uid="uid://cxfpqyib17r24" path="res://Scripts/animated_dots.gd" id="3_rmkb3"]
 [ext_resource type="AudioStream" uid="uid://bq6qcyxxs2w16" path="res://Assets/Audios/typewriter_sound.wav" id="4_1fu1n"]
+[ext_resource type="Texture2D" uid="uid://bq2d0xlhg0ib0" path="res://Assets/Sprites/disk.PNG" id="4_acooa"]
+[ext_resource type="Script" uid="uid://dgkhhcqfqjbl1" path="res://Scripts/animated_texture_rect.gd" id="5_ctp54"]
 [ext_resource type="AudioStream" uid="uid://ebctnjjdpchb" path="res://Assets/Audios/clip_sound.wav" id="5_mm26e"]
 [ext_resource type="PackedScene" uid="uid://chcl2gv8i2851" path="res://Scenes/scene_transition.tscn" id="6_3smw6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u33qs"]
+atlas = ExtResource("4_acooa")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7164"]
+atlas = ExtResource("4_acooa")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j620g"]
+atlas = ExtResource("4_acooa")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3i60"]
+atlas = ExtResource("4_acooa")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0g8d"]
+atlas = ExtResource("4_acooa")
+region = Rect2(48, 0, 16, 16)
 
 [node name="NewDay" type="Control" unique_id=1569627897]
 layout_mode = 3
@@ -36,6 +58,13 @@ theme_override_font_sizes/font_size = 30
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=427349068]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2" unique_id=138972200]
+layout_mode = 2
+texture = SubResource("AtlasTexture_u33qs")
+expand_mode = 2
+script = ExtResource("5_ctp54")
+sprite_list = Array[AtlasTexture]([SubResource("AtlasTexture_r7164"), SubResource("AtlasTexture_j620g"), SubResource("AtlasTexture_t3i60"), SubResource("AtlasTexture_l0g8d")])
 
 [node name="SaveLabel" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=756021766]
 layout_mode = 2
