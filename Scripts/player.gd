@@ -1,7 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
-const TILE_SIZE := 16
+const TILE_SIZE := 32
+const INTERACTION_RADIUS := 18.0
 
 const SKIN_FRAMES: SpriteFrames = preload(
 	"res://Assets/Sprites/character/player_skin.tres"
@@ -45,12 +46,12 @@ var last_facing := Vector2.ZERO
 @onready var interaction_point: Marker2D = $InteractionPoint
 @onready var pointer_sprite: AnimatedSprite2D = $InteractionPoint/PointerSprite
 
-
 func _ready() -> void:
 	await get_tree().process_frame
 
 	apply_appearance()
 	update_interaction_visibility()
+	update_interaction_point()
 
 
 func _process(_delta: float) -> void:
@@ -109,6 +110,10 @@ func _process_interaction_input() -> void:
 			_process_mouse_interaction()
 
 
+# ============================================================
+# KEYBOARD INTERACTION
+# ============================================================
+
 func _process_keyboard_interaction() -> void:
 	var interaction_direction := Input.get_vector(
 		"ui_left",
@@ -118,9 +123,9 @@ func _process_keyboard_interaction() -> void:
 	)
 
 	if interaction_direction != Vector2.ZERO:
-		facing = interaction_direction.normalized()
+		facing = _get_8_direction(interaction_direction)
 	elif velocity != Vector2.ZERO:
-		facing = velocity.normalized()
+		facing = _get_8_direction(velocity)
 
 	update_interaction_visibility()
 	update_interaction_point()
@@ -128,6 +133,10 @@ func _process_keyboard_interaction() -> void:
 	if Input.is_action_just_pressed("key_action"):
 		_interact()
 
+
+# ============================================================
+# MOUSE INTERACTION
+# ============================================================
 
 func _process_mouse_interaction() -> void:
 	update_interaction_visibility()
@@ -146,80 +155,92 @@ func _interact() -> void:
 
 
 # ============================================================
+# 8 DIRECTIONS
+# ============================================================
+
+func _get_8_direction(direction: Vector2) -> Vector2:
+	if direction == Vector2.ZERO:
+		return facing
+
+	var angle := direction.angle()
+
+	var octant = round(angle / (PI / 4.0))
+	var direction_index := int(octant) % 8
+
+	if direction_index < 0:
+		direction_index += 8
+
+	match direction_index:
+		0:
+			return Vector2.RIGHT
+
+		1:
+			return Vector2(1, 1).normalized()
+
+		2:
+			return Vector2.DOWN
+
+		3:
+			return Vector2(-1, 1).normalized()
+
+		4:
+			return Vector2.LEFT
+
+		5:
+			return Vector2(-1, -1).normalized()
+
+		6:
+			return Vector2.UP
+
+		7:
+			return Vector2(1, -1).normalized()
+
+	return facing
+
+
+# ============================================================
 # INTERACTION VISIBILITY
 # ============================================================
 
 func update_interaction_visibility() -> void:
-	# Si la interacción está desactivada,
-	# el punto nunca debe mostrarse.
 	if !GameData.show_interaction:
 		interaction_point.hide()
 		return
 
-	# Si estamos moviéndonos y la configuración indica
-	# que debemos ocultar el punto mientras caminamos.
 	if velocity != Vector2.ZERO and GameData.hide_interaction_moving:
 		interaction_point.hide()
 		return
 
-	# En cualquier otro caso se muestra.
 	interaction_point.show()
 
 
 # ============================================================
-# KEYBOARD INTERACTION POINT
+# INTERACTION POINT
 # ============================================================
 
 func update_interaction_point() -> void:
-	var direction := Vector2(
-		sign(facing.x),
-		sign(facing.y)
-	)
-
-	var player_tile := Vector2i(
-		(global_position / TILE_SIZE).floor()
-	)
-
-	if player_tile == current_tile and direction == last_facing:
-		return
-
-	current_tile = player_tile
-	last_facing = direction
-
-	var target_tile := current_tile + Vector2i(direction)
-
-	var target_center := (
-		Vector2(target_tile) * TILE_SIZE
-		+ Vector2(TILE_SIZE / 2.0, TILE_SIZE / 2.0)
-	)
-
-	interaction_point.global_position = target_center
-
-
-# ============================================================
-# MOUSE INTERACTION POINT
-# ============================================================
+	var direction := _get_8_direction(facing)
+	
+	_set_interaction_point_position(direction)
 
 func update_mouse_interaction_point() -> void:
 	var mouse_position := get_global_mouse_position()
+
+	# La dirección se calcula desde el centro del sprite
+	# del jugador hacia el mouse.
 	var direction := mouse_position - global_position
 
 	if direction == Vector2.ZERO:
 		return
 
-	direction = direction.normalized()
+	facing = _get_8_direction(direction)
 
-	var target_position := global_position + direction * TILE_SIZE
-
-	interaction_point.global_position = snap_to_tile_center(target_position)
+	_set_interaction_point_position(facing)
 
 
-func snap_to_tile_center(world_pos: Vector2) -> Vector2:
-	var tile_coord := (world_pos / TILE_SIZE).floor()
-
-	return (
-		tile_coord * TILE_SIZE
-		+ Vector2(TILE_SIZE / 2.0, TILE_SIZE / 2.0)
+func _set_interaction_point_position(direction: Vector2) -> void:
+	interaction_point.global_position = (
+		global_position + direction * INTERACTION_RADIUS
 	)
 
 

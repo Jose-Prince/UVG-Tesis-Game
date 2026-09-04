@@ -66,12 +66,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and self.visible:
 		content.hide()
 		buttons_container.hide()
-
-		await notebook_sprite.play_animation_backwards()
 		green.hide()
 		blue.hide()
 		red.hide()
 		yellow.hide()
+
+		await notebook_sprite.play_animation_backwards()
 		
 		if notebook:
 			notebook.show()
@@ -149,6 +149,11 @@ func _on_input_button_pressed() -> void:
 func _on_back_button_pressed() -> void:
 	content.hide()
 	buttons_container.hide()
+	green.hide()
+	blue.hide()
+	red.hide()
+	yellow.hide()
+	
 	await notebook_sprite.play_animation_backwards()
 	
 	if notebook:
