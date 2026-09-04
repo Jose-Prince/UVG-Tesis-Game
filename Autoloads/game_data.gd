@@ -136,6 +136,7 @@ func load_settings(data: Dictionary) -> void:
 	if data.has("inputs"):
 		load_input_settings(data["inputs"])
 	apply_settings()
+	apply_audio_settings()
 
 func apply_settings() -> void:
 	match window_mode:
@@ -240,3 +241,8 @@ func set_default():
 	reset_inputs_to_default()
 	
 	apply_settings()
+
+func apply_audio_settings() -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(master))
+	MusicManager.adjust_volume(linear_to_db(music))
+	SfxManager.adjust_volume(linear_to_db(sounds))

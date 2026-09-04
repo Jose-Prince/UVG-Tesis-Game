@@ -1,7 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
-const TILE_SIZE := 16
+const TILE_SIZE := 32
+const INTERACTION_RADIUS := 18.0
 
 const SKIN_FRAMES: SpriteFrames = preload(
 	"res://Assets/Sprites/character/player_skin.tres"
@@ -37,8 +38,6 @@ var facing := Vector2.DOWN
 var current_tile := Vector2i.ZERO
 var last_facing := Vector2.ZERO
 
-var show_interaction := true
-
 @onready var skin: AnimatedSprite2D = $skin
 @onready var clothes_bottom: AnimatedSprite2D = $clothes_bottom
 @onready var clothes_top: AnimatedSprite2D = $clothes_top
@@ -52,10 +51,13 @@ func _ready() -> void:
 
 	apply_appearance()
 	update_interaction_visibility()
+	update_interaction_point()
+
 
 func _process(_delta: float) -> void:
 	queue_redraw()
 	z_index = int(global_position.y)
+
 
 func _physics_process(_delta: float) -> void:
 	_process_movement_input()
@@ -67,6 +69,7 @@ func _physics_process(_delta: float) -> void:
 		held_item.update_bob(skin.animation, skin.frame)
 
 	move_and_slide()
+
 
 # ============================================================
 # MOVEMENT
@@ -84,6 +87,7 @@ func _process_movement_input() -> void:
 
 	velocity = input_direction * current_speed
 
+
 func _get_current_speed() -> float:
 	var running := Input.is_action_pressed("run")
 
@@ -91,6 +95,7 @@ func _get_current_speed() -> float:
 		return speed if running else run_speed
 
 	return run_speed if running else speed
+
 
 # ============================================================
 # INTERACTION
@@ -100,10 +105,14 @@ func _process_interaction_input() -> void:
 	match GameData.interaction_mode:
 		GameData.InteractionMode.KEYBOARD:
 			_process_keyboard_interaction()
-		
+
 		GameData.InteractionMode.MOUSE:
 			_process_mouse_interaction()
-			
+
+
+# ============================================================
+# KEYBOARD INTERACTION
+# ============================================================
 
 func _process_keyboard_interaction() -> void:
 	var interaction_direction := Input.get_vector(
@@ -114,67 +123,28 @@ func _process_keyboard_interaction() -> void:
 	)
 
 	if interaction_direction != Vector2.ZERO:
-		facing = interaction_direction.normalized()
+		facing = _get_8_direction(interaction_direction)
 	elif velocity != Vector2.ZERO:
-		facing = velocity.normalized()
+		facing = _get_8_direction(velocity)
 
-	if velocity != Vector2.ZERO and GameData.hide_interaction_moving:
-		interaction_point.hide()
-	elif velocity == Vector2.ZERO and GameData.show_interaction:
-		interaction_point.show()
-
+	update_interaction_visibility()
 	update_interaction_point()
 
 	if Input.is_action_just_pressed("key_action"):
 		_interact()
 
+
+# ============================================================
+# MOUSE INTERACTION
+# ============================================================
+
 func _process_mouse_interaction() -> void:
+	update_interaction_visibility()
 	update_mouse_interaction_point()
-	
+
 	if Input.is_action_just_pressed("mouse_action"):
 		_interact()
 
-func update_mouse_interaction_point() -> void:
-	var mouse_position := get_global_mouse_position()
-	var direction := mouse_position - global_position
-	
-	if direction == Vector2.ZERO:
-		return
-	
-	direction = direction.normalized()
-	
-	var target_position := global_position + direction * TILE_SIZE
-	
-	interaction_point.global_position = snap_to_tile_center(target_position)
-
-func update_interaction_point() -> void:
-	if show_interaction != GameData.show_interaction:
-		show_interaction = GameData.show_interaction
-		interaction_point.visible = show_interaction
-
-	var direction := Vector2(
-		sign(facing.x),
-		sign(facing.y)
-	)
-
-	var player_tile := Vector2i(
-		(global_position / TILE_SIZE).floor()
-	)
-
-	if player_tile == current_tile and direction == last_facing:
-		return
-
-	current_tile = player_tile
-	last_facing = direction
-
-	var target_tile := current_tile + Vector2i(direction)
-
-	var target_center := (
-		Vector2(target_tile) * TILE_SIZE
-		+ Vector2(TILE_SIZE / 2.0, TILE_SIZE / 2.0)
-	)
-
-	interaction_point.global_position = target_center
 
 func _interact() -> void:
 	if current_object:
@@ -182,6 +152,97 @@ func _interact() -> void:
 
 	if current_npc:
 		current_npc.talk()
+
+
+# ============================================================
+# 8 DIRECTIONS
+# ============================================================
+
+func _get_8_direction(direction: Vector2) -> Vector2:
+	if direction == Vector2.ZERO:
+		return facing
+
+	var angle := direction.angle()
+
+	var octant = round(angle / (PI / 4.0))
+	var direction_index := int(octant) % 8
+
+	if direction_index < 0:
+		direction_index += 8
+
+	match direction_index:
+		0:
+			return Vector2.RIGHT
+
+		1:
+			return Vector2(1, 1).normalized()
+
+		2:
+			return Vector2.DOWN
+
+		3:
+			return Vector2(-1, 1).normalized()
+
+		4:
+			return Vector2.LEFT
+
+		5:
+			return Vector2(-1, -1).normalized()
+
+		6:
+			return Vector2.UP
+
+		7:
+			return Vector2(1, -1).normalized()
+
+	return facing
+
+
+# ============================================================
+# INTERACTION VISIBILITY
+# ============================================================
+
+func update_interaction_visibility() -> void:
+	if !GameData.show_interaction:
+		interaction_point.hide()
+		return
+
+	if velocity != Vector2.ZERO and GameData.hide_interaction_moving:
+		interaction_point.hide()
+		return
+
+	interaction_point.show()
+
+
+# ============================================================
+# INTERACTION POINT
+# ============================================================
+
+func update_interaction_point() -> void:
+	var direction := _get_8_direction(facing)
+	
+	_set_interaction_point_position(direction)
+
+func update_mouse_interaction_point() -> void:
+	var mouse_position := get_global_mouse_position()
+
+	# La dirección se calcula desde el centro del sprite
+	# del jugador hacia el mouse.
+	var direction := mouse_position - global_position
+
+	if direction == Vector2.ZERO:
+		return
+
+	facing = _get_8_direction(direction)
+
+	_set_interaction_point_position(facing)
+
+
+func _set_interaction_point_position(direction: Vector2) -> void:
+	interaction_point.global_position = (
+		global_position + direction * INTERACTION_RADIUS
+	)
+
 
 # ============================================================
 # ANIMATION
@@ -204,11 +265,13 @@ func update_animation() -> void:
 
 	_play_movement_animation(prefix)
 
+
 func _is_running() -> bool:
 	if velocity == Vector2.ZERO:
 		return false
 
 	return GameData.auto_run != Input.is_action_pressed("run")
+
 
 func _get_movement_animation_prefix(
 	is_holding: bool,
@@ -226,6 +289,7 @@ func _get_movement_animation_prefix(
 
 	return "walk"
 
+
 func _play_idle_animation(is_holding: bool) -> void:
 	if is_holding:
 		if skin.animation.contains("up"):
@@ -241,6 +305,7 @@ func _play_idle_animation(is_holding: bool) -> void:
 			play_layers("idle_right")
 		else:
 			play_layers("idle")
+
 
 func _play_movement_animation(prefix: String) -> void:
 	if abs(velocity.x) > abs(velocity.y):
@@ -270,6 +335,7 @@ func _play_movement_animation(prefix: String) -> void:
 	if held_item:
 		held_item.set_hold_direction("down", false)
 
+
 # ============================================================
 # APPEARANCE
 # ============================================================
@@ -287,6 +353,7 @@ func apply_appearance() -> void:
 	clothes_bottom.sprite_frames = PANTS_FRAMES[GameData.player_pants_style]
 	clothes_bottom.modulate = GameData.player_pants_color
 
+
 func play_layers(anim_name: String) -> void:
 	if skin.animation == anim_name and skin.is_playing():
 		return
@@ -296,11 +363,13 @@ func play_layers(anim_name: String) -> void:
 	clothes_top.play(anim_name)
 	hair.play(anim_name)
 
+
 func flip_layers(value: bool) -> void:
 	skin.flip_h = value
 	clothes_bottom.flip_h = value
 	clothes_top.flip_h = value
 	hair.flip_h = value
+
 
 # ============================================================
 # HELD ITEM
@@ -324,22 +393,6 @@ func set_held_item(item) -> void:
 		skin.flip_h
 	)
 
-# ============================================================
-# INTERACTION POINT
-# ============================================================
-
-func update_interaction_visibility() -> void:
-	interaction_point.visible = GameData.show_interaction
-	show_interaction = GameData.show_interaction
-
-
-func snap_to_tile_center(world_pos: Vector2) -> Vector2:
-	var tile_coord := (world_pos / TILE_SIZE).floor()
-
-	return (
-		tile_coord * TILE_SIZE
-		+ Vector2(TILE_SIZE / 2.0, TILE_SIZE / 2.0)
-	)
 
 # ============================================================
 # DETECTION
@@ -351,6 +404,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 	if body is NPC:
 		current_npc = body
+
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == current_object:

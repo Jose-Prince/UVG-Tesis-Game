@@ -76,6 +76,51 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 corner_detail = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3acgm"]
+bg_color = Color(1.8049031e-06, 0.5240293, 4.813075e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxpks"]
+bg_color = Color(0, 0.6579622, 0, 1)
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ilaj"]
+bg_color = Color(0, 0.5254902, 0, 1)
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ars4x"]
+bg_color = Color(3.7541986e-06, 0, 0.7989018, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyxvr"]
+bg_color = Color(0.009954209, 0.23880339, 0.99999136, 1)
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wii03"]
+bg_color = Color(0, 0, 0.8, 1)
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0pnhc"]
+bg_color = Color(0.80538696, 2.1418184e-06, 9.62615e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxhtd"]
+bg_color = Color(0.99999994, 0.04050345, 0.022352884, 1)
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7meqa"]
+bg_color = Color(0.8039216, 0, 0, 1)
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2awi"]
+bg_color = Color(0.88762385, 0.8876236, 0, 1)
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnk1o"]
+bg_color = Color(0.8862745, 0.8862745, 0, 1)
+corner_detail = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y6hdc"]
+bg_color = Color(0.8862745, 0.8862745, 0, 1)
+corner_detail = 2
+
 [node name="SettingsMenu" type="Control" unique_id=915478763]
 visible = false
 layout_mode = 3
@@ -99,6 +144,42 @@ texture = SubResource("AtlasTexture_u33qs")
 script = ExtResource("2_vxpks")
 sprite_list = Array[AtlasTexture]([SubResource("AtlasTexture_5ilaj"), SubResource("AtlasTexture_yyxvr"), SubResource("AtlasTexture_dl6cc"), SubResource("AtlasTexture_6rvfb"), SubResource("AtlasTexture_wii03"), SubResource("AtlasTexture_lxhtd"), SubResource("AtlasTexture_7meqa")])
 frame_duration = 0.05
+
+[node name="Green" type="ColorRect" parent="." unique_id=1710149926]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 742.0
+offset_top = 44.0
+offset_right = 750.0
+offset_bottom = 219.0
+color = Color(0, 0.5254902, 0, 1)
+
+[node name="Blue" type="ColorRect" parent="." unique_id=1541312702]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 742.0
+offset_top = 44.0
+offset_right = 750.0
+offset_bottom = 313.0
+color = Color(0, 0, 0.8, 1)
+
+[node name="Red" type="ColorRect" parent="." unique_id=1956881803]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 742.0
+offset_top = 44.0
+offset_right = 750.0
+offset_bottom = 407.0
+color = Color(0.8039216, 0, 0, 1)
+
+[node name="Yellow" type="ColorRect" parent="." unique_id=1988126038]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 742.0
+offset_top = 44.0
+offset_right = 750.0
+offset_bottom = 501.0
+color = Color(0.8862745, 0.8862745, 0, 1)
 
 [node name="Content" type="MarginContainer" parent="." unique_id=1975203867]
 layout_mode = 1
@@ -165,7 +246,8 @@ disabled = true
 text = "Save"
 
 [node name="ButtonsContainer" type="HBoxContainer" parent="." unique_id=899026081]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 offset_left = 790.0
 offset_top = 129.0
 offset_right = 1196.0
@@ -176,28 +258,48 @@ rotation = 1.5707964
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme = ExtResource("7_yyxvr")
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_3acgm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vxpks")
+theme_override_styles/focus = SubResource("StyleBoxFlat_5ilaj")
 text = "General"
 
 [node name="AudioButton" type="Button" parent="ButtonsContainer" unique_id=7884141]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme = ExtResource("7_yyxvr")
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.32156864, 0.32156864, 0.32156864, 1)
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_ars4x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yyxvr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wii03")
 text = "Audio"
 
 [node name="VisualButton" type="Button" parent="ButtonsContainer" unique_id=679506072]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme = ExtResource("7_yyxvr")
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.32156864, 0.32156864, 0.32156864, 1)
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_0pnhc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lxhtd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7meqa")
 text = "Visuals"
 
 [node name="InputButton" type="Button" parent="ButtonsContainer" unique_id=2058527564]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme = ExtResource("7_yyxvr")
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.32156864, 0.32156864, 0.32156864, 1)
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_v2awi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pnk1o")
+theme_override_styles/focus = SubResource("StyleBoxFlat_y6hdc")
 text = "Inputs"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

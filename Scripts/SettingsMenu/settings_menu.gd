@@ -25,7 +25,19 @@ var input_settings
 @onready var content: MarginContainer = $Content
 @onready var buttons_container: HBoxContainer = $ButtonsContainer
 
+# Colors
+@onready var green: ColorRect = $Green
+@onready var blue: ColorRect = $Blue
+@onready var red: ColorRect = $Red
+@onready var yellow: ColorRect = $Yellow
+
+
 func _ready() -> void:
+	green.hide()
+	blue.hide()
+	red.hide()
+	yellow.hide()
+	
 	general_button.grab_focus()
 	
 	general_settings = GENERAL_SETTINGS_SCENE.instantiate()
@@ -54,6 +66,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and self.visible:
 		content.hide()
 		buttons_container.hide()
+		green.hide()
+		blue.hide()
+		red.hide()
+		yellow.hide()
 
 		await notebook_sprite.play_animation_backwards()
 		
@@ -74,10 +90,16 @@ func _on_visibility_changed() -> void:
 	if self.visible and notebook_sprite:
 		await notebook_sprite.play_animation()
 		
+		green.show()
 		content.show()
 		buttons_container.show()
 
 func _on_general_button_pressed() -> void:
+	green.show()
+	blue.hide()
+	red.hide()
+	yellow.hide()
+	
 	general_button.grab_focus()
 	
 	general_settings.show()
@@ -86,6 +108,11 @@ func _on_general_button_pressed() -> void:
 	input_settings.hide()
 
 func _on_audio_button_pressed() -> void:
+	green.hide()
+	blue.show()
+	red.hide()
+	yellow.hide()
+	
 	audio_button.grab_focus()
 	
 	general_settings.hide()
@@ -94,6 +121,11 @@ func _on_audio_button_pressed() -> void:
 	input_settings.hide()
 
 func _on_visual_button_pressed() -> void:
+	green.show()
+	blue.hide()
+	red.show()
+	yellow.hide()
+	
 	visual_button.grab_focus()
 	
 	general_settings.hide()
@@ -102,6 +134,11 @@ func _on_visual_button_pressed() -> void:
 	input_settings.hide()
 
 func _on_input_button_pressed() -> void:
+	green.show()
+	blue.hide()
+	red.hide()
+	yellow.show()
+	
 	input_button.grab_focus()
 	
 	general_settings.hide()
@@ -112,6 +149,11 @@ func _on_input_button_pressed() -> void:
 func _on_back_button_pressed() -> void:
 	content.hide()
 	buttons_container.hide()
+	green.hide()
+	blue.hide()
+	red.hide()
+	yellow.hide()
+	
 	await notebook_sprite.play_animation_backwards()
 	
 	if notebook:

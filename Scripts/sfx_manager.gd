@@ -1,27 +1,40 @@
 extends Node
 
-@onready var click_sound: AudioStreamPlayer = $ClickSound
-@onready var bell_sound: AudioStreamPlayer = $BellSound
-@onready var liquid_sound: AudioStreamPlayer = $LiquidFillingSound
-@onready var money_sound: AudioStreamPlayer = $MoneySound
-@onready var pick_sound: AudioStreamPlayer = $PickSound
+@onready var sfx_player: AudioStreamPlayer = $SFXPlayer
+
+const click_sound: AudioStream = preload("res://Assets/Audios/button1.ogg")
+const bell_sound: AudioStream = preload("res://Assets/Audios/bell1.ogg")
+const liquid_sound: AudioStream = preload("res://Assets/Audios/liquid.mp3")
+const money_sound: AudioStream = preload("res://Assets/Audios/chiklin.mp3")
+const pick_sound: AudioStream = preload("res://Assets/Audios/pick.mp3")
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func play_click() -> void:
-	click_sound.pitch_scale = randf_range(0.95, 1.05)
-	click_sound.play()
-	
+	sfx_player.pitch_scale = randf_range(0.95, 1.05)
+	sfx_player.stream = click_sound
+	sfx_player.play()
+
 func play_bell() -> void:
-	bell_sound.pitch_scale = randf_range(0.95, 1.05)
-	bell_sound.play()
-	
+	sfx_player.pitch_scale = randf_range(0.95, 1.05)
+	sfx_player.stream = bell_sound
+	sfx_player.play()
+
 func play_liquid() -> void:
-	liquid_sound.pitch_scale = randf_range(0.95, 1.05)
-	liquid_sound.play()
-	
+	sfx_player.pitch_scale = randf_range(0.95, 1.05)
+	sfx_player.stream = liquid_sound
+	sfx_player.play()
+
 func play_money() -> void:
-	money_sound.pitch_scale = randf_range(0.95, 1.05)
-	money_sound.play()
-	
+	sfx_player.pitch_scale = randf_range(0.95, 1.0)
+	sfx_player.stream = money_sound
+	sfx_player.play()
+
 func play_pick() -> void:
-	pick_sound.pitch_scale = randf_range(1.0, 2.0)
-	pick_sound.play()
+	sfx_player.pitch_scale = randf_range(1.0, 2.0)
+	sfx_player.stream = pick_sound
+	sfx_player.play()
+
+func adjust_volume(volume: float) -> void:
+	sfx_player.volume_db = volume
