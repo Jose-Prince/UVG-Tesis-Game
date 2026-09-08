@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://w27numb36gvb" path="res://Scripts/Objects/Table.gd" id="1_c7q46"]
 [ext_resource type="Texture2D" uid="uid://cw6wu2xgacebc" path="res://Assets/TopDownHouse_FurnitureState1.png" id="1_qr4mm"]
+[ext_resource type="Script" uid="uid://cap5tk3ugquy2" path="res://Scripts/Objects/Seat.gd" id="3_5jhn5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmoqc"]
 atlas = ExtResource("1_qr4mm")
@@ -19,3 +20,19 @@ texture = SubResource("AtlasTexture_qmoqc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=435579816]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_u33qs")
+
+[node name="SeatTop" type="Marker2D" parent="." unique_id=187924973]
+position = Vector2(0, -24)
+script = ExtResource("3_5jhn5")
+
+[node name="SeatDown" type="Marker2D" parent="." unique_id=1656407193]
+position = Vector2(0, 19)
+script = ExtResource("3_5jhn5")
+
+[node name="SeatLeft" type="Marker2D" parent="." unique_id=221719355]
+position = Vector2(-34, 0)
+script = ExtResource("3_5jhn5")
+
+[node name="SeatRight" type="Marker2D" parent="." unique_id=804369522]
+position = Vector2(34, 0)
+script = ExtResource("3_5jhn5")

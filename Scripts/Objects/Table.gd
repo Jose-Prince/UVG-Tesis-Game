@@ -12,10 +12,20 @@ enum TableState {
 var state: TableState = TableState.AVAILABLE
 
 
-func interact(player: Player) -> void:
-	print("Interacted with table: ", name)
-	print("State: ", get_state_name())
+@onready var seats: Array[Seat] = [$SeatTop, $SeatDown, $SeatLeft, $SeatRight]
 
+func interact(player: Player) -> void:
+	print("========== TABLE ==========")
+	print("Table: ", name)
+	print("State: ", get_state_name())
+	print("Available seats: ", get_available_seats().size())
+	
+	var seat := get_available_seat()
+	
+	if seat:
+		print("First available seat: ", seat.name)
+	else:
+		print("No seats available")
 
 func get_state_name() -> String:
 	match state:
@@ -29,3 +39,41 @@ func get_state_name() -> String:
 			return "Occupied"
 
 	return "Unknown"
+
+
+func reserve() -> bool:
+	if state != TableState.AVAILABLE:
+		return false
+	
+	state = TableState.RESERVED
+	return true
+
+
+func occupy() -> bool:
+	if state != TableState.RESERVED:
+		return false
+	
+	state = TableState.OCCUPIED
+	return true
+
+
+func release() -> void:
+	state = TableState.AVAILABLE
+
+
+func get_available_seats() -> Array[Seat]:
+	var available: Array[Seat] = []
+	
+	for seat in seats:
+		if seat.is_available():
+			available.append(seat)
+	
+	return available
+
+
+func get_available_seat() -> Seat:
+	for seat in seats:
+		if seat.is_available():
+			return seat
+	
+	return null
