@@ -14,6 +14,14 @@ var state: TableState = TableState.AVAILABLE
 
 @onready var seats: Array[Seat] = [$SeatTop, $SeatDown, $SeatLeft, $SeatRight]
 
+func _ready() -> void:
+	add_to_group("interactable")
+	add_to_group("tables")
+	
+	for child in get_children():
+		if child is Seat:
+			seats.append(child)
+
 func interact(player: Player) -> void:
 	print("========== TABLE ==========")
 	print("Table: ", name)

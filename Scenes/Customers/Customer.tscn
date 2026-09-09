@@ -1,12 +1,23 @@
 [gd_scene format=3 uid="uid://cl58e8mye0sx"]
 
+[ext_resource type="Script" uid="uid://cliyr3qcktev4" path="res://Scripts/Customers/Customer.gd" id="1_1g8wt"]
+[ext_resource type="Texture2D" uid="uid://bfmc1556fiiso" path="res://Assets/Characters_V3_Colour.png" id="1_nk1oc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppqbu"]
+atlas = ExtResource("1_nk1oc")
+region = Rect2(0, 112, 16, 16)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u33qs"]
 
 [node name="Customer" type="CharacterBody2D" unique_id=980918883]
+script = ExtResource("1_1g8wt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=85043619]
+texture = SubResource("AtlasTexture_ppqbu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1739701561]
 shape = SubResource("RectangleShape2D_u33qs")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1805759130]
+path_desired_distance = 5.0
+target_desired_distance = 8.0
