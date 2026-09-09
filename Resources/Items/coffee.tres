@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MenuItem" format=3 uid="uid://dwtul3tjdtqb2"]
+
+[ext_resource type="Script" uid="uid://cdc3n4tcgff42" path="res://Scripts/Resources/MenuItem.gd" id="1_e2qim"]
+
+[resource]
+script = ExtResource("1_e2qim")
+id = "coffee"
+item_name = "Coffee"
+price = 3.0
+metadata/_custom_type_script = "uid://cdc3n4tcgff42"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MenuItem" format=3 uid="uid://dsnhevntfe5lf"]
+
+[ext_resource type="Script" uid="uid://cdc3n4tcgff42" path="res://Scripts/Resources/MenuItem.gd" id="1_7xioh"]
+
+[resource]
+script = ExtResource("1_7xioh")
+id = "cake"
+item_name = "Cake"
+price = 5.0
+metadata/_custom_type_script = "uid://cdc3n4tcgff42"

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bqkrd2pj1awsn"]
+
+[ext_resource type="Script" uid="uid://dl837fehqnj48" path="res://Scripts/UI/OrderPanel.gd" id="1_yhatc"]
+
+[node name="OrderPanel" type="Control" unique_id=2073028734]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yhatc")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1734191886]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1744811750]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer" unique_id=743823390]
+layout_mode = 2
+text = "Order"
+
+[node name="Items" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=580478655]
+layout_mode = 2
