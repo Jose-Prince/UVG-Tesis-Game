@@ -62,7 +62,7 @@ func _slide_in(node: Control, start_offset: Vector2, delay: float) -> void:
 func _on_new_game_pressed() -> void:
 	SfxManager.play_click()
 	GameData.game_slot = SaveManager.get_next_slot()
-	get_tree().change_scene_to_file("res://Scenes/character_editor.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/character_editor.tscn")
 
 func _on_settings_pressed() -> void:
 	SfxManager.play_click()
@@ -74,7 +74,7 @@ func _on_quit_pressed() -> void:
 
 func _on_load_game_pressed() -> void:
 	SfxManager.play_click()
-	get_tree().change_scene_to_file("res://Scenes/files_screen.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/files_screen.tscn")
 
 func _on_new_game_mouse_entered() -> void:
 	new_game.grab_focus()

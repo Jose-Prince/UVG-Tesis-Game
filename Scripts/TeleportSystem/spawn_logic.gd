@@ -9,7 +9,7 @@ func _ready() -> void:
 	var player = PLAYER.instantiate() as Player
 	add_child(player)
 	
-	var spawn_id := TeleportManager.pending_spawn
+	var spawn_id = TeleportManager.pending_spawn
 	
 	for spawn in spawn_points.get_children():
 		if spawn_id == "":

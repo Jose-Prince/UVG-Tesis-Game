@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bd3nqvphqyit2"]
 
 [ext_resource type="Texture2D" uid="uid://ccbqhmc8x0ir2" path="res://Placeholders/placeholder_tiles/Texture/TX Tileset Grass.png" id="1_7yjef"]
-[ext_resource type="Script" uid="uid://b8sdbt2muimac" path="res://Scripts/town_logic.gd" id="1_hb5n5"]
+[ext_resource type="Script" uid="uid://b8sdbt2muimac" path="res://Scripts/TeleportSystem/spawn_logic.gd" id="1_hb5n5"]
 [ext_resource type="Texture2D" uid="uid://b2rqw43vkg1un" path="res://Placeholders/town free/free version.png" id="3_poxg2"]
 [ext_resource type="PackedScene" uid="uid://ded571vyn71rt" path="res://Prefabs/TeleportSystem/spawn.tscn" id="4_ckvn4"]
 [ext_resource type="PackedScene" uid="uid://dwc1eus3nja55" path="res://Prefabs/TeleportSystem/teleport.tscn" id="5_poxg2"]

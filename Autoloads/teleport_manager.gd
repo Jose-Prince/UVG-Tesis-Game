@@ -8,9 +8,9 @@ var teleport_data := {
 			"scene": "res://Scenes/coffee_shop.tscn",
 			"spawn": "cafe_exit"
 		},
-		"house_exit": {
-			"scene": "",
-			"spawn": ""
+		"shop_entrance": {
+			"scene": "res://Scenes/furniture_shop.tscn",
+			"spawn": "shop_exit"
 		}
 	},
 	
@@ -21,10 +21,10 @@ var teleport_data := {
 		}
 	},
 	
-	"house": {
-		"town_exit": {
-			"scene": "",
-			"spawn": ""
+	"res://Scenes/furniture_shop.tscn": {
+		"shop_exit": {
+			"scene": "res://Scenes/town.tscn",
+			"spawn": "shop_entrance"
 		}
 	}
 }

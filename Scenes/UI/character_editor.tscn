@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://j2pwgg4qqx3g"]
+[gd_scene format=3 uid="uid://bruqmim413pxy"]
 
 [ext_resource type="Script" uid="uid://bx5hhn80ewyna" path="res://Scripts/name_entry.gd" id="1_3sdjg"]
 [ext_resource type="Texture2D" uid="uid://cx1nyacr2yebd" path="res://Assets/Sprites/gingham.PNG" id="2_1vb4o"]

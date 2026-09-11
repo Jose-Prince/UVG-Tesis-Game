@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/date_time.gd" id="7_and0b"]
 [ext_resource type="PackedScene" uid="uid://cpoodtd07o4h" path="res://Prefabs/time_ui.tscn" id="8_405c5"]
 [ext_resource type="Script" uid="uid://brsgf6flsog4g" path="res://Scripts/time_ui.gd" id="9_i3mxk"]
-[ext_resource type="PackedScene" uid="uid://ce5bfs85ds2ea" path="res://Scenes/pause_menu.tscn" id="10_qvmbc"]
+[ext_resource type="PackedScene" uid="uid://ce5bfs85ds2ea" path="res://Scenes/UI/pause_menu.tscn" id="10_qvmbc"]
 [ext_resource type="PackedScene" uid="uid://ciqhnxpcvejhp" path="res://Scenes/MenuSettings/settings_menu.tscn" id="11_qjulh"]
 [ext_resource type="PackedScene" uid="uid://dntgf4pto1u5s" path="res://Prefabs/shop_sign.tscn" id="12_evqxc"]
 [ext_resource type="Texture2D" uid="uid://drkfohtbv1tbl" path="res://Placeholders/Spritesheets/Spritesheet_UI_Flat_Animated.png" id="13_6gc6r"]

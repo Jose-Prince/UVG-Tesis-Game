@@ -10,7 +10,7 @@ func _ready() -> void:
 	var saves_slots := SaveManager.get_save_slots()
 	
 	if saves_slots.is_empty():
-		get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
+		get_tree().change_scene_to_file("res://Scenes/UI/title_screen.tscn")
 		return
 	
 	for slot in saves_slots:
@@ -82,7 +82,7 @@ func _on_save_button_pressed(slot: int) -> void:
 	get_tree().change_scene_to_file("res://Scenes/coffee_shop.tscn")
 
 func _on_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/title_screen.tscn")
 
 
 func _on_back_button_mouse_entered() -> void:
