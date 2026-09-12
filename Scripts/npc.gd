@@ -10,5 +10,9 @@ func talk() -> void:
 	else:
 		GameData.is_shopping = true
 		Dialogic.start("shop_timeline")
-		shop_items.show()
-		shop_items.grab_focus()
+		
+		await Dialogic.timeline_ended
+		
+		if Dialogic.VAR.open_shop:
+			shop_items.show()
+		

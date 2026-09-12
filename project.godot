@@ -74,7 +74,9 @@ audio/channel_defaults={
 }
 }
 glossary/default_case_sensitive=true
-variables={}
+variables={
+"open_shop": false
+}
 portraits/default_portrait="res://Scenes/town.tscn"
 ">>>>>>>f0ee9c5457021e37a158ce58e95775dac88db87b[display]window/stretch/mode"="canvas_items"
 

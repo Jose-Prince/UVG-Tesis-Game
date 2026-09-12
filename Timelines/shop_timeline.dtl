@@ -1,2 +1,8 @@
 join Daniel left
-Daniel: What would you like to purchase?
+Daniel: Hello Dreamy, would you like to see my inventory?
+- Yes, please
+	Daniel: All right, I hope you like something
+	set {open_shop} = true
+- No, maybe next time
+	Well, take care of yourself
+	set {open_shop} = false
