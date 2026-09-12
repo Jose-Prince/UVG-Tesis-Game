@@ -3,7 +3,7 @@ extends Node
 var cursor_texture := preload("res://Placeholders/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
 var game_slot := 0
 
-var is_shopping := false
+var process_time := true
 
 # Player variables
 var player_name := ""

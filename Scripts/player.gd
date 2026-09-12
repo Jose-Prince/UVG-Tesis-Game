@@ -60,6 +60,11 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if not GameData.process_time:
+		velocity = Vector2.ZERO
+		update_animation()
+		return
+
 	_process_movement_input()
 	_process_interaction_input()
 

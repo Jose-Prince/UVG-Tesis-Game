@@ -5,10 +5,10 @@ extends CharacterBody2D
 @onready var shop_items: Control = $"../UI/ShopItems"
 
 func talk() -> void:
+	GameData.process_time = false
 	if not is_seller:
 		Dialogic.start("example_timeline")
 	else:
-		GameData.is_shopping = true
 		Dialogic.start("shop_timeline")
 		
 		await Dialogic.timeline_ended
@@ -16,3 +16,4 @@ func talk() -> void:
 		if Dialogic.VAR.open_shop:
 			shop_items.show()
 		
+	
