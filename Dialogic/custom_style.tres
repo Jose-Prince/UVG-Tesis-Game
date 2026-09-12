@@ -32,7 +32,7 @@ scene = ExtResource("5_xnkch")
 script = ExtResource("2_yjcd5")
 scene = ExtResource("6_oqm16")
 overrides = {
-"box_size": "Vector2(800, 150)",
+"box_size": "Vector2(850, 150)",
 "name_label_custom_font_size": "30.0",
 "name_label_use_global_font_size": "false",
 "text_size": "30.0",
@@ -74,4 +74,4 @@ layer_info = {
 "16": SubResource("Resource_1v2io"),
 "17": SubResource("Resource_7tk64")
 }
-metadata/_latest_layer = "15"
+metadata/_latest_layer = "13"
