@@ -1,5 +1,7 @@
 extends Node
 
+signal money_changed(new_amount: float)
+
 var cursor_texture := preload("res://Placeholders/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
 var game_slot := 0
 
@@ -7,7 +9,10 @@ var process_time := true
 
 # Player variables
 var player_name := ""
-var money: float = 0.0
+var money: float = 0.0:
+	set(value):
+		money = value
+		money_changed.emit(money)
 var popularity := 0
 
 # Player appearance

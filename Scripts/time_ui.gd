@@ -59,12 +59,17 @@ func _ready() -> void:
 	current_day_index = day_index
 	current_day_number = start_day
 	
+	GameData.money_changed.connect(_on_money_changed)
+	
 	displayed_money = GameData.money
 	update_money_display(displayed_money)
 	
 	SaveManager.day_ended.connect(_on_day_ended)
 	
 	scene_transition = get_tree().root.find_child("SceneTransition", true, false)
+
+func _on_money_changed(new_amount: float) -> void:
+	animate_money(new_amount)
 
 func add_point(money_received: float) -> void:
 	GameData.money += money_received
@@ -151,7 +156,7 @@ func update_money_display(money: float) -> void:
 	decimal_2.text = money_string[6]
 	
 
-func animate_money() -> void:
+func animate_money(new_amount: float) -> void:
 	if money_tween:
 		money_tween.kill()
 		
@@ -160,7 +165,7 @@ func animate_money() -> void:
 	money_tween.tween_method(
 		update_money_display,
 		displayed_money,
-		GameData.money,
+		new_amount,
 		0.8
 	)
 

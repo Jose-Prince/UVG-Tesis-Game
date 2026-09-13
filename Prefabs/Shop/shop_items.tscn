@@ -4,6 +4,8 @@
 [ext_resource type="Theme" uid="uid://da0xyab7qjklt" path="res://Resources/Themes/panel_theme.tres" id="2_rn3ro"]
 [ext_resource type="Texture2D" uid="uid://dphb51avvwujw" path="res://Assets/Sprites/check-icons_32x32.png" id="3_rn3ro"]
 [ext_resource type="Script" uid="uid://cvtdj0jcjqqob" path="res://Scripts/ShopSystem/close_texture_button.gd" id="4_i6b3c"]
+[ext_resource type="Theme" uid="uid://dqol0gr6yfoko" path="res://Resources/Themes/panel_container_theme.tres" id="5_ra6s7"]
+[ext_resource type="Script" uid="uid://0g423mux7c83" path="res://Scripts/money_display.gd" id="6_afen6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u33qs"]
 atlas = ExtResource("3_rn3ro")
@@ -26,10 +28,14 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -10.0
-offset_top = 21.0
-offset_right = -10.0
-offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="." unique_id=501577913]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -89,16 +95,141 @@ layout_mode = 2
 
 [node name="CloseTextureButton" type="TextureButton" parent="." unique_id=1130535319]
 custom_maximum_size = Vector2(20, 20)
-layout_mode = 0
-offset_left = 810.0
-offset_top = 133.0
-offset_right = 830.0
-offset_bottom = 153.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.703
+anchor_top = 0.20500001
+anchor_right = 0.72
+anchor_bottom = 0.23600002
+offset_left = 0.14398193
+offset_top = 0.1599884
+offset_right = 0.5599365
+offset_bottom = 0.07199097
 texture_normal = SubResource("AtlasTexture_u33qs")
 texture_pressed = SubResource("AtlasTexture_qmoqc")
 texture_hover = SubResource("AtlasTexture_gjn75")
 texture_focused = SubResource("AtlasTexture_tj22x")
 stretch_mode = 0
 script = ExtResource("4_i6b3c")
+
+[node name="MoneyPanel" type="Panel" parent="." unique_id=1252172505]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 318.0
+offset_top = 106.0
+offset_right = 440.0
+offset_bottom = 146.0
+theme = ExtResource("2_rn3ro")
+
+[node name="MarginContainer" type="MarginContainer" parent="MoneyPanel" unique_id=1707511815]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MoneyPanel/MarginContainer" unique_id=1486230876]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MoneyPanel/MarginContainer/HBoxContainer" unique_id=667186309]
+layout_mode = 2
+theme = ExtResource("5_ra6s7")
+
+[node name="Label" type="Label" parent="MoneyPanel/MarginContainer/HBoxContainer/PanelContainer" unique_id=2099267245]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "$"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MoneyPanel/MarginContainer/HBoxContainer" unique_id=824960926]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+script = ExtResource("6_afen6")
+
+[node name="TenOfThousands" type="PanelContainer" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1904701631]
+layout_mode = 2
+theme = ExtResource("5_ra6s7")
+
+[node name="TenOfThousandsLabel" type="Label" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer/TenOfThousands" unique_id=539261794]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "9"
+
+[node name="ThousandUnit" type="PanelContainer" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=2002438623]
+layout_mode = 2
+theme = ExtResource("5_ra6s7")
+
+[node name="ThousandUnitLabel" type="Label" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer/ThousandUnit" unique_id=349112889]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "9"
+
+[node name="Hundred" type="PanelContainer" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=383877123]
+layout_mode = 2
+theme = ExtResource("5_ra6s7")
+
+[node name="HundredLabel" type="Label" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer/Hundred" unique_id=1902628020]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "9"
+
+[node name="Ten" type="PanelContainer" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1624410861]
+layout_mode = 2
+theme = ExtResource("5_ra6s7")
+
+[node name="TenLabel" type="Label" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer/Ten" unique_id=1945973734]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "9"
+
+[node name="Unit" type="PanelContainer" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1286671103]
+layout_mode = 2
+theme = ExtResource("5_ra6s7")
+
+[node name="UnitLabel" type="Label" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer/Unit" unique_id=898463868]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "9"
+
+[node name="PointSeparator" type="PanelContainer" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=790585825]
+layout_mode = 2
+theme = ExtResource("5_ra6s7")
+
+[node name="PointSeparatorLabel" type="Label" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer/PointSeparator" unique_id=1409215579]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "."
+
+[node name="Decimal1" type="PanelContainer" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=746289216]
+layout_mode = 2
+theme = ExtResource("5_ra6s7")
+
+[node name="Decimal1Label" type="Label" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer/Decimal1" unique_id=913821575]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "9"
+
+[node name="Decimal2" type="PanelContainer" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1319380018]
+layout_mode = 2
+theme = ExtResource("5_ra6s7")
+
+[node name="Decimal2Label" type="Label" parent="MoneyPanel/MarginContainer/HBoxContainer/HBoxContainer/Decimal2" unique_id=1722160653]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "9"
 
 [connection signal="pressed" from="CloseTextureButton" to="CloseTextureButton" method="_on_pressed"]

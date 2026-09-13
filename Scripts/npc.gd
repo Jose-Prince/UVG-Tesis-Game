@@ -15,5 +15,7 @@ func talk() -> void:
 		
 		if Dialogic.VAR.open_shop:
 			shop_items.show()
+		else:
+			GameData.process_time = true
 		
 	

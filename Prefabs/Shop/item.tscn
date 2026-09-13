@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://d1ygum0d2wrp7"]
 
+[ext_resource type="Script" uid="uid://cc1bgu6qcx1ja" path="res://Prefabs/Shop/item.gd" id="1_5r72x"]
 [ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Placeholders/TopDownHouse_FurnitureState1.png" id="1_uhgvx"]
+[ext_resource type="Texture2D" uid="uid://b0piykgsga2y7" path="res://Placeholders/money.png" id="2_di2lj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qp821"]
 atlas = ExtResource("1_uhgvx")
@@ -13,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5r72x")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1425014539]
 layout_mode = 1
@@ -29,19 +32,28 @@ theme_override_constants/margin_bottom = 15
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=2092551383]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=359399174]
+[node name="ItemDetails" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=150310917]
+layout_mode = 2
+
+[node name="ObjectTexture" type="TextureRect" parent="MarginContainer/HBoxContainer/ItemDetails" unique_id=359399174]
 layout_mode = 2
 texture = SubResource("AtlasTexture_qp821")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1956826152]
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer/ItemDetails" unique_id=1013379790]
+layout_mode = 2
+text = "Mesa"
+
+[node name="ItemPrice" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1956826152]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1013379790]
+[node name="PriceLabel" type="Label" parent="MarginContainer/HBoxContainer/ItemPrice" unique_id=1381226251]
 layout_mode = 2
-text = "Cosa"
+text = "10"
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1381226251]
+[node name="CoinTextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/ItemPrice" unique_id=1921818040]
 layout_mode = 2
-text = "IMagen"
+texture = ExtResource("2_di2lj")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

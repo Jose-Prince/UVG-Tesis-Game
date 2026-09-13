@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://cpoodtd07o4h"]
 
 [ext_resource type="Theme" uid="uid://da0xyab7qjklt" path="res://Resources/Themes/panel_theme.tres" id="1_3s2e7"]
-[ext_resource type="FontFile" uid="uid://cydo42c7pcqn2" path="res://Assets/Fonts/static/PixelifySans-Medium.ttf" id="1_eu6ci"]
-[ext_resource type="FontFile" uid="uid://bwteg207l05uw" path="res://Assets/Fonts/static/PixelifySans-Bold.ttf" id="2_s1xu4"]
 [ext_resource type="Theme" uid="uid://wr30fwhfd2ok" path="res://Resources/Themes/button_theme.tres" id="4_ibm6u"]
 [ext_resource type="Script" uid="uid://bjnc3u5htejs0" path="res://Scripts/time_buttons.gd" id="4_tew1x"]
 [ext_resource type="Texture2D" uid="uid://dsi10327gegg" path="res://Assets/Sprites/play-icons.png" id="5_4wooe"]
@@ -154,7 +152,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_eu6ci")
 [node name="Month" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MonthContainer/MarginContainer/PanelContainer" unique_id=322095619]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_eu6ci")
 theme_override_font_sizes/font_size = 30
 text = "January"
 horizontal_alignment = 1
@@ -179,7 +176,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_s1xu4")
 [node name="dayName" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1714055837]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_eu6ci")
 theme_override_font_sizes/font_size = 30
 text = "Mon."
 horizontal_alignment = 1
@@ -191,7 +187,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_3s2e7")
 [node name="day" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer2" unique_id=1726738949]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_eu6ci")
 theme_override_font_sizes/font_size = 30
 text = "99"
 
@@ -217,28 +212,24 @@ layout_mode = 2
 [node name="hours" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=1567953488]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_eu6ci")
 theme_override_font_sizes/font_size = 30
 text = "06"
 
 [node name="space" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=159799248]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_eu6ci")
 theme_override_font_sizes/font_size = 30
 text = ":"
 
 [node name="minutes" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=1498722604]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_eu6ci")
 theme_override_font_sizes/font_size = 30
 text = "59"
 
 [node name="period" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=1871939184]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_eu6ci")
 theme_override_font_sizes/font_size = 30
 text = "AM"
 
@@ -262,7 +253,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4wooe")
 [node name="MoneySign" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1068901594]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_s1xu4")
 theme_override_font_sizes/font_size = 30
 text = "$"
 horizontal_alignment = 1
@@ -281,7 +271,6 @@ alignment = 1
 [node name="TensOfThousand" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=2131843403]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_s1xu4")
 theme_override_font_sizes/font_size = 35
 text = "0"
 horizontal_alignment = 1
@@ -295,7 +284,6 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
 [node name="ThousandUnit" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1924815821]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_s1xu4")
 theme_override_font_sizes/font_size = 35
 text = "0"
 horizontal_alignment = 1
@@ -309,7 +297,6 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
 [node name="Hundred" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1554561065]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_s1xu4")
 theme_override_font_sizes/font_size = 35
 text = "0"
 horizontal_alignment = 1
@@ -323,7 +310,6 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
 [node name="Ten" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=319384442]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_s1xu4")
 theme_override_font_sizes/font_size = 35
 text = "0"
 horizontal_alignment = 1
@@ -337,7 +323,6 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
 [node name="Unit" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=196703408]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_s1xu4")
 theme_override_font_sizes/font_size = 35
 text = "0"
 horizontal_alignment = 1
@@ -351,7 +336,6 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
 [node name="PointSeparator" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=977066877]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_s1xu4")
 theme_override_font_sizes/font_size = 35
 text = "."
 horizontal_alignment = 1
@@ -365,7 +349,6 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
 [node name="Decimal1" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=850655715]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_s1xu4")
 theme_override_font_sizes/font_size = 35
 text = "0"
 horizontal_alignment = 1
@@ -379,7 +362,6 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
 [node name="Decimal2" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1001493988]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_s1xu4")
 theme_override_font_sizes/font_size = 35
 text = "0"
 horizontal_alignment = 1

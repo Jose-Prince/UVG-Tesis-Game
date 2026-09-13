@@ -17,3 +17,5 @@ func _on_pressed() -> void:
 	shop_items.hide()
 	
 	GameData.process_time = true
+	
+	Dialogic.start("shop_timeline")
