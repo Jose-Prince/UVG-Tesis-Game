@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://cpoodtd07o4h"]
 
 [ext_resource type="Theme" uid="uid://da0xyab7qjklt" path="res://Resources/Themes/panel_theme.tres" id="1_3s2e7"]
-[ext_resource type="Theme" uid="uid://wr30fwhfd2ok" path="res://Resources/Themes/button_theme.tres" id="4_ibm6u"]
-[ext_resource type="Script" uid="uid://bjnc3u5htejs0" path="res://Scripts/time_buttons.gd" id="4_tew1x"]
-[ext_resource type="Texture2D" uid="uid://dsi10327gegg" path="res://Assets/Sprites/play-icons.png" id="5_4wooe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu6ci"]
 bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
@@ -83,18 +80,6 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7axdo"]
-atlas = ExtResource("5_4wooe")
-region = Rect2(0, 0, 18, 27)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ob2e6"]
-atlas = ExtResource("5_4wooe")
-region = Rect2(54, 0, 36, 27)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uxsiw"]
-atlas = ExtResource("5_4wooe")
-region = Rect2(108, 0, 54, 27)
 
 [node name="Control" type="Control" unique_id=2113710388]
 layout_mode = 3
@@ -366,50 +351,3 @@ theme_override_font_sizes/font_size = 35
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="TimeButtons" type="Panel" parent="VBoxContainer" unique_id=1309980291]
-custom_minimum_size = Vector2(220, 50)
-layout_mode = 2
-theme = ExtResource("1_3s2e7")
-script = ExtResource("4_tew1x")
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TimeButtons" unique_id=1754860905]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 7
-theme_override_constants/margin_top = 7
-theme_override_constants/margin_right = 7
-theme_override_constants/margin_bottom = 7
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimeButtons/MarginContainer" unique_id=582567907]
-layout_mode = 2
-alignment = 1
-
-[node name="PlayButton" type="Button" parent="VBoxContainer/TimeButtons/MarginContainer/HBoxContainer" unique_id=201192686]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-theme = ExtResource("4_ibm6u")
-icon = SubResource("AtlasTexture_7axdo")
-icon_alignment = 1
-
-[node name="x2Button" type="Button" parent="VBoxContainer/TimeButtons/MarginContainer/HBoxContainer" unique_id=495379493]
-custom_minimum_size = Vector2(48, 0)
-layout_mode = 2
-theme = ExtResource("4_ibm6u")
-icon = SubResource("AtlasTexture_ob2e6")
-icon_alignment = 1
-
-[node name="x3Button" type="Button" parent="VBoxContainer/TimeButtons/MarginContainer/HBoxContainer" unique_id=1582193743]
-custom_minimum_size = Vector2(67, 0)
-layout_mode = 2
-theme = ExtResource("4_ibm6u")
-icon = SubResource("AtlasTexture_uxsiw")
-icon_alignment = 1
-
-[connection signal="pressed" from="VBoxContainer/TimeButtons/MarginContainer/HBoxContainer/PlayButton" to="VBoxContainer/TimeButtons" method="_on_play_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/TimeButtons/MarginContainer/HBoxContainer/x2Button" to="VBoxContainer/TimeButtons" method="_on_x_2_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/TimeButtons/MarginContainer/HBoxContainer/x3Button" to="VBoxContainer/TimeButtons" method="_on_x_3_button_pressed"]
