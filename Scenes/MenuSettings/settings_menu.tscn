@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://ciqhnxpcvejhp"]
 
 [ext_resource type="Script" uid="uid://cr7xd8y2pehh4" path="res://Scripts/SettingsMenu/settings_menu.gd" id="1_yyxvr"]
+[ext_resource type="Shader" uid="uid://nm31vlcnh7bh" path="res://Shaders/blur.gdshader" id="2_5ilaj"]
 [ext_resource type="Script" uid="uid://dgkhhcqfqjbl1" path="res://Scripts/animated_texture_rect.gd" id="2_vxpks"]
 [ext_resource type="Texture2D" uid="uid://0efckay8br1t" path="res://Assets/Sprites/Notebook-sheet.png" id="3_5ilaj"]
 [ext_resource type="Theme" uid="uid://wr30fwhfd2ok" path="res://Resources/Themes/button_theme.tres" id="7_yyxvr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cc37w"]
+shader = ExtResource("2_5ilaj")
+shader_parameter/blur_amount = 1.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u33qs"]
 atlas = ExtResource("3_5ilaj")
@@ -130,6 +135,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yyxvr")
+
+[node name="Blur" type="ColorRect" parent="." unique_id=921656210]
+material = SubResource("ShaderMaterial_cc37w")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="NotebookSprite" type="TextureRect" parent="." unique_id=629685519]
 layout_mode = 1

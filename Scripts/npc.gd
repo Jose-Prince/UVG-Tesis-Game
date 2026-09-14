@@ -8,6 +8,9 @@ func talk() -> void:
 	GameData.process_time = false
 	if not is_seller:
 		Dialogic.start("example_timeline")
+		
+		await  Dialogic.timeline_ended
+		GameData.process_time = true
 	else:
 		Dialogic.start("shop_timeline")
 		
