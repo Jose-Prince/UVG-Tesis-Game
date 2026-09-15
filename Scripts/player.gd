@@ -45,6 +45,7 @@ var last_facing := Vector2.ZERO
 
 @onready var interaction_point: Marker2D = $InteractionPoint
 @onready var pointer_sprite: AnimatedSprite2D = $InteractionPoint/PointerSprite
+@onready var time_system: TimeSystem = $TimeSystem
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -52,7 +53,8 @@ func _ready() -> void:
 	apply_appearance()
 	update_interaction_visibility()
 	update_interaction_point()
-
+	
+	time_system.restart_day()
 
 func _process(_delta: float) -> void:
 	queue_redraw()
