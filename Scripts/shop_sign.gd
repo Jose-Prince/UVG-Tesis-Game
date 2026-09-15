@@ -13,16 +13,23 @@ var open_hour := 0
 var close_hour := 0
 
 var is_close := false
+var time_panel: Panel
 
 @onready var title: Label = $MarginContainer2/MarginContainer/VBoxContainer/Title
 @onready var texture_rect: TextureRect = $MarginContainer2/TextureRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	time_panel = get_tree().root.find_child("TimePanel", true, false)
+	
 	open_hour = GameData.open_hour
 	close_hour = GameData.closed_hour
 	
 	texture_rect.texture = frame1
+	
+	if time_panel:
+		time_panel.shop_opened.connect(_on_shop_opened)
+		time_panel.shop_closed.connect(_on_shop_closed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -79,12 +86,18 @@ func play_animation_backwards() -> void:
 	
 	title.visible = true
 
-func _on_time_gui_shop_closed() -> void:
+func _on_shop_opened() -> void:
 	if is_close:
-		title.text = "CLOSED"
-		play_animation()
-
-func _on_time_gui_shop_opened() -> void:
-	title.text = "OPEN"
+		return
+	
 	is_close = true
+	title.text = "OPEN"
+	play_animation()
+
+func _on_shop_closed() -> void:
+	if not is_close:
+		return
+	
+	is_close = false
+	title.text = "CLOSED"
 	play_animation()

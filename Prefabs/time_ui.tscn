@@ -118,7 +118,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
 
-[node name="Control" type="Control" unique_id=2113710388]
+[node name="TimeUI" type="Control" unique_id=2113710388]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -133,81 +133,6 @@ anchor_right = 1.0
 offset_left = -159.0
 offset_bottom = 40.0
 grow_horizontal = 0
-
-[node name="TimePanel" type="Panel" parent="VBoxContainer2" unique_id=1762196066]
-custom_minimum_size = Vector2(159, 38)
-custom_maximum_size = Vector2(-1, 38)
-layout_mode = 2
-theme = ExtResource("1_3s2e7")
-script = ExtResource("2_tew1x")
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/TimePanel" unique_id=1799590049]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 7
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 7
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/TimePanel/MarginContainer" unique_id=785873077]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer" unique_id=1143538820]
-layout_mode = 2
-alignment = 1
-
-[node name="ClockClipping" type="Control" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=922953028]
-custom_minimum_size = Vector2(42, 0)
-custom_maximum_size = Vector2(-1, 20)
-clip_contents = true
-layout_mode = 2
-size_flags_vertical = 3
-offset_transform_enabled = true
-
-[node name="ClockTextureRect" type="TextureRect" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/VBoxContainer/ClockClipping" unique_id=1936064704]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-pivot_offset = Vector2(20, 20)
-texture = ExtResource("2_s1xu4")
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer" unique_id=308886992]
-custom_maximum_size = Vector2(-1, 28)
-layout_mode = 2
-theme = ExtResource("3_3s2e7")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer" unique_id=1776052981]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="hours" type="Label" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=1662210284]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_ibm6u")
-theme_override_font_sizes/font_size = 20
-text = "12"
-
-[node name="space" type="Label" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=100758000]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_ibm6u")
-theme_override_font_sizes/font_size = 20
-text = ":"
-
-[node name="minutes" type="Label" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=234230484]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_ibm6u")
-theme_override_font_sizes/font_size = 20
-text = "59"
-
-[node name="period" type="Label" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=1652459576]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_ibm6u")
-theme_override_font_sizes/font_size = 20
-text = "PM"
 
 [node name="CalendarPanel" type="Panel" parent="VBoxContainer2" unique_id=849064592]
 custom_minimum_size = Vector2(0, 160)
@@ -1168,6 +1093,81 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
+
+[node name="TimePanel" type="Panel" parent="VBoxContainer2" unique_id=1762196066]
+custom_minimum_size = Vector2(159, 38)
+custom_maximum_size = Vector2(-1, 38)
+layout_mode = 2
+theme = ExtResource("1_3s2e7")
+script = ExtResource("2_tew1x")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/TimePanel" unique_id=1799590049]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/TimePanel/MarginContainer" unique_id=785873077]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer" unique_id=1143538820]
+layout_mode = 2
+alignment = 1
+
+[node name="ClockClipping" type="Control" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=922953028]
+custom_minimum_size = Vector2(42, 0)
+custom_maximum_size = Vector2(-1, 20)
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+
+[node name="ClockTextureRect" type="TextureRect" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/VBoxContainer/ClockClipping" unique_id=1936064704]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("2_s1xu4")
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer" unique_id=308886992]
+custom_maximum_size = Vector2(-1, 28)
+layout_mode = 2
+theme = ExtResource("3_3s2e7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer" unique_id=1776052981]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="hours" type="Label" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=1662210284]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ibm6u")
+theme_override_font_sizes/font_size = 20
+text = "12"
+
+[node name="space" type="Label" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=100758000]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ibm6u")
+theme_override_font_sizes/font_size = 20
+text = ":"
+
+[node name="minutes" type="Label" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=234230484]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ibm6u")
+theme_override_font_sizes/font_size = 20
+text = "59"
+
+[node name="period" type="Label" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=1652459576]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ibm6u")
+theme_override_font_sizes/font_size = 20
+text = "PM"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=518651491]
 visible = false
