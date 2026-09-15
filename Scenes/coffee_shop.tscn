@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://bgduyi5wcuj0c" path="res://Prefabs/glass.tscn" id="14_xjtdl"]
 [ext_resource type="PackedScene" uid="uid://cyeftfpjy6lld" path="res://Prefabs/water.tscn" id="15_2i3s5"]
 [ext_resource type="Script" uid="uid://d3285ev7ubckh" path="res://Scripts/directional_light_2d.gd" id="16_2i3s5"]
-[ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/TimeSystem/date_time.gd" id="17_vffnu"]
 [ext_resource type="PackedScene" uid="uid://dwc1eus3nja55" path="res://Prefabs/TeleportSystem/teleport.tscn" id="20_ibwl0"]
 [ext_resource type="PackedScene" uid="uid://ded571vyn71rt" path="res://Prefabs/TeleportSystem/spawn.tscn" id="20_qc307"]
 
@@ -1335,16 +1334,6 @@ sources/0 = SubResource("TileSetAtlasSource_ug16k")
 [sub_resource type="CircleShape2D" id="CircleShape2D_df3mn"]
 radius = 17.0
 
-[sub_resource type="Resource" id="Resource_2o2p7"]
-script = ExtResource("17_vffnu")
-minutes = 2
-metadata/_custom_type_script = "uid://cc3yiapgcu05y"
-
-[sub_resource type="Resource" id="Resource_eatfk"]
-script = ExtResource("17_vffnu")
-hours = 18
-metadata/_custom_type_script = "uid://cc3yiapgcu05y"
-
 [node name="CoffeeShop" type="Node2D" unique_id=152045886]
 script = ExtResource("1_wemkf")
 
@@ -1433,14 +1422,6 @@ input_pickable = false
 object_to_give = ExtResource("14_xjtdl")
 object_to_get = ExtResource("15_2i3s5")
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1367486698]
-blend_mode = 2
-script = ExtResource("16_2i3s5")
-day_color = Color(1, 1, 1, 1)
-night_color = Color(0.17254902, 0.078431375, 0.43529412, 1)
-day_start = SubResource("Resource_2o2p7")
-night_start = SubResource("Resource_eatfk")
-
 [node name="Teleport" parent="." unique_id=28215377 instance=ExtResource("20_ibwl0")]
 position = Vector2(8, 160)
 teleport_id = "cafe_exit"
@@ -1450,6 +1431,10 @@ teleport_id = "cafe_exit"
 [node name="CafeExit" parent="SpawnPoints" unique_id=1221738028 instance=ExtResource("20_qc307")]
 position = Vector2(64, 160)
 spawn_id = "cafe_exit"
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1367486698]
+blend_mode = 2
+script = ExtResource("16_2i3s5")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="LeavingZone" to="." method="_on_leaving_zone_body_entered"]

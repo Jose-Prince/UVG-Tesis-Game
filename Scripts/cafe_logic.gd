@@ -16,8 +16,6 @@ var tables: Array[Node]
 var coffee_name := ""
 
 var time_gui: Control
-var time_system: TimeSystem
-
 var is_open := false
 
 @onready var customer_timer: Timer = $Timer
@@ -55,7 +53,6 @@ func _ready() -> void:
 	await scene_transition.pixelate_out(0.6).finished
 	
 	time_gui = find_child("TimePanel", true, false)
-	time_system = find_child("TimeSystem", true, false)
 	tables = get_tree().get_nodes_in_group("table")
 	
 	if time_gui:

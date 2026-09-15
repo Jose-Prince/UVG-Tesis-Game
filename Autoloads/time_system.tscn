@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cor1ogxv6n4kk"]
+
+[ext_resource type="Script" uid="uid://r14gbqvkuyim" path="res://Scripts/TimeSystem/time_system.gd" id="1_io66x"]
+[ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/TimeSystem/date_time.gd" id="2_bvf1k"]
+
+[sub_resource type="Resource" id="Resource_io66x"]
+script = ExtResource("2_bvf1k")
+metadata/_custom_type_script = "uid://cc3yiapgcu05y"
+
+[node name="TimeSystem" type="Node2D" unique_id=2017570261]
+script = ExtResource("1_io66x")
+date_time = SubResource("Resource_io66x")
+ticks_pr_second = 600

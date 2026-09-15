@@ -24,7 +24,7 @@ TeleportManager="*uid://dyr0ikgyv354r"
 Dialogic="*uid://ds2q0uclmolvu"
 MusicManager="*uid://bc0afmdwnnw8m"
 GameData="*res://Autoloads/game_data.gd"
-DialogueBox="*uid://bdl4a5uql2vjg"
+TimeSystem="*uid://cor1ogxv6n4kk"
 
 [dialogic]
 
@@ -97,6 +97,7 @@ chair="Defines a chair object. NPCs can use them to sit."
 customer=""
 clickable="Clickable objects"
 Persist=""
+time_system="Sets the time system for the time"
 
 [gui]
 

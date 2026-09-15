@@ -1,4 +1,4 @@
-class_name TimeSystem extends Node
+extends Node
 
 signal updated(date_time: DateTime)
 
