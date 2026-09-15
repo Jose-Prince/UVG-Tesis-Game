@@ -2,11 +2,13 @@ extends Node
 
 var actual_hour: int = 0
 
-@onready var time_system: TimeSystem = $"../../../../TimeSystem"
 @onready var hours: Label = $MarginContainer/HBoxContainer/PanelContainer/HBoxContainer/hours
 @onready var space: Label = $MarginContainer/HBoxContainer/PanelContainer/HBoxContainer/space
 @onready var minutes: Label = $MarginContainer/HBoxContainer/PanelContainer/HBoxContainer/minutes
 @onready var period: Label = $MarginContainer/HBoxContainer/PanelContainer/HBoxContainer/period
+@onready var clock_texture_rect: TextureRect = $MarginContainer/HBoxContainer/VBoxContainer/ClockClipping/ClockTextureRect
+
+@onready var time_system: TimeSystem = $"../../../../TimeSystem"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,8 +35,22 @@ func _on_time_updated(date_time: DateTime) -> void:
 	
 	period.text = display_period
 	
+	update_clock_rotation(date_time)
+	
 func update_label(label: Label, value: int, should_have_zero: bool = true) -> void:
 	if should_have_zero:
 		label.text = "%02d" % value
 	else:
 		label.text = str(value)
+
+func update_clock_rotation(date_time: DateTime) -> void:
+	var total_minutes := date_time.hours * 60 + date_time.minutes
+	
+	var minutes_from_noon := total_minutes - (12 * 60)
+	
+	if minutes_from_noon < 0:
+		minutes_from_noon += 24 * 60
+	
+	var rotation_degrees := float(minutes_from_noon) / (24.0 * 60.0) * 360.0
+	
+	clock_texture_rect.rotation_degrees = rotation_degrees

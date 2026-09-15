@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://xrtlm2b7q70a" path="res://Assets/Sprites/character/lineart_sheet.PNG" id="3_ms580"]
 [ext_resource type="Texture2D" uid="uid://d2vbs8xay60sf" path="res://Assets/Sprites/character/clothes_sheet.PNG" id="4_q7l0e"]
 [ext_resource type="Texture2D" uid="uid://d3dns6cy40bbe" path="res://Assets/Sprites/character/hair_sheet.PNG" id="5_0fs2y"]
-[ext_resource type="Script" uid="uid://r14gbqvkuyim" path="res://Scripts/time_system.gd" id="6_wphcr"]
-[ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/date_time.gd" id="7_and0b"]
+[ext_resource type="Script" uid="uid://r14gbqvkuyim" path="res://Scripts/TimeSystem/time_system.gd" id="6_wphcr"]
+[ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/TimeSystem/date_time.gd" id="7_and0b"]
 [ext_resource type="PackedScene" uid="uid://cpoodtd07o4h" path="res://Prefabs/time_ui.tscn" id="8_405c5"]
 [ext_resource type="Script" uid="uid://brsgf6flsog4g" path="res://Scripts/time_ui.gd" id="9_i3mxk"]
 [ext_resource type="PackedScene" uid="uid://ce5bfs85ds2ea" path="res://Scenes/UI/pause_menu.tscn" id="10_qvmbc"]
@@ -2018,7 +2018,6 @@ shape = SubResource("RectangleShape2D_8afax")
 [node name="HoldSideMarker" type="Marker2D" parent="." unique_id=1262564026]
 position = Vector2(8, 0)
 
-[connection signal="updated" from="TimeSystem" to="CanvasLayer/TimeGui" method="_on_time_system_updated"]
 [connection signal="shop_closed" from="CanvasLayer/TimeGui" to="CanvasLayer/ShopSign" method="_on_time_gui_shop_closed"]
 [connection signal="shop_opened" from="CanvasLayer/TimeGui" to="CanvasLayer/ShopSign" method="_on_time_gui_shop_opened"]
 [connection signal="body_entered" from="InteractionPoint/Area2D" to="." method="_on_area_2d_body_entered"]

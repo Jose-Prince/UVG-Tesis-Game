@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://da0xyab7qjklt" path="res://Resources/Themes/panel_theme.tres" id="1_3s2e7"]
 [ext_resource type="Texture2D" uid="uid://dxlms6gk7ck5e" path="res://Assets/Sprites/clock_32x32.png" id="2_s1xu4"]
-[ext_resource type="Script" uid="uid://cyljaxxopiqmf" path="res://Scripts/clock_time.gd" id="2_tew1x"]
+[ext_resource type="Script" uid="uid://cyljaxxopiqmf" path="res://Scripts/TimeSystem/clock_time.gd" id="2_tew1x"]
 [ext_resource type="Theme" uid="uid://dqol0gr6yfoko" path="res://Resources/Themes/panel_container_theme.tres" id="3_3s2e7"]
 [ext_resource type="FontFile" uid="uid://d207htfjfwxpo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="4_ibm6u"]
 [ext_resource type="Script" uid="uid://j0odp2g48urf" path="res://Scripts/diagonal_line.gd" id="5_4wooe"]
@@ -169,7 +169,6 @@ offset_transform_enabled = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-rotation = 6.2831855
 pivot_offset = Vector2(20, 20)
 texture = ExtResource("2_s1xu4")
 
