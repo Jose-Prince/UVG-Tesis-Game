@@ -1985,7 +1985,7 @@ zoom = Vector2(5, 5)
 [node name="TimeSystem" type="Node" parent="." unique_id=98841440]
 script = ExtResource("6_wphcr")
 date_time = SubResource("Resource_javds")
-ticks_pr_second = 160
+ticks_pr_second = 4000
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1624174308]
 layer = 100

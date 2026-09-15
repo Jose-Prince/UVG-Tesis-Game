@@ -25,35 +25,16 @@ var scene_transition: Node
 @onready var day_name: Label = $MarginContainer/HBoxContainer/HBoxContainer/DisplayPanelContainer/HBoxContainer/DayName
 @onready var day: Label = $MarginContainer/HBoxContainer/HBoxContainer/DisplayPanelContainer/HBoxContainer/Day
 
-@onready var time_system: TimeSystem = $"../../../../TimeSystem"
-
-
-func _ready() -> void:
-	start_month = GameData.month
-	start_day = GameData.num_day
-	day_index = GameData.day_index
-	
-	current_day_number = start_day
-	current_day_index = day_index
-	actual_month = start_month
-	
+func _ready() -> void:	
 	scene_transition = get_tree().root.find_child("SceneTransition", true, false)
 	SaveManager.day_ended.connect(_on_day_ended)
 	
-	if time_system:
-		time_system.updated.connect(_on_time_updated)
+	update_calendar()
 
-func _on_time_updated(date_time: DateTime) -> void:
-	var total_days := start_day + (date_time.days - 1)
-	
-	current_day_number = ((total_days - 1) % 30) + 1
-	day.text = "%02d" % current_day_number
-	
-	current_day_index = (day_index + date_time.days - 1) % days.size()
-	day_name.text = days[current_day_index]
-	
-	actual_month = (start_month + int(total_days / 30)) % months.size()
-	month_label.text = months[actual_month]
+func update_calendar() -> void:
+	month_label.text = months[GameData.month]
+	day_name.text = days[GameData.day_index]
+	day.text = "%02d" % GameData.num_day
 
 func _on_day_ended() -> void:
 	SaveManager.save_especific_data(
@@ -87,9 +68,15 @@ func _on_day_ended() -> void:
 	)
 	
 	GameData.day_index = (current_day_index + 1) % days.size()
-	GameData.num_day = current_day_number + 1
-	GameData.month = actual_month
-	GameData.year = 1
+	GameData.num_day += 1
 	
+	if GameData.num_day > 28:
+		GameData.num_day = 1
+		GameData.month += 1
+		
+		if GameData.month >= 12:
+			GameData.month = 0
+			GameData.year += 1
+		
 	await scene_transition.pixelate_in(0.6).finished
 	get_tree().change_scene_to_file("res://Scenes/new_day.tscn")
