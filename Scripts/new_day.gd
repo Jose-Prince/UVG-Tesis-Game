@@ -23,14 +23,22 @@ var full_text := "%s %d, %s, Year %d" % [days[GameData.day_index], GameData.num_
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SaveManager.day_start.emit()
+	
 	texture_rect.play_animation(true)
+	
 	await scene_transition.pixelate_out(0.6).finished
 	await write_text()
+	
 	clic_sound.play()
+	
 	await clic_sound.finished
+	
 	save_label.set_base_text("File saved")
+	
 	await get_tree().create_timer(0.5).timeout
 	await scene_transition.pixelate_in(0.6).finished
+	
 	get_tree().change_scene_to_file("res://Scenes/coffee_shop.tscn")
 
 func write_text():

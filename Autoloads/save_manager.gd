@@ -1,5 +1,8 @@
 extends Node
 
+signal day_ended
+signal day_start
+
 const SAVE_FOLDER: String = "user://saves/"
 const DEFAULT_DATA: Dictionary = {
 	"player": {
@@ -34,8 +37,6 @@ const DEFAULT_SETTINGS = {
 }
 
 const SETTINGS_FILE := SAVE_FOLDER + "settings.json"
-
-signal day_ended
 
 func save_game(slot: int, data: Dictionary) -> void:
 	ensure_save_folder()
