@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://r14gbqvkuyim" path="res://Scripts/TimeSystem/time_system.gd" id="6_wphcr"]
 [ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/TimeSystem/date_time.gd" id="7_and0b"]
 [ext_resource type="PackedScene" uid="uid://cpoodtd07o4h" path="res://Prefabs/time_ui.tscn" id="8_405c5"]
-[ext_resource type="Script" uid="uid://brsgf6flsog4g" path="res://Scripts/time_ui.gd" id="9_i3mxk"]
 [ext_resource type="PackedScene" uid="uid://ce5bfs85ds2ea" path="res://Scenes/UI/pause_menu.tscn" id="10_qvmbc"]
 [ext_resource type="PackedScene" uid="uid://ciqhnxpcvejhp" path="res://Scenes/MenuSettings/settings_menu.tscn" id="11_qjulh"]
 [ext_resource type="PackedScene" uid="uid://dntgf4pto1u5s" path="res://Prefabs/shop_sign.tscn" id="12_evqxc"]
@@ -1986,13 +1985,12 @@ zoom = Vector2(5, 5)
 [node name="TimeSystem" type="Node" parent="." unique_id=98841440]
 script = ExtResource("6_wphcr")
 date_time = SubResource("Resource_javds")
-ticks_pr_second = 80
+ticks_pr_second = 500
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1624174308]
 layer = 100
 
 [node name="TimeGui" parent="CanvasLayer" unique_id=2113710388 instance=ExtResource("8_405c5")]
-script = ExtResource("9_i3mxk")
 
 [node name="PauseMenu" parent="CanvasLayer" unique_id=1486490026 instance=ExtResource("10_qvmbc")]
 visible = false
@@ -2018,7 +2016,5 @@ shape = SubResource("RectangleShape2D_8afax")
 [node name="HoldSideMarker" type="Marker2D" parent="." unique_id=1262564026]
 position = Vector2(8, 0)
 
-[connection signal="shop_closed" from="CanvasLayer/TimeGui" to="CanvasLayer/ShopSign" method="_on_time_gui_shop_closed"]
-[connection signal="shop_opened" from="CanvasLayer/TimeGui" to="CanvasLayer/ShopSign" method="_on_time_gui_shop_opened"]
 [connection signal="body_entered" from="InteractionPoint/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="InteractionPoint/Area2D" to="." method="_on_area_2d_body_exited"]

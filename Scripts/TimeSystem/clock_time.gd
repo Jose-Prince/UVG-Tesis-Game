@@ -13,7 +13,7 @@ var shop_initialized := false
 @onready var period: Label = $MarginContainer/HBoxContainer/PanelContainer/HBoxContainer/period
 @onready var clock_texture_rect: TextureRect = $MarginContainer/HBoxContainer/VBoxContainer/ClockClipping/ClockTextureRect
 
-@onready var time_system: TimeSystem = $"../../../../TimeSystem"
+@onready var time_system: TimeSystem = $"../../../../../TimeSystem"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

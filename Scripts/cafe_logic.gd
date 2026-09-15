@@ -54,7 +54,7 @@ func _ready() -> void:
 	
 	await scene_transition.pixelate_out(0.6).finished
 	
-	time_gui = find_child("TimeGui", true, false)
+	time_gui = find_child("TimePanel", true, false)
 	time_system = find_child("TimeSystem", true, false)
 	tables = get_tree().get_nodes_in_group("table")
 	
@@ -62,8 +62,6 @@ func _ready() -> void:
 		time_gui.shop_opened.connect(_on_shop_opened)
 		time_gui.shop_closed.connect(_on_shop_closed)
 		
-	for table in tables:
-		table.order_completed.connect(time_gui.add_point)
 
 func _on_timer_timeout() -> void:
 	if not is_open:

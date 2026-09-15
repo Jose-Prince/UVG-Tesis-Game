@@ -1,7 +1,5 @@
 extends StaticBody2D
 
-signal order_completed
-
 enum States { AVAILABLE, UNAVAILABLE, BILLING }
 
 var chairs: Array[Node2D]
@@ -61,7 +59,8 @@ func get_free_chairs():
 
 func interact(player):
 	if actual_state == States.BILLING:
-		order_completed.emit(check)
+		GameData.money += check
+		SfxManager.play_money()
 		check = 0
 		set_state(States.AVAILABLE)
 		return

@@ -71,12 +71,6 @@ func _ready() -> void:
 func _on_money_changed(new_amount: float) -> void:
 	animate_money(new_amount)
 
-func add_point(money_received: float) -> void:
-	GameData.money += money_received
-	SfxManager.play_money()
-	
-	#animate_money()
-
 func _on_time_system_updated(date_time: DateTime) -> void:
 	var total_days := start_day + (date_time.days - 1)
 
