@@ -1,6 +1,6 @@
 class_name TimeSystem extends Node
 
-signal updated
+signal updated(date_time: DateTime)
 
 var progress: bool = true
 
@@ -15,6 +15,6 @@ func _process(delta: float) -> void:
 		date_time.increase_by_sec(delta * ticks_pr_second)
 		updated.emit(date_time)
 
-func change_progress():
+func change_progress() -> void:
 	progress = !progress
 	print("Tiempo parado")

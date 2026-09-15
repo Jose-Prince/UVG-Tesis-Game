@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://ikspqcx1svwj"]
+
+[ext_resource type="Theme" uid="uid://da0xyab7qjklt" path="res://Resources/Themes/panel_theme.tres" id="1_fxfvr"]
+[ext_resource type="Theme" uid="uid://dqol0gr6yfoko" path="res://Resources/Themes/panel_container_theme.tres" id="2_16pab"]
+[ext_resource type="FontFile" uid="uid://d207htfjfwxpo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="3_16pab"]
+[ext_resource type="Script" uid="uid://0g423mux7c83" path="res://Scripts/money_display.gd" id="3_61e1o"]
+
+[node name="MoneyPanel" type="Panel" unique_id=1950492750]
+custom_minimum_size = Vector2(130, 47)
+anchors_preset = -1
+theme = ExtResource("1_fxfvr")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=781209130]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=703042951]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=1625001742]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_16pab")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PanelContainer" unique_id=1034673653]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_16pab")
+theme_override_font_sizes/font_size = 25
+text = "$"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=256720290]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+script = ExtResource("3_61e1o")
+
+[node name="TenOfThousands" type="PanelContainer" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1624656126]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_16pab")
+
+[node name="TenOfThousandsLabel" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/TenOfThousands" unique_id=125465528]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_16pab")
+theme_override_font_sizes/font_size = 25
+text = "9"
+
+[node name="ThousandUnit" type="PanelContainer" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=759031037]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_16pab")
+
+[node name="ThousandUnitLabel" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/ThousandUnit" unique_id=1948768867]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_16pab")
+theme_override_font_sizes/font_size = 25
+text = "9"
+
+[node name="Hundred" type="PanelContainer" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=723747816]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_16pab")
+
+[node name="HundredLabel" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/Hundred" unique_id=1454251627]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_16pab")
+theme_override_font_sizes/font_size = 25
+text = "9"
+
+[node name="Ten" type="PanelContainer" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1455044120]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_16pab")
+
+[node name="TenLabel" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/Ten" unique_id=1322610124]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_16pab")
+theme_override_font_sizes/font_size = 25
+text = "9"
+
+[node name="Unit" type="PanelContainer" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1963830618]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_16pab")
+
+[node name="UnitLabel" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/Unit" unique_id=1552124189]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_16pab")
+theme_override_font_sizes/font_size = 25
+text = "9"
+
+[node name="PointSeparator" type="PanelContainer" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1245087440]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_16pab")
+
+[node name="PointSeparatorLabel" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/PointSeparator" unique_id=1655255998]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_16pab")
+theme_override_font_sizes/font_size = 25
+text = "."
+
+[node name="Decimal1" type="PanelContainer" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=367269732]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_16pab")
+
+[node name="Decimal1Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/Decimal1" unique_id=728843257]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_16pab")
+theme_override_font_sizes/font_size = 25
+text = "9"
+
+[node name="Decimal2" type="PanelContainer" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=427556541]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_16pab")
+
+[node name="Decimal2Label" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/Decimal2" unique_id=1525663465]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_16pab")
+theme_override_font_sizes/font_size = 25
+text = "9"
