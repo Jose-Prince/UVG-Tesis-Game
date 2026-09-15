@@ -53,6 +53,8 @@ func _ready() -> void:
 	apply_appearance()
 	update_interaction_visibility()
 	update_interaction_point()
+	
+	time_system.restart_day()
 
 func _process(_delta: float) -> void:
 	queue_redraw()
