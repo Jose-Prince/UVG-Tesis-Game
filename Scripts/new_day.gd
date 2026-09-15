@@ -39,6 +39,8 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
 	await scene_transition.pixelate_in(0.6).finished
 	
+	TimeSystem.restart_day()
+	
 	get_tree().change_scene_to_file("res://Scenes/coffee_shop.tscn")
 
 func write_text():

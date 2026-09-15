@@ -25,6 +25,8 @@ var is_open := false
 @onready var cafe_exit: SpawnPoint = $SpawnPoints/CafeExit
 
 func _ready() -> void:
+	TimeSystem.progress = true
+	
 	var player = PLAYER_SCENE.instantiate() as Player
 	add_child(player)
 	

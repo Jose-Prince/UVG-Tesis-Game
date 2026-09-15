@@ -22,6 +22,8 @@ const ANIM_DELAY_STEP := 0.12
 var button_selected : Button = null
 
 func _ready() -> void:
+	TimeSystem.restart_day()
+	
 	load_game.visible = SaveManager.directory_has_content("user://saves/")
 	control_2.visible = SaveManager.directory_has_content("user://saves/")
 
