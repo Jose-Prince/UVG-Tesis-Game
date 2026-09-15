@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d1ygum0d2wrp7"]
 
-[ext_resource type="Script" uid="uid://cc1bgu6qcx1ja" path="res://Prefabs/Shop/item.gd" id="1_5r72x"]
+[ext_resource type="Script" uid="uid://cc1bgu6qcx1ja" path="res://Scripts/ShopSystem/item.gd" id="1_5r72x"]
 [ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Placeholders/TopDownHouse_FurnitureState1.png" id="1_uhgvx"]
 [ext_resource type="Texture2D" uid="uid://b0piykgsga2y7" path="res://Placeholders/money.png" id="2_di2lj"]
 

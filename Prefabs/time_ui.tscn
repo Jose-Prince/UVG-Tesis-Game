@@ -6,13 +6,13 @@
 [ext_resource type="Theme" uid="uid://dqol0gr6yfoko" path="res://Resources/Themes/panel_container_theme.tres" id="3_3s2e7"]
 [ext_resource type="FontFile" uid="uid://d207htfjfwxpo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="4_ibm6u"]
 [ext_resource type="Script" uid="uid://j0odp2g48urf" path="res://Scripts/diagonal_line.gd" id="5_4wooe"]
+[ext_resource type="PackedScene" uid="uid://ikspqcx1svwj" path="res://Prefabs/Shop/money_panel.tscn" id="7_j5sfs"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2tqo"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epp2k"]
+bg_color = Color(0.81960785, 0.7372549, 0.627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
 border_color = Color(0.34509805, 0.22352941, 0.13333334, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcbrl"]
@@ -39,84 +39,18 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.34509805, 0.22352941, 0.13333334, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu6ci"]
-bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbraj"]
+bg_color = Color(0.81960785, 0.7372549, 0.627451, 1)
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.34509805, 0.22352941, 0.13333334, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1xu4"]
-bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3s2e7"]
-bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibm6u"]
-bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wooe"]
-bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tew1x"]
-bg_color = Color(0.95686275, 0.91764706, 0.81960785, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5sfs"]
-bg_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.5647059, 0.38039216, 0.24313726, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46yia"]
+bg_color = Color(0.81960785, 0.7372549, 0.627451, 1)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.34509805, 0.22352941, 0.13333334, 1)
 
 [node name="TimeUI" type="Control" unique_id=2113710388]
 layout_mode = 3
@@ -125,7 +59,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=744621426]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=744621426]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -133,38 +67,48 @@ anchor_right = 1.0
 offset_left = -159.0
 offset_bottom = 40.0
 grow_horizontal = 0
+theme_override_constants/separation = 0
 
-[node name="CalendarPanel" type="Panel" parent="VBoxContainer2" unique_id=849064592]
-custom_minimum_size = Vector2(0, 160)
-custom_maximum_size = Vector2(154, -1)
+[node name="CalendarPanel" type="Panel" parent="VBoxContainer" unique_id=849064592]
+custom_minimum_size = Vector2(0, 38)
+custom_maximum_size = Vector2(159, -1)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_n2tqo")
+theme = ExtResource("1_3s2e7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_epp2k")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/CalendarPanel" unique_id=1702458307]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CalendarPanel" unique_id=147450495]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="MarginHeader" type="MarginContainer" parent="VBoxContainer2/CalendarPanel/VBoxContainer" unique_id=1926034807]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CalendarPanel/MarginContainer" unique_id=1310982070]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="MarginHeader" type="MarginContainer" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer" unique_id=1926034807]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_right = 1
 
-[node name="Header" type="HBoxContainer" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginHeader" unique_id=1424052770]
+[node name="Header" type="HBoxContainer" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginHeader" unique_id=1424052770]
 layout_mode = 2
 alignment = 1
 
-[node name="Panel" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginHeader/Header" unique_id=196150437]
+[node name="Panel" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginHeader/Header" unique_id=196150437]
 custom_minimum_size = Vector2(154, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_xcbrl")
 
-[node name="MonthLabel" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginHeader/Header/Panel" unique_id=876558718]
+[node name="MonthLabel" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginHeader/Header/Panel" unique_id=876558718]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -177,22 +121,23 @@ text = "Month"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginWeekdays" type="MarginContainer" parent="VBoxContainer2/CalendarPanel/VBoxContainer" unique_id=1906501513]
+[node name="MarginWeekdays" type="MarginContainer" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer" unique_id=1906501513]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_right = 1
 
-[node name="Weekdays" type="HBoxContainer" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays" unique_id=598797674]
+[node name="Weekdays" type="HBoxContainer" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays" unique_id=598797674]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="D1" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays/Weekdays" unique_id=2018184344]
+[node name="D1" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays/Weekdays" unique_id=2018184344]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lw1f8")
 
-[node name="Sun" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays/Weekdays/D1" unique_id=1837098534]
+[node name="Sun" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays/Weekdays/D1" unique_id=1837098534]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -211,12 +156,12 @@ text = "S"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="D2" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays/Weekdays" unique_id=1636759061]
+[node name="D2" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays/Weekdays" unique_id=1636759061]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lw1f8")
 
-[node name="Mon" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays/Weekdays/D2" unique_id=1247199867]
+[node name="Mon" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays/Weekdays/D2" unique_id=1247199867]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -235,12 +180,12 @@ text = "M"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="D3" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays/Weekdays" unique_id=1453579248]
+[node name="D3" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays/Weekdays" unique_id=1453579248]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lw1f8")
 
-[node name="Tue" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays/Weekdays/D3" unique_id=1901764842]
+[node name="Tue" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays/Weekdays/D3" unique_id=1901764842]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -259,12 +204,12 @@ text = "T"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="D4" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays/Weekdays" unique_id=2005292726]
+[node name="D4" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays/Weekdays" unique_id=2005292726]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lw1f8")
 
-[node name="Wed" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays/Weekdays/D4" unique_id=308301933]
+[node name="Wed" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays/Weekdays/D4" unique_id=308301933]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -283,12 +228,12 @@ text = "W"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="D5" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays/Weekdays" unique_id=336637198]
+[node name="D5" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays/Weekdays" unique_id=336637198]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lw1f8")
 
-[node name="Thu" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays/Weekdays/D5" unique_id=684294035]
+[node name="Thu" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays/Weekdays/D5" unique_id=684294035]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -307,12 +252,12 @@ text = "T"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="D6" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays/Weekdays" unique_id=1949435468]
+[node name="D6" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays/Weekdays" unique_id=1949435468]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lw1f8")
 
-[node name="Fri" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays/Weekdays/D6" unique_id=1909808385]
+[node name="Fri" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays/Weekdays/D6" unique_id=1909808385]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -331,12 +276,12 @@ text = "F"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="D7" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays/Weekdays" unique_id=539526657]
+[node name="D7" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays/Weekdays" unique_id=539526657]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lw1f8")
 
-[node name="Sat" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginWeekdays/Weekdays/D7" unique_id=584305041]
+[node name="Sat" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginWeekdays/Weekdays/D7" unique_id=584305041]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -355,22 +300,23 @@ text = "S"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginDays" type="MarginContainer" parent="VBoxContainer2/CalendarPanel/VBoxContainer" unique_id=1564014109]
+[node name="MarginDays" type="MarginContainer" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer" unique_id=1564014109]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 1
 
-[node name="Days" type="GridContainer" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays" unique_id=741141394]
+[node name="Days" type="GridContainer" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays" unique_id=741141394]
 layout_mode = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 7
 
-[node name="Day1" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=16769366]
+[node name="Day1" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=16769366]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day1" unique_id=1668104536]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day1" unique_id=1668104536]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -382,7 +328,7 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day1" unique_id=772599014]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day1" unique_id=772599014]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -392,12 +338,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day2" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=1457193119]
+[node name="Day2" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=1457193119]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day2" unique_id=1530779991]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day2" unique_id=1530779991]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -408,7 +354,7 @@ theme_override_font_sizes/font_size = 12
 text = "2"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day2" unique_id=1172763874]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day2" unique_id=1172763874]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -418,12 +364,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day3" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=128241784]
+[node name="Day3" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=128241784]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day3" unique_id=84279229]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day3" unique_id=84279229]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -434,7 +380,7 @@ theme_override_font_sizes/font_size = 12
 text = "3"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day3" unique_id=853961835]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day3" unique_id=853961835]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -444,12 +390,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day4" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=789411067]
+[node name="Day4" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=789411067]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day4" unique_id=1560477664]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day4" unique_id=1560477664]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -460,7 +406,7 @@ theme_override_font_sizes/font_size = 12
 text = "4"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day4" unique_id=290317262]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day4" unique_id=290317262]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -470,12 +416,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day5" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=1233285884]
+[node name="Day5" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=1233285884]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day5" unique_id=1773741308]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day5" unique_id=1773741308]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -486,7 +432,7 @@ theme_override_font_sizes/font_size = 12
 text = "5"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day5" unique_id=1125948625]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day5" unique_id=1125948625]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -496,12 +442,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day6" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=1720226890]
+[node name="Day6" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=1720226890]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day6" unique_id=23341866]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day6" unique_id=23341866]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -512,7 +458,7 @@ theme_override_font_sizes/font_size = 12
 text = "6"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day6" unique_id=923649347]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day6" unique_id=923649347]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -522,12 +468,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day7" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=4883850]
+[node name="Day7" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=4883850]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day7" unique_id=1549401981]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day7" unique_id=1549401981]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -538,7 +484,7 @@ theme_override_font_sizes/font_size = 12
 text = "7"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day7" unique_id=1249938851]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day7" unique_id=1249938851]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -548,12 +494,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day8" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=1911589762]
+[node name="Day8" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=1911589762]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day8" unique_id=1747536695]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day8" unique_id=1747536695]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -564,7 +510,7 @@ theme_override_font_sizes/font_size = 12
 text = "8"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day8" unique_id=2078253157]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day8" unique_id=2078253157]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -574,12 +520,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day9" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=672311579]
+[node name="Day9" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=672311579]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day9" unique_id=1390342613]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day9" unique_id=1390342613]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -590,7 +536,7 @@ theme_override_font_sizes/font_size = 12
 text = "9"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day9" unique_id=1915219495]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day9" unique_id=1915219495]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -600,12 +546,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day10" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=952319009]
+[node name="Day10" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=952319009]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day10" unique_id=1928345142]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day10" unique_id=1928345142]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -616,7 +562,7 @@ theme_override_font_sizes/font_size = 12
 text = "10"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day10" unique_id=340421115]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day10" unique_id=340421115]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -626,12 +572,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day11" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=1232126374]
+[node name="Day11" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=1232126374]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day11" unique_id=1632165078]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day11" unique_id=1632165078]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -642,7 +588,7 @@ theme_override_font_sizes/font_size = 12
 text = "11"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day11" unique_id=782597269]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day11" unique_id=782597269]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -652,12 +598,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day12" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=1055943180]
+[node name="Day12" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=1055943180]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day12" unique_id=1593469851]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day12" unique_id=1593469851]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -668,7 +614,7 @@ theme_override_font_sizes/font_size = 12
 text = "12"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day12" unique_id=314740014]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day12" unique_id=314740014]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -678,12 +624,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day13" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=463989086]
+[node name="Day13" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=463989086]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day13" unique_id=924508929]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day13" unique_id=924508929]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -694,7 +640,7 @@ theme_override_font_sizes/font_size = 12
 text = "13"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day13" unique_id=2105269383]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day13" unique_id=2105269383]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -704,12 +650,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day14" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=1319882015]
+[node name="Day14" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=1319882015]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day14" unique_id=1293937018]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day14" unique_id=1293937018]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -720,7 +666,7 @@ theme_override_font_sizes/font_size = 12
 text = "14"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day14" unique_id=878378279]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day14" unique_id=878378279]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -730,12 +676,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day15" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=246119055]
+[node name="Day15" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=246119055]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day15" unique_id=1994887048]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day15" unique_id=1994887048]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -746,7 +692,7 @@ theme_override_font_sizes/font_size = 12
 text = "15"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day15" unique_id=1640340718]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day15" unique_id=1640340718]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -756,12 +702,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day16" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=2032997633]
+[node name="Day16" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=2032997633]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day16" unique_id=1891887046]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day16" unique_id=1891887046]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -772,7 +718,7 @@ theme_override_font_sizes/font_size = 12
 text = "16"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day16" unique_id=1999843585]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day16" unique_id=1999843585]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -782,12 +728,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day17" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=678237717]
+[node name="Day17" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=678237717]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day17" unique_id=1673724305]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day17" unique_id=1673724305]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -798,7 +744,7 @@ theme_override_font_sizes/font_size = 12
 text = "17"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day17" unique_id=759739298]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day17" unique_id=759739298]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -808,12 +754,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day18" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=2094653238]
+[node name="Day18" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=2094653238]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day18" unique_id=1525654805]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day18" unique_id=1525654805]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -824,7 +770,7 @@ theme_override_font_sizes/font_size = 12
 text = "18"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day18" unique_id=881239206]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day18" unique_id=881239206]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -834,12 +780,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day19" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=2121825732]
+[node name="Day19" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=2121825732]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day19" unique_id=2100220593]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day19" unique_id=2100220593]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -850,7 +796,7 @@ theme_override_font_sizes/font_size = 12
 text = "19"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day19" unique_id=1040858089]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day19" unique_id=1040858089]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -860,12 +806,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day20" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=314613627]
+[node name="Day20" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=314613627]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day20" unique_id=1026170239]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day20" unique_id=1026170239]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -876,7 +822,7 @@ theme_override_font_sizes/font_size = 12
 text = "20"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day20" unique_id=1100477995]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day20" unique_id=1100477995]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -886,12 +832,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day21" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=85357528]
+[node name="Day21" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=85357528]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day21" unique_id=23918089]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day21" unique_id=23918089]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -902,7 +848,7 @@ theme_override_font_sizes/font_size = 12
 text = "21"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day21" unique_id=1869569055]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day21" unique_id=1869569055]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -912,12 +858,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day22" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=377642543]
+[node name="Day22" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=377642543]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day22" unique_id=1546565109]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day22" unique_id=1546565109]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -928,7 +874,7 @@ theme_override_font_sizes/font_size = 12
 text = "22"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day22" unique_id=727991409]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day22" unique_id=727991409]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -938,12 +884,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day23" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=1596456848]
+[node name="Day23" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=1596456848]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day23" unique_id=1461450112]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day23" unique_id=1461450112]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -954,7 +900,7 @@ theme_override_font_sizes/font_size = 12
 text = "23"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day23" unique_id=717227718]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day23" unique_id=717227718]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -964,12 +910,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day24" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=1595040657]
+[node name="Day24" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=1595040657]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day24" unique_id=1724442954]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day24" unique_id=1724442954]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -980,7 +926,7 @@ theme_override_font_sizes/font_size = 12
 text = "24"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day24" unique_id=1120244104]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day24" unique_id=1120244104]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -990,12 +936,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day25" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=732691487]
+[node name="Day25" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=732691487]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day25" unique_id=266717323]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day25" unique_id=266717323]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -1006,7 +952,7 @@ theme_override_font_sizes/font_size = 12
 text = "25"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day25" unique_id=2067551995]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day25" unique_id=2067551995]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1016,12 +962,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day26" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=537355271]
+[node name="Day26" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=537355271]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day26" unique_id=1455689530]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day26" unique_id=1455689530]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -1032,7 +978,7 @@ theme_override_font_sizes/font_size = 12
 text = "26"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day26" unique_id=941375673]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day26" unique_id=941375673]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1042,12 +988,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day27" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=923307129]
+[node name="Day27" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=923307129]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day27" unique_id=186135138]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day27" unique_id=186135138]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -1058,7 +1004,7 @@ theme_override_font_sizes/font_size = 12
 text = "27"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day27" unique_id=1748153647]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day27" unique_id=1748153647]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1068,12 +1014,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="Day28" type="Panel" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days" unique_id=1625014062]
+[node name="Day28" type="Panel" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days" unique_id=1625014062]
 custom_minimum_size = Vector2(22, 22)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ijkki")
 
-[node name="Label" type="Label" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day28" unique_id=183567834]
+[node name="Label" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day28" unique_id=183567834]
 custom_maximum_size = Vector2(22, -1)
 layout_mode = 0
 offset_right = 40.0
@@ -1084,7 +1030,7 @@ theme_override_font_sizes/font_size = 12
 text = "28"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer2/CalendarPanel/VBoxContainer/MarginDays/Days/Day28" unique_id=1068084691]
+[node name="Control" type="Control" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/MarginDays/Days/Day28" unique_id=1068084691]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1094,14 +1040,49 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_4wooe")
 
-[node name="TimePanel" type="Panel" parent="VBoxContainer2" unique_id=1762196066]
+[node name="MonthLabel" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer" unique_id=135670380]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ibm6u")
+theme_override_font_sizes/font_size = 20
+text = "Jan."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer" unique_id=833132515]
+layout_mode = 2
+alignment = 1
+
+[node name="DisplayPanelContainer" type="PanelContainer" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/HBoxContainer" unique_id=82101003]
+layout_mode = 2
+theme = ExtResource("3_3s2e7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/HBoxContainer/DisplayPanelContainer" unique_id=1171024092]
+layout_mode = 2
+
+[node name="DayName" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/HBoxContainer/DisplayPanelContainer/HBoxContainer" unique_id=1190418154]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ibm6u")
+theme_override_font_sizes/font_size = 20
+text = "Mon."
+
+[node name="Day" type="Label" parent="VBoxContainer/CalendarPanel/MarginContainer/HBoxContainer/HBoxContainer/DisplayPanelContainer/HBoxContainer" unique_id=1032522236]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ibm6u")
+theme_override_font_sizes/font_size = 20
+text = "28"
+
+[node name="TimePanel" type="Panel" parent="VBoxContainer" unique_id=1762196066]
 custom_minimum_size = Vector2(159, 38)
 custom_maximum_size = Vector2(-1, 38)
 layout_mode = 2
 theme = ExtResource("1_3s2e7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_vbraj")
 script = ExtResource("2_tew1x")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/TimePanel" unique_id=1799590049]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TimePanel" unique_id=1799590049]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1110,14 +1091,14 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 7
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/TimePanel/MarginContainer" unique_id=785873077]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimePanel/MarginContainer" unique_id=785873077]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer" unique_id=1143538820]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TimePanel/MarginContainer/HBoxContainer" unique_id=1143538820]
 layout_mode = 2
 alignment = 1
 
-[node name="ClockClipping" type="Control" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=922953028]
+[node name="ClockClipping" type="Control" parent="VBoxContainer/TimePanel/MarginContainer/HBoxContainer/VBoxContainer" unique_id=922953028]
 custom_minimum_size = Vector2(42, 0)
 custom_maximum_size = Vector2(-1, 20)
 clip_contents = true
@@ -1125,311 +1106,50 @@ layout_mode = 2
 size_flags_vertical = 3
 offset_transform_enabled = true
 
-[node name="ClockTextureRect" type="TextureRect" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/VBoxContainer/ClockClipping" unique_id=1936064704]
+[node name="ClockTextureRect" type="TextureRect" parent="VBoxContainer/TimePanel/MarginContainer/HBoxContainer/VBoxContainer/ClockClipping" unique_id=1936064704]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(20, 20)
 texture = ExtResource("2_s1xu4")
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer" unique_id=308886992]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/TimePanel/MarginContainer/HBoxContainer" unique_id=308886992]
 custom_maximum_size = Vector2(-1, 28)
 layout_mode = 2
 theme = ExtResource("3_3s2e7")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer" unique_id=1776052981]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TimePanel/MarginContainer/HBoxContainer/PanelContainer" unique_id=1776052981]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="hours" type="Label" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=1662210284]
+[node name="hours" type="Label" parent="VBoxContainer/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=1662210284]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_ibm6u")
 theme_override_font_sizes/font_size = 20
 text = "12"
 
-[node name="space" type="Label" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=100758000]
+[node name="space" type="Label" parent="VBoxContainer/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=100758000]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_ibm6u")
 theme_override_font_sizes/font_size = 20
 text = ":"
 
-[node name="minutes" type="Label" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=234230484]
+[node name="minutes" type="Label" parent="VBoxContainer/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=234230484]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_ibm6u")
 theme_override_font_sizes/font_size = 20
 text = "59"
 
-[node name="period" type="Label" parent="VBoxContainer2/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=1652459576]
+[node name="period" type="Label" parent="VBoxContainer/TimePanel/MarginContainer/HBoxContainer/PanelContainer/HBoxContainer" unique_id=1652459576]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_ibm6u")
 theme_override_font_sizes/font_size = 20
 text = "PM"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=518651491]
-visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -220.0
-offset_bottom = 209.0
-grow_horizontal = 0
-theme_override_constants/separation = 10
-
-[node name="Panel" type="Panel" parent="VBoxContainer" unique_id=682123693]
-custom_minimum_size = Vector2(220, 205)
+[node name="MoneyPanel" parent="VBoxContainer" unique_id=1950492750 instance=ExtResource("7_j5sfs")]
 layout_mode = 2
-theme = ExtResource("1_3s2e7")
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel" unique_id=2117874285]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/MarginContainer" unique_id=1920286759]
-layout_mode = 2
-
-[node name="MonthContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1714196666]
-layout_mode = 2
-alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MonthContainer" unique_id=385722807]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MonthContainer/MarginContainer" unique_id=504807391]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_eu6ci")
-
-[node name="Month" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MonthContainer/MarginContainer/PanelContainer" unique_id=322095619]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "January"
-horizontal_alignment = 1
-
-[node name="DayContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=803739870]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer" unique_id=576655718]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer" unique_id=1113966188]
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer" unique_id=762146654]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_s1xu4")
-
-[node name="dayName" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1714055837]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Mon."
-horizontal_alignment = 1
-
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer" unique_id=1881567959]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3s2e7")
-
-[node name="day" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer/MarginContainer/HBoxContainer/PanelContainer2" unique_id=1726738949]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "99"
-
-[node name="HourContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1400370157]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer" unique_id=680168421]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer" unique_id=1999750533]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ibm6u")
-
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer" unique_id=1251792277]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer" unique_id=302425747]
-layout_mode = 2
-
-[node name="hours" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=1567953488]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "06"
-
-[node name="space" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=159799248]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = ":"
-
-[node name="minutes" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=1498722604]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "59"
-
-[node name="period" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/HourContainer/MarginContainer/PanelContainer/CenterContainer/HBoxContainer" unique_id=1871939184]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "AM"
-
-[node name="MoneyContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1808751785]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer" unique_id=2014347482]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer" unique_id=487251284]
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer" unique_id=648261595]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4wooe")
-
-[node name="MoneySign" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1068901594]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "$"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer" unique_id=1947474328]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_tew1x")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2" unique_id=170402418]
-layout_mode = 2
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="TensOfThousand" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=2131843403]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1009035656]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
-
-[node name="ThousandUnit" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1924815821]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=551800841]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
-
-[node name="Hundred" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1554561065]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=2013304773]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
-
-[node name="Ten" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=319384442]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VSeparator4" type="VSeparator" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1213375157]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
-
-[node name="Unit" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=196703408]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VSeparator5" type="VSeparator" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1631332607]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
-
-[node name="PointSeparator" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=977066877]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-text = "."
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VSeparator6" type="VSeparator" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1942800968]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
-
-[node name="Decimal1" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=850655715]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VSeparator7" type="VSeparator" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=267455188]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxFlat_j5sfs")
-
-[node name="Decimal2" type="Label" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/MoneyContainer/MarginContainer/HBoxContainer/PanelContainer2/HBoxContainer" unique_id=1001493988]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_46yia")
