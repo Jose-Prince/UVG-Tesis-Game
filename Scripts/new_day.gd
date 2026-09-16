@@ -22,9 +22,7 @@ var full_text := "%s %d, %s, Year %d" % [days[GameData.day_index], GameData.num_
 @onready var scene_transition: CanvasLayer = $SceneTransition
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	SaveManager.day_start.emit()
-	
+func _ready() -> void:	
 	texture_rect.play_animation(true)
 	
 	await scene_transition.pixelate_out(0.6).finished
