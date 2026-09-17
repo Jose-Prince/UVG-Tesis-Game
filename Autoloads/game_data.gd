@@ -6,6 +6,7 @@ var cursor_texture := preload("res://Placeholders/kenney_cursor-pack/PNG/Outline
 var game_slot := 0
 
 var process_time := true
+var furniture_edit_mode := false
 
 # Player variables
 var player_name := ""

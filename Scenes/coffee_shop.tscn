@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://5pgj7btnpwub" path="res://Prefabs/sink.tscn" id="13_sk1vp"]
 [ext_resource type="PackedScene" uid="uid://bgduyi5wcuj0c" path="res://Prefabs/glass.tscn" id="14_xjtdl"]
 [ext_resource type="PackedScene" uid="uid://cyeftfpjy6lld" path="res://Prefabs/water.tscn" id="15_2i3s5"]
+[ext_resource type="Script" uid="uid://bof0qi7ps363v" path="res://Scripts/CoffeeShop/furniture_manager.gd" id="17_vffnu"]
 [ext_resource type="PackedScene" uid="uid://dwc1eus3nja55" path="res://Prefabs/TeleportSystem/teleport.tscn" id="20_ibwl0"]
 [ext_resource type="PackedScene" uid="uid://ded571vyn71rt" path="res://Prefabs/TeleportSystem/spawn.tscn" id="20_qc307"]
 
@@ -1430,6 +1431,9 @@ teleport_id = "cafe_exit"
 [node name="CafeExit" parent="SpawnPoints" unique_id=1221738028 instance=ExtResource("20_qc307")]
 position = Vector2(64, 160)
 spawn_id = "cafe_exit"
+
+[node name="FurnitureManager" type="Node2D" parent="." unique_id=2039800663 groups=["furniture_manager"]]
+script = ExtResource("17_vffnu")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="LeavingZone" to="." method="_on_leaving_zone_body_entered"]

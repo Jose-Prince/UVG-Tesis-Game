@@ -11,6 +11,9 @@ var table_popularity := 0
 var base_wait_time: float
 var actual_state := States.AVAILABLE
 
+var furniture_edit_mode := false
+var furniture_selected := false
+
 @onready var timer: Timer = $Timer
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var grid_manager: Node = $"../GridManager"
@@ -284,6 +287,23 @@ func _update_food_progress() -> void:
 		)
 		
 		sprite.frame = frame
+
+func set_edit_mode(enabled: bool) -> void:
+	furniture_edit_mode = enabled
+	
+	if not enabled:
+		set_furniture_selected(false)
+
+func set_furniture_selected(selected: bool) -> void:
+	furniture_selected = selected
+
+func can_be_moved() -> bool:
+	return (
+		customers.is_empty()
+		and orders.is_empty()
+		and placed_food.is_empty()
+		and actual_state == States.AVAILABLE
+	)
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("chair"):

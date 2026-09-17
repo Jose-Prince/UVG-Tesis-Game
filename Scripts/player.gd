@@ -143,6 +143,9 @@ func _process_keyboard_interaction() -> void:
 # ============================================================
 
 func _process_mouse_interaction() -> void:
+	if GameData.furniture_edit_mode:
+		return
+	
 	update_interaction_visibility()
 	update_mouse_interaction_point()
 
