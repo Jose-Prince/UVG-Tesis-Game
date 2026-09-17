@@ -13,20 +13,7 @@ func _ready() -> void:
 	enter_edit_mode()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if not edit_mode: 
-		return
-	
-	if is_dragging and selected_furniture:
-		if Input.is_action_pressed("mouse_action"):
-			var mouse_position := get_global_mouse_position()
-			var new_position := mouse_position + drag_offset
-
-			selected_furniture.global_position = snap_position(new_position)
-		else:
-			stop_drag()
-
-func _unhandled_input(_event: InputEvent) -> void:
+func _process(_delta: float) -> void:
 	if not edit_mode:
 		return
 
@@ -48,6 +35,15 @@ func _unhandled_input(_event: InputEvent) -> void:
 		else:
 			print("No furniture found")
 
+	if is_dragging and selected_furniture:
+		if Input.is_action_pressed("mouse_action"):
+			var mouse_position := get_global_mouse_position()
+			var new_position := mouse_position + drag_offset
+
+			selected_furniture.global_position = snap_position(new_position)
+		else:
+			stop_drag()
+
 func enter_edit_mode() -> void:
 	GameData.furniture_edit_mode = true
 	edit_mode = true
@@ -62,31 +58,38 @@ func exit_edit_mode() -> void:
 
 func get_furniture_under_mouse() -> Node2D:
 	var mouse_position := get_global_mouse_position()
-	print("Mouse world position: ", mouse_position)
 	var space_state := get_world_2d().direct_space_state
-	
+
 	var query := PhysicsPointQueryParameters2D.new()
+
 	query.position = mouse_position
+
+	# Check every physics layer.
+	query.collision_mask = 0xFFFFFFFF
+
 	query.collide_with_bodies = true
 	query.collide_with_areas = true
-	
+
 	var results := space_state.intersect_point(query)
+
 	print("Physics objects under mouse: ", results.size())
-	
+
 	for result in results:
 		var collider := result.get("collider") as Node
-		
-		if collider:
-			print(
-				"Found collider: ",
-				collider.name,
-				" | groups: ",
-				collider.get_groups()
-			)
-		
+
+		if not collider:
+			continue
+
+		print(
+			"Collider: ",
+			collider.name,
+			" | groups: ",
+			collider.get_groups()
+		)
+
 		if collider.is_in_group("furniture"):
 			return collider as Node2D
-	
+
 	return null
 
 func select_furniture(furniture: Node2D) -> void:
