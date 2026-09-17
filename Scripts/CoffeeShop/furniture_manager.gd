@@ -10,7 +10,7 @@ var drag_offset := Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	enter_edit_mode()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -55,6 +55,12 @@ func exit_edit_mode() -> void:
 	is_dragging = false
 	deselect_furniture()
 	print("Furniture edit mode: OFF")
+
+func toggle_edit_mode() -> void:
+	if edit_mode:
+		exit_edit_mode()
+	else:
+		enter_edit_mode()
 
 func get_furniture_under_mouse() -> Node2D:
 	var mouse_position := get_global_mouse_position()

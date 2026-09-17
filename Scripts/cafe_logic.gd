@@ -23,6 +23,7 @@ var is_open := false
 @onready var scene_transition: CanvasLayer = $SceneTransition
 @onready var spawn_points: Node = $SpawnPoints
 @onready var cafe_exit: SpawnPoint = $SpawnPoints/CafeExit
+@onready var furniture_manager: FurnitureManager = $FurnitureManager
 
 func _ready() -> void:
 	TimeSystem.progress = true
@@ -60,7 +61,10 @@ func _ready() -> void:
 	if time_gui:
 		time_gui.shop_opened.connect(_on_shop_opened)
 		time_gui.shop_closed.connect(_on_shop_closed)
-		
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("edit_mode"):
+		furniture_manager.toggle_edit_mode()
 
 func _on_timer_timeout() -> void:
 	if not is_open:
