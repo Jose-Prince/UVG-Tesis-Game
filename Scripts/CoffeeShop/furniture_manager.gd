@@ -7,6 +7,9 @@ var edit_mode := false
 var selected_furniture: Node2D = null
 var is_dragging := false
 var drag_offset := Vector2.ZERO
+var player_camera: Camera2D
+
+@onready var furniture_camera_2d: Camera2D = $FurnitureCamera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,14 +49,28 @@ func _process(_delta: float) -> void:
 
 func enter_edit_mode() -> void:
 	GameData.furniture_edit_mode = true
+	GameData.process_time = false
 	edit_mode = true
+	
+	if player_camera:
+		player_camera.enabled = false
+	
+	furniture_camera_2d.enabled = true
+	
 	print("Furniture edit mode: ON")
 
 func exit_edit_mode() -> void:
 	GameData.furniture_edit_mode = false
+	GameData.process_time = true
 	edit_mode = false
+	
 	is_dragging = false
 	deselect_furniture()
+	
+	furniture_camera_2d.enabled = false
+	
+	if player_camera:
+		player_camera.enabled = true
 	print("Furniture edit mode: OFF")
 
 func toggle_edit_mode() -> void:
@@ -134,3 +151,6 @@ func snap_position(position: Vector2) -> Vector2:
 		round(position.x / grid_size) * grid_size,
 		round(position.y / grid_size) * grid_size
 	)
+
+func setup_camera(camera: Camera2D) -> void:
+	player_camera = camera

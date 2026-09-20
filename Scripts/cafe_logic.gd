@@ -18,6 +18,8 @@ var coffee_name := ""
 var time_gui: Control
 var is_open := false
 
+var player_camera: Camera2D
+
 @onready var customer_timer: Timer = $Timer
 @onready var spawn_point: Marker2D = $CustomerSpawn
 @onready var scene_transition: CanvasLayer = $SceneTransition
@@ -30,6 +32,9 @@ func _ready() -> void:
 	
 	var player = PLAYER_SCENE.instantiate() as Player
 	add_child(player)
+	
+	player_camera = player.get_node("Camera2D") as Camera2D
+	furniture_manager.setup_camera(player_camera)
 	
 	var spawn_id := TeleportManager.pending_spawn
 	
