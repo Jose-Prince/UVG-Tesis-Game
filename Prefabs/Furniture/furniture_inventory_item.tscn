@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bn3khvmws7igc"]
+
+[ext_resource type="Script" uid="uid://c10kh13sei6ut" path="res://Scripts/CoffeeShop/furniture_inventory_item.gd" id="1_6mcoq"]
+[ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Placeholders/TopDownHouse_FurnitureState1.png" id="1_nxfsw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qwbc"]
+atlas = ExtResource("1_nxfsw")
+region = Rect2(1, 32, 46, 30)
+
+[node name="FurnitureInventoryItem" type="Control" unique_id=1293351620]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6mcoq")
+
+[node name="FurnitureButton" type="Button" parent="." unique_id=1942493868]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = SubResource("AtlasTexture_0qwbc")
+icon_alignment = 1
+expand_icon = true
+
+[node name="QuantityLabel" type="Label" parent="." unique_id=828386460]
+layout_mode = 0
+offset_left = 556.0
+offset_top = 613.0
+offset_right = 596.0
+offset_bottom = 637.0
+theme_override_font_sizes/font_size = 30
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1

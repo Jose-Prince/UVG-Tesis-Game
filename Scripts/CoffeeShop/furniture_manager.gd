@@ -10,10 +10,11 @@ var drag_offset := Vector2.ZERO
 var player_camera: Camera2D
 
 @onready var furniture_camera_2d: Camera2D = $FurnitureCamera2D
+@onready var furniture_panel: Panel = $"../SceneTransition/FurniturePanel"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	furniture_panel.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -76,8 +77,10 @@ func exit_edit_mode() -> void:
 func toggle_edit_mode() -> void:
 	if edit_mode:
 		exit_edit_mode()
+		furniture_panel.hide()
 	else:
 		enter_edit_mode()
+		furniture_panel.show()
 
 func get_furniture_under_mouse() -> Node2D:
 	var mouse_position := get_global_mouse_position()
