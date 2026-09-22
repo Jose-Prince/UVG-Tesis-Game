@@ -33,6 +33,17 @@ func _process(_delta: float) -> void:
 	if is_mouse_over_furniture_panel():
 		return
 	
+	if Input.is_action_just_pressed("mouse_secondary"):
+		var furniture := get_furniture_under_mouse()
+		
+		if furniture:
+			if furniture.has_method("can_be_moved"):
+				if not furniture.can_be_moved():
+					return
+			
+			delete_furniture(furniture)
+			return
+	
 	if Input.is_action_just_pressed("mouse_action"):
 		var furniture := get_furniture_under_mouse()
 
@@ -117,6 +128,16 @@ func start_drag(furniture: Node2D) -> void:
 
 func stop_drag() -> void:
 	is_dragging = false
+
+func delete_furniture(furniture: Node2D) -> void:
+	if not furniture:
+		return
+	
+	if selected_furniture == furniture:
+		deselect_furniture()
+		is_dragging = false
+	
+	furniture.queue_free()
 
 func start_furniture_placement(data: FurnitureData) -> void:
 	if not edit_mode:
