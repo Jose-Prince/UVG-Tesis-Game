@@ -125,20 +125,22 @@ func start_furniture_placement(data: FurnitureData) -> void:
 	if is_placing_furniture:
 		return
 	
+	if not consume_furniture(data):
+		cancel_furniture_placement()
+		return
+	
 	placement_furniture_data = data
 	is_placing_furniture = true
 	
 	placement_preview = data.scene.instantiate()
 	add_child(placement_preview)
 	
-	# Spawn furniture at the center of the viewport.
 	var center_position := snap_position(
 		get_viewport_center_world()
 	)
 	
 	placement_preview.global_position = center_position
 	
-	# Preserve the distance between the mouse and the furniture.
 	var mouse_position := get_global_mouse_position()
 	placement_drag_offset = center_position - mouse_position
 	
@@ -230,3 +232,18 @@ func is_mouse_over_furniture_panel() -> bool:
 	var mouse_position := get_viewport().get_mouse_position()
 	
 	return furniture_panel.get_global_rect().has_point(mouse_position)
+
+func consume_furniture(data: FurnitureData) -> bool:
+	var furniture_id := data.id
+	
+	if not GameData.furniture_inventory.has(furniture_id):
+		return false
+	
+	var quantity : int = GameData.furniture_inventory[furniture_id]
+	
+	if quantity <= 0:
+		return false
+	
+	GameData.furniture_inventory[furniture_id] = quantity - 1
+	
+	return true

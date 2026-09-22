@@ -36,7 +36,7 @@ var closed_hour := 17
 
 var furniture_catalog := [WOODEN_TABLE]
 var furniture_inventory: Dictionary = {
-	"wooden_table": 2,
+	"wooden_table": 3,
 }
 
 # World variables
