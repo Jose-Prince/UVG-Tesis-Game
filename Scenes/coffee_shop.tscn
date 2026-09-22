@@ -1357,7 +1357,7 @@ tile_map_data = PackedByteArray("AAAXAAgAAAAOAAQAAAAXAAcAAAABAAMAAAAWAAcAAAABAAM
 tile_set = SubResource("TileSet_4hl37")
 script = ExtResource("4_ug16k")
 
-[node name="GridManager" type="Node" parent="." unique_id=222073008 node_paths=PackedStringArray("wall_layer")]
+[node name="GridManager" type="Node" parent="." unique_id=222073008 node_paths=PackedStringArray("wall_layer") groups=["grid_manager"]]
 script = ExtResource("2_bxugb")
 wall_layer = NodePath("../WallLayer")
 
@@ -1442,7 +1442,7 @@ script = ExtResource("10_ibwl0")
 [node name="CoffeeMaker" parent="." unique_id=1701230900 instance=ExtResource("8_wvnb4")]
 position = Vector2(344, 112)
 
-[node name="OrderObject" type="Node2D" parent="." unique_id=1752300990]
+[node name="OrderObject" type="Node2D" parent="." unique_id=1752300990 groups=["order_object"]]
 script = ExtResource("12_2o2p7")
 
 [node name="GlassGiver" parent="." unique_id=1691044326 groups=["clickable"] instance=ExtResource("12_4hl37")]

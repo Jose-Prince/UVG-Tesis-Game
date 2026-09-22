@@ -9,6 +9,7 @@ var selected_furniture: Node2D = null
 var is_dragging := false
 var drag_offset := Vector2.ZERO
 
+var placement_drag_offset := Vector2.ZERO
 var placement_furniture_data: FurnitureData
 var placement_preview: Node2D
 var is_placing_furniture := false
@@ -88,35 +89,6 @@ func exit_edit_mode() -> void:
 	
 	furniture_panel.hide()
 
-func _process_furniture_movement() -> void:
-	if Input.is_action_just_pressed("mouse_action"):
-		print("mouse_action PRESSED")
-		
-		var furniture := get_furniture_under_mouse()
-		
-		if furniture:
-			print("Furniture found: ", furniture.name)
-			
-			if furniture.has_method("can_be_moved"):
-				if not furniture.can_be_moved():
-					print("Furniture can't be moved")
-					return
-			
-			select_furniture(furniture)
-			start_drag(furniture)
-		
-		else:
-			print("No furniture found")
-		
-	if is_dragging and selected_furniture:
-		if Input.is_action_pressed("mouse_action"):
-			var mouse_position := get_global_mouse_position()
-			var new_position := mouse_position + drag_offset
-			
-			selected_furniture.global_position = snap_position(new_position)
-		else:
-			stop_drag()
-
 func select_furniture(furniture: Node2D) -> void:
 	deselect_furniture()
 	
@@ -159,6 +131,17 @@ func start_furniture_placement(data: FurnitureData) -> void:
 	placement_preview = data.scene.instantiate()
 	add_child(placement_preview)
 	
+	# Spawn furniture at the center of the viewport.
+	var center_position := snap_position(
+		get_viewport_center_world()
+	)
+	
+	placement_preview.global_position = center_position
+	
+	# Preserve the distance between the mouse and the furniture.
+	var mouse_position := get_global_mouse_position()
+	placement_drag_offset = center_position - mouse_position
+	
 	placement_preview.modulate.a = 0.5
 
 func _process_furniture_placement() -> void:
@@ -167,7 +150,9 @@ func _process_furniture_placement() -> void:
 		return
 	
 	var mouse_position := get_global_mouse_position()
-	placement_preview.global_position = snap_position(mouse_position)
+	var new_position := mouse_position + placement_drag_offset
+	
+	placement_preview.global_position = snap_position(new_position)
 	
 	if Input.is_action_just_pressed("mouse_action"):
 		place_furniture()
@@ -229,6 +214,11 @@ func snap_position(position: Vector2) -> Vector2:
 		round(position.x / grid_size) * grid_size,
 		round(position.y / grid_size) * grid_size
 	)
+
+func get_viewport_center_world() -> Vector2:
+	var viewport_center := get_viewport().get_visible_rect().size / 2.0
+	
+	return (get_viewport().get_canvas_transform().affine_inverse() * viewport_center)
 
 func setup_camera(camera: Camera2D) -> void:
 	player_camera = camera

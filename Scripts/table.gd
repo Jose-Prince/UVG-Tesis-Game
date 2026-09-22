@@ -13,13 +13,13 @@ var actual_state := States.AVAILABLE
 
 var furniture_edit_mode := false
 var furniture_selected := false
+var grid_manager: Node
+var order_object: Node2D
 
 @onready var timer: Timer = $Timer
 @onready var progress_bar: ProgressBar = $ProgressBar
-@onready var grid_manager: Node = $"../GridManager"
 @onready var food_place_1: Marker2D = $FoodPlace1
 @onready var food_place_2: Marker2D = $FoodPlace2
-@onready var order_object: Node2D = $"../OrderObject"
 @onready var waiting_timer: Timer = $WaitingTimer
 @onready var circular_bar: TextureProgressBar = $CircularBar
 @onready var money: Sprite2D = $money
@@ -35,7 +35,11 @@ func _ready():
 	
 	var shape = $collider.shape
 	var rect = Rect2(global_position - shape.size/2, shape.size)
-	#grid_manager.set_obstacle_rect(rect, true)
+	
+	order_object = get_tree().get_first_node_in_group("order_object")
+	grid_manager = get_tree().get_first_node_in_group("grid_manager")
+	
+	grid_manager.set_obstacle_rect(rect, true)
 	
 	set_state(States.AVAILABLE)
 
