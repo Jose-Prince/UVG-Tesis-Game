@@ -2467,7 +2467,7 @@ autostart = true
 position = Vector2(42, 159)
 
 [node name="LeavingZone" type="Area2D" parent="." unique_id=317473523]
-position = Vector2(42, 159)
+position = Vector2(52, 159)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeavingZone" unique_id=569889899]
@@ -2524,13 +2524,13 @@ day_start = SubResource("Resource_2o2p7")
 night_start = SubResource("Resource_eatfk")
 
 [node name="Teleport" parent="." unique_id=28215377 instance=ExtResource("20_ibwl0")]
-position = Vector2(8, 160)
+position = Vector2(21, 159)
 teleport_id = "cafe_exit"
 
 [node name="SpawnPoints" type="Node" parent="." unique_id=1549050992]
 
 [node name="CafeExit" parent="SpawnPoints" unique_id=1221738028 instance=ExtResource("20_qc307")]
-position = Vector2(42, 159)
+position = Vector2(52, 159)
 spawn_id = "cafe_exit"
 
 [node name="wallDivision" type="TileMapLayer" parent="." unique_id=1267093573]
