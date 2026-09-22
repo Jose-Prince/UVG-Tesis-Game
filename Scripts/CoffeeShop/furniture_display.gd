@@ -6,10 +6,9 @@ const FURNITURE_ITEM_SCENE := preload("res://Prefabs/Furniture/furniture_invento
 func _ready() -> void:
 	update_inventory()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	update_inventory()
 
 func update_inventory() -> void:
 	_clear_inventory()
