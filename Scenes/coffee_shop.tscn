@@ -1404,7 +1404,6 @@ isRotated = true
 [node name="SceneTransition" parent="." unique_id=441785496 instance=ExtResource("9_vffnu")]
 
 [node name="FurniturePanel" type="Panel" parent="SceneTransition" unique_id=1330652615]
-visible = false
 custom_minimum_size = Vector2(0, 100)
 anchors_preset = 12
 anchor_top = 1.0
@@ -1419,13 +1418,25 @@ grow_vertical = 0
 size_flags_horizontal = 3
 theme = ExtResource("9_eatfk")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="SceneTransition/FurniturePanel" unique_id=1061165740]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MarginContainer" type="MarginContainer" parent="SceneTransition/FurniturePanel" unique_id=1078039440]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SceneTransition/FurniturePanel/ScrollContainer" unique_id=1178916036]
+[node name="ScrollContainer" type="ScrollContainer" parent="SceneTransition/FurniturePanel/MarginContainer" unique_id=1061165740]
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SceneTransition/FurniturePanel/MarginContainer/ScrollContainer" unique_id=1178916036]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("10_ibwl0")
 
 [node name="CoffeeMaker" parent="." unique_id=1701230900 instance=ExtResource("8_wvnb4")]

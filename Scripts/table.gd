@@ -35,7 +35,7 @@ func _ready():
 	
 	var shape = $collider.shape
 	var rect = Rect2(global_position - shape.size/2, shape.size)
-	grid_manager.set_obstacle_rect(rect, true)
+	#grid_manager.set_obstacle_rect(rect, true)
 	
 	set_state(States.AVAILABLE)
 

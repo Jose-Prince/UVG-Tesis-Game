@@ -40,3 +40,9 @@ func _get_furniture_data(furniture_id: String) -> FurnitureData:
 		if furniture.id == furniture_id:
 			return furniture
 	return null
+
+func _on_furniture_drag_started(furniture_data: FurnitureData) -> void:
+	var furniture_manager := get_tree().get_first_node_in_group("furniture_manager")
+	
+	if furniture_manager:
+		furniture_manager.start_furniture_placement(furniture_data)
