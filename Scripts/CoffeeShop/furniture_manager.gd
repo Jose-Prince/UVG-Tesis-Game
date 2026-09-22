@@ -132,7 +132,20 @@ func stop_drag() -> void:
 func delete_furniture(furniture: Node2D) -> void:
 	if not furniture:
 		return
+	print(furniture.furniture_id)
 	
+	if furniture.furniture_id:
+		var furniture_id: String = furniture.furniture_id
+		
+		if GameData.furniture_inventory.has(furniture_id):
+			GameData.furniture_inventory[furniture_id] += 1
+		else:
+			GameData.furniture_inventory[furniture_id] = 1
+		
+		print("Inventory AFTER: ", GameData.furniture_inventory)
+	else:
+		print("ERROR: furniture_data is NULL!")
+
 	if selected_furniture == furniture:
 		deselect_furniture()
 		is_dragging = false
@@ -155,6 +168,8 @@ func start_furniture_placement(data: FurnitureData) -> void:
 	
 	placement_preview = data.scene.instantiate()
 	add_child(placement_preview)
+	
+	placement_preview.furniture_data = data
 	
 	var center_position := snap_position(
 		get_viewport_center_world()

@@ -2,6 +2,7 @@ extends StaticBody2D
 
 @export var isFree = true
 @export var isRotated = false
+@export var furniture_id: String
 
 var leftOffsetPos: Vector2 = Vector2(-20, 0)
 var rightOffsetPos: Vector2 = Vector2(20, 0)

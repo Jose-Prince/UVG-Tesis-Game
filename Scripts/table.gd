@@ -2,6 +2,8 @@ extends StaticBody2D
 
 enum States { AVAILABLE, UNAVAILABLE, BILLING }
 
+@export var furniture_id: String
+
 var chairs: Array[Node2D]
 var customers: Array[Node2D]
 var orders := []
@@ -25,6 +27,8 @@ var order_object: Node2D
 @onready var money: Sprite2D = $money
 
 func _ready():
+	print("=== TABLE READY ===")
+	print("Table: ", name)
 	await get_tree().physics_frame
 
 	progress_bar.max_value = timer.wait_time
@@ -39,7 +43,7 @@ func _ready():
 	order_object = get_tree().get_first_node_in_group("order_object")
 	grid_manager = get_tree().get_first_node_in_group("grid_manager")
 	
-	grid_manager.set_obstacle_rect(rect, true)
+	#grid_manager.set_obstacle_rect(rect, true)
 	
 	set_state(States.AVAILABLE)
 
