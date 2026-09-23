@@ -22,10 +22,8 @@ color = Color(1, 0, 0, 1)
 position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_s0eop")
 
-[node name="InteractionPoint" type="Marker2D" parent="." unique_id=1615757476]
-position = Vector2(16, 32)
-
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1835511209]
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=274834252]
 shape = SubResource("CircleShape2D_s0eop")
