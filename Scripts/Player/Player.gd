@@ -1,46 +1,55 @@
-class_name Player
 extends CharacterBody2D
 
+@export var speed: float = 200.0
+@export var interaction_distance: float = 64.0
 
-@export var speed: float = 150.0
-@export var interaction_distance: float = 48.0
+@onready var interaction_point: Marker2D = $InteractionPoint
+@onready var interaction_prompt: Label = $InteractionPrompt
 
-var nearby_interactable: Interactable
+var current_interactable: Interactable = null
 
 
 func _physics_process(_delta: float) -> void:
-	var direction := Input.get_vector(
-		"move_left",
-		"move_right",
-		"move_up",
-		"move_down"
+	handle_movement()
+	update_interaction()
+	handle_interaction()
+
+
+func handle_movement() -> void:
+	var direction := Vector2(
+		Input.get_axis("move_left", "move_right"),
+		Input.get_axis("move_up", "move_down")
 	)
+
+	if direction.length() > 1.0:
+		direction = direction.normalized()
 
 	velocity = direction * speed
 
 	move_and_slide()
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
-		try_interact()
+func update_interaction() -> void:
+	current_interactable = null
 
-
-func try_interact() -> void:
-	var interactables := get_tree().get_nodes_in_group("interactable")
-
-	var closest: Interactable = null
 	var closest_distance := interaction_distance
 
-	for object in interactables:
-		if not object is Interactable:
+	for node in get_tree().get_nodes_in_group("interactable"):
+		if not is_instance_valid(node):
 			continue
 
-		var distance := global_position.distance_to(object.global_position)
+		var distance := interaction_point.global_position.distance_to(
+			node.global_position
+		)
 
 		if distance <= closest_distance:
-			closest = object
 			closest_distance = distance
+			current_interactable = node
 
-	if closest:
-		closest.interact(self)
+	interaction_prompt.visible = current_interactable != null
+
+
+func handle_interaction() -> void:
+	if Input.is_action_just_pressed("interact"):
+		if current_interactable != null:
+			current_interactable.interact()

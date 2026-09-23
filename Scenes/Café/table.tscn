@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://rojc6lcpj3f4"]
+
+[ext_resource type="Script" uid="uid://w27numb36gvb" path="res://Scripts/Objects/Table.gd" id="1_34rps"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
+size = Vector2(96, 64)
+
+[node name="Table" type="StaticBody2D" unique_id=604935021]
+script = ExtResource("1_34rps")
+
+[node name="Visual" type="ColorRect" parent="." unique_id=1709966603]
+offset_right = 96.0
+offset_bottom = 64.0
+color = Color(0, 0.9647059, 0.30588236, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=689953606]
+position = Vector2(48, 32)
+shape = SubResource("RectangleShape2D_cc37w")

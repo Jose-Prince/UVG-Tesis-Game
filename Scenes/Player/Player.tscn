@@ -1,21 +1,41 @@
 [gd_scene format=3 uid="uid://bs1uu0b3cuk0g"]
 
 [ext_resource type="Script" uid="uid://c257lqgsm62ir" path="res://Scripts/Player/Player.gd" id="1_ft8w5"]
-[ext_resource type="Texture2D" uid="uid://brtc3yhiqdsxc" path="res://Assets/CHARACTERS/ANIMATION/BASE CHARACTER/PNG/NO_FX/spr_run_strip8.png" id="1_s0eop"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p8rbg"]
-atlas = ExtResource("1_s0eop")
-region = Rect2(224, 12, 32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0eop"]
+size = Vector2(32, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3ax4"]
-size = Vector2(20, 21)
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0eop"]
+radius = 15.0
 
 [node name="Player" type="CharacterBody2D" unique_id=241802471]
 script = ExtResource("1_ft8w5")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1635680435]
-texture = SubResource("AtlasTexture_p8rbg")
+[node name="Body" type="ColorRect" parent="." unique_id=513250351]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1955222489]
-position = Vector2(0, 1.5)
-shape = SubResource("RectangleShape2D_l3ax4")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1416377600]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_s0eop")
+
+[node name="InteractionPoint" type="Marker2D" parent="." unique_id=1615757476]
+position = Vector2(16, 32)
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1835511209]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=274834252]
+shape = SubResource("CircleShape2D_s0eop")
+
+[node name="InteractionPrompt" type="Label" parent="." unique_id=840396421]
+offset_left = -5.0
+offset_top = -50.0
+offset_right = 35.0
+offset_bottom = -27.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
