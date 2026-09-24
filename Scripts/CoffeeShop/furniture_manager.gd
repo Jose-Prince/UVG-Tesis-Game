@@ -168,9 +168,7 @@ func start_furniture_placement(data: FurnitureData) -> void:
 	
 	placement_preview = data.scene.instantiate()
 	add_child(placement_preview)
-	
-	placement_preview.furniture_data = data
-	
+		
 	var center_position := snap_position(
 		get_viewport_center_world()
 	)

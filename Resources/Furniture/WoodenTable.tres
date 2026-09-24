@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0hdtnnv0sv88" path="res://Resources/FurnitureData.gd" id="1_i18d4"]
 [ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Placeholders/TopDownHouse_FurnitureState1.png" id="1_swvcr"]
+[ext_resource type="PackedScene" uid="uid://d3hb3h1ih8e8w" path="res://Prefabs/table.tscn" id="2_swvcr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cnf1"]
 atlas = ExtResource("1_swvcr")
@@ -12,4 +13,5 @@ script = ExtResource("1_i18d4")
 id = "wooden_table"
 display_name = "Wooden Table"
 icon = SubResource("AtlasTexture_8cnf1")
+scene = ExtResource("2_swvcr")
 metadata/_custom_type_script = "uid://0hdtnnv0sv88"
