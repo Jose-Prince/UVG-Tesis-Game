@@ -13,8 +13,8 @@ func _process(delta: float) -> void:
 func update_inventory() -> void:
 	_clear_inventory()
 	
-	for furniture_id in GameData.furniture_inventory:
-		var quantity: int = GameData.furniture_inventory[furniture_id]
+	for furniture_id in FurnitureDatabase.furniture_inventory:
+		var quantity: int = FurnitureDatabase.furniture_inventory[furniture_id]
 		
 		if quantity <= 0:
 			continue

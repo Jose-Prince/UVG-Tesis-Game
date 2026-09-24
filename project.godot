@@ -25,6 +25,7 @@ Dialogic="*uid://ds2q0uclmolvu"
 MusicManager="*uid://bc0afmdwnnw8m"
 GameData="*res://Autoloads/game_data.gd"
 TimeSystem="*uid://cor1ogxv6n4kk"
+FurnitureDatabase="*uid://dr0y1yeuae8bh"
 
 [dialogic]
 

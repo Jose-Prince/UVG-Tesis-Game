@@ -137,12 +137,12 @@ func delete_furniture(furniture: Node2D) -> void:
 	if furniture.furniture_id:
 		var furniture_id: String = furniture.furniture_id
 		
-		if GameData.furniture_inventory.has(furniture_id):
-			GameData.furniture_inventory[furniture_id] += 1
+		if FurnitureDatabase.furniture_inventory.has(furniture_id):
+			FurnitureDatabase.furniture_inventory[furniture_id] += 1
 		else:
-			GameData.furniture_inventory[furniture_id] = 1
+			FurnitureDatabase.furniture_inventory[furniture_id] = 1
 		
-		print("Inventory AFTER: ", GameData.furniture_inventory)
+		print("Inventory AFTER: ", FurnitureDatabase.furniture_inventory)
 	else:
 		print("ERROR: furniture_data is NULL!")
 
@@ -270,14 +270,14 @@ func is_mouse_over_furniture_panel() -> bool:
 func consume_furniture(data: FurnitureData) -> bool:
 	var furniture_id := data.id
 	
-	if not GameData.furniture_inventory.has(furniture_id):
+	if not FurnitureDatabase.furniture_inventory.has(furniture_id):
 		return false
 	
-	var quantity : int = GameData.furniture_inventory[furniture_id]
+	var quantity : int = FurnitureDatabase.furniture_inventory[furniture_id]
 	
 	if quantity <= 0:
 		return false
 	
-	GameData.furniture_inventory[furniture_id] = quantity - 1
+	FurnitureDatabase.furniture_inventory[furniture_id] = quantity - 1
 	
 	return true

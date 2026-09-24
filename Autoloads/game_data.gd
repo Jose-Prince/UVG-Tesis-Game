@@ -2,8 +2,6 @@ extends Node
 
 signal money_changed(new_amount: float)
 
-const WOODEN_TABLE: FurnitureData = preload("res://Resources/Furniture/WoodenTable.tres")
-
 var cursor_texture := preload("res://Placeholders/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
 var game_slot := 0
 
@@ -33,11 +31,6 @@ var menu_ids: Array = []
 var menu: Array[ArticleData]
 var open_hour := 7
 var closed_hour := 17
-
-var furniture_catalog := [WOODEN_TABLE]
-var furniture_inventory: Dictionary = {
-	"wooden_table": 3,
-}
 
 # World variables
 var month := 0
