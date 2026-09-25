@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://05y0ghmm4qsq"]
 
 [ext_resource type="Script" uid="uid://bpit0g74t3khe" path="res://Scripts/chair.gd" id="1_r2gyq"]
-[ext_resource type="Texture2D" uid="uid://2d20jnl7otnj" path="res://Placeholders/TopDownHouse_FurnitureState1.png" id="1_soryi"]
+[ext_resource type="Texture2D" uid="uid://djmqxwegtttrg" path="res://Assets/Sprites/Cafe assets tiles.PNG" id="2_r2gyq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r2gyq"]
-atlas = ExtResource("1_soryi")
-region = Rect2(143.99881, 4.0322866, 15.015106, 27.973446)
+[sub_resource type="AtlasTexture" id="AtlasTexture_avq0k"]
+atlas = ExtResource("2_r2gyq")
+region = Rect2(0, 204.18402, 31.200012, 33.902313)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avq0k"]
 size = Vector2(13, 18)
@@ -17,7 +17,7 @@ script = ExtResource("1_r2gyq")
 furniture_id = "wooden_chair"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=169816347]
-texture = SubResource("AtlasTexture_r2gyq")
+texture = SubResource("AtlasTexture_avq0k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1641243643]
 position = Vector2(0.5, 0)

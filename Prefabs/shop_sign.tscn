@@ -33,7 +33,6 @@ region = Rect2(0, 0, 128.31427, 64)
 
 [node name="ShopSign" type="Control" unique_id=2078464268]
 custom_minimum_size = Vector2(128, 64)
-custom_maximum_size = Vector2(128, 64)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 128.0
