@@ -93,7 +93,8 @@ func get_save_data() -> Dictionary:
 			"menu_ids": menu_ids,
 			"popularity": popularity,
 			"furniture": {
-				"inventory": FurnitureDatabase.furniture_inventory.duplicate(true)
+				"inventory": FurnitureDatabase.furniture_inventory.duplicate(true),
+				"placed": FurnitureDatabase.placed_furniture.duplicate(true)
 			}
 		},
 		"world": {
@@ -148,7 +149,10 @@ func load_game_data(data: Dictionary) -> void:
 	shop_name = coffee_shop_data.get("name", "")
 	menu_ids = coffee_shop_data.get("menu_ids", [])
 	popularity = int(coffee_shop_data.get("popularity", 0))
-	var saved_inventory: Dictionary = coffee_shop_data.get("furniture", {}).get("inventory", {})
+	
+	var furniture_data: Dictionary = coffee_shop_data.get("furniture", {})
+	
+	var saved_inventory: Dictionary = furniture_data.get("inventory", {})
 	
 	FurnitureDatabase.furniture_inventory.clear()
 	for furniture in FurnitureDatabase.furniture_catalog:
@@ -160,10 +164,30 @@ func load_game_data(data: Dictionary) -> void:
 	for furniture_id in saved_inventory:
 		FurnitureDatabase.furniture_inventory[furniture_id] = int(saved_inventory[furniture_id])
 	
+	FurnitureDatabase.placed_furniture.clear()
+	
+	var saved_placed_furniture: Array = furniture_data.get("placed", [])
+	
+	for saved_furniture in saved_placed_furniture:
+		if not saved_furniture is Dictionary:
+			continue
+		
+		var furniture_id: String = str(saved_furniture.get("id", ""))
+		
+		if furniture_id.is_empty():
+			continue
+		
+		FurnitureDatabase.placed_furniture.append({
+			"id": furniture_id,
+			"x": float(saved_furniture.get("x", 0.0)),
+			"y": float(saved_furniture.get("y", 0.0))
+		})
+	
 	var world_data: Dictionary = data.get("world", {})
 	
 	day_index = int(world_data.get("day_index", 0))
-	num_day = int(world_data.get("month", 0))
+	num_day = int(world_data.get("num_day", 0))
+	month = int(world_data.get("month", 0))
 	year = int(world_data.get("year", 0))
 
 func _color_to_data(color: Color) -> Dictionary:

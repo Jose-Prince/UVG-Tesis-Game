@@ -202,6 +202,8 @@ func place_furniture() -> void:
 	placement_preview = null
 	placement_furniture_data = null
 	is_placing_furniture = false
+	
+	update_placed_furniture_data()
 
 func cancel_furniture_placement() -> void:
 	if placement_preview:
@@ -281,3 +283,24 @@ func consume_furniture(data: FurnitureData) -> bool:
 	FurnitureDatabase.furniture_inventory[furniture_id] = quantity - 1
 	
 	return true
+
+func update_placed_furniture_data() -> void:
+	FurnitureDatabase.placed_furniture.clear()
+	
+	for furniture in get_tree().get_nodes_in_group("furniture"):
+		if not furniture is Node2D:
+			continue
+		
+		if not furniture.has_method("get_furniture_data"):
+			continue
+		
+		var data: FurnitureData = furniture.get_furniture_data()
+		
+		if data == null:
+			continue
+		
+		FurnitureDatabase.placed_furniture.append({
+			"id": data.id,
+			"x": furniture.global_position.x,
+			"y": furniture.global_position.y
+		})
