@@ -8,22 +8,23 @@ var furniture_data: FurnitureData
 
 func setup(data: FurnitureData, quantity: int) -> void:
 	furniture_data = data
+
 	furniture_button.icon = data.icon
 	quantity_label.text = str(quantity)
 
 
-func _process(_delta: float) -> void:
+func _on_furniture_button_pressed() -> void:
 	if furniture_data == null:
 		return
 
-	if Input.is_action_just_pressed("mouse_action"):
-		var mouse_position := get_viewport().get_mouse_position()
+	var furniture_manager := get_tree().get_first_node_in_group(
+		"furniture_manager"
+	) as FurnitureManager
 
-		if get_global_rect().has_point(mouse_position):
-			var furniture_manager := get_tree().get_first_node_in_group(
-				"furniture_manager"
-			) as FurnitureManager
+	if furniture_manager == null:
+		push_error("FurnitureManager not found.")
+		return
 
-			if furniture_manager:
-				print("STARTING FURNITURE DRAG: ", furniture_data.id)
-				furniture_manager.start_furniture_placement(furniture_data)
+	print("CLICKED FURNITURE BUTTON: ", furniture_data.id)
+
+	furniture_manager.start_furniture_placement(furniture_data)
