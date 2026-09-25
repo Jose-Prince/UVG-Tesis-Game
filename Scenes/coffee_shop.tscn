@@ -14,7 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://bgduyi5wcuj0c" path="res://Prefabs/glass.tscn" id="14_xjtdl"]
 [ext_resource type="PackedScene" uid="uid://cyeftfpjy6lld" path="res://Prefabs/water.tscn" id="15_2i3s5"]
 [ext_resource type="Script" uid="uid://d3285ev7ubckh" path="res://Scripts/directional_light_2d.gd" id="16_2i3s5"]
-[ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/date_time.gd" id="17_vffnu"]
+[ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/TimeSystem/date_time.gd" id="17_vffnu"]
+[ext_resource type="Script" uid="uid://bof0qi7ps363v" path="res://Scripts/CoffeeShop/furniture_manager.gd" id="18_2o2p7"]
+[ext_resource type="Script" uid="uid://d3hli2r20c3pc" path="res://Scripts/CoffeeShop/furniture_camera_2d.gd" id="19_eatfk"]
 [ext_resource type="PackedScene" uid="uid://dwc1eus3nja55" path="res://Prefabs/TeleportSystem/teleport.tscn" id="20_ibwl0"]
 [ext_resource type="PackedScene" uid="uid://ded571vyn71rt" path="res://Prefabs/TeleportSystem/spawn.tscn" id="20_qc307"]
 
@@ -2493,6 +2495,10 @@ isRotated = true
 
 [node name="SceneTransition" parent="." unique_id=441785496 instance=ExtResource("9_vffnu")]
 
+[node name="FurniturePanel" type="Panel" parent="SceneTransition" unique_id=1266095052]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="CoffeeMaker" parent="." unique_id=1701230900 instance=ExtResource("8_wvnb4")]
 position = Vector2(340, 100)
 
@@ -2536,6 +2542,19 @@ spawn_id = "cafe_exit"
 [node name="wallDivision" type="TileMapLayer" parent="." unique_id=1267093573]
 tile_map_data = PackedByteArray("AAAMAAcAAAAMAAAAAAAMAAQAAAALAAIAAAALAAUAAAAIAAMAAAABAAEAAAAMAAIAAAABAAAAAAAMAAIAAAAMAAMAAAALAAIAAAAJAP//AAANAAEAAAAIAP//AAALAAEAAAAHAP//AAALAAEAAAAGAP//AAALAAEAAAAFAP//AAALAAEAAAAEAP//AAALAAEAAAADAP//AAALAAEAAAACAP//AAALAAEAAAABAP//AAAMAAEAAAAJAAAAAAALAAIAAAAJAAEAAAALAAIAAAAJAAIAAAALAAIAAAAJAAMAAAALAAIAAAAJAAQAAAALAAIAAAAMAAUAAAAMAAAAAAAJAAUAAAAIAAIAAAABAAcAAAALAAAAAAABAAMAAAAJAAIAAAABAAYAAAAKAAMAAAAJAAcAAAANAAIAAAAKAAcAAAANAAIAAAALAAcAAAANAAIAAAAIAAcAAAANAAIAAAAHAAcAAAANAAIAAAAGAAcAAAANAAIAAAAFAAcAAAANAAIAAAAEAAcAAAANAAIAAAADAAcAAAANAAIAAAACAAcAAAANAAIAAAABAAIAAAAMAAIAAAAMAAYAAAALAAIAAAA=")
 tile_set = SubResource("TileSet_2o2p7")
+
+[node name="FurnitureManager" type="Node2D" parent="." unique_id=2127601820]
+script = ExtResource("18_2o2p7")
+metadata/_custom_type_script = "uid://bof0qi7ps363v"
+
+[node name="FurnitureCamera2D" type="Camera2D" parent="FurnitureManager" unique_id=214573328]
+enabled = false
+zoom = Vector2(3.595, 3.595)
+limit_left = 0
+limit_top = 0
+limit_right = 320
+limit_bottom = 300
+script = ExtResource("19_eatfk")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="LeavingZone" to="." method="_on_leaving_zone_body_entered"]
