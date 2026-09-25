@@ -160,6 +160,7 @@ text = "January"
 horizontal_alignment = 1
 
 [node name="DayContainer" type="HBoxContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=803739870]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel/MarginContainer/VBoxContainer/DayContainer" unique_id=576655718]
