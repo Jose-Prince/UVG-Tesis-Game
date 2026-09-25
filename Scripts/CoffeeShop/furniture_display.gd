@@ -35,7 +35,7 @@ func _clear_inventory() -> void:
 		child.queue_free()
 
 func _get_furniture_data(furniture_id: String) -> FurnitureData:
-	for furniture in GameData.furniture_catalog:
+	for furniture in FurnitureDatabase.furniture_catalog:
 		if furniture.id == furniture_id:
 			return furniture
 	return null

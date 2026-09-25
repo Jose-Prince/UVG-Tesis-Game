@@ -6,8 +6,6 @@ const WOODEN_CHAIR: FurnitureData = preload("res://Resources/Furniture/WoodenCha
 var furniture_catalog: Array[FurnitureData] = [WOODEN_TABLE, WOODEN_CHAIR]
 
 var furniture_inventory: Dictionary = {
-	"wooden_table": 3,
-	"wooden_chair": 2,
 }
 
 # Called when the node enters the scene tree for the first time.

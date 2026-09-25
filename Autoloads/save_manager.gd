@@ -4,22 +4,7 @@ signal day_ended
 signal day_start
 
 const SAVE_FOLDER: String = "user://saves/"
-const DEFAULT_DATA: Dictionary = {
-	"player": {
-		"name": "Akice",
-		"money": 0,
-		"popularity": 0
-	},
-	"world": {
-		"day_index": 0,
-		"num_day": 0,
-		"month": 0,
-		"year": 0,
-	},
-	"coffee_shop": {
-		"name": "Place",
-	},
-}
+
 const DEFAULT_SETTINGS = {
 	"auto_run": true,
 	"hardware_cursor": false,
@@ -38,7 +23,7 @@ const DEFAULT_SETTINGS = {
 
 const SETTINGS_FILE := SAVE_FOLDER + "settings.json"
 
-func save_game(slot: int, data: Dictionary) -> void:
+func save_game(slot: int) -> void:
 	ensure_save_folder()
 	var save_path: String = SAVE_FOLDER + "save_%d.json" % slot
 	var save_file: FileAccess = FileAccess.open(save_path, FileAccess.WRITE)
@@ -47,28 +32,24 @@ func save_game(slot: int, data: Dictionary) -> void:
 		push_error("Error al abrir el archivo")
 		return
 	
-	var string_data: String = JSON.stringify(data)
+	var data: Dictionary = GameData.get_save_data()
+	var json_string: String = JSON.stringify(data)
 	
-	save_file.store_line(string_data)
+	save_file.store_line(json_string)
 	save_file.close()
-	
-	print("Archivo guardado en ", save_path)
 
-func save_especific_data(slot: int, data_slot: String, specific_data: Dictionary):
-	var data = load_game(slot)
-	data[data_slot] = specific_data
-	save_game(slot, data)
-
-func load_game(slot: int):
+func load_game(slot: int) -> bool:
 	var save_path := SAVE_FOLDER + "save_%d.json" % slot
 	
 	if not FileAccess.file_exists(save_path):
-		return DEFAULT_DATA.duplicate(true)
+		push_warning("Save file does not exist: " + save_path)
+		return false
 	
 	var save_file := FileAccess.open(save_path, FileAccess.READ)
 	
 	if save_file == null:
-		return DEFAULT_DATA.duplicate(true)
+		push_error("Could not open save file: " + save_path)
+		return false
 	
 	var json_string := save_file.get_as_text()
 	save_file.close()
@@ -76,40 +57,19 @@ func load_game(slot: int):
 	var data = JSON.parse_string(json_string)
 	
 	if data == null or not data is Dictionary:
-		return DEFAULT_DATA.duplicate(true)
+		push_error("Invalid save data in: " + save_path)
+		return false
 	
-	return data
-
-func ensure_save_folder() -> void:
-	if not DirAccess.dir_exists_absolute(SAVE_FOLDER):
-		DirAccess.make_dir_absolute(SAVE_FOLDER)
+	GameData.load_game_data(data)
+	
+	return true
 
 func save_exists(slot: int) -> bool:
 	var save_path := SAVE_FOLDER + "save_%d.json" % slot
 	return FileAccess.file_exists(save_path)
 
 func get_save_count() -> int:
-	var count := 0
-	
-	var dir := DirAccess.open(SAVE_FOLDER)
-	
-	if dir == null:
-		return 0
-	
-	dir.list_dir_begin()
-	
-	var file_name := dir.get_next()
-	
-	while file_name != "":
-		if not dir.current_is_dir():
-			if file_name.begins_with("save_") and file_name.ends_with(".json"):
-				count += 1
-		
-		file_name = dir.get_next()
-	
-	dir.list_dir_end()
-	
-	return count
+	return get_save_slots().size()
 
 func get_save_slots() -> Array[int]:
 	var slots: Array[int] = []
@@ -204,3 +164,10 @@ func get_next_slot() -> int:
 		slot += 1
 		
 	return slot
+
+func ensure_save_folder() -> void:
+	if not DirAccess.dir_exists_absolute(SAVE_FOLDER):
+		var error := DirAccess.make_dir_absolute(SAVE_FOLDER)
+		
+		if error != OK:
+			push_error("Could not create save folder.")

@@ -42,35 +42,7 @@ func _on_day_ended() -> void:
 			GameData.month = 0
 			GameData.year += 1
 	
-	SaveManager.save_especific_data(
-		GameData.game_slot,
-		"world",
-		{
-			"day_index": GameData.day_index,
-			"num_day": GameData.num_day,
-			"month": GameData.month,
-			"year": GameData.year
-		}
-	)
-	
-	SaveManager.save_especific_data(
-		GameData.game_slot,
-		"player",
-		{
-			"name": GameData.player_name,
-			"money": GameData.money,
-			"popularity": GameData.popularity,
-			"appearance": {
-				"skin_color": GameData.player_skin_color,
-				"hair_color": GameData.player_hair_color,
-				"hair_style": GameData.player_hair_style,
-				"shirt_style": GameData.player_shirt_style,
-				"shirt_color": GameData.player_shirt_color,
-				"pants_style": GameData.player_pants_style,
-				"pants_color": GameData.player_pants_color,
-			}
-		}
-	)
+	SaveManager.save_game(GameData.game_slot)
 	
 	await scene_transition.pixelate_in(0.6).finished
 	get_tree().change_scene_to_file("res://Scenes/new_day.tscn")

@@ -34,9 +34,9 @@ var closed_hour := 17
 
 # World variables
 var month := 0
-var day_index := 0
-var num_day := 0
-var year := 0
+var day_index := 6
+var num_day := 28
+var year := 1
 
 # Settings variables
 var auto_run := false
@@ -73,6 +73,107 @@ func _notification(what: int) -> void:
 			NOTIFICATION_APPLICATION_FOCUS_OUT:
 				get_tree().paused = true
 
+func get_save_data() -> Dictionary:
+	return {
+		"player": {
+			"name": player_name,
+			"money": money,
+			"appearance": {
+				"skin_color": _color_to_data(player_skin_color),
+				"hair_color": _color_to_data(player_hair_color),
+				"hair_style": player_hair_style,
+				"shirt_style": player_shirt_style,
+				"shirt_color": _color_to_data(player_shirt_color),
+				"pants_style": player_pants_style,
+				"pants_color": _color_to_data(player_pants_color),
+			}
+		},
+		"coffee_shop": {
+			"name": shop_name,
+			"menu_ids": menu_ids,
+			"popularity": popularity,
+			"furniture": {
+				"inventory": FurnitureDatabase.furniture_inventory.duplicate(true)
+			}
+		},
+		"world": {
+			"day_index": day_index,
+			"num_day": num_day,
+			"month": month,
+			"year": year
+		}
+	}
+
+func load_game_data(data: Dictionary) -> void:
+	var player_data: Dictionary = data.get("player", {})
+	
+	player_name = player_data.get("name", "")
+	money = float(player_data.get("money", 0.0))
+	
+	var appearance: Dictionary = player_data.get("appearance", {})
+	
+	player_skin_color = _load_color(
+		appearance.get("skin_color"),
+		Color(1.0, 0.85, 0.70)
+	)
+	
+	player_hair_color = _load_color(
+		appearance.get("hair_color"),
+		Color(1.0, 0.85, 0.70)
+	)
+	
+	player_hair_color = _load_color(
+		appearance.get("hair_color"),
+		Color(0.15, 0.10, 0.05)
+	)
+	
+	player_hair_style = int(appearance.get("hair_style", 0))
+	player_shirt_style = int(appearance.get("shirt_style", 0))
+	player_shirt_color = _load_color(
+		appearance.get("shirt_color"),
+		Color(0.20, 0.40, 0.70)
+	)
+	
+	player_pants_style = int(appearance.get("pants_style", 0))
+	player_pants_color = _load_color(
+		appearance.get("pants_color"),
+		Color(0.30, 0.30, 0.30)
+	)
+	
+	var coffee_shop_data: Dictionary = data.get(
+		"coffee_shop",
+		{}
+	)
+	
+	shop_name = coffee_shop_data.get("name", "")
+	menu_ids = coffee_shop_data.get("menu_ids", [])
+	popularity = int(coffee_shop_data.get("popularity", 0))
+	var saved_inventory: Dictionary = coffee_shop_data.get("furniture", {}).get("inventory", {})
+	
+	FurnitureDatabase.furniture_inventory.clear()
+	for furniture in FurnitureDatabase.furniture_catalog:
+		if furniture == null:
+			continue
+		
+		FurnitureDatabase.furniture_inventory[furniture.id] = 0
+	
+	for furniture_id in saved_inventory:
+		FurnitureDatabase.furniture_inventory[furniture_id] = int(saved_inventory[furniture_id])
+	
+	var world_data: Dictionary = data.get("world", {})
+	
+	day_index = int(world_data.get("day_index", 0))
+	num_day = int(world_data.get("month", 0))
+	year = int(world_data.get("year", 0))
+
+func _color_to_data(color: Color) -> Dictionary:
+	return {
+		"r": color.r,
+		"g": color.g,
+		"b": color.b,
+		"a": color.a
+	}
+
 func _load_color(value, default_color: Color) -> Color:
 	if value == null:
 		return default_color
@@ -83,7 +184,7 @@ func _load_color(value, default_color: Color) -> Color:
 			value.get("r", default_color.r),
 			value.get("g", default_color.g),
 			value.get("b", default_color.b),
-			value.get("a", 1.0)
+			value.get("a", default_color.a)
 		)
 	if value is String:
 		# parse "(r, g, b, a)" format
@@ -98,48 +199,19 @@ func _load_color(value, default_color: Color) -> Color:
 			)
 	return default_color
 
-func load_to_data(data: Dictionary):
-	player_name = data["player"]["name"]
-	money = data["player"]["money"]
-	popularity = data["player"]["popularity"]
-	shop_name = data["coffee_shop"]["name"]
-	menu_ids = data["coffee_shop"]["menu_ids"]
-	day_index = data["world"]["day_index"]
-	num_day = data["world"]["num_day"]
-	month = data["world"]["month"]
-	year = data["world"]["year"]
-
-	if data["player"].has("appearance"):
-		var app = data["player"]["appearance"]
-		player_skin_color = _load_color(app.get("skin_color"), Color(1.0, 0.85, 0.70))
-		player_hair_color = _load_color(app.get("hair_color"), Color(0.15, 0.10, 0.05))
-		player_hair_style = int(app.get("hair_style", 0))
-		player_shirt_style = int(app.get("shirt_style", 0))
-		player_pants_style = int(app.get("pants_style", 0))
-		player_shirt_color = _load_color(app.get("shirt_color"), Color(0.20, 0.40, 0.70))
-		player_pants_color = _load_color(app.get("pants_color"), Color(0.30, 0.30, 0.30))
-	else:
-		player_skin_color = Color(1.0, 0.85, 0.70)
-		player_hair_color = Color(0.15, 0.10, 0.05)
-		player_hair_style = 0
-		player_shirt_style = 0
-		player_shirt_color = Color(0.20, 0.40, 0.70)
-		player_pants_style = 0
-		player_pants_color = Color(0.30, 0.30, 0.30)
-
 func load_settings(data: Dictionary) -> void:
-	auto_run = data["auto_run"]
-	show_interaction = data["show_interaction"]
-	hide_interaction_moving = data["hide_interaction_moving"]
-	pause_game_inactive = data["pause_game_inactive"]
-	master = data["master"]
-	music = data["music"]
-	sounds = data["sounds"]
-	window_mode = data["window_mode"]
-	resolution = data["resolution"]
-	max_fps = data["max_fps"]
-	hardware_cursor = data["hardware_cursor"]
-	interaction_mode = data["interaction_mode"]
+	auto_run = data.get("auto_run", true)
+	show_interaction = data.get("show_interaction", true)
+	hide_interaction_moving = data.get("hide_interaction_moving", true)
+	pause_game_inactive = data.get("pause_game_inactive", false)
+	master = data.get("master", 1.0)
+	music = data.get("music", 1.0)
+	sounds = data.get("sounds", 1.0)
+	window_mode = int(data.get("window_mode", 0))
+	resolution = int(data.get("resolution", 0))
+	max_fps = int(data.get("max_fps", 60))
+	hardware_cursor = data.get("hardware_cursor", false)
+	interaction_mode = int(data.get("interaction_mode", InteractionMode.MOUSE))
 	
 	if data.has("inputs"):
 		load_input_settings(data["inputs"])
@@ -173,6 +245,8 @@ func apply_settings() -> void:
 			resolutions = Vector2i(1366, 768)
 		5:
 			resolutions = Vector2i(1280, 720)
+		_:
+			resolutions = Vector2i(1920, 1080)
 
 	DisplayServer.window_set_size(resolutions)
 	var screen = DisplayServer.screen_get_usable_rect()

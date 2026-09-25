@@ -164,26 +164,7 @@ func animate_money(new_amount: float) -> void:
 	)
 
 func _on_day_ended() -> void:
-	SaveManager.save_especific_data(
-		GameData.game_slot,
-		"world",
-		{
-			"day_index": (current_day_index + 1) % days.size(),
-			"num_day": current_day_number + 1,
-			"month": actual_month,
-			"year": GameData.year
-		}
-	)
-	
-	SaveManager.save_especific_data(
-		GameData.game_slot,
-		"player",
-		{
-			"name": GameData.player_name,
-			"money": GameData.money,
-			"popularity": GameData.popularity
-		}
-	)
+	SaveManager.save_game(GameData.game_slot)
 	
 	GameData.day_index = (current_day_index + 1) % days.size()
 	GameData.num_day = current_day_number + 1
