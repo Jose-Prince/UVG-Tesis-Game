@@ -6,6 +6,8 @@ const WOODEN_CHAIR: FurnitureData = preload("res://Resources/Furniture/WoodenCha
 var furniture_catalog: Array[FurnitureData] = [WOODEN_TABLE, WOODEN_CHAIR]
 
 var furniture_inventory: Dictionary = {
+	"wooden_table": 1,
+	"wooden_chair": 1
 }
 
 var placed_furniture: Array[Dictionary] =  []
