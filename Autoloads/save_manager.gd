@@ -39,25 +39,9 @@ func save_game(slot: int) -> void:
 	save_file.close()
 
 func load_game(slot: int) -> bool:
-	var save_path := SAVE_FOLDER + "save_%d.json" % slot
+	var data := read_save_data(slot)
 	
-	if not FileAccess.file_exists(save_path):
-		push_warning("Save file does not exist: " + save_path)
-		return false
-	
-	var save_file := FileAccess.open(save_path, FileAccess.READ)
-	
-	if save_file == null:
-		push_error("Could not open save file: " + save_path)
-		return false
-	
-	var json_string := save_file.get_as_text()
-	save_file.close()
-	
-	var data = JSON.parse_string(json_string)
-	
-	if data == null or not data is Dictionary:
-		push_error("Invalid save data in: " + save_path)
+	if data.is_empty():
 		return false
 	
 	GameData.load_game_data(data)
@@ -171,3 +155,27 @@ func ensure_save_folder() -> void:
 		
 		if error != OK:
 			push_error("Could not create save folder.")
+
+func read_save_data(slot: int) -> Dictionary:
+	var save_path := SAVE_FOLDER + "save_%d.json" % slot
+	
+	if not FileAccess.file_exists(save_path):
+		push_warning("Save file does not exist: " + save_path)
+		return {}
+	
+	var save_file := FileAccess.open(save_path, FileAccess.READ)
+	
+	if save_file == null:
+		push_error("Could not open save file: " + save_path)
+		return {}
+	
+	var json_string := save_file.get_as_text()
+	save_file.close()
+	
+	var data = JSON.parse_string(json_string)
+	
+	if data == null or not data is Dictionary:
+		push_error("Invalid save data in: " + save_path)
+		return {}
+	
+	return data

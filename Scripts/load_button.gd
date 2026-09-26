@@ -120,23 +120,36 @@ func setup(
 	
 	apply_appearance(appearance)
 
-func _parse_color(value: String) -> Color:
-	var clean_value := value.strip_edges()
-
-	# Quitar los paréntesis
-	clean_value = clean_value.trim_prefix("(").trim_suffix(")")
-
-	var values := clean_value.split(",")
-
-	if values.size() != 4:
-		return Color.WHITE
-
-	return Color(
-		float(values[0]),
-		float(values[1]),
-		float(values[2]),
-		float(values[3])
-	)
+func _parse_color(value) -> Color:
+	if value is Color:
+		return value
+	
+	if value is Dictionary:
+		return Color(
+			float(value.get("r", 1.0)),
+			float(value.get("g", 1.0)),
+			float(value.get("b", 1.0)),
+			float(value.get("a", 1.0))
+		)
+	
+	if value is String:
+		var clean_value = value.strip_edges()
+		
+		clean_value = clean_value.trim_prefix("(").trim_suffix(")")
+		
+		var values = clean_value.split(",")
+		
+		if values.size() != 4:
+			return Color.WHITE
+		
+		return Color(
+			float(values[0]),
+			float(values[1]),
+			float(values[2]),
+			float(values[3])
+		)
+	
+	return Color.WHITE
 
 func _on_delete_file_button_pressed() -> void:
 	SfxManager.play_click()
