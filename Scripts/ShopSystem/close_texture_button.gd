@@ -18,4 +18,3 @@ func _on_pressed() -> void:
 	
 	GameData.process_time = true
 	
-	Dialogic.start("shop_timeline")

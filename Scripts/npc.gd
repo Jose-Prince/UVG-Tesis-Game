@@ -6,8 +6,13 @@ extends CharacterBody2D
 
 func talk() -> void:
 	GameData.process_time = false
+	
+	DialogueManager.show_dialogue_balloon(load("res://Dialogues/untitled.dialogue"), "start")
+	
 	if not is_seller:
 		GameData.process_time = true
+		
+		
 	else:
 		pass
 		#if Dialogic.VAR.open_shop:
