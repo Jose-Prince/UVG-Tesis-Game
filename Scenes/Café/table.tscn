@@ -5,8 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
 size = Vector2(96, 64)
 
-[node name="Table" type="StaticBody2D" unique_id=604935021]
+[node name="Table" type="StaticBody2D" unique_id=604935021 node_paths=PackedStringArray("customer_spot")]
 script = ExtResource("1_34rps")
+customer_spot = NodePath("CustomerSpot")
 
 [node name="Visual" type="ColorRect" parent="." unique_id=1709966603]
 offset_right = 96.0
@@ -16,3 +17,13 @@ color = Color(0, 0.9647059, 0.30588236, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=689953606]
 position = Vector2(48, 32)
 shape = SubResource("RectangleShape2D_cc37w")
+
+[node name="CustomerSpot" type="Marker2D" parent="." unique_id=2082914426]
+position = Vector2(118, 30)
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=917359447]
+position = Vector2(47, 29)
+radius = 55.0
+vertices = PackedVector2Array(-49, -29, 48, -29, 51, 35, -46, 35)
+affect_navigation_mesh = true
+carve_navigation_mesh = true

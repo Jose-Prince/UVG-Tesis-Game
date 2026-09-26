@@ -2,6 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://isyurr8l7j6w" path="res://Scenes/Café/counter.tscn" id="2_owdk4"]
 [ext_resource type="PackedScene" uid="uid://rojc6lcpj3f4" path="res://Scenes/Café/table.tscn" id="3_ccdco"]
+[ext_resource type="Script" uid="uid://b3qs1qwh0eue5" path="res://Scripts/Core/customer_manager.gd" id="3_p026p"]
+[ext_resource type="PackedScene" uid="uid://cl58e8mye0sx" path="res://Scenes/Customers/Customer.tscn" id="4_p026p"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_p026p"]
+vertices = PackedVector2Array(817, 329, 1139, 9.0234375, 1139, 460.0078, 807.625, 364, 807.625, 294, 11.96875, 461.97656, 11.0234375, 11.96875, 712, 268.375, 806, 292.375, 806, 290, 806, 365.625, 806, 374, 803.625, 290, 782, 268.375, 747, 259, 690.375, 290, 690, 290, 690, 374, 696.375, 374, 712, 389.625, 782, 389.625, 797.625, 374, 690, 290.375, 686.375, 294, 686.375, 364, 690, 367.625, 747, 399, 677, 329)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(1, 0, 4), PackedInt32Array(5, 6, 1, 7), PackedInt32Array(1, 4, 8, 9), PackedInt32Array(10, 3, 2, 11), PackedInt32Array(9, 12, 13, 1), PackedInt32Array(1, 13, 14), PackedInt32Array(7, 15, 16), PackedInt32Array(17, 18, 19, 5), PackedInt32Array(20, 21, 11, 2), PackedInt32Array(16, 22, 23, 5), PackedInt32Array(24, 25, 17, 5), PackedInt32Array(26, 20, 2), PackedInt32Array(26, 2, 5), PackedInt32Array(19, 26, 5), PackedInt32Array(27, 24, 5), PackedInt32Array(23, 27, 5), PackedInt32Array(7, 16, 5), PackedInt32Array(1, 14, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1, 2, 1149, -1, 1149, 470, 2, 472)])
 
 [node name="Cafe" type="Node2D" unique_id=151584018]
 
@@ -13,5 +20,16 @@ offset_bottom = 40.0
 [node name="Counter" parent="." unique_id=268846846 instance=ExtResource("2_owdk4")]
 position = Vector2(576, 520)
 
-[node name="Table" parent="." unique_id=604935021 instance=ExtResource("3_ccdco")]
+[node name="CustomerSpawn" type="Marker2D" parent="." unique_id=2126997848]
+position = Vector2(94, 308)
+gizmo_extents = 30.5
+
+[node name="CustomerManager" type="Node2D" parent="." unique_id=1105839781]
+script = ExtResource("3_p026p")
+customer_scene = ExtResource("4_p026p")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=2090054934]
+navigation_polygon = SubResource("NavigationPolygon_p026p")
+
+[node name="Table" parent="NavigationRegion2D" unique_id=604935021 instance=ExtResource("3_ccdco")]
 position = Vector2(700, 300)
