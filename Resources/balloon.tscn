@@ -133,7 +133,7 @@ anchor_bottom = 1.0
 offset_right = 400.0
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Balloon/CenterContainer2" unique_id=625899067]
+[node name="Portrait" type="TextureRect" parent="Balloon/CenterContainer2" unique_id=625899067]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 offset_transform_enabled = true

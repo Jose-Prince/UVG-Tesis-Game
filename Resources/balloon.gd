@@ -55,6 +55,11 @@ var dialogue_line: DialogueLine:
 ## A cooldown timer for delaying the balloon hide when encountering a mutation.
 var mutation_cooldown: Timer = Timer.new()
 
+## Dictionary that contains the portrait of any character
+var portraits := {
+	"Nathan": preload("res://Placeholders/NPC_PLACEHOLDER.png")
+}
+
 ## The base balloon anchor
 @onready var balloon: Control = %Balloon
 
@@ -70,6 +75,8 @@ var mutation_cooldown: Timer = Timer.new()
 ## Indicator to show that player can progress dialogue.
 @onready var progress: Polygon2D = %Progress
 
+## TextureRect for showing the chracters portait
+@onready var portrait: TextureRect = $Balloon/CenterContainer2/Portrait
 
 func _ready() -> void:
 	balloon.hide()
@@ -133,6 +140,7 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+	portrait.texture = portraits.get(dialogue_line.character)
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
