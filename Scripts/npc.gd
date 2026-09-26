@@ -7,18 +7,12 @@ extends CharacterBody2D
 func talk() -> void:
 	GameData.process_time = false
 	if not is_seller:
-		Dialogic.start("example_timeline")
-		
-		await  Dialogic.timeline_ended
 		GameData.process_time = true
 	else:
-		Dialogic.start("shop_timeline")
-		
-		await Dialogic.timeline_ended
-		
-		if Dialogic.VAR.open_shop:
-			shop_items.show()
-		else:
-			GameData.process_time = true
+		pass
+		#if Dialogic.VAR.open_shop:
+			#shop_items.show()
+		#else:
+			#GameData.process_time = true
 		
 	
