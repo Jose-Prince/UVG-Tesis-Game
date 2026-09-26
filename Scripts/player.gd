@@ -59,7 +59,7 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if not GameData.process_time:
+	if TimeSystem.time_paused:
 		velocity = Vector2.ZERO
 		update_animation()
 		return

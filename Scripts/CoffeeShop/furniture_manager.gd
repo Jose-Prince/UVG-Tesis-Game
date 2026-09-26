@@ -71,7 +71,7 @@ func toggle_edit_mode() -> void:
 
 func enter_edit_mode() -> void:
 	GameData.furniture_edit_mode = true
-	GameData.process_time = false
+	TimeSystem.pause_time()
 	
 	edit_mode = true
 	
@@ -86,7 +86,7 @@ func exit_edit_mode() -> void:
 	cancel_furniture_placement()
 	
 	GameData.furniture_edit_mode = false
-	GameData.process_time = true
+	TimeSystem.resume_time()
 	
 	edit_mode = false
 	

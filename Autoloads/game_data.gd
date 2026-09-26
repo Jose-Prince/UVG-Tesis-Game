@@ -5,7 +5,6 @@ signal money_changed(new_amount: float)
 var cursor_texture := preload("res://Placeholders/kenney_cursor-pack/PNG/Outline/Default/pointer_c_shaded.png")
 var game_slot := 0
 
-var process_time := true
 var furniture_edit_mode := false
 
 # Player variables

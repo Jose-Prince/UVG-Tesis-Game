@@ -28,7 +28,7 @@ var player_camera: Camera2D
 @onready var furniture_manager: FurnitureManager = $FurnitureManager
 
 func _ready() -> void:
-	TimeSystem.progress = true
+	TimeSystem.resume_time()
 	
 	var player = PLAYER_SCENE.instantiate() as Player
 	add_child(player)

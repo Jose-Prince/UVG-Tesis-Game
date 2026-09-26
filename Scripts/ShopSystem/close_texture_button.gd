@@ -16,5 +16,5 @@ func _process(delta: float) -> void:
 func _on_pressed() -> void:
 	shop_items.hide()
 	
-	GameData.process_time = true
+	TimeSystem.resume_time()
 	

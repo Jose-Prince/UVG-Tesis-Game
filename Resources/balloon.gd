@@ -44,6 +44,9 @@ var dialogue_line: DialogueLine:
 			dialogue_line = value
 			apply_dialogue_line()
 		else:
+			# The dialogue has finished, so resume game time
+			TimeSystem.resume_time()
+			
 			# The dialogue has finished so close the balloon
 			if owner == null:
 				queue_free()
@@ -119,6 +122,7 @@ func _notification(what: int) -> void:
 
 ## Start some dialogue
 func start(with_dialogue_resource: DialogueResource = null, cue: String = "", extra_game_states: Array = []) -> void:
+	TimeSystem.pause_time()
 	temporary_game_states = [self] + extra_game_states
 	is_waiting_for_input = false
 	if is_instance_valid(with_dialogue_resource):
@@ -188,6 +192,7 @@ func _on_mutation_cooldown_timeout() -> void:
 	if will_hide_balloon:
 		will_hide_balloon = false
 		balloon.hide()
+		TimeSystem.resume_time()
 
 
 func _on_mutated(mutation: Dictionary) -> void:
