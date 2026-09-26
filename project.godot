@@ -30,10 +30,10 @@ FurnitureDatabase="*uid://dr0y1yeuae8bh"
 [dialogic]
 
 directories/dch_directory={
-"Daniel": "res://Prefabs/NPCs/Daniel.dch",
-"unit_test_character": "res://Tests/Resources/unit_test_character.dch"
+"Daniel": "res://Prefabs/NPCs/Daniel.dch"
 }
 directories/dtl_directory={
+"example2_timeline": "res://Timelines/example2_timeline.dtl",
 "example_timeline": "res://Timelines/example_timeline.dtl",
 "shop_timeline": "res://Timelines/shop_timeline.dtl"
 }

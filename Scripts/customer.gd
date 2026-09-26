@@ -40,7 +40,7 @@ const CLOTHES_COLORS: Array[Color] = [
 	Color(0.30, 0.30, 0.30),
 	Color(0.90, 0.90, 0.90),
 ]
-const SKIN_FRAMES: SpriteFrames = preload("res://Assets/Sprites/character/skin.tres")
+
 const SHIRT_FRAMES: Array = [
 	preload("res://Assets/Sprites/character/shirt_1.tres"),
 	preload("res://Assets/Sprites/character/shirt_2.tres"),
@@ -68,7 +68,6 @@ func _ready() -> void:
 	randomize_appearance()
 
 func randomize_appearance() -> void:
-	skin_layer.sprite_frames = SKIN_FRAMES 
 	skin_layer.modulate = SKIN_COLORS.pick_random()
 	hair_layer.sprite_frames = HAIR_FRAMES.pick_random()
 	hair_layer.modulate = HAIR_COLORS.pick_random()
