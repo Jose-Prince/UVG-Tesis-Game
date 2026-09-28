@@ -142,6 +142,7 @@ func delete_furniture(furniture: Node2D) -> void:
 		else:
 			FurnitureDatabase.furniture_inventory[furniture_id] = 1
 		
+		FurnitureDatabase.furniture_inventory_changed.emit()
 		print("Inventory AFTER: ", FurnitureDatabase.furniture_inventory)
 	else:
 		print("ERROR: furniture_data is NULL!")
@@ -174,6 +175,8 @@ func start_furniture_placement(data: FurnitureData) -> void:
 	)
 	
 	placement_preview.global_position = center_position
+	# Place mouse in center fo screen
+	Input.warp_mouse(get_viewport().get_visible_rect().size / 2)
 	
 	var mouse_position := get_global_mouse_position()
 	placement_drag_offset = center_position - mouse_position
@@ -281,6 +284,8 @@ func consume_furniture(data: FurnitureData) -> bool:
 		return false
 	
 	FurnitureDatabase.furniture_inventory[furniture_id] = quantity - 1
+	
+	FurnitureDatabase.furniture_inventory_changed.emit()
 	
 	return true
 

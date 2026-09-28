@@ -6,6 +6,8 @@ const FURNITURE_ITEM_SCENE := preload(
 
 
 func _ready() -> void:
+	FurnitureDatabase.furniture_inventory_changed.connect(update_inventory)
+	
 	update_inventory()
 
 

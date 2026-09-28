@@ -1,5 +1,7 @@
 extends Node
 
+signal furniture_inventory_changed
+
 const WOODEN_TABLE: FurnitureData = preload("res://Resources/Furniture/WoodenTable.tres")
 const WOODEN_CHAIR: FurnitureData = preload("res://Resources/Furniture/WoodenChair.tres")
 
