@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dicisas3o3vvh" path="res://Assets/Sprites/Buildings.PNG" id="3_7kgdu"]
 [ext_resource type="PackedScene" uid="uid://ded571vyn71rt" path="res://Prefabs/TeleportSystem/spawn.tscn" id="4_ckvn4"]
 [ext_resource type="PackedScene" uid="uid://dwc1eus3nja55" path="res://Prefabs/TeleportSystem/teleport.tscn" id="5_poxg2"]
+[ext_resource type="Script" uid="uid://d3285ev7ubckh" path="res://Scripts/directional_light_2d.gd" id="6_7kgdu"]
+[ext_resource type="Script" uid="uid://cc3yiapgcu05y" path="res://Scripts/TimeSystem/date_time.gd" id="7_gflae"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7yjef"]
 texture = ExtResource("2_7kgdu")
@@ -752,6 +754,15 @@ texture = ExtResource("3_7kgdu")
 [sub_resource type="TileSet" id="TileSet_qmoqc"]
 sources/0 = SubResource("TileSetAtlasSource_28ev0")
 
+[sub_resource type="Resource" id="Resource_bvf1k"]
+script = ExtResource("7_gflae")
+hours = 13
+metadata/_custom_type_script = "uid://cc3yiapgcu05y"
+
+[sub_resource type="Resource" id="Resource_eyrgx"]
+script = ExtResource("7_gflae")
+metadata/_custom_type_script = "uid://cc3yiapgcu05y"
+
 [node name="Town" type="Node2D" unique_id=1169883213]
 script = ExtResource("1_hb5n5")
 
@@ -780,3 +791,10 @@ spawn_id = "cafe_entrance"
 [node name="ShopEntrance" parent="SpawnPoints" unique_id=1160367629 instance=ExtResource("4_ckvn4")]
 position = Vector2(268, 36)
 spawn_id = "shop_entrance"
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=947935367]
+color = Color(0, 0, 0, 1)
+script = ExtResource("6_7kgdu")
+night_color = Color(0.17254902, 0.078431375, 0.43529412, 1)
+day_start = SubResource("Resource_bvf1k")
+night_start = SubResource("Resource_eyrgx")
