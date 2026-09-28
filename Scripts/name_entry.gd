@@ -54,26 +54,26 @@ var pants_style_index: int = 0
 var pants_color_index: int = 0
 var is_rebuilding := false
 
-@onready var player_edit: LineEdit = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/PlayerHDisplay/PlayerEdit
-@onready var shop_edit: LineEdit = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/CoffeeShopHDisplay/ShopEdit
-@onready var confirm_button: Button = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonDisplay/ConfirmButton
+@onready var player_edit: LineEdit = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/PlayerHDisplay/PlayerEdit
+@onready var shop_edit: LineEdit = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/CoffeeShopHDisplay/ShopEdit
+@onready var confirm_button: Button = $MarginContainer/Panel/MarginContainer/VBoxContainer/ButtonDisplay/ConfirmButton
 
-@onready var preview_skin: AnimatedSprite2D = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview/skin
-@onready var preview_hair: AnimatedSprite2D = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview/hair
-@onready var preview_shirt: AnimatedSprite2D = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview/clothes_top
-@onready var preview_pants: AnimatedSprite2D = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview/clothes_bottom
+@onready var preview_skin: AnimatedSprite2D = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview/skin
+@onready var preview_hair: AnimatedSprite2D = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview/hair
+@onready var preview_shirt: AnimatedSprite2D = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview/clothes_top
+@onready var preview_pants: AnimatedSprite2D = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Preview/clothes_bottom
 
-@onready var prev_hair_style_btn: Button = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HairStyleRow/PrevButton
-@onready var next_hair_style_btn: Button = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HairStyleRow/NextButton
-@onready var prev_shirt_style_btn: Button = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ShirtStyleRow/PrevButton
-@onready var next_shirt_style_btn: Button = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ShirtStyleRow/NextButton
-@onready var prev_pants_style_btn: Button = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PantsStyleRow/PrevButton
-@onready var next_pants_style_btn: Button = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PantsStyleRow/NextButton
+@onready var prev_hair_style_btn: Button = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HairStyleRow/PrevButton
+@onready var next_hair_style_btn: Button = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HairStyleRow/NextButton
+@onready var prev_shirt_style_btn: Button = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ShirtStyleRow/PrevButton
+@onready var next_shirt_style_btn: Button = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ShirtStyleRow/NextButton
+@onready var prev_pants_style_btn: Button = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PantsStyleRow/PrevButton
+@onready var next_pants_style_btn: Button = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PantsStyleRow/NextButton
 
-@onready var skin_color_row: HBoxContainer = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxSkinColor/SkinColorRow
-@onready var hair_color_row: HBoxContainer = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxHairColor/HairColorRow
-@onready var shirt_color_row: HBoxContainer = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxShirtColor/ShirtColorRow
-@onready var pants_color_row: HBoxContainer = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxPantsColor/PantsColorRow
+@onready var skin_color_row: HBoxContainer = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxSkinColor/SkinColorRow
+@onready var hair_color_row: HBoxContainer = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxHairColor/HairColorRow
+@onready var shirt_color_row: HBoxContainer = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxShirtColor/ShirtColorRow
+@onready var pants_color_row: HBoxContainer = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxPantsColor/PantsColorRow
 
 func _ready() -> void:
 	GameData.menu = initial_menu
