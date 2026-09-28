@@ -60,7 +60,7 @@ var mutation_cooldown: Timer = Timer.new()
 
 ## Dictionary that contains the portrait of any character
 var portraits := {
-	"Nathan": preload("res://Placeholders/NPC_PLACEHOLDER.png")
+	"Elliot": preload("res://Placeholders/NPC_PLACEHOLDER.png")
 }
 
 ## The base balloon anchor

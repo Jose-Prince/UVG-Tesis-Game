@@ -16,5 +16,5 @@ func _process(delta: float) -> void:
 func _on_pressed() -> void:
 	shop_items.hide()
 	
-	TimeSystem.resume_time()
+	DialogueManager.show_dialogue_balloon(load("res://Dialogues/seller_dialogue.dialogue"), "goodbye")
 	

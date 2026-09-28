@@ -23,7 +23,9 @@ func restart_day() -> void:
 	date_time.seconds = 0
 
 func resume_time() -> void:
+	print("RESUME")
 	time_paused = false
 
 func pause_time() -> void:
+	print("STOP")
 	time_paused = true

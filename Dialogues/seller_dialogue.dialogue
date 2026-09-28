@@ -1,0 +1,12 @@
+~ start
+Elliot: [[Hi|Hello|Howdy]], neighbor!
+Elliot: Looking for new furniture for your coffee shop?
+- Yes
+	Nathan: Glad to show you my inventory.
+=> END
+- No
+	Nathan: Come back soon.
+=> END
+~ goodbye
+Elliot: See you next time neighbor!
+=> END

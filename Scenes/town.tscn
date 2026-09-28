@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dicisas3o3vvh" path="res://Assets/Sprites/Buildings.PNG" id="3_7kgdu"]
 [ext_resource type="PackedScene" uid="uid://ded571vyn71rt" path="res://Prefabs/TeleportSystem/spawn.tscn" id="4_ckvn4"]
 [ext_resource type="PackedScene" uid="uid://dwc1eus3nja55" path="res://Prefabs/TeleportSystem/teleport.tscn" id="5_poxg2"]
-[ext_resource type="PackedScene" uid="uid://bk2m0scr81vd2" path="res://Prefabs/NPCs/npc.tscn" id="6_7kgdu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7yjef"]
 texture = ExtResource("2_7kgdu")
@@ -781,9 +780,3 @@ spawn_id = "cafe_entrance"
 [node name="ShopEntrance" parent="SpawnPoints" unique_id=1160367629 instance=ExtResource("4_ckvn4")]
 position = Vector2(268, 36)
 spawn_id = "shop_entrance"
-
-[node name="Customer" parent="." unique_id=1905091446 instance=ExtResource("6_7kgdu")]
-position = Vector2(144, 128)
-
-[node name="Customer2" parent="." unique_id=272031947 instance=ExtResource("6_7kgdu")]
-position = Vector2(96, 128)

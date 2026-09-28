@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b8sdbt2muimac" path="res://Scripts/TeleportSystem/spawn_logic.gd" id="1_ybtl0"]
 [ext_resource type="PackedScene" uid="uid://ded571vyn71rt" path="res://Prefabs/TeleportSystem/spawn.tscn" id="2_vmwrx"]
 [ext_resource type="PackedScene" uid="uid://dwc1eus3nja55" path="res://Prefabs/TeleportSystem/teleport.tscn" id="3_ybtl0"]
-[ext_resource type="PackedScene" uid="uid://bk2m0scr81vd2" path="res://Prefabs/NPCs/npc.tscn" id="5_3dtuf"]
+[ext_resource type="PackedScene" uid="uid://bk2m0scr81vd2" path="res://Prefabs/NPCs/npc_seller.tscn" id="5_3dtuf"]
 [ext_resource type="PackedScene" uid="uid://c6j3371km846m" path="res://Prefabs/Shop/shop_items.tscn" id="6_74kaf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vk0h2"]

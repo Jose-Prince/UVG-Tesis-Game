@@ -38,6 +38,8 @@ var facing := Vector2.DOWN
 var current_tile := Vector2i.ZERO
 var last_facing := Vector2.ZERO
 
+var dialogue_interaction_locked := false
+
 @onready var skin: AnimatedSprite2D = $skin
 @onready var clothes_bottom: AnimatedSprite2D = $clothes_bottom
 @onready var clothes_top: AnimatedSprite2D = $clothes_top
@@ -106,6 +108,9 @@ func _get_current_speed() -> float:
 # ============================================================
 
 func _process_interaction_input() -> void:
+	if dialogue_interaction_locked:
+		return
+	
 	match GameData.interaction_mode:
 		GameData.InteractionMode.KEYBOARD:
 			_process_keyboard_interaction()
@@ -157,8 +162,13 @@ func _interact() -> void:
 	if current_object:
 		current_object.interact(self)
 
-	if current_npc:
-		current_npc.talk()
+	if current_npc and not dialogue_interaction_locked:
+		dialogue_interaction_locked = true
+		
+		await current_npc.talk()
+		
+		dialogue_interaction_locked = true
+		return
 
 
 # ============================================================
