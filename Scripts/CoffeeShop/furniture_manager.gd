@@ -110,6 +110,8 @@ func select_furniture(furniture: Node2D) -> void:
 
 func deselect_furniture() -> void:
 	if selected_furniture:
+		selected_furniture.modulate.a = 1.0
+		
 		if selected_furniture.has_method("set_furniture_selected"):
 			selected_furniture.set_furniture_selected(false)
 	
@@ -122,12 +124,17 @@ func start_drag(furniture: Node2D) -> void:
 	selected_furniture = furniture
 	is_dragging = true
 	
+	furniture.modulate.a = 0.5
+	
 	var mouse_position := get_global_mouse_position()
 	
 	drag_offset = furniture.global_position - mouse_position
 
 func stop_drag() -> void:
 	is_dragging = false
+	
+	if selected_furniture:
+		selected_furniture.modulate.a = 1.0
 
 func delete_furniture(furniture: Node2D) -> void:
 	if not furniture:
