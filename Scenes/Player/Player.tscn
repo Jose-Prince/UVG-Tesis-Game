@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://bs1uu0b3cuk0g"]
 
 [ext_resource type="Script" uid="uid://c257lqgsm62ir" path="res://Scripts/Player/Player.gd" id="1_ft8w5"]
+[ext_resource type="SpriteFrames" uid="uid://dfb8qgnmnnie1" path="res://Assets/Sprites/character/skin.tres" id="2_jmcll"]
+[ext_resource type="SpriteFrames" uid="uid://oo1ha6p12bek" path="res://Assets/Sprites/character/hair_1.tres" id="3_4wape"]
+[ext_resource type="SpriteFrames" uid="uid://c7nrj2airc3ve" path="res://Assets/Sprites/character/shirt_2.tres" id="4_t26db"]
+[ext_resource type="SpriteFrames" uid="uid://cbrd41ttswy42" path="res://Assets/Sprites/character/pants_2.tres" id="5_fk5o5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s0eop"]
-size = Vector2(32, 32)
+size = Vector2(32, 36)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s0eop"]
 radius = 15.0
@@ -11,15 +15,8 @@ radius = 15.0
 [node name="Player" type="CharacterBody2D" unique_id=241802471]
 script = ExtResource("1_ft8w5")
 
-[node name="Body" type="ColorRect" parent="." unique_id=513250351]
-custom_minimum_size = Vector2(32, 32)
-custom_maximum_size = Vector2(32, 32)
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(1, 0, 0, 1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1416377600]
-position = Vector2(16, 16)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_s0eop")
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1835511209]
@@ -29,11 +26,27 @@ metadata/_edit_group_ = true
 shape = SubResource("CircleShape2D_s0eop")
 
 [node name="InteractionPrompt" type="Label" parent="." unique_id=840396421]
-offset_left = -5.0
-offset_top = -50.0
-offset_right = 35.0
-offset_bottom = -27.0
+offset_left = -20.0
+offset_top = -49.0
+offset_right = 20.0
+offset_bottom = -26.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Skin" type="AnimatedSprite2D" parent="." unique_id=1947338798]
+sprite_frames = ExtResource("2_jmcll")
+animation = &"idle"
+
+[node name="Hair" type="AnimatedSprite2D" parent="." unique_id=2024772678]
+sprite_frames = ExtResource("3_4wape")
+animation = &"idle"
+
+[node name="TopCloth" type="AnimatedSprite2D" parent="." unique_id=97910292]
+sprite_frames = ExtResource("4_t26db")
+animation = &"idle"
+
+[node name="BottomCloth" type="AnimatedSprite2D" parent="." unique_id=244423569]
+sprite_frames = ExtResource("5_fk5o5")
+animation = &"idle"
