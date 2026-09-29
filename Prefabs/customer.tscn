@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dtle8u24eu8cw" path="res://Placeholders/Characters_V3_Colour.png" id="2_u4jb7"]
 [ext_resource type="PackedScene" uid="uid://hytctloep3vg" path="res://Scenes/speech_bubble.tscn" id="3_kkbk6"]
 [ext_resource type="SpriteFrames" uid="uid://dfb8qgnmnnie1" path="res://Assets/Sprites/character/skin.tres" id="4_uc7pi"]
+[ext_resource type="SpriteFrames" uid="uid://bk8lob0koe38s" path="res://Assets/Sprites/character/pants_1.tres" id="5_07cdb"]
+[ext_resource type="SpriteFrames" uid="uid://cw6citcncttn1" path="res://Assets/Sprites/character/shirt_1.tres" id="6_372ll"]
+[ext_resource type="SpriteFrames" uid="uid://oo1ha6p12bek" path="res://Assets/Sprites/character/hair_1.tres" id="7_oq86k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rhpu"]
 size = Vector2(13.333334, 4.333333)
@@ -150,7 +153,15 @@ sprite_frames = ExtResource("4_uc7pi")
 animation = &"idle"
 
 [node name="clothes_bottom" type="AnimatedSprite2D" parent="." unique_id=538484481]
+sprite_frames = ExtResource("5_07cdb")
+animation = &"hold_idle"
 
 [node name="clothes_top" type="AnimatedSprite2D" parent="." unique_id=1295410580]
+sprite_frames = ExtResource("6_372ll")
+animation = &"hold_idle"
 
 [node name="hair" type="AnimatedSprite2D" parent="." unique_id=1413469130]
+sprite_frames = ExtResource("7_oq86k")
+animation = &"hold_idle"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=449899981]

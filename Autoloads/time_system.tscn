@@ -11,4 +11,4 @@ metadata/_custom_type_script = "uid://cc3yiapgcu05y"
 process_mode = 1
 script = ExtResource("1_io66x")
 date_time = SubResource("Resource_io66x")
-ticks_pr_second = 2000
+ticks_pr_second = 80

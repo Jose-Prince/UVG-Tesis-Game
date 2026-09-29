@@ -87,6 +87,7 @@ grow_vertical = 2
 texture = ExtResource("2_twnyg")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=781481721]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,7 +115,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_824g0")
-theme_override_font_sizes/font_size = 104
+theme_override_font_sizes/font_size = 85
 text = "DREAM CAFE"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -181,7 +182,7 @@ size_flags_stretch_ratio = 1.1
 theme_override_colors/font_color = Color(0.76862746, 0.49803922, 0.30980393, 1)
 theme_override_constants/line_spacing = 3
 theme_override_fonts/font = ExtResource("3_824g0")
-theme_override_font_sizes/font_size = 66
+theme_override_font_sizes/font_size = 54
 text = "Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -214,7 +215,7 @@ focus_neighbor_bottom = NodePath("../LoadGame")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
-theme_override_font_sizes/font_size = 66
+theme_override_font_sizes/font_size = 54
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n82rj")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_0061g")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8mikk")
@@ -234,7 +235,7 @@ focus_neighbor_bottom = NodePath("../Settings")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
-theme_override_font_sizes/font_size = 66
+theme_override_font_sizes/font_size = 54
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8mikk")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_o1e67")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w5sh6")
@@ -254,7 +255,7 @@ focus_neighbor_bottom = NodePath("../Quit")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
-theme_override_font_sizes/font_size = 66
+theme_override_font_sizes/font_size = 54
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sqelc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_w5sh6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o1e67")
@@ -274,7 +275,7 @@ focus_neighbor_bottom = NodePath("../NewGame")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.9411765, 0.8156863, 0.654902, 1)
 theme_override_colors/font_hover_color = Color(0.9411765, 0.8156863, 0.654902, 1)
-theme_override_font_sizes/font_size = 66
+theme_override_font_sizes/font_size = 54
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ycay6")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bsy20")
 theme_override_styles/hover = SubResource("StyleBoxFlat_07cxn")
@@ -285,6 +286,36 @@ script = ExtResource("8_8mikk")
 [node name="Control4" type="Control" parent="Panel/MarginContainer/HBoxContainer/RightPanel/Control/MarginContainer2/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer2" unique_id=603793771]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Panel" unique_id=1535373046]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 2.0
+offset_top = 84.0
+offset_right = 586.0
+offset_bottom = 617.0
+texture = ExtResource("4_6vd4x")
+expand_mode = 2
+
+[node name="GameTitle" type="Label" parent="." unique_id=1837907155]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 160.0
+offset_right = 1120.0
+offset_bottom = 485.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.5267933, 4.9935653e-07, 9.62615e-08, 1)
+theme_override_constants/outline_size = 21
+theme_override_fonts/font = ExtResource("3_824g0")
+theme_override_font_sizes/font_size = 85
+text = "Brewing 
+Dreams"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+script = ExtResource("5_0061g")
+size_fraction = 0.078
 
 [node name="SettingsMenu" parent="." unique_id=915478763 instance=ExtResource("9_0061g")]
 layout_mode = 1

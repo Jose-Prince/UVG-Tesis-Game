@@ -169,7 +169,8 @@ func get_hour_factor() -> float:
 
 func get_popularity_ratio() -> float:
 	return clamp(
-		GameData.popularity / 1000.0,
+		#GameData.popularity / 1000.0,
+		1000.0 / 1000.0,
 		0.0,
 		1.0
 	)

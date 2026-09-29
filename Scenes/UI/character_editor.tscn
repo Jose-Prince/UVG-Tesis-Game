@@ -7,11 +7,14 @@
 [ext_resource type="Resource" uid="uid://d0riswjm5jcyk" path="res://Resources/Article Data/coffee.tres" id="3_xj74l"]
 [ext_resource type="Resource" uid="uid://bg56uibnmcyir" path="res://Resources/Article Data/water.tres" id="4_7igea"]
 [ext_resource type="Script" uid="uid://cpnugcuyb5456" path="res://Scripts/button_ui.gd" id="4_uvaie"]
+[ext_resource type="Theme" uid="uid://da0xyab7qjklt" path="res://Resources/Themes/panel_theme.tres" id="6_pb8x8"]
+[ext_resource type="Theme" uid="uid://wr30fwhfd2ok" path="res://Resources/Themes/button_theme.tres" id="8_34wr7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wrfq"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.34509805, 0.22352941, 0.13333334, 1)
 border_width_left = 5
 border_width_top = 2
+border_color = Color(0.34509805, 0.22352941, 0.13333334, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_7wrfq"]
 base_font = ExtResource("2_7wrfq")
@@ -55,6 +58,7 @@ theme_override_constants/margin_bottom = 50
 
 [node name="Panel" type="Panel" parent="MarginContainer" unique_id=1194914564]
 layout_mode = 2
+theme = ExtResource("6_pb8x8")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel" unique_id=1254084186]
 layout_mode = 1
@@ -70,7 +74,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer" unique_id=299134883]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 10
 
 [node name="TitleDisplay" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1518961979]
 layout_mode = 2
@@ -78,6 +82,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TitleDisplay" unique_id=402418289]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "Character 
 Settings"
@@ -101,6 +106,7 @@ theme_override_constants/separation = 130
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/PlayerHDisplay" unique_id=821634944]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_7wrfq")
 theme_override_font_sizes/font_size = 23
 text = "Name:"
@@ -116,6 +122,7 @@ theme_override_constants/separation = 53
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/CoffeeShopHDisplay" unique_id=1768391473]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_1vb4o")
 theme_override_font_sizes/font_size = 23
 text = "Coffee Shop:"
@@ -153,6 +160,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxSkinColor" unique_id=163521350]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Skin color"
 horizontal_alignment = 1
 
@@ -170,6 +178,7 @@ text = "<"
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HairStyleRow" unique_id=348728845]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Hair style"
 
 [node name="NextButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HairStyleRow" unique_id=1854218476]
@@ -182,6 +191,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxHairColor" unique_id=782393823]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Hair Color"
 horizontal_alignment = 1
 
@@ -198,6 +208,7 @@ text = "<"
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ShirtStyleRow" unique_id=153245127]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Shirt style"
 
 [node name="NextButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/ShirtStyleRow" unique_id=621902934]
@@ -210,6 +221,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxShirtColor" unique_id=2137592820]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Shirt color"
 horizontal_alignment = 1
 
@@ -226,6 +238,7 @@ text = "<"
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PantsStyleRow" unique_id=1849538670]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Pants style"
 
 [node name="NextButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/PantsStyleRow" unique_id=1074111124]
@@ -238,6 +251,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxPantsColor" unique_id=781705599]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Pants color"
 horizontal_alignment = 1
 
@@ -249,7 +263,9 @@ layout_mode = 2
 alignment = 2
 
 [node name="ConfirmButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/ButtonDisplay" unique_id=1740878238]
+custom_minimum_size = Vector2(125, 40)
 layout_mode = 2
+theme = ExtResource("8_34wr7")
 theme_override_fonts/font = SubResource("FontVariation_c1sof")
 theme_override_font_sizes/font_size = 30
 text = "Confirm"

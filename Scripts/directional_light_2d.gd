@@ -13,6 +13,7 @@ enum DayStates {
 
 var current_state: DayStates = DayStates.DAY
 var in_transition: bool = false
+var time_system: TimeSystem
 
 @onready var time_map := {
 	DayStates.DAY: day_start,
@@ -30,12 +31,15 @@ var in_transition: bool = false
 }
 
 func _ready() -> void:
-	TimeSystem.updated.connect(update)
-	var diff_day_start = TimeSystem.date_time.diff_without_days(day_start)
-	var diff_night_start = TimeSystem.date_time.diff_without_days(night_start)
+	time_system = get_tree().root.find_child("TimeSystem", true, false)
+
+	if time_system:
+		time_system.updated.connect(update)
+		var diff_day_start = time_system.date_time.diff_without_days(day_start)
+		var diff_night_start = time_system.date_time.diff_without_days(night_start)
 		
-	if diff_day_start < 0 || diff_night_start > 0:
-		current_state = DayStates.NIGHT
+		if diff_day_start < 0 || diff_night_start > 0:
+			current_state = DayStates.NIGHT
 		
 
 func update(game_time: DateTime) -> void:

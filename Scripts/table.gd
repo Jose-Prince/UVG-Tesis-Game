@@ -15,7 +15,6 @@ var actual_state := States.AVAILABLE
 
 var furniture_edit_mode := false
 var furniture_selected := false
-var grid_manager: Node
 var order_object: Node2D
 
 @onready var timer: Timer = $Timer
@@ -41,10 +40,7 @@ func _ready():
 	var rect = Rect2(global_position - shape.size/2, shape.size)
 	
 	order_object = get_tree().get_first_node_in_group("order_object")
-	grid_manager = get_tree().get_first_node_in_group("grid_manager")
-	
-	#grid_manager.set_obstacle_rect(rect, true)
-	
+		
 	set_state(States.AVAILABLE)
 
 func _process(delta: float) -> void:

@@ -756,11 +756,12 @@ sources/0 = SubResource("TileSetAtlasSource_28ev0")
 
 [sub_resource type="Resource" id="Resource_bvf1k"]
 script = ExtResource("7_gflae")
-hours = 13
 metadata/_custom_type_script = "uid://cc3yiapgcu05y"
 
 [sub_resource type="Resource" id="Resource_eyrgx"]
 script = ExtResource("7_gflae")
+minutes = 30
+hours = 18
 metadata/_custom_type_script = "uid://cc3yiapgcu05y"
 
 [node name="Town" type="Node2D" unique_id=1169883213]
@@ -793,8 +794,9 @@ position = Vector2(268, 36)
 spawn_id = "shop_entrance"
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=947935367]
-color = Color(0, 0, 0, 1)
+blend_mode = 2
 script = ExtResource("6_7kgdu")
+day_color = Color(1, 1, 1, 1)
 night_color = Color(0.17254902, 0.078431375, 0.43529412, 1)
 day_start = SubResource("Resource_bvf1k")
 night_start = SubResource("Resource_eyrgx")

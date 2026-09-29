@@ -3,9 +3,9 @@ class_name Customer
 
 var target_chair = null
 var movement_speed: float = 100.0
+
 var leaving_target_position: Vector2 = Vector2.ZERO
-var path: Array = []
-var path_index := 0
+
 enum States { Navigate, Sit, Wait, Order, Eat, Leave }
 var currentState: States = States.Navigate
 var leave_started := false
@@ -59,8 +59,8 @@ const HAIR_FRAMES: Array = [
 @onready var clothes_bottom: AnimatedSprite2D = $clothes_bottom
 @onready var clothes_top: AnimatedSprite2D = $clothes_top
 @onready var hair_layer: AnimatedSprite2D = $hair
-@onready var grid_manager: Node = $"../GridManager"
 @onready var speech_bubble: Node2D = $SpeechBubble
+@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
 func _ready() -> void:
 	await get_tree().physics_frame
@@ -102,10 +102,12 @@ func _physics_process(delta: float) -> void:
 	match currentState:
 		States.Navigate:
 			follow_path()
-			if !path.is_empty() and path_finished() and !chair_reached:
+			if navigation_agent_2d.is_navigation_finished() and !chair_reached:
 				chair_reached = true
+				
 				if target_chair and target_chair.assigned_table:
 					target_chair.assigned_table.check_all_customers_seated()
+				
 				currentState = States.Sit
 
 		States.Sit:
@@ -137,15 +139,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func follow_path():
-	if path.is_empty() or path_index >= path.size():
+	if navigation_agent_2d.is_navigation_finished():
 		velocity = Vector2.ZERO
 		return
-	var target = path[path_index]
-	var distance = global_position.distance_to(target)
-	if distance < 4.0:
-		path_index += 1
-		return
-	velocity = global_position.direction_to(target) * movement_speed
+	
+	var next_position := navigation_agent_2d.get_next_path_position()
+	var direction := global_position.direction_to(next_position)
+	
+	velocity = direction * movement_speed
 
 func update_animation():
 	if currentState == States.Wait \
@@ -175,11 +176,7 @@ func update_animation():
 		flip_layers(false)
 
 func set_target(target_world: Vector2):
-	path = grid_manager.get_astar_path(global_position, target_world)
-	path_index = 0
-
-func path_finished() -> bool:
-	return path_index >= path.size()
+	navigation_agent_2d.target_position = target_world
 
 func assign_chair(chair):
 	target_chair = chair
