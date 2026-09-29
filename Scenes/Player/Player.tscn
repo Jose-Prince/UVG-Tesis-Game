@@ -50,3 +50,5 @@ animation = &"idle"
 [node name="BottomCloth" type="AnimatedSprite2D" parent="." unique_id=244423569]
 sprite_frames = ExtResource("5_fk5o5")
 animation = &"idle"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=994954903]
