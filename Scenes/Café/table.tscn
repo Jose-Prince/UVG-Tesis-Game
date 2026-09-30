@@ -1,29 +1,32 @@
 [gd_scene format=3 uid="uid://rojc6lcpj3f4"]
 
 [ext_resource type="Script" uid="uid://w27numb36gvb" path="res://Scripts/Objects/Table.gd" id="1_34rps"]
+[ext_resource type="Texture2D" uid="uid://djmqxwegtttrg" path="res://Assets/Sprites/Cafe assets tiles.PNG" id="2_t733n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc37w"]
+atlas = ExtResource("2_t733n")
+region = Rect2(77.72083, 136.6211, 48.374123, 32.39157)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
-size = Vector2(96, 64)
+size = Vector2(47, 31)
 
 [node name="Table" type="StaticBody2D" unique_id=604935021 node_paths=PackedStringArray("customer_spot")]
 script = ExtResource("1_34rps")
 customer_spot = NodePath("CustomerSpot")
 
-[node name="Visual" type="ColorRect" parent="." unique_id=1709966603]
-offset_right = 96.0
-offset_bottom = 64.0
-color = Color(0, 0.9647059, 0.30588236, 1)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2025370225]
+texture = SubResource("AtlasTexture_cc37w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=689953606]
-position = Vector2(48, 32)
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_cc37w")
 
 [node name="CustomerSpot" type="Marker2D" parent="." unique_id=2082914426]
-position = Vector2(118, 30)
+position = Vector2(-46, 0)
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=917359447]
-position = Vector2(47, 29)
-radius = 55.0
-vertices = PackedVector2Array(-49, -29, 48, -29, 51, 35, -46, 35)
+position = Vector2(0, 2)
+radius = 33.0
+vertices = PackedVector2Array(-26, -20, 27, -20, 28, 16, -26, 16)
 affect_navigation_mesh = true
 carve_navigation_mesh = true

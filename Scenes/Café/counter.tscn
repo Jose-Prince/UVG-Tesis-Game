@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://isyurr8l7j6w"]
 
+[ext_resource type="Script" uid="uid://cckn561ltbikt" path="res://Scripts/Café/kitchen_counter.gd" id="1_5tryt"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
 size = Vector2(399, 65)
 
 [node name="Counter" type="StaticBody2D" unique_id=268846846]
+script = ExtResource("1_5tryt")
 
 [node name="Visual" type="ColorRect" parent="." unique_id=583594586]
 offset_left = -200.0

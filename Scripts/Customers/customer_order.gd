@@ -2,7 +2,18 @@ class_name CustomerOrder
 extends RefCounted
 
 
+enum OrderState {
+	WAITING,
+	ACCEPTED,
+	PREPARING,
+	READY,
+	SERVED,
+	COMPLETED
+}
+
+
 var item_name: String
+var state: OrderState = OrderState.WAITING
 
 
 func _init(item: String) -> void:

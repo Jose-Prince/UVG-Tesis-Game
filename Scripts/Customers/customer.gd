@@ -73,11 +73,9 @@ func handle_going_to_table() -> void:
 		return
 
 	var next_position := navigation_agent.get_next_path_position()
-
 	var direction := global_position.direction_to(next_position)
 
 	velocity = direction * speed
-
 	move_and_slide()
 
 func handle_waiting_for_order() -> void:

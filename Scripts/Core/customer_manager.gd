@@ -48,7 +48,7 @@ func assign_table(customer: Customer) -> void:
 			var table := node as Table
 
 			if not table.occupied:
-				table.occupied = true
+				table.assign_customer(customer)
 				customer.go_to_table(table)
 
 				print("Customer assigned to table: ", table.name)
@@ -56,7 +56,6 @@ func assign_table(customer: Customer) -> void:
 				return
 
 	print("No available table found.")
-
 
 func get_customer_count() -> int:
 	return get_tree().get_nodes_in_group("customer").size()
