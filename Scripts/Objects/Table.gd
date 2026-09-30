@@ -79,11 +79,13 @@ func deliver_order(order: CustomerOrder) -> bool:
 
 	customer_order.state = CustomerOrder.OrderState.SERVED
 
+	current_customer.stop_patience_timer()
+
 	print(
 		"Order delivered successfully: ",
 		customer_order.item_name
 	)
 
 	return true
-	
+		
 	

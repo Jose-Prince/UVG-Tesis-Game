@@ -14,8 +14,12 @@ enum CustomerState {
 
 @export var speed: float = 100.0
 @export var eating_time: float = 5.0
+@export var patience_time: float = 20.0
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var patience_timer: Timer = $PatienceTimer
+@onready var patience_bar: ProgressBar = $PatienceBar
+
 
 var target_position: Vector2
 var target_table: Table = null
@@ -25,6 +29,7 @@ var state: CustomerState = CustomerState.ENTERING
 var order: CustomerOrder = null
 var exit_position: Vector2
 var leaving_initialized: bool = false
+
 
 var available_orders: Array[String] = [
 	"Coffee",
@@ -38,6 +43,10 @@ func _ready() -> void:
 	add_to_group("customer")
 	target_position = global_position
 
+	patience_timer.timeout.connect(_on_patience_timer_timeout)
+
+	patience_bar.visible = false
+
 	var exit_marker := get_tree().get_first_node_in_group("customer_exit")
 
 	if exit_marker != null:
@@ -47,6 +56,8 @@ func _ready() -> void:
 		print("ERROR: CustomerExit was not found.")
 
 func _physics_process(_delta: float) -> void:
+	update_patience_bar()
+
 	match state:
 		CustomerState.ENTERING:
 			handle_entering()
@@ -87,6 +98,7 @@ func handle_going_to_table() -> void:
 	velocity = direction * speed
 	move_and_slide()
 
+
 func handle_waiting_for_order() -> void:
 	velocity = Vector2.ZERO
 
@@ -108,6 +120,7 @@ func handle_eating() -> void:
 
 	change_state(CustomerState.LEAVING)
 
+
 func handle_leaving() -> void:
 	if not leaving_initialized:
 		velocity = Vector2.ZERO
@@ -128,6 +141,7 @@ func handle_leaving() -> void:
 
 	velocity = direction * speed
 	move_and_slide()
+
 
 func handle_exited() -> void:
 	velocity = Vector2.ZERO
@@ -154,7 +168,12 @@ func change_state(new_state: CustomerState) -> void:
 
 	if state == CustomerState.LEAVING:
 		leaving_initialized = false
+
+		# Stop the patience timer when the customer leaves.
+		stop_patience_timer()
+
 		start_leaving()
+
 
 func start_leaving() -> void:
 	if exit_position == Vector2.ZERO:
@@ -168,6 +187,7 @@ func start_leaving() -> void:
 	leaving_initialized = true
 
 	print("Customer leaving toward: ", exit_position)
+
 
 func move_to(position: Vector2) -> void:
 	target_position = position
@@ -184,9 +204,64 @@ func go_to_table(table: Table) -> void:
 
 	move_to(table.get_customer_spot())
 
+
 func create_order() -> void:
 	var selected_item = available_orders.pick_random()
 
 	order = CustomerOrder.new(selected_item)
 
-	print("Customer ", name, " ordered: ", order.item_name)
+	patience_timer.wait_time = patience_time
+	patience_timer.start()
+
+	patience_bar.max_value = patience_time
+	patience_bar.value = patience_time
+	patience_bar.visible = true
+
+	print(
+		"Customer ",
+		name,
+		" ordered: ",
+		order.item_name,
+		" | Patience: ",
+		patience_time,
+		" seconds"
+	)
+
+
+func stop_patience_timer() -> void:
+	if patience_timer.is_stopped():
+		return
+
+	patience_timer.stop()
+	patience_bar.visible = false
+
+	print("Customer ", name, " patience timer stopped.")
+
+
+func _on_patience_timer_timeout() -> void:
+	if order == null:
+		return
+
+	if order.state == CustomerOrder.OrderState.SERVED:
+		return
+
+	if state != CustomerState.WAITING_FOR_ORDER:
+		return
+
+	order.state = CustomerOrder.OrderState.EXPIRED
+
+	patience_bar.visible = false
+
+	print(
+		"Customer ",
+		name,
+		" became impatient and is leaving."
+	)
+
+	change_state(CustomerState.LEAVING)
+
+func update_patience_bar() -> void:
+	if patience_timer.is_stopped():
+		return
+
+	patience_bar.value = patience_timer.time_left

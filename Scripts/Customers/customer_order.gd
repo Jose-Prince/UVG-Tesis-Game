@@ -8,9 +8,9 @@ enum OrderState {
 	PREPARING,
 	READY,
 	SERVED,
+	EXPIRED,
 	COMPLETED
 }
-
 
 var item_name: String
 var state: OrderState = OrderState.WAITING

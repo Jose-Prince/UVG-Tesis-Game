@@ -39,3 +39,17 @@ animation = &"idle"
 [node name="BottomCloth" type="AnimatedSprite2D" parent="." unique_id=385997090]
 sprite_frames = ExtResource("5_fhf36")
 animation = &"idle"
+
+[node name="PatienceTimer" type="Timer" parent="." unique_id=511287207]
+wait_time = 20.0
+one_shot = true
+
+[node name="PatienceBar" type="ProgressBar" parent="." unique_id=695147983]
+offset_left = -24.0
+offset_top = -20.0
+offset_right = 24.0
+offset_bottom = -14.0
+value = 100.0
+show_percentage = false
+
+[connection signal="timeout" from="PatienceTimer" to="." method="_on_patience_timer_timeout"]

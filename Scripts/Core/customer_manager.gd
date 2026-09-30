@@ -25,6 +25,12 @@ func spawn_customer() -> void:
 		push_warning("Customer scene has not been assigned.")
 		return
 
+	var available_table := get_available_table()
+
+	if available_table == null:
+		print("No available table. Customer will not spawn.")
+		return
+
 	var customer := customer_scene.instantiate() as Customer
 
 	if customer == null:
@@ -37,25 +43,29 @@ func spawn_customer() -> void:
 
 	print("Customer spawned!")
 
-	assign_table(customer)
+	available_table.assign_customer(customer)
+	customer.go_to_table(available_table)
+
+	print(
+		"Customer assigned to table: ",
+		available_table.name
+	)
 
 
-func assign_table(customer: Customer) -> void:
+func get_available_table() -> Table:
 	var tables := get_tree().get_nodes_in_group("interactable")
 
 	for node in tables:
-		if node is Table:
-			var table := node as Table
+		if not node is Table:
+			continue
 
-			if not table.occupied:
-				table.assign_customer(customer)
-				customer.go_to_table(table)
+		var table := node as Table
 
-				print("Customer assigned to table: ", table.name)
+		if not table.occupied:
+			return table
 
-				return
+	return null
 
-	print("No available table found.")
 
 func get_customer_count() -> int:
 	return get_tree().get_nodes_in_group("customer").size()
