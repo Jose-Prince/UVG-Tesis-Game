@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://7sgt6p3i04dx"]
 
 [ext_resource type="Texture2D" uid="uid://djmqxwegtttrg" path="res://Assets/Sprites/Cafe assets tiles.PNG" id="1_whqij"]
-[ext_resource type="PackedScene" uid="uid://isyurr8l7j6w" path="res://Scenes/Café/counter.tscn" id="2_owdk4"]
+[ext_resource type="PackedScene" uid="uid://isyurr8l7j6w" path="res://Scenes/Café/kitchen_counter.tscn" id="2_owdk4"]
 [ext_resource type="PackedScene" uid="uid://rojc6lcpj3f4" path="res://Scenes/Café/table.tscn" id="3_ccdco"]
 [ext_resource type="Script" uid="uid://b3qs1qwh0eue5" path="res://Scripts/Core/customer_manager.gd" id="3_p026p"]
 [ext_resource type="PackedScene" uid="uid://cl58e8mye0sx" path="res://Scenes/Customers/Customer.tscn" id="4_p026p"]
@@ -255,7 +255,6 @@ tile_set = SubResource("TileSet_f3an2")
 
 [node name="Counter" parent="." unique_id=268846846 instance=ExtResource("2_owdk4")]
 position = Vector2(576, 520)
-interaction_radius = null
 
 [node name="CustomerSpawn" type="Marker2D" parent="." unique_id=2126997848]
 position = Vector2(111, 323)
