@@ -19,6 +19,9 @@ func _ready() -> void:
 	food_preparation = get_tree().get_first_node_in_group("food_preparation")
 	order_manager = get_tree().get_first_node_in_group("order_manager")
 
+	if food_preparation != null:
+		food_preparation.food_ready.connect(_on_food_ready)
+
 
 func interact() -> void:
 	print("Player interacted with kitchen counter.")
@@ -46,7 +49,6 @@ func interact() -> void:
 		player.pick_up_order(ready_order)
 
 		if player.is_carrying_order():
-
 			remove_food_visual()
 
 			food_preparation.take_ready_order()
@@ -73,16 +75,30 @@ func interact() -> void:
 	food_preparation.start_preparing(next_order)
 
 
+func _on_food_ready(order: CustomerOrder) -> void:
+	print("KitchenCounter received food_ready signal.")
+
+	show_food_visual(order)
+
+
 func show_food_visual(order: CustomerOrder) -> void:
 	if order == null:
+		print("ERROR: Cannot show food for null order.")
 		return
 
 	if current_food_visual != null:
+		print("Food visual already exists.")
 		return
 
 	if food_visual_scene == null:
 		print("ERROR: FoodVisual scene is not assigned.")
 		return
+
+	if food_position == null:
+		print("ERROR: FoodPosition was not found.")
+		return
+
+	print("Creating food visual for: ", order.item_name)
 
 	current_food_visual = food_visual_scene.instantiate() as FoodVisual
 
@@ -97,8 +113,8 @@ func show_food_visual(order: CustomerOrder) -> void:
 	current_food_visual.setup(order)
 
 	print(
-		"Food visual created: ",
-		order.item_name
+		"Food visual spawned at: ",
+		food_position.global_position
 	)
 
 

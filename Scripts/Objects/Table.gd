@@ -2,7 +2,11 @@ class_name Table
 extends Interactable
 
 @export var customer_spot: Marker2D
+var current_food_visual: FoodVisual = null
 
+@export var food_visual_scene: PackedScene
+
+@onready var food_position: Marker2D = $FoodPosition
 var occupied: bool = false
 var current_customer: Customer = null
 
@@ -77,9 +81,48 @@ func deliver_order(order: CustomerOrder) -> bool:
 
 		return false
 
+
+	# -----------------------------------------
+	# Order is correct
+	# -----------------------------------------
+
 	customer_order.state = CustomerOrder.OrderState.SERVED
 
 	current_customer.stop_patience_timer()
+
+
+	# -----------------------------------------
+	# Add money
+	# -----------------------------------------
+
+	var economy := get_tree().get_first_node_in_group(
+		"cafe_economy"
+	)
+
+	if economy != null:
+		economy.add_money(customer_order.price)
+	else:
+		print("ERROR: CafeEconomy not found.")
+
+
+	# -----------------------------------------
+	# Remove food from player
+	# -----------------------------------------
+
+	var player := get_tree().get_first_node_in_group(
+		"player"
+	) as Player
+
+	if player != null:
+		player.remove_carried_food_visual()
+
+
+	# -----------------------------------------
+	# Show food on table
+	# -----------------------------------------
+
+	show_food_visual(customer_order)
+
 
 	print(
 		"Order delivered successfully: ",
@@ -89,3 +132,44 @@ func deliver_order(order: CustomerOrder) -> bool:
 	return true
 		
 	
+func show_food_visual(order: CustomerOrder) -> void:
+	if order == null:
+		return
+
+	if food_visual_scene == null:
+		print("ERROR: FoodVisual scene is not assigned to Table.")
+		return
+
+	if food_position == null:
+		print("ERROR: FoodPosition was not found on Table.")
+		return
+
+	if current_food_visual != null:
+		return
+
+	current_food_visual = food_visual_scene.instantiate() as FoodVisual
+
+	if current_food_visual == null:
+		print("ERROR: Could not create FoodVisual for Table.")
+		return
+
+	get_parent().add_child(current_food_visual)
+
+	current_food_visual.global_position = food_position.global_position
+
+	current_food_visual.setup(order)
+
+	print(
+		"Food placed on table: ",
+		order.item_name
+	)
+
+
+func remove_food_visual() -> void:
+	if current_food_visual == null:
+		return
+
+	current_food_visual.queue_free()
+	current_food_visual = null
+
+	print("Food removed from table.")

@@ -16,8 +16,10 @@ enum CustomerState {
 @export var eating_time: float = 5.0
 @export var patience_time: float = 20.0
 
+
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var patience_timer: Timer = $PatienceTimer
+@onready var eating_timer: Timer = $EatingTimer
 @onready var patience_bar: ProgressBar = $PatienceBar
 
 
@@ -41,9 +43,11 @@ var available_orders: Array[String] = [
 
 func _ready() -> void:
 	add_to_group("customer")
+
 	target_position = global_position
 
 	patience_timer.timeout.connect(_on_patience_timer_timeout)
+	eating_timer.timeout.connect(_on_eating_timer_timeout)
 
 	patience_bar.visible = false
 
@@ -54,6 +58,7 @@ func _ready() -> void:
 		print("Customer exit found at: ", exit_position)
 	else:
 		print("ERROR: CustomerExit was not found.")
+
 
 func _physics_process(_delta: float) -> void:
 	update_patience_bar()
@@ -113,13 +118,6 @@ func handle_waiting_for_order() -> void:
 func handle_eating() -> void:
 	velocity = Vector2.ZERO
 
-	await get_tree().create_timer(eating_time).timeout
-
-	if state != CustomerState.EATING:
-		return
-
-	change_state(CustomerState.LEAVING)
-
 
 func handle_leaving() -> void:
 	if not leaving_initialized:
@@ -166,6 +164,9 @@ func change_state(new_state: CustomerState) -> void:
 
 	state = new_state
 
+	if state == CustomerState.EATING:
+		start_eating()
+
 	if state == CustomerState.LEAVING:
 		leaving_initialized = false
 
@@ -173,6 +174,31 @@ func change_state(new_state: CustomerState) -> void:
 		stop_patience_timer()
 
 		start_leaving()
+
+
+func start_eating() -> void:
+	eating_timer.wait_time = eating_time
+	eating_timer.start()
+
+	print(
+		"Customer ",
+		name,
+		" is eating for ",
+		eating_time,
+		" seconds."
+	)
+
+
+func _on_eating_timer_timeout() -> void:
+	if state != CustomerState.EATING:
+		return
+
+	print("Customer ", name, " finished eating.")
+
+	if target_table != null:
+		target_table.remove_food_visual()
+
+	change_state(CustomerState.LEAVING)
 
 
 func start_leaving() -> void:
@@ -210,6 +236,7 @@ func create_order() -> void:
 
 	order = CustomerOrder.new(selected_item)
 
+	# Start the patience countdown.
 	patience_timer.wait_time = patience_time
 	patience_timer.start()
 
@@ -228,6 +255,13 @@ func create_order() -> void:
 	)
 
 
+func update_patience_bar() -> void:
+	if patience_timer.is_stopped():
+		return
+
+	patience_bar.value = patience_timer.time_left
+
+
 func stop_patience_timer() -> void:
 	if patience_timer.is_stopped():
 		return
@@ -242,9 +276,12 @@ func _on_patience_timer_timeout() -> void:
 	if order == null:
 		return
 
+	# The order was already successfully served.
 	if order.state == CustomerOrder.OrderState.SERVED:
 		return
 
+	# Only allow patience to expire while the customer
+	# is waiting at the table.
 	if state != CustomerState.WAITING_FOR_ORDER:
 		return
 
@@ -259,9 +296,3 @@ func _on_patience_timer_timeout() -> void:
 	)
 
 	change_state(CustomerState.LEAVING)
-
-func update_patience_bar() -> void:
-	if patience_timer.is_stopped():
-		return
-
-	patience_bar.value = patience_timer.time_left

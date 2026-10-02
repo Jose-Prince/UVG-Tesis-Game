@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bs1uu0b3cuk0g"]
 
 [ext_resource type="Script" uid="uid://c257lqgsm62ir" path="res://Scripts/Player/Player.gd" id="1_ft8w5"]
+[ext_resource type="PackedScene" uid="uid://csfk5kyjv7eej" path="res://Scenes/Objects/FoodVisual.tscn" id="2_4wape"]
 [ext_resource type="SpriteFrames" uid="uid://dfb8qgnmnnie1" path="res://Assets/Sprites/character/skin.tres" id="2_jmcll"]
 [ext_resource type="SpriteFrames" uid="uid://oo1ha6p12bek" path="res://Assets/Sprites/character/hair_1.tres" id="3_4wape"]
 [ext_resource type="SpriteFrames" uid="uid://c7nrj2airc3ve" path="res://Assets/Sprites/character/shirt_2.tres" id="4_t26db"]
@@ -14,6 +15,7 @@ radius = 15.0
 
 [node name="Player" type="CharacterBody2D" unique_id=241802471]
 script = ExtResource("1_ft8w5")
+food_visual_scene = ExtResource("2_4wape")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1416377600]
 position = Vector2(0, 2)
@@ -52,3 +54,6 @@ sprite_frames = ExtResource("5_fk5o5")
 animation = &"idle"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=994954903]
+
+[node name="CarryPosition" type="Marker2D" parent="." unique_id=1845651054]
+position = Vector2(26, 0)

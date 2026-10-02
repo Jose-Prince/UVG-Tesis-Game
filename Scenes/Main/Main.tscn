@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bs1uu0b3cuk0g" path="res://Scenes/Player/Player.tscn" id="1_p8rbg"]
 [ext_resource type="PackedScene" uid="uid://7sgt6p3i04dx" path="res://Scenes/Café/Cafe.tscn" id="2_qtv3y"]
+[ext_resource type="Script" uid="uid://bv3ni3tmiqhhj" path="res://Scripts/UI/HUD.gd" id="3_cmk6n"]
 
 [node name="Main" type="Node2D" unique_id=991998489]
 
@@ -9,3 +10,22 @@
 
 [node name="Player" parent="." unique_id=241802471 instance=ExtResource("1_p8rbg")]
 position = Vector2(209, 178)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1402109423]
+script = ExtResource("3_cmk6n")
+
+[node name="MoneyLabel" type="Label" parent="HUD" unique_id=1409211938]
+offset_left = 72.0
+offset_top = 8.0
+offset_right = 165.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Money: $0.0"
+
+[node name="TimeLabel" type="Label" parent="HUD" unique_id=1060861951]
+offset_left = 75.0
+offset_top = 33.0
+offset_right = 115.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Day 1 - 9:00"

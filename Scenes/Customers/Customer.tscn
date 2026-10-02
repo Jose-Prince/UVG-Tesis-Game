@@ -52,4 +52,9 @@ offset_bottom = -14.0
 value = 100.0
 show_percentage = false
 
+[node name="EatingTimer" type="Timer" parent="." unique_id=2003975126]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="timeout" from="PatienceTimer" to="." method="_on_patience_timer_timeout"]
+[connection signal="timeout" from="EatingTimer" to="." method="_on_eating_timer_timeout"]

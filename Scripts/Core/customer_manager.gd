@@ -7,8 +7,11 @@ extends Node2D
 
 @onready var spawn_point: Marker2D = $"../CustomerSpawn"
 
+var day_manager: CafeDayManager
 
 func _ready() -> void:
+	day_manager = get_tree().get_first_node_in_group("cafe_day_manager")
+
 	await get_tree().create_timer(2.0).timeout
 
 	spawn_customer()
@@ -21,21 +24,33 @@ func _ready() -> void:
 
 
 func spawn_customer() -> void:
+	if day_manager == null:
+		print("ERROR: CafeDayManager not found.")
+		return
+
+	if not day_manager.is_open():
+		print("Café is closed. Customer will not spawn.")
+		return
+
 	if customer_scene == null:
 		push_warning("Customer scene has not been assigned.")
 		return
 
+	# Find a table BEFORE creating the customer.
 	var available_table := get_available_table()
 
 	if available_table == null:
 		print("No available table. Customer will not spawn.")
 		return
 
+
+	# Create the customer.
 	var customer := customer_scene.instantiate() as Customer
 
 	if customer == null:
 		push_warning("Customer scene is not a Customer.")
 		return
+
 
 	get_parent().add_child(customer)
 
@@ -43,7 +58,10 @@ func spawn_customer() -> void:
 
 	print("Customer spawned!")
 
+
+	# Reserve the table immediately.
 	available_table.assign_customer(customer)
+
 	customer.go_to_table(available_table)
 
 	print(

@@ -4,8 +4,12 @@ extends Node
 
 @export var preparation_time: float = 3.0
 
+
 var current_order: CustomerOrder = null
 var preparing: bool = false
+
+
+signal food_ready(order: CustomerOrder)
 
 
 func start_preparing(order: CustomerOrder) -> void:
@@ -36,9 +40,12 @@ func start_preparing(order: CustomerOrder) -> void:
 
 	print("Food ready: ", order.item_name)
 
+	food_ready.emit(order)
+
 
 func is_preparing() -> bool:
 	return preparing
+
 
 func get_ready_order() -> CustomerOrder:
 	if current_order == null:
@@ -57,6 +64,9 @@ func take_ready_order() -> void:
 	if current_order.state != CustomerOrder.OrderState.READY:
 		return
 
-	print("Prepared order taken: ", current_order.item_name)
+	print(
+		"Prepared order taken: ",
+		current_order.item_name
+	)
 
 	current_order = null

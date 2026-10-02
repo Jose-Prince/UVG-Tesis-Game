@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var panel: Panel = $Panel
 @onready var order_label: Label = $Panel/OrderLabel
 @onready var accept_button: Button = $Panel/AcceptButton
+@onready var order_manager: OrderManager
 
 
 var current_table: Table = null
@@ -12,6 +13,8 @@ var current_table: Table = null
 func _ready() -> void:
 	panel.visible = false
 	accept_button.pressed.connect(_on_accept_order_pressed)
+
+	order_manager = get_tree().get_first_node_in_group("order_manager")
 
 
 func show_order(table: Table) -> void:
@@ -73,9 +76,11 @@ func _on_accept_order_pressed() -> void:
 
 	order.state = CustomerOrder.OrderState.ACCEPTED
 
-	print(
-		"Order accepted: ",
-		order.item_name
-	)
+	print("Order accepted: ", order.item_name)
+
+	if order_manager != null:
+		order_manager.add_order(order)
+	else:
+		print("ERROR: OrderManager not found.")
 
 	update_button()

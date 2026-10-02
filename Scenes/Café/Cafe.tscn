@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cl58e8mye0sx" path="res://Scenes/Customers/Customer.tscn" id="4_p026p"]
 [ext_resource type="Script" uid="uid://d4mqu1bo2lc0g" path="res://Scripts/UI/OrderUI.gd" id="6_p50xa"]
 [ext_resource type="Script" uid="uid://8cyunq87xd7" path="res://Scripts/Café/food_preparation.gd" id="7_f3an2"]
+[ext_resource type="Script" uid="uid://xwg2uk6o7cfa" path="res://Scripts/Core/order_manager.gd" id="8_0n4ib"]
+[ext_resource type="Script" uid="uid://btgt0g62qy04o" path="res://Scripts/Café/cafe_economy.gd" id="9_qlci0"]
+[ext_resource type="Script" uid="uid://wwv7ui0wtuwh" path="res://Scripts/Core/cafe_day_manager.gd" id="10_j5ued"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p50xa"]
 texture = ExtResource("1_whqij")
@@ -302,3 +305,12 @@ script = ExtResource("7_f3an2")
 
 [node name="CustomerExit" type="Marker2D" parent="." unique_id=600410142 groups=["customer_exit"]]
 position = Vector2(112, 324)
+
+[node name="OrderManager" type="Node" parent="." unique_id=320768540 groups=["order_manager"]]
+script = ExtResource("8_0n4ib")
+
+[node name="CafeEconomy" type="Node" parent="." unique_id=1263808261]
+script = ExtResource("9_qlci0")
+
+[node name="CafeDayManager" type="Node" parent="." unique_id=1600161526 groups=["cafe_day_manager"]]
+script = ExtResource("10_j5ued")
