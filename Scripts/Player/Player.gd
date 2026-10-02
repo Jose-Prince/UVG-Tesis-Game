@@ -10,7 +10,7 @@ extends CharacterBody2D
 @onready var interaction_prompt: Label = $InteractionPrompt
 @onready var carry_position: Marker2D = $CarryPosition
 
-
+var facing_direction := Vector2.DOWN
 var current_interactable: Interactable = null
 
 var carrying_order: CustomerOrder = null
@@ -23,9 +23,21 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	handle_movement()
+	update_carry_position()
 	update_interaction()
 	handle_interaction()
 
+
+func update_carry_position() -> void:
+	if carry_position == null:
+		return
+
+	var distance := 24.0
+
+	carry_position.position = facing_direction * distance
+
+	if carrying_food_visual != null:
+		carrying_food_visual.position = carry_position.position
 
 func handle_movement() -> void:
 	var direction := Vector2(
@@ -35,6 +47,9 @@ func handle_movement() -> void:
 
 	if direction.length() > 1.0:
 		direction = direction.normalized()
+
+	if direction != Vector2.ZERO:
+		facing_direction = direction
 
 	velocity = direction * speed
 
