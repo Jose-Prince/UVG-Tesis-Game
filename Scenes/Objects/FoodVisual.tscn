@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://csfk5kyjv7eej"]
+
+[ext_resource type="Script" uid="uid://drahi1fptwfjf" path="res://Scripts/Objects/food_visual.gd" id="1_asquj"]
+[ext_resource type="Texture2D" uid="uid://ura514lpluut" path="res://Assets/Sprites/coffee-sprite_8x8.png" id="2_8j0le"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asquj"]
+atlas = ExtResource("2_8j0le")
+region = Rect2(0, 0, 8, 8)
+
+[node name="FoodVisual" type="Node2D" unique_id=277709611]
+script = ExtResource("1_asquj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=593555231]
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+mouse_filter = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1706306353]
+texture = SubResource("AtlasTexture_asquj")
