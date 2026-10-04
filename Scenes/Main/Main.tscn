@@ -8,7 +8,7 @@
 
 [node name="Cafe" parent="." unique_id=151584018 instance=ExtResource("2_qtv3y")]
 
-[node name="Player" parent="." unique_id=241802471 instance=ExtResource("1_p8rbg")]
+[node name="Player" parent="Cafe" unique_id=241802471 instance=ExtResource("1_p8rbg")]
 position = Vector2(209, 178)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1402109423]
@@ -29,3 +29,6 @@ offset_right = 115.0
 offset_bottom = 56.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Day 1 - 9:00"
+
+[node name="OutsideEntrance" type="Marker2D" parent="." unique_id=1609954013]
+position = Vector2(155, 324)

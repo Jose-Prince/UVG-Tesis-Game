@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dskqr7w4rwgio"]
+
+[ext_resource type="PackedScene" uid="uid://caq1ld5w1vhck" path="res://Scenes/Main/scene_exit.tscn" id="1_o4w43"]
+[ext_resource type="PackedScene" uid="uid://bs1uu0b3cuk0g" path="res://Scenes/Player/Player.tscn" id="2_ica2c"]
+[ext_resource type="PackedScene" uid="uid://8m8vyobjyb7n" path="res://Scenes/UI/ShopUI.tscn" id="3_ra676"]
+[ext_resource type="PackedScene" uid="uid://5umf3ihpxu1" path="res://Scenes/Customers/shop_npc.tscn" id="4_k57n3"]
+
+[node name="Shop" type="Node2D" unique_id=1969486554]
+
+[node name="SceneExit" parent="." unique_id=1390836670 instance=ExtResource("1_o4w43")]
+position = Vector2(41, 278)
+destination_scene = "uid://0xiilalykgwj"
+destination_spawn = "ShopEntrance"
+
+[node name="OutsideEntrance" type="Marker2D" parent="." unique_id=1413992082]
+position = Vector2(121, 281)
+
+[node name="Player" parent="." unique_id=241802471 instance=ExtResource("2_ica2c")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=969604230]
+
+[node name="ShopUI" parent="CanvasLayer" unique_id=1190830370 instance=ExtResource("3_ra676")]
+visible = false
+offset_left = -18.0
+offset_right = -18.0
+
+[node name="ShopNpc" parent="." unique_id=131808047 node_paths=PackedStringArray("shop_ui") instance=ExtResource("4_k57n3")]
+position = Vector2(408, 264)
+shop_ui = NodePath("../CanvasLayer/ShopUI")

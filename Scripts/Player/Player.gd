@@ -19,6 +19,17 @@ var carrying_food_visual: FoodVisual = null
 
 func _ready() -> void:
 	add_to_group("player")
+	if SceneTransition.spawn_point_name.is_empty():
+		return
+
+	var spawn_point := get_tree().current_scene.get_node_or_null(
+		SceneTransition.spawn_point_name
+	)
+
+	if spawn_point:
+		global_position = spawn_point.global_position
+
+	SceneTransition.spawn_point_name = ""
 
 
 func _physics_process(_delta: float) -> void:

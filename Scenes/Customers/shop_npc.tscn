@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://5umf3ihpxu1"]
+
+[ext_resource type="Script" uid="uid://b8rppt76ugbt3" path="res://Scripts/Customers/shop_npc.gd" id="1_qxtp8"]
+[ext_resource type="SpriteFrames" uid="uid://dfb8qgnmnnie1" path="res://Assets/Sprites/character/skin.tres" id="2_plb54"]
+[ext_resource type="SpriteFrames" uid="uid://oo1ha6p12bek" path="res://Assets/Sprites/character/hair_1.tres" id="3_qimgv"]
+[ext_resource type="SpriteFrames" uid="uid://c7nrj2airc3ve" path="res://Assets/Sprites/character/shirt_2.tres" id="4_y3xyl"]
+[ext_resource type="SpriteFrames" uid="uid://cbrd41ttswy42" path="res://Assets/Sprites/character/pants_2.tres" id="5_3gjmc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
+
+[node name="ShopNpc" type="StaticBody2D" unique_id=131808047]
+script = ExtResource("1_qxtp8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2110045542]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=813761358]
+shape = SubResource("RectangleShape2D_cc37w")
+
+[node name="InteractionPoint" type="Marker2D" parent="." unique_id=1841639011]
+position = Vector2(-23, 0)
+
+[node name="Skin" type="AnimatedSprite2D" parent="." unique_id=1573158789]
+sprite_frames = ExtResource("2_plb54")
+animation = &"idle"
+
+[node name="Hair" type="AnimatedSprite2D" parent="." unique_id=393400352]
+sprite_frames = ExtResource("3_qimgv")
+animation = &"hold_idle"
+
+[node name="Top" type="AnimatedSprite2D" parent="." unique_id=2078146194]
+sprite_frames = ExtResource("4_y3xyl")
+animation = &"idle"
+
+[node name="Bottom" type="AnimatedSprite2D" parent="." unique_id=957161949]
+sprite_frames = ExtResource("5_3gjmc")
+animation = &"hold_idle"

@@ -13,7 +13,7 @@ size = Vector2(32, 36)
 [sub_resource type="CircleShape2D" id="CircleShape2D_s0eop"]
 radius = 15.0
 
-[node name="Player" type="CharacterBody2D" unique_id=241802471]
+[node name="Player" type="CharacterBody2D" unique_id=241802471 groups=["player"]]
 script = ExtResource("1_ft8w5")
 food_visual_scene = ExtResource("2_4wape")
 

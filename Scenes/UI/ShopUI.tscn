@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://8m8vyobjyb7n"]
+
+[ext_resource type="Script" uid="uid://ubevy64dvy5b" path="res://Scripts/UI/shop_ui.gd" id="1_bpl7i"]
+[ext_resource type="PackedScene" uid="uid://cduexedyua0da" path="res://Scenes/UI/furniture_shop_item.tscn" id="2_wb0up"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpl7i"]
+bg_color = Color(1, 0.95686275, 0.8627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41960785, 0.27058825, 0.19607843, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="ShopUI" type="Control" unique_id=1190830370]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bpl7i")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=842405531]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4)
+
+[node name="ShopPanel" type="Panel" parent="Overlay" unique_id=1990166505]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.0
+offset_top = -219.0
+offset_right = 299.0
+offset_bottom = 231.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bpl7i")
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay/ShopPanel" unique_id=1111335962]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/ShopPanel/MarginContainer" unique_id=2039461224]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Header" type="HBoxContainer" parent="Overlay/ShopPanel/MarginContainer/VBoxContainer" unique_id=1985051399]
+layout_mode = 2
+alignment = 1
+
+[node name="ShopTitle" type="Label" parent="Overlay/ShopPanel/MarginContainer/VBoxContainer/Header" unique_id=1698859474]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Furniture Shop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="Overlay/ShopPanel/MarginContainer/VBoxContainer/Header" unique_id=487096049]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+text = "X
+"
+
+[node name="HSeparator" type="HSeparator" parent="Overlay/ShopPanel/MarginContainer/VBoxContainer" unique_id=1664118439]
+layout_mode = 2
+
+[node name="ItemScroll" type="ScrollContainer" parent="Overlay/ShopPanel/MarginContainer/VBoxContainer" unique_id=1177943654]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemGrid" type="GridContainer" parent="Overlay/ShopPanel/MarginContainer/VBoxContainer/ItemScroll" unique_id=1020946271]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="FurnitureShopItem" parent="Overlay/ShopPanel/MarginContainer/VBoxContainer/ItemScroll/ItemGrid" unique_id=240078721 instance=ExtResource("2_wb0up")]
+layout_mode = 2
+item_id = "wooden_table"
+item_name = "Wooden TAble"
+price = 10
+preview_color = Color(0.24840015, 0.24840018, 0.24840015, 1)
+
+[node name="FurnitureShopItem2" parent="Overlay/ShopPanel/MarginContainer/VBoxContainer/ItemScroll/ItemGrid" unique_id=1867420003 instance=ExtResource("2_wb0up")]
+layout_mode = 2
+
+[node name="Footer" type="HBoxContainer" parent="Overlay/ShopPanel/MarginContainer/VBoxContainer" unique_id=1504622147]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="Overlay/ShopPanel/MarginContainer/VBoxContainer/Footer" unique_id=859325729]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Money: $500"
+
+[node name="SelectedItemLabel" type="Label" parent="Overlay/ShopPanel/MarginContainer/VBoxContainer/Footer" unique_id=860870878]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Select furniture to purchase"
+
+[connection signal="pressed" from="Overlay/ShopPanel/MarginContainer/VBoxContainer/Header/CloseButton" to="." method="_on_close_button_pressed"]

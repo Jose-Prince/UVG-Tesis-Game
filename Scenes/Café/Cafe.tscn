@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://xwg2uk6o7cfa" path="res://Scripts/Core/order_manager.gd" id="8_0n4ib"]
 [ext_resource type="Script" uid="uid://btgt0g62qy04o" path="res://Scripts/Café/cafe_economy.gd" id="9_qlci0"]
 [ext_resource type="Script" uid="uid://wwv7ui0wtuwh" path="res://Scripts/Core/cafe_day_manager.gd" id="10_j5ued"]
+[ext_resource type="PackedScene" uid="uid://caq1ld5w1vhck" path="res://Scenes/Main/scene_exit.tscn" id="11_mbx8m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p50xa"]
 texture = ExtResource("1_whqij")
@@ -246,6 +247,80 @@ vertices = PackedVector2Array(734, 326, 734, 275, 1066.1328, 79.96094, 1073.8516
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1, 5, 6), PackedInt32Array(7, 0, 3, 8, 9), PackedInt32Array(10, 11, 12, 13, 14), PackedInt32Array(11, 10, 15), PackedInt32Array(1, 16, 5), PackedInt32Array(4, 6, 17), PackedInt32Array(4, 17, 18, 11, 15, 19, 20), PackedInt32Array(15, 21, 19), PackedInt32Array(4, 20, 22), PackedInt32Array(4, 22, 23, 24), PackedInt32Array(8, 4, 24, 25), PackedInt32Array(8, 25, 26, 27), PackedInt32Array(8, 27, 13), PackedInt32Array(14, 28, 10), PackedInt32Array(12, 29, 30), PackedInt32Array(7, 31, 0), PackedInt32Array(9, 8, 13, 30), PackedInt32Array(12, 30, 13)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(74, 66, 1076, 70, 1084, 633, 79, 638)])
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5ued"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(1, 0.95686275, 0.8627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41960785, 0.27058825, 0.19607843, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0.2509804, 0, 0, 0)
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7w1a6"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.54509807, 0.36862746, 0.23529412, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41960785, 0.27058825, 0.19607843, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.2509804, 0, 0, 0)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twxx2"]
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+bg_color = Color(0.4392157, 0.2784314, 0.18431373, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3372549, 0.21568628, 0.13725491, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbx8m"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.65882355, 0.45882353, 0.3019608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41960785, 0.27058825, 0.19607843, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.3137255, 0, 0, 0)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
 [node name="Cafe" type="Node2D" unique_id=151584018]
 
 [node name="FloorLayer" type="TileMapLayer" parent="." unique_id=936415153]
@@ -280,25 +355,62 @@ position = Vector2(700, 300)
 script = ExtResource("6_p50xa")
 
 [node name="Panel" type="Panel" parent="OrderUI" unique_id=1782010566]
-visible = false
+custom_minimum_size = Vector2(200, 180)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -162.0
 offset_bottom = 128.0
 grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j5ued")
 
-[node name="OrderLabel" type="Label" parent="OrderUI/Panel" unique_id=1714830596]
+[node name="MarginContainer" type="MarginContainer" parent="OrderUI/Panel" unique_id=642484845]
 layout_mode = 0
 offset_right = 40.0
-offset_bottom = 23.0
-text = "Order"
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
 
-[node name="AcceptButton" type="Button" parent="OrderUI/Panel" unique_id=795481387]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Take Order"
+[node name="VBoxContainer" type="VBoxContainer" parent="OrderUI/Panel/MarginContainer" unique_id=365259008]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="HeaderLabel" type="Label" parent="OrderUI/Panel/MarginContainer/VBoxContainer" unique_id=2023490773]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3529412, 0.21960784, 0.14509805, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "NEW ORDER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="OrderUI/Panel/MarginContainer/VBoxContainer" unique_id=1073161639]
+layout_mode = 2
+
+[node name="OrderLabel" type="Label" parent="OrderUI/Panel/MarginContainer/VBoxContainer" unique_id=1714830596]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24313726, 0.16470589, 0.1254902, 1)
+theme_override_font_sizes/font_size = 24
+text = "Order"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AcceptButton" type="Button" parent="OrderUI/Panel/MarginContainer/VBoxContainer" unique_id=795481387]
+custom_minimum_size = Vector2(160, 40)
+custom_maximum_size = Vector2(160, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.96862745, 0.9098039, 1)
+theme_override_colors/font_focus_color = Color(1, 0.96862745, 0.9098039, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.65882355, 0.6039216, 0.54509807, 1)
+theme_override_constants/outline_size = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_7w1a6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_twxx2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mbx8m")
+text = "ACCEPT ORDER"
 
 [node name="FoodPreparation" type="Node" parent="." unique_id=136690164 groups=["food_preparation"]]
 script = ExtResource("7_f3an2")
@@ -314,3 +426,8 @@ script = ExtResource("9_qlci0")
 
 [node name="CafeDayManager" type="Node" parent="." unique_id=1600161526 groups=["cafe_day_manager"]]
 script = ExtResource("10_j5ued")
+
+[node name="SceneExit" parent="." unique_id=1121112703 instance=ExtResource("11_mbx8m")]
+position = Vector2(36, 315)
+destination_scene = "uid://0xiilalykgwj"
+destination_spawn = "CafeEntrance"

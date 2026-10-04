@@ -15,6 +15,14 @@ run/main_scene="uid://0or6a8waqukl"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SceneTransition="*uid://b0wka4pbj8ob1"
+
+[global_group]
+
+player=""
+
 [input]
 
 move_up={

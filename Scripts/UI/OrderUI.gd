@@ -2,9 +2,9 @@ extends CanvasLayer
 
 
 @onready var panel: Panel = $Panel
-@onready var order_label: Label = $Panel/OrderLabel
-@onready var accept_button: Button = $Panel/AcceptButton
 @onready var order_manager: OrderManager
+@onready var order_label: Label = $Panel/MarginContainer/VBoxContainer/OrderLabel
+@onready var accept_button: Button = $Panel/MarginContainer/VBoxContainer/AcceptButton
 
 
 var current_table: Table = null

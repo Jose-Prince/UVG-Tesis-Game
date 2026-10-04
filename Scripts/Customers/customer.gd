@@ -46,9 +46,6 @@ func _ready() -> void:
 
 	target_position = global_position
 
-	patience_timer.timeout.connect(_on_patience_timer_timeout)
-	eating_timer.timeout.connect(_on_eating_timer_timeout)
-
 	patience_bar.visible = false
 
 	var exit_marker := get_tree().get_first_node_in_group("customer_exit")
