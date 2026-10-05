@@ -117,9 +117,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="RemoveButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=1248349185]
+layout_mode = 2
+text = "Remove Furniture"
+
 [node name="HintLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=955217248]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5411765, 0.45882353, 0.3882353, 1)
 theme_override_font_sizes/font_size = 12
 text = "Click PLACE to position furniture"
 horizontal_alignment = 1
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/RemoveButton" to="." method="_on_remove_button_pressed"]

@@ -5,7 +5,7 @@ extends Control
 
 @onready var furniture_list: VBoxContainer = $Panel/MarginContainer/VBoxContainer/FurnitureScroll/FurnitureList
 @onready var close_button: Button = $Panel/MarginContainer/VBoxContainer/Header/CloseButton
-
+@onready var remove_button: Button = $Panel/MarginContainer/VBoxContainer/RemoveButton
 
 func _ready() -> void:
 	hide()
@@ -65,3 +65,8 @@ func get_item_name(item_id: String) -> String:
 			return "Wooden Chair"
 
 	return item_id
+
+
+func _on_remove_button_pressed() -> void:
+	hide_ui()
+	FurniturePlacementManager.start_removal()
