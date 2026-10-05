@@ -1,0 +1,22 @@
+{
+  "group_id": "53141f0d-dee7-456b-ae72-8075fa3886f4",
+  "objects": [
+    {
+      "id": "84df0d35-2198-4b66-8c2d-f417f7523008",
+      "name": "base",
+      "prompt": "64x32 pixel art wooden caf\u00e9 table, rectangular tabletop viewed at an angle (wider than tall), warm brown wood top with slightly darker legs, dark brown outline, flat shading, empty tabletop, transparent background, strict pixel grid",
+      "size": {
+        "width": 64,
+        "height": 64
+      },
+      "directions": 1,
+      "view": "low top-down",
+      "rotations": {
+        "unknown": "rotations/64x32_pixel_art_wooden_cafe_ta.png"
+      },
+      "animations": {}
+    }
+  ],
+  "export_version": "1.1",
+  "export_date": "2026-09-24T21:24:52.143149"
+}

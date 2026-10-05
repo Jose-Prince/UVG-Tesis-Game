@@ -1,17 +1,17 @@
 [gd_scene format=4 uid="uid://7sgt6p3i04dx"]
 
 [ext_resource type="Texture2D" uid="uid://djmqxwegtttrg" path="res://Assets/Sprites/Cafe assets tiles.PNG" id="1_whqij"]
-[ext_resource type="PackedScene" uid="uid://isyurr8l7j6w" path="res://Scenes/Café/kitchen_counter.tscn" id="2_owdk4"]
+[ext_resource type="PackedScene" uid="uid://isyurr8l7j6w" path="res://Scenes/Café/counter.tscn" id="2_owdk4"]
 [ext_resource type="PackedScene" uid="uid://rojc6lcpj3f4" path="res://Scenes/Café/table.tscn" id="3_ccdco"]
 [ext_resource type="Script" uid="uid://b3qs1qwh0eue5" path="res://Scripts/Core/customer_manager.gd" id="3_p026p"]
 [ext_resource type="PackedScene" uid="uid://cl58e8mye0sx" path="res://Scenes/Customers/Customer.tscn" id="4_p026p"]
 [ext_resource type="Script" uid="uid://d4mqu1bo2lc0g" path="res://Scripts/UI/OrderUI.gd" id="6_p50xa"]
 [ext_resource type="Script" uid="uid://8cyunq87xd7" path="res://Scripts/Café/food_preparation.gd" id="7_f3an2"]
-[ext_resource type="Script" uid="uid://xwg2uk6o7cfa" path="res://Scripts/Core/order_manager.gd" id="8_0n4ib"]
+[ext_resource type="Script" path="res://Scripts/Core/order_manager.gd" id="8_0n4ib"]
 [ext_resource type="Script" uid="uid://btgt0g62qy04o" path="res://Scripts/Café/cafe_economy.gd" id="9_qlci0"]
-[ext_resource type="Script" uid="uid://wwv7ui0wtuwh" path="res://Scripts/Core/cafe_day_manager.gd" id="10_j5ued"]
-[ext_resource type="PackedScene" uid="uid://caq1ld5w1vhck" path="res://Scenes/Main/scene_exit.tscn" id="11_mbx8m"]
-[ext_resource type="PackedScene" uid="uid://ocod0bhxblrb" path="res://Scenes/Objects/order_trash.tscn" id="12_twxx2"]
+[ext_resource type="Script" path="res://Scripts/Core/cafe_day_manager.gd" id="10_j5ued"]
+[ext_resource type="PackedScene" path="res://Scenes/Main/scene_exit.tscn" id="11_mbx8m"]
+[ext_resource type="PackedScene" uid="uid://gt252l0cd6rh" path="res://Scenes/Objects/order_trash.tscn" id="12_twxx2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p50xa"]
 texture = ExtResource("1_whqij")
@@ -401,7 +401,6 @@ vertical_alignment = 1
 
 [node name="AcceptButton" type="Button" parent="OrderUI/Panel/MarginContainer/VBoxContainer" unique_id=795481387]
 custom_minimum_size = Vector2(160, 40)
-custom_maximum_size = Vector2(160, 40)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.96862745, 0.9098039, 1)
 theme_override_colors/font_focus_color = Color(1, 0.96862745, 0.9098039, 1)

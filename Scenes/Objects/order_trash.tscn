@@ -1,19 +1,26 @@
-[gd_scene format=3 uid="uid://ocod0bhxblrb"]
+[gd_scene format=3 uid="uid://gt252l0cd6rh"]
 
-[ext_resource type="Script" uid="uid://h5moihgrycsy" path="res://Scripts/Objects/order_trash.gd" id="1_b0tjh"]
+[ext_resource type="Script" path="res://Scripts/Objects/order_trash.gd" id="1_b0tjh"]
+[ext_resource type="Texture2D" uid="uid://ceifjk742gcaq" path="res://Assets/PixelLab_IA_assets/coffee_shop_trash_can.png" id="2_w3f6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xb7t"]
-size = Vector2(37, 35)
+size = Vector2(21, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idapm"]
+atlas = ExtResource("2_w3f6u")
+region = Rect2(5.0650635, 1.4198761, 21.87082, 30.002281)
 
 [node name="OrderTrash" type="StaticBody2D" unique_id=1138148328]
 script = ExtResource("1_b0tjh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=396468667]
-position = Vector2(7, 8)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_1xb7t")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=669778226]
+texture = SubResource("AtlasTexture_idapm")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=539347745]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0

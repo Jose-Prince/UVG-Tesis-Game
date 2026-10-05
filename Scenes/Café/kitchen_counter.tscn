@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://isyurr8l7j6w"]
+[gd_scene format=3 uid="uid://pv1lc2f1lto3"]
 
 [ext_resource type="Script" uid="uid://cckn561ltbikt" path="res://Scripts/Café/kitchen_counter.gd" id="1_t6tlh"]
 [ext_resource type="PackedScene" uid="uid://csfk5kyjv7eej" path="res://Scenes/Objects/FoodVisual.tscn" id="2_j4uc7"]

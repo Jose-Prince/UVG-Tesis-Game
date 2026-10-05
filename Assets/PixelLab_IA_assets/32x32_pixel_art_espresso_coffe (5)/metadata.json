@@ -1,0 +1,22 @@
+{
+  "group_id": "acaa1db1-c231-4cf2-9520-964735ff3d90",
+  "objects": [
+    {
+      "id": "e61cdc6e-efd5-460e-8477-f14f3ac1bcfb",
+      "name": "base",
+      "prompt": "32x32 pixel art espresso coffee machine, caf\u00e9 equipment, metallic silver and black body with a small warm-colored accent, dark outline, flat cel-shading, transparent background, strict pixel grid",
+      "size": {
+        "width": 32,
+        "height": 32
+      },
+      "directions": 1,
+      "view": "low top-down",
+      "rotations": {
+        "unknown": "rotations/32x32_pixel_art_espresso_coffe.png"
+      },
+      "animations": {}
+    }
+  ],
+  "export_version": "1.1",
+  "export_date": "2026-09-24T21:26:53.721328"
+}

@@ -1,0 +1,22 @@
+{
+  "group_id": "63b3586c-f4ce-4f22-b540-ef7a1fd803fc",
+  "objects": [
+    {
+      "id": "a653320d-a153-4021-ac74-e8c2812b79fc",
+      "name": "base",
+      "prompt": "32x32 pixel art kitchen sink, stainless steel basin with a faucet, caf\u00e9 kitchen-counter style, dark outline, flat shading, transparent background, strict pixel grid",
+      "size": {
+        "width": 32,
+        "height": 32
+      },
+      "directions": 1,
+      "view": "low top-down",
+      "rotations": {
+        "unknown": "rotations/32x32_pixel_art_kitchen_sink.png"
+      },
+      "animations": {}
+    }
+  ],
+  "export_version": "1.1",
+  "export_date": "2026-09-24T21:41:23.708221"
+}
