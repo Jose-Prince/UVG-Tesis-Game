@@ -210,6 +210,11 @@ func remove_carried_food_visual() -> void:
 		"Carried food visual removed."
 	)
 
-
 func is_carrying_order() -> bool:
 	return carrying_order != null
+
+func clear_carried_order() -> void:
+	remove_carried_food_visual()
+	carrying_order = null
+
+	print("[PLAYER] Carried order cleared")

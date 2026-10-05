@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://btgt0g62qy04o" path="res://Scripts/Café/cafe_economy.gd" id="9_qlci0"]
 [ext_resource type="Script" uid="uid://wwv7ui0wtuwh" path="res://Scripts/Core/cafe_day_manager.gd" id="10_j5ued"]
 [ext_resource type="PackedScene" uid="uid://caq1ld5w1vhck" path="res://Scenes/Main/scene_exit.tscn" id="11_mbx8m"]
+[ext_resource type="PackedScene" uid="uid://ocod0bhxblrb" path="res://Scenes/Objects/order_trash.tscn" id="12_twxx2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p50xa"]
 texture = ExtResource("1_whqij")
@@ -431,3 +432,6 @@ script = ExtResource("10_j5ued")
 position = Vector2(36, 315)
 destination_scene = "uid://0xiilalykgwj"
 destination_spawn = "CafeEntrance"
+
+[node name="OrderTrash" parent="." unique_id=1138148328 instance=ExtResource("12_twxx2")]
+position = Vector2(317, 484)
