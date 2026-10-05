@@ -9,6 +9,7 @@ extends CharacterBody2D
 
 @onready var interaction_prompt: Label = $InteractionPrompt
 @onready var carry_position: Marker2D = $CarryPosition
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var facing_direction := Vector2.DOWN
 var current_interactable: Interactable = null
@@ -34,6 +35,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	handle_movement()
+	update_animation()
 	update_carry_position()
 	update_interaction()
 	handle_interaction()
@@ -66,6 +68,30 @@ func handle_movement() -> void:
 
 	move_and_slide()
 
+func update_animation() -> void:
+	var state := "walk" if velocity != Vector2.ZERO else "idle"
+	var direction_name: String
+
+	if abs(facing_direction.x) > abs(facing_direction.y):
+		direction_name = "side"
+		animated_sprite.flip_h = facing_direction.x < 0
+	elif facing_direction.y < 0:
+		direction_name = "up"
+		animated_sprite.flip_h = false
+	else:
+		direction_name = "down"
+		animated_sprite.flip_h = false
+
+	var animation_name := state + "_" + direction_name
+
+	# Use carry version if it exists (e.g. "walk_down_carry")
+	if carrying_order != null:
+		var carry_name := animation_name + "_carry"
+		if animated_sprite.sprite_frames.has_animation(carry_name):
+			animation_name = carry_name
+
+	if animated_sprite.animation != animation_name:
+		animated_sprite.play(animation_name)
 
 func update_interaction() -> void:
 	current_interactable = null
