@@ -4,8 +4,10 @@ extends Node
 
 var order_queue: Array[CustomerOrder] = []
 
+
 func _ready() -> void:
 	add_to_group("order_manager")
+
 
 func add_order(order: CustomerOrder) -> void:
 	if order == null:
@@ -55,6 +57,32 @@ func remove_order(order: CustomerOrder) -> void:
 		order.item_name,
 		" | Queue size: ",
 		order_queue.size()
+	)
+
+
+func complete_order(order: CustomerOrder) -> void:
+	if order == null:
+		return
+
+	if order.state == CustomerOrder.OrderState.COMPLETED:
+		return
+
+	if order.state != CustomerOrder.OrderState.SERVED:
+		return
+
+	order.state = CustomerOrder.OrderState.COMPLETED
+
+	PlayerData.add_money(order.price)
+
+	remove_order(order)
+
+	print(
+		"Order completed: ",
+		order.item_name,
+		" | Earned: $",
+		order.price,
+		" | Current money: $",
+		PlayerData.money
 	)
 
 

@@ -12,7 +12,9 @@ func add_money(amount: float) -> void:
 		return
 
 	money += amount
-
+	
+	PlayerData.money += int(amount)
+	
 	print(
 		"Money earned: $",
 		amount,
