@@ -1,17 +1,25 @@
 extends Node
 
 
-var money: float = 0.0
+var money: float = 500.0
 
 
 func add_money(amount: float) -> void:
 	if amount <= 0:
 		return
 
+	var previous_money := money
+
 	money += amount
 
-	print("Money added: $", amount)
-	print("Current money: $", money)
+	print(
+		"[MONEY] +$",
+		amount,
+		" | ",
+		previous_money,
+		" → ",
+		money
+	)
 
 
 func can_afford(amount: float) -> bool:
@@ -23,11 +31,26 @@ func spend_money(amount: float) -> bool:
 		return false
 
 	if money < amount:
+		print(
+			"[MONEY] Purchase rejected | Cost: $",
+			amount,
+			" | Current: $",
+			money
+		)
+
 		return false
+
+	var previous_money := money
 
 	money -= amount
 
-	print("Money spent: $", amount)
-	print("Current money: $", money)
+	print(
+		"[MONEY] -$",
+		amount,
+		" | ",
+		previous_money,
+		" → ",
+		money
+	)
 
 	return true

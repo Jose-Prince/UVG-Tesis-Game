@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b1gscqj41rfnd"]
+
+[ext_resource type="Script" uid="uid://2s34ykh8n7jb" path="res://Scripts/Furniture/furniture_placement_manager.gd" id="1_0mra4"]
+[ext_resource type="PackedScene" uid="uid://rojc6lcpj3f4" path="res://Scenes/Café/table.tscn" id="2_0a1t4"]
+
+[node name="FurniturePlacementManager" type="Node2D" unique_id=489758297]
+script = ExtResource("1_0mra4")
+wooden_table_scene = ExtResource("2_0a1t4")
+wooden_chair_scene = ExtResource("2_0a1t4")

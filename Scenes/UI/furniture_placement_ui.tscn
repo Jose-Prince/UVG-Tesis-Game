@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://b3ch6m506nfh"]
+
+[ext_resource type="Script" uid="uid://demp8wkfv7thu" path="res://Scripts/Furniture/furniture_placement_ui.gd" id="1_e5u2q"]
+[ext_resource type="PackedScene" uid="uid://mnfs6s48xjwt" path="res://Scenes/Furniture/furniture_placement_item.tscn" id="2_m2nsx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5u2q"]
+bg_color = Color(1, 0.9764706, 0.91764706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.84705883, 0.7490196, 0.6392157, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2nsx"]
+bg_color = Color(0.9098039, 0.84705883, 0.7647059, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.78431374, 0.6784314, 0.5686275, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngc88"]
+bg_color = Color(0.77254903, 0.6431373, 0.5254902, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5vle"]
+bg_color = Color(0.84705883, 0.7490196, 0.6392157, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="FurniturePlacementUi" type="Control" unique_id=1118802495]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e5u2q")
+furniture_item_scene = ExtResource("2_m2nsx")
+
+[node name="Panel" type="Panel" parent="." unique_id=1864267695]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -552.0
+offset_top = -204.0
+offset_right = -232.0
+offset_bottom = 226.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e5u2q")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1001671566]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1414734943]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1042503203]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/Header" unique_id=1945413126]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.3529412, 0.21960784, 0.14509805, 1)
+theme_override_font_sizes/font_size = 22
+text = "Furniture"
+
+[node name="CloseButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/Header" unique_id=906814853]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_m2nsx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ngc88")
+theme_override_styles/hover = SubResource("StyleBoxFlat_l5vle")
+text = "X"
+
+[node name="Separator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer" unique_id=1083725714]
+layout_mode = 2
+
+[node name="FurnitureScroll" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1759082379]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="FurnitureList" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/FurnitureScroll" unique_id=2052972162]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HintLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=955217248]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5411765, 0.45882353, 0.3882353, 1)
+theme_override_font_sizes/font_size = 12
+text = "Click PLACE to position furniture"
+horizontal_alignment = 1

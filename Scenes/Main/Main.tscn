@@ -3,6 +3,55 @@
 [ext_resource type="PackedScene" uid="uid://bs1uu0b3cuk0g" path="res://Scenes/Player/Player.tscn" id="1_p8rbg"]
 [ext_resource type="PackedScene" uid="uid://7sgt6p3i04dx" path="res://Scenes/Café/Cafe.tscn" id="2_qtv3y"]
 [ext_resource type="Script" uid="uid://bv3ni3tmiqhhj" path="res://Scripts/UI/HUD.gd" id="3_cmk6n"]
+[ext_resource type="PackedScene" uid="uid://b3ch6m506nfh" path="res://Scenes/UI/furniture_placement_ui.tscn" id="4_i3fi7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3fi7"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 14.0
+content_margin_bottom = 8.0
+bg_color = Color(0.54509807, 0.36862746, 0.23529412, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41960785, 0.27058825, 0.19607843, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w20t6"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 14.0
+content_margin_bottom = 8.0
+bg_color = Color(0.4392157, 0.2784314, 0.18431373, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3372549, 0.21568628, 0.13725491, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8wgc"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 14.0
+content_margin_bottom = 8.0
+bg_color = Color(0.65882355, 0.45882353, 0.3019608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41960785, 0.27058825, 0.19607843, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Main" type="Node2D" unique_id=991998489]
 
@@ -30,5 +79,22 @@ offset_bottom = 56.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Day 1 - 9:00"
 
+[node name="FurniturePlacementUi" parent="HUD" unique_id=1118802495 instance=ExtResource("4_i3fi7")]
+
+[node name="BuildButton" type="Button" parent="HUD" unique_id=624946993]
+offset_left = 1024.0
+offset_top = 587.0
+offset_right = 1125.0
+offset_bottom = 626.0
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_colors/font_pressed_color = Color(0.9607843, 0.89411765, 0.78431374, 1)
+theme_override_colors/font_hover_color = Color(1, 0.972549, 0.9098039, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_i3fi7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w20t6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o8wgc")
+text = "Furniture"
+
 [node name="OutsideEntrance" type="Marker2D" parent="." unique_id=1609954013]
 position = Vector2(155, 324)
+
+[connection signal="pressed" from="HUD/BuildButton" to="HUD" method="_on_build_button_pressed"]

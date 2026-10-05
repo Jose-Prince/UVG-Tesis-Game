@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://mnfs6s48xjwt"]
+
+[ext_resource type="Script" uid="uid://bai16of3benny" path="res://Scripts/Furniture/furniture_placement_item.gd" id="1_eev3f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5u2q"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.9607843, 0.92156863, 0.84705883, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.84705883, 0.7490196, 0.6392157, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eev3f"]
+bg_color = Color(0.54509807, 0.36862746, 0.23529412, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.41960785, 0.27058825, 0.19607843, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s6gn"]
+bg_color = Color(0.4392157, 0.2784314, 0.18431373, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.41960785, 0.27058825, 0.19607843, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57akn"]
+bg_color = Color(0.65882355, 0.45882353, 0.3019608, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.41960785, 0.27058825, 0.19607843, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="FurniturePlacementItem" type="PanelContainer" unique_id=1490570152]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e5u2q")
+script = ExtResource("1_eev3f")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1671298054]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=781282228]
+layout_mode = 2
+
+[node name="Info" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=228177042]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemName" type="Label" parent="MarginContainer/HBoxContainer/Info" unique_id=355942275]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.3529412, 0.21960784, 0.14509805, 1)
+text = "Wooden Table"
+horizontal_alignment = 1
+
+[node name="QuantityLabel" type="Label" parent="MarginContainer/HBoxContainer/Info" unique_id=1655142377]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.47843137, 0.38431373, 0.30588236, 1)
+theme_override_font_sizes/font_size = 13
+text = "3"
+horizontal_alignment = 1
+
+[node name="PlaceButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1331066304]
+custom_minimum_size = Vector2(80, 36)
+custom_maximum_size = Vector2(80, -1)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(1, 0.95686275, 0.8627451, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_eev3f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1s6gn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_57akn")
+text = "PLACE"

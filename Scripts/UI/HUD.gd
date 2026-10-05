@@ -29,3 +29,7 @@ func update_time_display() -> void:
 		day_manager.get_current_day(),
 		day_manager.get_time_string()
 	]
+
+
+func _on_build_button_pressed() -> void:
+	$FurniturePlacementUi.show_ui()

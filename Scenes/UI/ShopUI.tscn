@@ -99,11 +99,11 @@ columns = 2
 layout_mode = 2
 item_id = "wooden_table"
 item_name = "Wooden TAble"
-price = 10
 preview_color = Color(0.24840015, 0.24840018, 0.24840015, 1)
 
 [node name="FurnitureShopItem2" parent="Overlay/ShopPanel/MarginContainer/VBoxContainer/ItemScroll/ItemGrid" unique_id=1867420003 instance=ExtResource("2_wb0up")]
 layout_mode = 2
+item_id = "wooden_chair"
 
 [node name="Footer" type="HBoxContainer" parent="Overlay/ShopPanel/MarginContainer/VBoxContainer" unique_id=1504622147]
 layout_mode = 2
@@ -120,3 +120,5 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Select furniture to purchase"
 
 [connection signal="pressed" from="Overlay/ShopPanel/MarginContainer/VBoxContainer/Header/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="purchase_requested" from="Overlay/ShopPanel/MarginContainer/VBoxContainer/ItemScroll/ItemGrid/FurnitureShopItem" to="." method="_on_furniture_shop_item_purchase_requested"]
+[connection signal="purchase_requested" from="Overlay/ShopPanel/MarginContainer/VBoxContainer/ItemScroll/ItemGrid/FurnitureShopItem2" to="." method="_on_furniture_shop_item_2_purchase_requested"]
