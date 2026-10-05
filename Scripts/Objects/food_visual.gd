@@ -2,6 +2,9 @@ class_name FoodVisual
 extends Node2D
 
 
+@export var food_textures: Dictionary[String, Texture2D] = {}
+@export var fallback_texture: Texture2D
+
 var order: CustomerOrder = null
 
 
@@ -15,20 +18,15 @@ func setup(order_data: CustomerOrder) -> void:
 
 
 func update_visual() -> void:
-	var color_rect := $ColorRect as ColorRect
+	var sprite := $Sprite2D as Sprite2D
 
-	match order.item_name:
-		"Coffee":
-			color_rect.color = Color("#6b3e26")
+	var texture: Texture2D = food_textures.get(
+		order.item_name,
+		fallback_texture
+	)
 
-		"Latte":
-			color_rect.color = Color("#c49a6c")
+	if texture == null:
+		print("ERROR: No sprite for food: ", order.item_name)
 
-		"Cappuccino":
-			color_rect.color = Color("#a8754f")
-
-		"Cake":
-			color_rect.color = Color("#e6a5a5")
-
-		_:
-			color_rect.color = Color.WHITE
+	sprite.texture = texture
+	sprite.visible = texture != null

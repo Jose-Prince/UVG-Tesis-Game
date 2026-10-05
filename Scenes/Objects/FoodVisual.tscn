@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://drahi1fptwfjf" path="res://Scripts/Objects/food_visual.gd" id="1_asquj"]
 [ext_resource type="Texture2D" uid="uid://ura514lpluut" path="res://Assets/Sprites/coffee-sprite_8x8.png" id="2_8j0le"]
+[ext_resource type="Texture2D" uid="uid://dudhvmc2jndon" path="res://Assets/PixelLab_IA_assets/coffee.png" id="2_h1uer"]
+[ext_resource type="Texture2D" uid="uid://b5niurrvkio4p" path="res://Assets/PixelLab_IA_assets/latte.png" id="3_ru286"]
+[ext_resource type="Texture2D" uid="uid://b2pbqibhw1yyn" path="res://Assets/PixelLab_IA_assets/cappuccino.png" id="4_mckgn"]
+[ext_resource type="Texture2D" uid="uid://5kfwhv0d0tnv" path="res://Assets/PixelLab_IA_assets/cake.png" id="5_ru286"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_asquj"]
 atlas = ExtResource("2_8j0le")
@@ -9,8 +13,15 @@ region = Rect2(0, 0, 8, 8)
 
 [node name="FoodVisual" type="Node2D" unique_id=277709611]
 script = ExtResource("1_asquj")
+food_textures = Dictionary[String, Texture2D]({
+"Cake": ExtResource("5_ru286"),
+"Cappuccino": ExtResource("4_mckgn"),
+"Coffee": ExtResource("2_h1uer"),
+"Latte": ExtResource("3_ru286")
+})
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=593555231]
+visible = false
 offset_left = -12.0
 offset_top = -12.0
 offset_right = 12.0
