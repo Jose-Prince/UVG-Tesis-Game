@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://gt252l0cd6rh"]
 
-[ext_resource type="Script" path="res://Scripts/Objects/order_trash.gd" id="1_b0tjh"]
+[ext_resource type="Script" uid="uid://h5moihgrycsy" path="res://Scripts/Objects/order_trash.gd" id="1_b0tjh"]
 [ext_resource type="Texture2D" uid="uid://ceifjk742gcaq" path="res://Assets/PixelLab_IA_assets/coffee_shop_trash_can.png" id="2_w3f6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xb7t"]
@@ -20,7 +20,5 @@ shape = SubResource("RectangleShape2D_1xb7t")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=669778226]
 texture = SubResource("AtlasTexture_idapm")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=539347745]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=1752727077]
+radius = 18.84

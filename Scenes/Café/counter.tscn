@@ -18,16 +18,11 @@ food_visual_scene = ExtResource("2_yqchg")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=885409150]
 texture = SubResource("AtlasTexture_sxrvd")
 
-[node name="Visual" type="ColorRect" parent="." unique_id=583594586]
-visible = false
-offset_left = -200.0
-offset_top = -32.0
-offset_right = 200.0
-offset_bottom = 32.0
-color = Color(0.5137255, 0.56078434, 1, 1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1626437641]
 shape = SubResource("RectangleShape2D_cc37w")
 
 [node name="FoodPosition" type="Marker2D" parent="." unique_id=1403783864]
 position = Vector2(0, -52)
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=520125442]
+radius = 54.02
