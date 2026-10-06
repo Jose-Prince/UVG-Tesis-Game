@@ -36,7 +36,7 @@ func _ready() -> void:
 	player_camera = player.get_node("Camera2D") as Camera2D
 	furniture_manager.setup_camera(player_camera)
 	
-	var spawn_id := TeleportManager.pending_spawn
+	var spawn_id = TeleportManager.pending_spawn
 	
 	for spawn in spawn_points.get_children():
 		if spawn_id == "":
@@ -150,7 +150,7 @@ func get_hour_factor() -> float:
 	var hour = time_gui.actual_hour
 	
 	if hour < 8:
-		return 0.5
+		return 1.0
 	
 	if hour < 10:
 		return 1.0
@@ -164,13 +164,13 @@ func get_hour_factor() -> float:
 	if hour < 16:
 		return 1.2
 	
-	return 0.7
+	return 1.0
 
 
 func get_popularity_ratio() -> float:
 	return clamp(
 		#GameData.popularity / 1000.0,
-		1000.0 / 1000.0,
+		800.0 / 1000.0,
 		0.0,
 		1.0
 	)
