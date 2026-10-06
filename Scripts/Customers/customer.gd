@@ -16,11 +16,15 @@ enum CustomerState {
 @export var eating_time: float = 5.0
 @export var patience_time: float = 20.0
 
+# NEW: one SpriteFrames (.tres) per customer look
+@export var customer_variants: Array[SpriteFrames] = []
+
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var patience_timer: Timer = $PatienceTimer
 @onready var eating_timer: Timer = $EatingTimer
 @onready var patience_bar: ProgressBar = $PatienceBar
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D # NEW
 
 
 var target_position: Vector2
@@ -31,6 +35,8 @@ var state: CustomerState = CustomerState.ENTERING
 var order: CustomerOrder = null
 var exit_position: Vector2
 var leaving_initialized: bool = false
+
+var facing_direction := Vector2.DOWN # NEW
 
 
 var available_orders: Array[String] = [
@@ -43,6 +49,12 @@ var available_orders: Array[String] = [
 
 func _ready() -> void:
 	add_to_group("customer")
+
+	# NEW: pick a random look for this customer
+	if not customer_variants.is_empty():
+		animated_sprite.sprite_frames = customer_variants.pick_random()
+	else:
+		print("ERROR: Customer has no sprite variants assigned.")
 
 	target_position = global_position
 
@@ -79,6 +91,40 @@ func _physics_process(_delta: float) -> void:
 		CustomerState.EXITED:
 			handle_exited()
 
+	update_animation() # NEW
+
+
+# -----------------------------------------
+# NEW: Animation
+# -----------------------------------------
+
+func update_animation() -> void:
+	if animated_sprite.sprite_frames == null:
+		return
+
+	var is_moving := velocity.length() > 1.0
+
+	if is_moving:
+		facing_direction = velocity
+
+	var anim_state := "walk" if is_moving else "idle"
+	var direction_name: String
+
+	if abs(facing_direction.x) > abs(facing_direction.y):
+		direction_name = "side"
+		animated_sprite.flip_h = facing_direction.x < 0
+	elif facing_direction.y < 0:
+		direction_name = "up"
+		animated_sprite.flip_h = false
+	else:
+		direction_name = "down"
+		animated_sprite.flip_h = false
+
+	var animation_name := anim_state + "_" + direction_name
+
+	if animated_sprite.animation != animation_name:
+		animated_sprite.play(animation_name)
+
 
 func handle_entering() -> void:
 	velocity = Vector2.ZERO
@@ -87,6 +133,12 @@ func handle_entering() -> void:
 func handle_going_to_table() -> void:
 	if navigation_agent.is_navigation_finished():
 		velocity = Vector2.ZERO
+
+		# NEW: look at the table while waiting
+		if target_table != null:
+			facing_direction = global_position.direction_to(
+				target_table.global_position
+			)
 
 		change_state(CustomerState.WAITING_FOR_ORDER)
 
