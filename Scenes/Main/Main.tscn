@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://7sgt6p3i04dx" path="res://Scenes/Café/Cafe.tscn" id="2_qtv3y"]
 [ext_resource type="Script" uid="uid://bv3ni3tmiqhhj" path="res://Scripts/UI/HUD.gd" id="3_cmk6n"]
 [ext_resource type="PackedScene" uid="uid://b3ch6m506nfh" path="res://Scenes/UI/furniture_placement_ui.tscn" id="4_i3fi7"]
+[ext_resource type="Script" uid="uid://clu3g576l5ras" path="res://Scripts/UI/pause_menu.gd" id="5_o8wgc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aw1lf"]
 content_margin_left = 12.0
@@ -68,6 +69,82 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5s61s"]
+bg_color = Color(1, 0.94509804, 0.8392157, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.41960785, 0.27450982, 0.21176471, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7npjy"]
+bg_color = Color(0.9098039, 0.7882353, 0.60784316, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41960785, 0.27450982, 0.21176471, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvlhv"]
+bg_color = Color(0.84705883, 0.7176471, 0.49803922, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41960785, 0.27450982, 0.21176471, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vhfm"]
+bg_color = Color(0.9411765, 0.84705883, 0.68235296, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41960785, 0.27450982, 0.21176471, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgovn"]
+bg_color = Color(0.9098039, 0.7882353, 0.60784316, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41960785, 0.27450982, 0.21176471, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cv8e0"]
+bg_color = Color(0.84705883, 0.7176471, 0.49803922, 1)
+border_color = Color(0.41960785, 0.27450982, 0.21176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkvnm"]
+bg_color = Color(0.9411765, 0.84705883, 0.68235296, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41960785, 0.27450982, 0.21176471, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Main" type="Node2D" unique_id=991998489]
 
@@ -135,6 +212,86 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_i3fi7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_w20t6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o8wgc")
 text = "Furniture"
+
+[node name="PauseMenu" type="Control" parent="HUD" unique_id=1619105985]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_o8wgc")
+
+[node name="Background" type="ColorRect" parent="HUD/PauseMenu" unique_id=831221475]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="Panel" type="Panel" parent="HUD/PauseMenu" unique_id=691368735]
+custom_minimum_size = Vector2(280, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5s61s")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PauseMenu/Panel" unique_id=76169230]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PauseMenu/Panel/MarginContainer" unique_id=1451682869]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Title" type="Label" parent="HUD/PauseMenu/Panel/MarginContainer/VBoxContainer" unique_id=1356262694]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2901961, 0.1882353, 0.14901961, 1)
+theme_override_font_sizes/font_size = 28
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="HUD/PauseMenu/Panel/MarginContainer/VBoxContainer" unique_id=218272143]
+custom_minimum_size = Vector2(220, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2901961, 0.1882353, 0.14901961, 1)
+theme_override_colors/font_pressed_color = Color(0.2901961, 0.1882353, 0.14901961, 1)
+theme_override_colors/font_hover_color = Color(0.2901961, 0.1882353, 0.14901961, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_7npjy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dvlhv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4vhfm")
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="HUD/PauseMenu/Panel/MarginContainer/VBoxContainer" unique_id=448740020]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2901961, 0.1882353, 0.14901961, 1)
+theme_override_colors/font_pressed_color = Color(0.2901961, 0.1882353, 0.14901961, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.2901961, 0.1882353, 0.14901961, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wgovn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cv8e0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hkvnm")
+text = "Quit Game"
 
 [node name="OutsideEntrance" type="Marker2D" parent="." unique_id=1609954013]
 position = Vector2(155, 324)
