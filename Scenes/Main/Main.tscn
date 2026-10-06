@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bv3ni3tmiqhhj" path="res://Scripts/UI/HUD.gd" id="3_cmk6n"]
 [ext_resource type="PackedScene" uid="uid://b3ch6m506nfh" path="res://Scenes/UI/furniture_placement_ui.tscn" id="4_i3fi7"]
 [ext_resource type="Script" uid="uid://clu3g576l5ras" path="res://Scripts/UI/pause_menu.gd" id="5_o8wgc"]
+[ext_resource type="AudioStream" uid="uid://d217bhurhttu0" path="res://Assets/Music/Dream_Cafe.ogg" id="6_w20t6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aw1lf"]
 content_margin_left = 12.0
@@ -295,5 +296,10 @@ text = "Quit Game"
 
 [node name="OutsideEntrance" type="Marker2D" parent="." unique_id=1609954013]
 position = Vector2(155, 324)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1859765404]
+stream = ExtResource("6_w20t6")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="HUD/BuildButton" to="HUD" method="_on_build_button_pressed"]
