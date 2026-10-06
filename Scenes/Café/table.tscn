@@ -25,8 +25,8 @@ position = Vector2(-46, 0)
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=917359447]
 position = Vector2(0, 2)
-radius = 33.0
-vertices = PackedVector2Array(-26, -20, 27, -20, 28, 16, -26, 16)
+radius = 14.77
+vertices = PackedVector2Array(-17, -14, 18, -14, 18, 12, -17, 12)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 

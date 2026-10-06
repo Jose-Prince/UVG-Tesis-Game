@@ -1,20 +1,22 @@
 [gd_scene format=3 uid="uid://cl58e8mye0sx"]
 
 [ext_resource type="Script" uid="uid://bj8hyqvckcxde" path="res://Scripts/Customers/customer.gd" id="1_nk1oc"]
-[ext_resource type="SpriteFrames" uid="uid://dfb8qgnmnnie1" path="res://Assets/Sprites/character/skin.tres" id="2_lc0fb"]
-[ext_resource type="SpriteFrames" uid="uid://0xwrcvogb7q0" path="res://Assets/Sprites/character/hair_3.tres" id="3_543t4"]
-[ext_resource type="SpriteFrames" uid="uid://cw6citcncttn1" path="res://Assets/Sprites/character/shirt_1.tres" id="4_24lyk"]
-[ext_resource type="SpriteFrames" uid="uid://bk8lob0koe38s" path="res://Assets/Sprites/character/pants_1.tres" id="5_fhf36"]
+[ext_resource type="SpriteFrames" uid="uid://dju2w2sxoywof" path="res://Assets/PixelLab_IA_assets/customers/customer_01.tres" id="2_1g8wt"]
+[ext_resource type="SpriteFrames" uid="uid://eeqkqdgdb8vc" path="res://Assets/PixelLab_IA_assets/customers/customer_02.tres" id="3_543t4"]
+[ext_resource type="SpriteFrames" uid="uid://ro6d5riu2fxv" path="res://Assets/PixelLab_IA_assets/customers/customer_03.tres" id="4_24lyk"]
+[ext_resource type="SpriteFrames" uid="uid://bn327i53u3q35" path="res://Assets/PixelLab_IA_assets/customers/customer_04.tres" id="5_fhf36"]
+[ext_resource type="SpriteFrames" uid="uid://bvxbrjcnw3v5a" path="res://Assets/PixelLab_IA_assets/customers/customer_05.tres" id="6_qdme1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxcvc"]
-size = Vector2(32, 32)
+size = Vector2(14, 5)
 
 [node name="Customer" type="CharacterBody2D" unique_id=980918883]
 collision_layer = 2
 script = ExtResource("1_nk1oc")
+customer_variants = Array[SpriteFrames]([ExtResource("2_1g8wt"), ExtResource("3_543t4"), ExtResource("4_24lyk"), ExtResource("5_fhf36"), ExtResource("6_qdme1")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1967612941]
-position = Vector2(0, 3)
+position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_pxcvc")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=2124059339]
@@ -23,22 +25,8 @@ target_desired_distance = 5.0
 avoidance_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2020132279]
-
-[node name="Skin" type="AnimatedSprite2D" parent="." unique_id=193020462]
-sprite_frames = ExtResource("2_lc0fb")
-animation = &"idle"
-
-[node name="Hair" type="AnimatedSprite2D" parent="." unique_id=235225902]
-sprite_frames = ExtResource("3_543t4")
-animation = &"idle"
-
-[node name="TopCloth" type="AnimatedSprite2D" parent="." unique_id=2054495140]
-sprite_frames = ExtResource("4_24lyk")
-animation = &"idle"
-
-[node name="BottomCloth" type="AnimatedSprite2D" parent="." unique_id=385997090]
-sprite_frames = ExtResource("5_fhf36")
-animation = &"idle"
+sprite_frames = ExtResource("2_1g8wt")
+animation = &"walk_up"
 
 [node name="PatienceTimer" type="Timer" parent="." unique_id=511287207]
 wait_time = 20.0
