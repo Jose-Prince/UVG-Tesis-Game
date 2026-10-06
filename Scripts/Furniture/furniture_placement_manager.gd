@@ -164,8 +164,24 @@ func cancel_mode() -> void:
 func get_furniture_at_mouse() -> Node2D:
 	var mouse_position = get_tree().current_scene.get_global_mouse_position()
 
+	# First check furniture placed through the furniture editor.
 	for furniture in placed_furniture:
 		if not is_instance_valid(furniture):
+			continue
+
+		if is_mouse_over_furniture(furniture, mouse_position):
+			return furniture
+
+	# Also check furniture that was already part of the scene.
+	var furniture_nodes := get_tree().get_nodes_in_group("furniture")
+
+	for node in furniture_nodes:
+		if not is_instance_valid(node):
+			continue
+
+		var furniture := node as Node2D
+
+		if furniture == null:
 			continue
 
 		if is_mouse_over_furniture(furniture, mouse_position):
@@ -188,21 +204,31 @@ func remove_furniture(furniture: Node2D) -> void:
 	if furniture == null:
 		return
 
-	if not furniture.is_in_group("placed_furniture"):
+	var item_id: String = ""
+
+	# Furniture placed through the editor already has an ID.
+	if furniture.has_meta("furniture_id"):
+		item_id = furniture.get_meta("furniture_id")
+
+	# If it was originally in the scene, determine its ID
+	# from its type.
+	elif furniture is Table:
+		item_id = "wooden_table"
+
+	else:
+		print("[REMOVAL] Unknown furniture type: ", furniture.name)
 		return
 
-	if not furniture.has_meta("furniture_id"):
-		print("[REMOVAL] Furniture has no furniture_id")
-		return
-
-	var item_id: String = furniture.get_meta("furniture_id")
-
+	# Return the furniture to the inventory.
 	FurnitureInventory.add_item(item_id)
 
+	# Remove it from our runtime list if it is there.
 	placed_furniture.erase(furniture)
 
 	print(
 		"[REMOVAL] Removed: ",
+		furniture.name,
+		" | ID: ",
 		item_id,
 		" | Returned to inventory"
 	)

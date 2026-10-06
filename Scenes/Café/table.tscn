@@ -10,10 +10,9 @@ region = Rect2(0.49687195, 4.3024015, 31.33851, 25.606487)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
 size = Vector2(30, 22)
 
-[node name="Table" type="StaticBody2D" unique_id=604935021 node_paths=PackedStringArray("customer_spot") groups=["placed_furniture"]]
+[node name="Table" type="StaticBody2D" unique_id=604935021 node_paths=PackedStringArray("customer_spot")]
 script = ExtResource("1_34rps")
 customer_spot = NodePath("CustomerSpot")
-interaction_radius = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2025370225]
 texture = SubResource("AtlasTexture_cc37w")

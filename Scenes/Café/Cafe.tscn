@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cl58e8mye0sx" path="res://Scenes/Customers/Customer.tscn" id="4_p026p"]
 [ext_resource type="Script" uid="uid://d4mqu1bo2lc0g" path="res://Scripts/UI/OrderUI.gd" id="6_p50xa"]
 [ext_resource type="Script" uid="uid://8cyunq87xd7" path="res://Scripts/Café/food_preparation.gd" id="7_f3an2"]
+[ext_resource type="PackedScene" uid="uid://csfk5kyjv7eej" path="res://Scenes/Objects/FoodVisual.tscn" id="7_xgk6o"]
 [ext_resource type="Script" uid="uid://xwg2uk6o7cfa" path="res://Scripts/Core/order_manager.gd" id="8_0n4ib"]
 [ext_resource type="Script" uid="uid://btgt0g62qy04o" path="res://Scripts/Café/cafe_economy.gd" id="9_qlci0"]
 [ext_resource type="Script" uid="uid://wwv7ui0wtuwh" path="res://Scripts/Core/cafe_day_manager.gd" id="10_j5ued"]
@@ -29,6 +30,8 @@ atlas = ExtResource("1_ysxrs")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p50xa"]
 texture = SubResource("AtlasTexture_ru286")
+margins = Vector2i(1, 1)
+separation = Vector2i(2, 2)
 texture_region_size = Vector2i(32, 32)
 11:0/0 = 0
 12:0/0 = 0
@@ -367,9 +370,13 @@ navigation_polygon = SubResource("NavigationPolygon_p026p")
 
 [node name="Table2" parent="NavigationRegion2D" unique_id=9212331 instance=ExtResource("3_ccdco")]
 position = Vector2(424, 291)
+food_visual_scene = ExtResource("7_xgk6o")
+interaction_radius = 50.0
 
 [node name="Table" parent="NavigationRegion2D" unique_id=604935021 instance=ExtResource("3_ccdco")]
 position = Vector2(700, 300)
+food_visual_scene = ExtResource("7_xgk6o")
+interaction_radius = 50.0
 
 [node name="OrderUI" type="CanvasLayer" parent="." unique_id=1832881993 groups=["order_ui"]]
 script = ExtResource("6_p50xa")

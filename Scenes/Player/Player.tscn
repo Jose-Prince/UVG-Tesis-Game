@@ -262,3 +262,6 @@ animation = &"walk_up"
 
 [node name="CarryPosition" type="Marker2D" parent="." unique_id=1845651054]
 position = Vector2(26, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=311430070]
+zoom = Vector2(3, 3)

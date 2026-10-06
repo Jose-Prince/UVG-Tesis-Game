@@ -13,6 +13,7 @@ var current_customer: Customer = null
 func _ready() -> void:
 	super._ready()
 	interaction_radius = 80.0
+	add_to_group("furniture")
 
 func interact() -> void:
 	print("Player interacted with the table!")
