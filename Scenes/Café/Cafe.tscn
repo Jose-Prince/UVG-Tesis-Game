@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://wwv7ui0wtuwh" path="res://Scripts/Core/cafe_day_manager.gd" id="10_j5ued"]
 [ext_resource type="Texture2D" uid="uid://1156gdre1g35" path="res://Assets/PixelLab_IA_assets/32x32_pixel_art_kitchen_sink/32x32_pixel_art_kitchen_sink/rotations/32x32_pixel_art_kitchen_sink.png" id="10_k0nbj"]
 [ext_resource type="PackedScene" uid="uid://gt252l0cd6rh" path="res://Scenes/Objects/order_trash.tscn" id="12_twxx2"]
+[ext_resource type="AudioStream" uid="uid://cmls7jty460k6" path="res://Assets/Audios/bell1.ogg" id="16_ba5a5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgk6o"]
 texture = ExtResource("1_ysxrs")
@@ -606,3 +607,6 @@ script = ExtResource("9_qlci0")
 
 [node name="CafeDayManager" type="Node" parent="." unique_id=1600161526 groups=["cafe_day_manager"]]
 script = ExtResource("10_j5ued")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2107551082]
+stream = ExtResource("16_ba5a5")

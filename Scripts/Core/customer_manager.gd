@@ -6,6 +6,7 @@ extends Node2D
 @export var max_customers: int = 5
 
 @onready var spawn_point: Marker2D = $"../CustomerSpawn"
+@onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
 
 var day_manager: CafeDayManager
 
@@ -43,7 +44,8 @@ func spawn_customer() -> void:
 	if available_table == null:
 		print("No available seats. Customer will not spawn.")
 		return
-
+	
+	audio_stream_player.play()
 	# Create the customer.
 	var customer := customer_scene.instantiate() as Customer
 
