@@ -8,25 +8,29 @@ extends CanvasLayer
 
 
 var current_table: Table = null
+var current_customer: Customer = null
 
 
 func _ready() -> void:
 	panel.visible = false
+
 	accept_button.pressed.connect(_on_accept_order_pressed)
 
 	order_manager = get_tree().get_first_node_in_group("order_manager")
 
 
-func show_order(table: Table) -> void:
-	if table.current_customer == null:
+func show_order(table: Table, customer: Customer) -> void:
+	if table == null:
 		return
 
-	var customer := table.current_customer
+	if customer == null:
+		return
 
 	if customer.order == null:
 		return
 
 	current_table = table
+	current_customer = customer
 
 	order_label.text = "Order: " + customer.order.item_name
 
@@ -36,13 +40,13 @@ func show_order(table: Table) -> void:
 
 
 func update_button() -> void:
-	if current_table == null:
+	if current_customer == null:
 		return
 
-	var order := current_table.current_customer.order
-
-	if order == null:
+	if current_customer.order == null:
 		return
+
+	var order := current_customer.order
 
 	match order.state:
 		CustomerOrder.OrderState.WAITING:
@@ -58,25 +62,25 @@ func update_button() -> void:
 
 
 func _on_accept_order_pressed() -> void:
-	if current_table == null:
+	if current_customer == null:
 		return
 
-	var customer := current_table.current_customer
-
-	if customer == null:
+	if current_customer.order == null:
 		return
 
-	if customer.order == null:
-		return
-
-	var order := customer.order
+	var order := current_customer.order
 
 	if order.state != CustomerOrder.OrderState.WAITING:
 		return
 
 	order.state = CustomerOrder.OrderState.ACCEPTED
 
-	print("Order accepted: ", order.item_name)
+	print(
+		"Order accepted from ",
+		current_customer.name,
+		": ",
+		order.item_name
+	)
 
 	if order_manager != null:
 		order_manager.add_order(order)

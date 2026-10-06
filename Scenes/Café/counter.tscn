@@ -22,7 +22,7 @@ texture = SubResource("AtlasTexture_sxrvd")
 shape = SubResource("RectangleShape2D_cc37w")
 
 [node name="FoodPosition" type="Marker2D" parent="." unique_id=1403783864]
-position = Vector2(0, -52)
+position = Vector2(0, -18)
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=520125442]
 radius = 54.02

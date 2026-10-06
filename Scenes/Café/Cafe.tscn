@@ -10,9 +10,10 @@
 [ext_resource type="Script" uid="uid://8cyunq87xd7" path="res://Scripts/Café/food_preparation.gd" id="7_f3an2"]
 [ext_resource type="PackedScene" uid="uid://csfk5kyjv7eej" path="res://Scenes/Objects/FoodVisual.tscn" id="7_xgk6o"]
 [ext_resource type="Script" uid="uid://xwg2uk6o7cfa" path="res://Scripts/Core/order_manager.gd" id="8_0n4ib"]
+[ext_resource type="Texture2D" uid="uid://biuyiwc7cvhoi" path="res://Assets/PixelLab_IA_assets/32x32_pixel_art_espresso_coffe/32x32_pixel_art_espresso_coffe/rotations/32x32_pixel_art_espresso_coffe.png" id="9_ba5a5"]
 [ext_resource type="Script" uid="uid://btgt0g62qy04o" path="res://Scripts/Café/cafe_economy.gd" id="9_qlci0"]
 [ext_resource type="Script" uid="uid://wwv7ui0wtuwh" path="res://Scripts/Core/cafe_day_manager.gd" id="10_j5ued"]
-[ext_resource type="PackedScene" uid="uid://caq1ld5w1vhck" path="res://Scenes/Main/scene_exit.tscn" id="11_mbx8m"]
+[ext_resource type="Texture2D" uid="uid://1156gdre1g35" path="res://Assets/PixelLab_IA_assets/32x32_pixel_art_kitchen_sink/32x32_pixel_art_kitchen_sink/rotations/32x32_pixel_art_kitchen_sink.png" id="10_k0nbj"]
 [ext_resource type="PackedScene" uid="uid://gt252l0cd6rh" path="res://Scenes/Objects/order_trash.tscn" id="12_twxx2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgk6o"]
@@ -138,8 +139,8 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_whqij")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_p026p"]
-vertices = PackedVector2Array(467.0625, 75, 468.9375, 373, 447, 278, 447, 236, 446, 163, 446, 121, 77.0625, 75, 396, 121, 387, 373, 387, 310, 397, 278, 78.9375, 373, 152, 322, 397, 236, 396, 163, 185, 310, 185, 322, 152, 373)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(6, 0, 5, 7), PackedInt32Array(2, 1, 8, 9, 10), PackedInt32Array(11, 6, 7, 12), PackedInt32Array(4, 3, 13, 14), PackedInt32Array(15, 16, 12), PackedInt32Array(12, 17, 11), PackedInt32Array(15, 12, 7), PackedInt32Array(9, 15, 7, 14), PackedInt32Array(9, 14, 13, 10)])
+vertices = PackedVector2Array(467.0625, 75, 468.9375, 373, 448, 304, 444, 226, 444, 184, 448, 346, 78.9375, 373, 398, 346, 308, 75, 394, 184, 308, 117, 77.390625, 127, 243, 226, 394, 226, 293, 226, 293, 184, 272, 117, 272, 127, 243, 184, 398, 304)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 1, 6, 7), PackedInt32Array(8, 0, 4, 9, 10), PackedInt32Array(7, 6, 11, 12), PackedInt32Array(10, 9, 13, 14, 15), PackedInt32Array(16, 10, 15, 17), PackedInt32Array(17, 15, 18, 11), PackedInt32Array(11, 18, 12), PackedInt32Array(7, 12, 14, 19), PackedInt32Array(19, 14, 13), PackedInt32Array(19, 13, 3, 2), PackedInt32Array(2, 1, 5)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(67, 65, 477, 65, 479, 383, 69, 383)])
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5ued"]
@@ -238,18 +239,30 @@ customer_scene = ExtResource("4_p026p")
 navigation_polygon = SubResource("NavigationPolygon_p026p")
 
 [node name="Table2" parent="NavigationRegion2D" unique_id=9212331 instance=ExtResource("3_ccdco")]
-position = Vector2(422, 257)
+position = Vector2(423, 325)
 food_visual_scene = ExtResource("7_xgk6o")
 
 [node name="Table" parent="NavigationRegion2D" unique_id=604935021 instance=ExtResource("3_ccdco")]
-position = Vector2(421, 142)
+position = Vector2(419, 205)
+food_visual_scene = ExtResource("7_xgk6o")
+
+[node name="Table3" parent="NavigationRegion2D" unique_id=2000613272 instance=ExtResource("3_ccdco")]
+position = Vector2(268, 205)
 food_visual_scene = ExtResource("7_xgk6o")
 
 [node name="Counter" parent="NavigationRegion2D" unique_id=268846846 instance=ExtResource("2_owdk4")]
-position = Vector2(286, 344)
+position = Vector2(171, 93)
 
 [node name="OrderTrash" parent="NavigationRegion2D" unique_id=1138148328 instance=ExtResource("12_twxx2")]
-position = Vector2(172, 348)
+position = Vector2(287, 91)
+
+[node name="32x32PixelArtEspressoCoffe" type="Sprite2D" parent="NavigationRegion2D" unique_id=1269116221]
+position = Vector2(114, 63)
+texture = ExtResource("9_ba5a5")
+
+[node name="32x32PixelArtKitchenSink" type="Sprite2D" parent="NavigationRegion2D" unique_id=959226653]
+position = Vector2(226, 75)
+texture = ExtResource("10_k0nbj")
 
 [node name="OrderUI" type="CanvasLayer" parent="." unique_id=1832881993 groups=["order_ui"]]
 script = ExtResource("6_p50xa")
@@ -325,8 +338,3 @@ script = ExtResource("9_qlci0")
 
 [node name="CafeDayManager" type="Node" parent="." unique_id=1600161526 groups=["cafe_day_manager"]]
 script = ExtResource("10_j5ued")
-
-[node name="SceneExit" parent="." unique_id=1121112703 instance=ExtResource("11_mbx8m")]
-position = Vector2(36, 315)
-destination_scene = "uid://0xiilalykgwj"
-destination_spawn = "CafeEntrance"

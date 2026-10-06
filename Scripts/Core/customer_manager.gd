@@ -9,6 +9,7 @@ extends Node2D
 
 var day_manager: CafeDayManager
 
+
 func _ready() -> void:
 	day_manager = get_tree().get_first_node_in_group("cafe_day_manager")
 
@@ -36,13 +37,12 @@ func spawn_customer() -> void:
 		push_warning("Customer scene has not been assigned.")
 		return
 
-	# Find a table BEFORE creating the customer.
+	# Find a table with at least one available seat.
 	var available_table := get_available_table()
 
 	if available_table == null:
-		print("No available table. Customer will not spawn.")
+		print("No available seats. Customer will not spawn.")
 		return
-
 
 	# Create the customer.
 	var customer := customer_scene.instantiate() as Customer
@@ -51,23 +51,14 @@ func spawn_customer() -> void:
 		push_warning("Customer scene is not a Customer.")
 		return
 
-
 	get_parent().add_child(customer)
 
 	customer.global_position = spawn_point.global_position
 
-	print("Customer spawned!")
+	print("Customer spawned: ", customer.name)
 
-
-	# Reserve the table immediately.
-	available_table.assign_customer(customer)
-
+	# Customer will automatically reserve an available seat.
 	customer.go_to_table(available_table)
-
-	print(
-		"Customer assigned to table: ",
-		available_table.name
-	)
 
 
 func get_available_table() -> Table:
@@ -79,7 +70,7 @@ func get_available_table() -> Table:
 
 		var table := node as Table
 
-		if not table.occupied:
+		if table.has_available_seat():
 			return table
 
 	return null

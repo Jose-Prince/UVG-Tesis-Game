@@ -5,6 +5,22 @@
 [ext_resource type="Script" uid="uid://bv3ni3tmiqhhj" path="res://Scripts/UI/HUD.gd" id="3_cmk6n"]
 [ext_resource type="PackedScene" uid="uid://b3ch6m506nfh" path="res://Scenes/UI/furniture_placement_ui.tscn" id="4_i3fi7"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aw1lf"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(1, 0.94509804, 0.8392157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.41960785, 0.27450982, 0.21176471, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3fi7"]
 content_margin_left = 14.0
 content_margin_top = 8.0
@@ -63,25 +79,51 @@ position = Vector2(209, 178)
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1402109423]
 script = ExtResource("3_cmk6n")
 
-[node name="MoneyLabel" type="Label" parent="HUD" unique_id=1409211938]
-offset_left = 72.0
-offset_top = 8.0
-offset_right = 165.0
-offset_bottom = 31.0
+[node name="Panel" type="Panel" parent="HUD" unique_id=178132151]
+custom_minimum_size = Vector2(130, 55)
+anchors_preset = -1
+offset_left = 11.0
+offset_top = 7.0
+offset_right = 114.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_aw1lf")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Panel" unique_id=426501172]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -30.0
+offset_right = 51.5
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Panel/MarginContainer" unique_id=1170219570]
+layout_mode = 2
+alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="HUD/Panel/MarginContainer/VBoxContainer" unique_id=1409211938]
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Money: $0.0"
 
-[node name="TimeLabel" type="Label" parent="HUD" unique_id=1060861951]
-offset_left = 75.0
-offset_top = 33.0
-offset_right = 115.0
-offset_bottom = 56.0
+[node name="TimeLabel" type="Label" parent="HUD/Panel/MarginContainer/VBoxContainer" unique_id=1060861951]
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Day 1 - 9:00"
 
 [node name="FurniturePlacementUi" parent="HUD" unique_id=1118802495 instance=ExtResource("4_i3fi7")]
 
 [node name="BuildButton" type="Button" parent="HUD" unique_id=624946993]
+visible = false
 offset_left = 1024.0
 offset_top = 587.0
 offset_right = 1125.0

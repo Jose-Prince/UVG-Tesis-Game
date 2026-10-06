@@ -1,8 +1,7 @@
 extends CanvasLayer
 
-
-@onready var money_label: Label = $MoneyLabel
-@onready var time_label: Label = $TimeLabel
+@onready var money_label: Label = $Panel/MarginContainer/VBoxContainer/MoneyLabel
+@onready var time_label: Label = $Panel/MarginContainer/VBoxContainer/TimeLabel
 
 
 func _process(_delta: float) -> void:

@@ -2,7 +2,7 @@ class_name Interactable
 extends StaticBody2D
 
 
-@export var interaction_radius: float = 50.0
+@export var interaction_radius: float = 20.0
 
 
 func _ready() -> void:

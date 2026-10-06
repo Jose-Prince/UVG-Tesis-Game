@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://w27numb36gvb" path="res://Scripts/Objects/Table.gd" id="1_34rps"]
 [ext_resource type="Texture2D" uid="uid://bdu0xcfv4in4u" path="res://Assets/PixelLab_IA_assets/wood_table.png" id="2_t733n"]
+[ext_resource type="Script" uid="uid://dra8o4gddcm6y" path="res://Scripts/Objects/table_seat.gd" id="3_pspw8"]
+[ext_resource type="Texture2D" uid="uid://dbrh3yggolq44" path="res://Assets/PixelLab_IA_assets/wood_chair_facing_right.png" id="3_x1re5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cc37w"]
 atlas = ExtResource("2_t733n")
@@ -10,9 +12,21 @@ region = Rect2(0.49687195, 4.3024015, 31.33851, 25.606487)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
 size = Vector2(30, 22)
 
-[node name="Table" type="StaticBody2D" unique_id=604935021 node_paths=PackedStringArray("customer_spot")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t733n"]
+atlas = ExtResource("3_x1re5")
+region = Rect2(75, 2, 19, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pspw8"]
+atlas = ExtResource("3_x1re5")
+region = Rect2(143, 2, 19, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cncw"]
+atlas = ExtResource("3_x1re5")
+region = Rect2(211, 2, 19, 29)
+
+[node name="Table" type="StaticBody2D" unique_id=604935021 node_paths=PackedStringArray("seats")]
 script = ExtResource("1_34rps")
-customer_spot = NodePath("CustomerSpot")
+seats = [NodePath("Seats/Seat"), NodePath("Seats/Seat3"), NodePath("Seats/Seat4")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2025370225]
 texture = SubResource("AtlasTexture_cc37w")
@@ -20,15 +34,35 @@ texture = SubResource("AtlasTexture_cc37w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=689953606]
 shape = SubResource("RectangleShape2D_cc37w")
 
-[node name="CustomerSpot" type="Marker2D" parent="." unique_id=2082914426]
-position = Vector2(-46, 0)
-
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=917359447]
 position = Vector2(0, 2)
-radius = 14.77
+radius = 18.0
 vertices = PackedVector2Array(-17, -14, 18, -14, 18, 12, -17, 12)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 
 [node name="FoodPosition" type="Marker2D" parent="." unique_id=439633147]
 position = Vector2(0, -6)
+
+[node name="Seats" type="Node2D" parent="." unique_id=698459986]
+
+[node name="Seat" type="Marker2D" parent="Seats" unique_id=2082914426]
+position = Vector2(-26, -2)
+script = ExtResource("3_pspw8")
+
+[node name="Chair" type="Sprite2D" parent="Seats/Seat" unique_id=755955336]
+texture = SubResource("AtlasTexture_t733n")
+
+[node name="Seat3" type="Marker2D" parent="Seats" unique_id=1498709580]
+position = Vector2(1, 19)
+script = ExtResource("3_pspw8")
+
+[node name="Chair" type="Sprite2D" parent="Seats/Seat3" unique_id=1965545575]
+texture = SubResource("AtlasTexture_pspw8")
+
+[node name="Seat4" type="Marker2D" parent="Seats" unique_id=2094336913]
+position = Vector2(26, -1)
+script = ExtResource("3_pspw8")
+
+[node name="Chair" type="Sprite2D" parent="Seats/Seat4" unique_id=263499578]
+texture = SubResource("AtlasTexture_8cncw")

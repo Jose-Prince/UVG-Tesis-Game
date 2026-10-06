@@ -20,9 +20,12 @@ position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_pxcvc")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=2124059339]
-path_desired_distance = 15.0
-target_desired_distance = 15.0
+path_desired_distance = 4.0
+target_desired_distance = 8.0
 avoidance_enabled = true
+neighbor_distance = 64.0
+max_neighbors = 1
+time_horizon_obstacles = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2020132279]
 sprite_frames = ExtResource("2_1g8wt")
